@@ -1,0 +1,183 @@
+{
+  "hero": {
+    "eyebrow": "Tekniska anteckningar",
+    "title": "Anteckningar från att bygga och köra mjukvara.",
+    "description": "Praktiska anteckningar om backendutveckling, API:er, automation, driftsättning och AI-integration baserade på problem jag har stött på i riktiga projekt."
+  },
+  "detail": {
+    "eyebrow": "Teknisk anteckning",
+    "back": "Tillbaka till tekniska anteckningar",
+    "published": "Publicerad",
+    "readingTime": "Lästid",
+    "topics": "Ämnen",
+    "notFoundEyebrow": "Teknisk anteckning",
+    "notFound": "Artikeln kunde inte hittas"
+  },
+  "posts": {
+    "eyebrow": "Från utvecklingsloggen",
+    "title": "Senaste anteckningarna",
+    "description": "Korta tekniska genomgångar av implementationsbeslut, integrationsproblem, driftsättning och lärdomar från utvecklingsarbetet.",
+    "items": [
+      {
+        "id": "dotnet-azure-neon",
+        "title": "Driftsätta en .NET-applikation med Azure och Neon",
+        "description": "En praktisk genomgång av hur en ASP.NET Core-applikation kopplas till hanterad PostgreSQL och driftsätts i Azure.",
+        "date": "2026",
+        "readingTime": "6 min läsning",
+        "tags": [
+          ".NET",
+          "Azure",
+          "PostgreSQL",
+          "Neon"
+        ],
+        "sections": [
+          {
+            "title": "Varför den här lösningen",
+            "paragraphs": [
+              "Målet var att flytta en databasdriven .NET-applikation från lokal utveckling till en riktig driftmiljö utan att introducera onödig infrastruktur.",
+              "Azure för applikationshosting och Neon för hanterad PostgreSQL gav ett praktiskt sätt att driftsätta applikationen samtidigt som infrastrukturen kunde hållas relativt enkel."
+            ]
+          },
+          {
+            "title": "Ansluta PostgreSQL",
+            "paragraphs": [
+              "Applikationen behövde en produktionsanslutning till databasen som var separat från den lokala utvecklingskonfigurationen.",
+              "Det innebar att anslutningssträngar och miljövariabler behövde hanteras som driftsättningskonfiguration istället för att hårdkodas i applikationen."
+            ]
+          },
+          {
+            "title": "Flytten till Azure",
+            "paragraphs": [
+              "Driftsättningen introducerade problem som inte syntes under lokal utveckling, särskilt kring miljökonfiguration och anslutningen till den externa databasen.",
+              "Det var viktigt att testa hela den driftsatta applikationen eftersom en lyckad build inte automatiskt innebär att alla produktionsberoenden är korrekt konfigurerade."
+            ]
+          },
+          {
+            "title": "Vad jag lärde mig",
+            "paragraphs": [
+              "Hosting och databaskonfiguration är en del av applikationsarkitekturen och inte bara uppgifter som sker efter utvecklingen.",
+              "Hanterade tjänster som Neon kan minska infrastrukturens komplexitet och göra mindre applikationer enklare att driva."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dotnet-python-price-watch",
+        "title": "Orkestrera Python-automation från ASP.NET Core",
+        "description": "Hur jag separerade applikationsorkestrering från webbläsarautomation i ett lokalt prisövervakningssystem byggt med ASP.NET Core, Python och Playwright.",
+        "date": "2026",
+        "readingTime": "7 min läsning",
+        "tags": [
+          ".NET",
+          "Python",
+          "Playwright",
+          "Automation"
+        ],
+        "sections": [
+          {
+            "title": "Separera ansvarsområden",
+            "paragraphs": [
+              "Prisövervakning handlar om mer än webbläsarautomation. Applikationen behöver även hantera produktkonfiguration, schemaläggning, notifieringar, körningskontroll och historiska resultat.",
+              "Istället för att lägga allt ansvar i scrapern behöll jag ASP.NET Core som applikationslager och Python som automationslager."
+            ]
+          },
+          {
+            "title": "ASP.NET Core som orkestreringslager",
+            "paragraphs": [
+              "ASP.NET Core-applikationen hanterar produkter, manuella körningar, e-postinställningar och schemaläggning samtidigt som den koordinerar Python-processen för scraping.",
+              "Det håller applikationsansvaret separerat från webbläsarspecifik extraktionslogik och gör hela arbetsflödet enklare att förstå."
+            ]
+          },
+          {
+            "title": "Design för opålitlig extern data",
+            "paragraphs": [
+              "Externa webbplatser kan förändras oberoende av applikationen, vilket innebär att en scraper inte kan utgå från att varje extraherat värde är korrekt.",
+              "Arbetsflödet innehåller därför validering, upptäckt av misstänkta prisförändringar och diagnostisk information så att misslyckade eller ovanliga körningar kan undersökas."
+            ]
+          },
+          {
+            "title": "Varför scrapern körs lokalt",
+            "paragraphs": [
+              "Vissa webbplatser kan begränsa trafik från molndatacenter, därför är scrapern avsiktligt byggd för att köras lokalt istället för att försöka kringgå sådana begränsningar.",
+              "Windows Task Scheduler hanterar schemalagd körning samtidigt som applikationen även stöder manuella kontroller."
+            ]
+          },
+          {
+            "title": "Vad jag lärde mig",
+            "paragraphs": [
+              ".NET och Python fungerar bra tillsammans när varje runtime har ett tydligt ansvar.",
+              "Automation blir mer tillförlitlig när schemaläggning, validering, diagnostik, notifieringar och samtidighetskontroll behandlas som delar av applikationsdesignen från början."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "react-python-ollama",
+        "title": "Bygga en AI-applikation med React, Python och Ollama",
+        "description": "Hur ett React-gränssnitt kan kommunicera med en Python-baserad AI-tjänst och lokalt hostade språkmodeller genom Ollama.",
+        "date": "2026",
+        "readingTime": "8 min läsning",
+        "tags": [
+          "React",
+          "Python",
+          "Ollama",
+          "AI"
+        ],
+        "sections": [
+          {
+            "title": "Separera UI och AI-logik",
+            "paragraphs": [
+              "React-gränssnittet bör fokusera på applikationsupplevelsen istället för att känna till hur språkmodellerna körs.",
+              "Genom att hålla modellkommunikationen i en Python-tjänst skapas en tydligare gräns mellan gränssnittskod och AI-specifik funktionalitet."
+            ]
+          },
+          {
+            "title": "Använda Ollama lokalt",
+            "paragraphs": [
+              "Ollama ger ett praktiskt sätt att experimentera med språkmodeller lokalt under utvecklingen.",
+              "Lokal körning gör det möjligt att testa prompts, karaktärsbeteende och modellintegration innan man bestämmer om en hostad AI-leverantör behövs."
+            ]
+          },
+          {
+            "title": "Förbereda för vidare utveckling",
+            "paragraphs": [
+              "Den första versionen av applikationen kan hållas relativt liten medan AI-interaktionen utforskas.",
+              "När kraven växer kan autentisering, permanenta konversationer, användare och applikationsregler flyttas till en mer komplett backend och datamodell."
+            ]
+          },
+          {
+            "title": "Vad jag lärde mig",
+            "paragraphs": [
+              "AI-applikationer har fortfarande stor nytta av traditionell mjukvaruarkitektur.",
+              "Att separera modellintegration från frontendansvar gör det enklare att byta modell, leverantör eller applikationsflöde senare."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "topics": {
+    "eyebrow": "Skrivområden",
+    "title": "Vad jag skriver om",
+    "description": "Anteckningarna kommer från tekniker, arkitekturbeslut och praktiska problem jag stöter på när jag bygger mjukvara.",
+    "items": [
+      {
+        "title": "Backend & API:er",
+        "description": "ASP.NET Core, API-design, autentisering, auktorisering, dataåtkomst och backendarkitektur."
+      },
+      {
+        "title": "Automation & integration",
+        "description": "Python-automation, Playwright, applikationsorkestrering och hur tjänster kopplas samman i praktiska arbetsflöden."
+      },
+      {
+        "title": "AI-applikationer",
+        "description": "Praktiska experiment och lärdomar från att integrera språkmodeller och AI API:er i mjukvaruapplikationer."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Projekt",
+    "title": "Se hur idéerna används i riktiga projekt.",
+    "description": "Utforska applikationerna bakom anteckningarna, inklusive backendsystem, automationsflöden och AI-integration."
+  }
+}

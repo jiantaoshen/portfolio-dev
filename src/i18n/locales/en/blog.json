@@ -1,0 +1,259 @@
+{
+  "hero": {
+    "eyebrow": "Technical Notes",
+
+    "title": "Notes from building and operating software.",
+
+    "description": "Practical notes on backend development, APIs, automation, deployment and AI integration based on problems I've encountered in real projects."
+  },
+
+  "detail": {
+    "eyebrow": "Technical Note",
+    "back": "Back to Technical Notes",
+    "published": "Published",
+    "readingTime": "Reading Time",
+    "topics": "Topics",
+    "notFoundEyebrow": "Technical Note",
+    "notFound": "Article not found"
+  },
+
+  "posts": {
+    "eyebrow": "From the build log",
+
+    "title": "Latest notes",
+
+    "description": "Short technical write-ups about implementation decisions, integration problems, deployment experience and lessons learned.",
+
+    "items": [
+      {
+        "id": "dotnet-azure-neon",
+
+        "title": "Deploying a .NET Application with Azure and Neon",
+
+        "description": "A practical look at connecting an ASP.NET Core application to managed PostgreSQL and deploying the application to Azure.",
+
+        "date": "2026",
+
+        "readingTime": "6 min read",
+
+        "tags": [
+          ".NET",
+          "Azure",
+          "PostgreSQL",
+          "Neon"
+        ],
+
+        "sections": [
+          {
+            "title": "Why this setup",
+
+            "paragraphs": [
+              "The goal was to move a database-backed .NET application beyond local development without introducing unnecessary infrastructure.",
+
+              "Using Azure for application hosting and Neon for managed PostgreSQL provided a practical way to deploy the application while keeping infrastructure management relatively small."
+            ]
+          },
+
+          {
+            "title": "Connecting PostgreSQL",
+
+            "paragraphs": [
+              "The application needed a production database connection that was separate from local development configuration.",
+
+              "This meant treating connection strings and environment variables as deployment configuration rather than hard-coding them into the application."
+            ]
+          },
+
+          {
+            "title": "Moving to Azure",
+
+            "paragraphs": [
+              "Deployment introduced issues that were not visible during local development, especially around environment configuration and external database connectivity.",
+
+              "Testing the complete deployed application was important because a successful build does not necessarily mean every production dependency is configured correctly."
+            ]
+          },
+
+          {
+            "title": "What I learned",
+
+            "paragraphs": [
+              "Hosting and database configuration are part of application architecture rather than tasks that only happen after development.",
+
+              "Managed services such as Neon can reduce infrastructure complexity and make smaller applications easier to operate."
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": "dotnet-python-price-watch",
+
+        "title": "Orchestrating Python Automation from ASP.NET Core",
+
+        "description": "How I separated application orchestration from browser automation in a local price monitoring system built with ASP.NET Core, Python and Playwright.",
+
+        "date": "2026",
+
+        "readingTime": "7 min read",
+
+        "tags": [
+          ".NET",
+          "Python",
+          "Playwright",
+          "Automation"
+        ],
+
+        "sections": [
+          {
+            "title": "Separating responsibilities",
+
+            "paragraphs": [
+              "Price monitoring involves more than browser automation. The application also needs product configuration, scheduling, notifications, execution control and historical results.",
+
+              "Instead of putting those responsibilities into the scraper, I kept ASP.NET Core as the application layer and Python as the automation layer."
+            ]
+          },
+
+          {
+            "title": "ASP.NET Core as the orchestration layer",
+
+            "paragraphs": [
+              "The ASP.NET Core application manages products, manual execution, email settings and scheduling while coordinating the Python scraper process.",
+
+              "This keeps application responsibilities separate from browser-specific extraction logic and makes the overall workflow easier to reason about."
+            ]
+          },
+
+          {
+            "title": "Designing for unreliable data",
+
+            "paragraphs": [
+              "External websites can change independently of the application, so a scraper should not assume that every extracted value is correct.",
+
+              "The workflow includes validation, suspicious-change detection and diagnostic information so failed or unusual runs can be investigated."
+            ]
+          },
+
+          {
+            "title": "Why the scraper runs locally",
+
+            "paragraphs": [
+              "Some monitored websites may restrict traffic from cloud data centers, so the scraper is intentionally designed to run locally rather than attempting to work around those restrictions.",
+
+              "Windows Task Scheduler provides scheduled execution while the application also supports manual runs."
+            ]
+          },
+
+          {
+            "title": "What I learned",
+
+            "paragraphs": [
+              "Combining .NET and Python works well when each runtime has a clear responsibility.",
+
+              "Automation becomes more reliable when scheduling, validation, diagnostics, notifications and concurrency are treated as part of the application design rather than added later."
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": "react-python-ollama",
+
+        "title": "Building an AI Application with React, Python and Ollama",
+
+        "description": "How a React frontend can communicate with a Python AI service and locally hosted language models through Ollama.",
+
+        "date": "2026",
+
+        "readingTime": "8 min read",
+
+        "tags": [
+          "React",
+          "Python",
+          "Ollama",
+          "AI"
+        ],
+
+        "sections": [
+          {
+            "title": "Separating UI and AI logic",
+
+            "paragraphs": [
+              "The React frontend should focus on the application experience rather than knowing how language models are executed.",
+
+              "Keeping model communication in a Python service creates a clearer boundary between interface code and AI-specific functionality."
+            ]
+          },
+
+          {
+            "title": "Using Ollama locally",
+
+            "paragraphs": [
+              "Ollama provides a convenient way to experiment with language models locally during development.",
+
+              "Local execution makes it possible to test prompts, character behaviour and model integration before deciding whether a hosted AI provider is needed."
+            ]
+          },
+
+          {
+            "title": "Preparing for growth",
+
+            "paragraphs": [
+              "The initial application can remain relatively small while the AI interaction is being explored.",
+
+              "As requirements grow, authentication, persistent conversations, users and application rules can move into a more complete backend and data model."
+            ]
+          },
+
+          {
+            "title": "What I learned",
+
+            "paragraphs": [
+              "AI applications still benefit from conventional software architecture.",
+
+              "Separating model integration from frontend responsibilities makes it easier to change models, providers and application workflows later."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  "topics": {
+    "eyebrow": "Writing Topics",
+
+    "title": "What I write about",
+
+    "description": "The notes come from technologies, architecture decisions and practical problems I encounter while building software.",
+
+    "items": [
+      {
+        "title": "Backend & APIs",
+
+        "description": "ASP.NET Core, API design, authentication, authorization, data access and backend architecture."
+      },
+
+      {
+        "title": "Automation & Integration",
+
+        "description": "Python automation, Playwright, application orchestration and connecting services into practical workflows."
+      },
+
+      {
+        "title": "AI Applications",
+
+        "description": "Practical experiments and lessons from integrating language models and AI APIs into software applications."
+      }
+    ]
+  },
+
+  "cta": {
+    "eyebrow": "Projects",
+
+    "title": "See how these ideas are used in real projects.",
+
+    "description": "Explore the applications behind these notes, including backend systems, automation workflows and AI integration."
+  }
+}
+

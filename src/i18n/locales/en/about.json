@@ -1,0 +1,116 @@
+{
+  "hero": {
+    "eyebrow": "About",
+
+    "title": "Backend-focused developer building software around real application problems.",
+
+    "description": "I work primarily with C#/.NET and Python, with the strongest technical depth in backend systems, APIs, application logic and automation."
+  },
+
+  "story": {
+    "eyebrow": "My Background",
+
+    "title": "Backend first, with a broader view of the product",
+
+    "paragraphs": [
+      "My development background started with C# and .NET, which remain the technologies where I have the strongest technical depth. I enjoy designing backend logic, APIs, permissions, data flows and the systems that sit behind an application.",
+
+      "Over time, I expanded into Python for automation and integration. Projects such as Price Watch have given me practical experience connecting .NET applications with Python processes, browser automation and external workflows.",
+
+      "When a project requires a complete product, I also work with React, TypeScript, databases and deployment. My longer-term direction is to combine that application experience with backend engineering to build practical software that uses AI as part of real product workflows."
+    ]
+  },
+
+  "focus": {
+    "eyebrow": "Engineering Strengths",
+
+    "title": "How I approach software development",
+
+    "items": [
+      {
+        "title": "Backend Design",
+
+        "description": "I think carefully about API responsibilities, business logic, authentication, authorization and how data moves through an application."
+      },
+
+      {
+        "title": "Integration & Automation",
+
+        "description": "I like connecting services and tools into practical workflows, including .NET applications, Python automation and external integrations."
+      },
+
+      {
+        "title": "Product Thinking",
+
+        "description": "I prefer solving the actual application problem rather than treating each technical layer as an isolated implementation task."
+      },
+
+      {
+        "title": "End-to-End Delivery",
+
+        "description": "When needed, I work across UI, data, configuration and deployment so the core backend becomes a complete usable application."
+      }
+    ]
+  },
+
+  "skills": {
+    "eyebrow": "Skills",
+
+    "title": "Core expertise and application delivery",
+
+    "description": "My strongest technical depth is in backend development, supported by the tools I use for automation, integration and complete application delivery.",
+
+    "items": [
+      {
+        "title": "Backend & APIs",
+
+        "items": [
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "REST APIs",
+          "Entity Framework Core",
+          "Authentication",
+          "Authorization",
+          "JWT"
+        ]
+      },
+
+      {
+        "title": "Automation & AI",
+
+        "items": [
+          "Python",
+          "Playwright",
+          "Automation",
+          "Ollama",
+          "AI APIs",
+          "AI Integration"
+        ]
+      },
+
+      {
+        "title": "Application Delivery",
+
+        "items": [
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "Neon",
+          "Azure",
+          "Firebase",
+          "Google Cloud"
+        ]
+      }
+    ]
+  },
+
+  "cta": {
+    "eyebrow": "Let's Talk",
+
+    "title": "Looking for a backend developer who can think beyond the API?",
+
+    "description": "I'm open to projects and opportunities involving backend systems, APIs, automation and practical AI-enabled software."
+  }
+}
+

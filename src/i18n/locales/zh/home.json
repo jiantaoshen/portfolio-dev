@@ -1,0 +1,166 @@
+{
+  "hero": {
+    "availability": "目前接受新的合作与工作机会",
+    "eyebrow": "后端 · API · AI 应用",
+    "titleBefore": "我专注构建",
+    "titleHighlight": "后端系统",
+    "titleAfter": "与 AI 驱动的应用。",
+    "description": "以后端开发为核心，主要使用 C#/.NET 和 Python 构建 API、自动化和应用系统，并将 AI 能力融入实际的软件产品。",
+    "architecture": {
+      "title": "从后端到可用产品",
+      "frontend": {
+        "label": "应用界面",
+        "value": "React + TypeScript"
+      },
+      "backend": {
+        "label": "核心后端",
+        "value": "C# / .NET APIs"
+      },
+      "data": {
+        "label": "数据",
+        "value": "PostgreSQL"
+      },
+      "deployment": {
+        "label": "应用交付",
+        "value": "Azure · Firebase · GCP"
+      },
+      "ai": {
+        "label": "AI 与自动化",
+        "value": "Python · Ollama · AI APIs"
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "开发方向",
+    "title": "后端系统、自动化与 AI 应用",
+    "description": "我的工作主要集中在三个相互关联的方向：构建核心后端、连接自动化与 AI 能力，以及完成一个可用产品所需要的其他应用层。",
+    "items": [
+      {
+        "title": "后端与 API 开发",
+        "description": "使用 C# 和 ASP.NET Core 构建后端服务、REST API 和应用逻辑，包括身份认证、权限控制、数据访问和业务规则。",
+        "technologies": [
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "REST APIs"
+        ]
+      },
+      {
+        "title": "自动化与 AI 应用",
+        "description": "使用 Python 构建自动化、进行服务集成，并将 AI 能力连接到实际的应用工作流中，包括本地模型和 AI API。",
+        "technologies": [
+          "Python",
+          "Automation",
+          "Playwright",
+          "Ollama",
+          "AI APIs"
+        ]
+      },
+      {
+        "title": "完整应用交付",
+        "description": "当项目需要完整产品时，我也会完成所需的前端、数据和部署工作，将后端服务进一步构建成真正可使用的应用。",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "Azure",
+          "Firebase",
+          "Google Cloud"
+        ]
+      }
+    ],
+    "about": "后端是我技术深度最强的方向，同时我也会从完整应用的角度思考后端周围的各个部分如何协同工作。",
+    "more": "了解更多"
+  },
+  "featuredProjects": {
+    "eyebrow": "精选项目",
+    "title": "通过真实项目展示我如何构建和交付软件",
+    "description": "涵盖后端 API、应用编排、自动化以及完整软件交付的代表项目。",
+    "featured": "重点项目",
+    "viewAll": "查看全部项目"
+  },
+  "process": {
+    "eyebrow": "我的工作方式",
+    "title": "从问题到可运行的软件",
+    "description": "我首先理解问题和应用的核心职责，然后设计并连接服务、数据、自动化以及实现完整结果所需要的其他应用层。",
+    "items": [
+      {
+        "title": "理解",
+        "description": "在选择实现方式之前，先明确问题、用户、业务目标和技术要求。"
+      },
+      {
+        "title": "设计",
+        "description": "定义后端职责、API、数据流、权限、系统集成以及整体应用结构。"
+      },
+      {
+        "title": "构建",
+        "description": "实现核心服务和工作流，再连接所需要的数据、界面、自动化和外部集成。"
+      },
+      {
+        "title": "交付",
+        "description": "配置运行或生产环境，并验证完整的应用工作流在实际环境中能够正常运行。"
+      }
+    ]
+  },
+  "technicalNotes": {
+    "eyebrow": "技术笔记",
+    "title": "构建和运行软件过程中的记录",
+    "description": "关于后端 API、自动化、部署、系统集成，以及构建 AI 应用过程中实际经验的技术记录。",
+    "viewAll": "查看全部笔记"
+  },
+  "contact": {
+    "eyebrow": "联系我",
+    "title": "正在构建后端、API 或 AI 应用？",
+    "description": "我目前接受 Freelance、Contract 和全职开发机会，主要涉及后端开发、API、自动化以及实际 AI 驱动的软件。",
+    "availability": "目前接受新的合作与工作机会",
+    "action": "联系我"
+  },
+  "contactPage": {
+    "availability": "目前接受新的合作与工作机会",
+    "eyebrow": "联系",
+    "title": "一起做点真正有用的软件。",
+    "description": "无论你正在寻找后端开发、API、自动化，还是希望把 AI 能力集成到实际应用中，都欢迎联系我并介绍一下你正在做的项目。",
+    "openTo": {
+      "eyebrow": "合作方向",
+      "title": "项目与工作机会",
+      "description": "我的主要方向是后端开发，尤其对后端系统与自动化、AI 以及完整应用交付相结合的工作感兴趣。",
+      "backend": "使用 C#/.NET 构建后端系统、API 和应用逻辑",
+      "automation": "Python 自动化、系统集成以及围绕实际工作流的软件",
+      "ai": "实际 AI 应用开发与 AI API 集成",
+      "opportunities": "Freelance、Contract 以及全职软件开发机会"
+    },
+    "connect": "其他平台",
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "你的姓名",
+      "email": "邮箱",
+      "emailPlaceholder": "you@example.com",
+      "reason": "联系原因",
+      "reasonPlaceholder": "请选择",
+      "message": "留言",
+      "messagePlaceholder": "简单介绍一下项目、问题或工作机会。",
+      "submit": "发送消息",
+      "sending": "发送中...",
+      "success": "谢谢，你的消息已经发送成功。",
+      "error": "发送失败，请稍后重试。"
+    },
+    "reasons": [
+      {
+        "value": "freelance",
+        "label": "Freelance 项目"
+      },
+      {
+        "value": "contract",
+        "label": "Contract 工作"
+      },
+      {
+        "value": "full-time",
+        "label": "全职工作机会"
+      },
+      {
+        "value": "other",
+        "label": "其他"
+      }
+    ]
+  }
+}

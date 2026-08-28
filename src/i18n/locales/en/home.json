@@ -1,0 +1,227 @@
+{
+  "hero": {
+    "availability": "Available for new opportunities",
+    "eyebrow": "Backend · APIs · AI Applications",
+
+    "titleBefore": "I build",
+    "titleHighlight": "backend systems",
+    "titleAfter": "and AI-powered applications.",
+
+    "description": "Backend-focused software developer working with C#/.NET and Python to build APIs, automation and applications that turn AI capabilities into practical software products.",
+
+    "architecture": {
+      "title": "From backend to working product",
+
+      "frontend": {
+        "label": "Application UI",
+        "value": "React + TypeScript"
+      },
+
+      "backend": {
+        "label": "Core Backend",
+        "value": "C# / .NET APIs"
+      },
+
+      "data": {
+        "label": "Data",
+        "value": "PostgreSQL"
+      },
+
+      "deployment": {
+        "label": "Delivery",
+        "value": "Azure · Firebase · GCP"
+      },
+
+      "ai": {
+        "label": "AI & Automation",
+        "value": "Python · Ollama · AI APIs"
+      }
+    }
+  },
+
+  "services": {
+    "eyebrow": "What I Do",
+
+    "title": "Backend systems, automation and AI-enabled applications",
+
+    "description": "I work across three connected areas: building the backend, connecting automation and AI capabilities, and delivering the supporting application layers needed for a usable product.",
+
+    "items": [
+      {
+        "title": "Backend & API Development",
+
+        "description": "I build backend services, REST APIs and application logic with C# and ASP.NET Core, including authentication, authorization, data access and business rules.",
+
+        "technologies": [
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "REST APIs"
+        ]
+      },
+
+      {
+        "title": "Automation & AI Applications",
+
+        "description": "I use Python for automation, service integration and connecting AI capabilities to practical application workflows, from local models to AI APIs.",
+
+        "technologies": [
+          "Python",
+          "Automation",
+          "Playwright",
+          "Ollama",
+          "AI APIs"
+        ]
+      },
+
+      {
+        "title": "Application Delivery",
+
+        "description": "When a project needs a complete product, I also work across the frontend, data and deployment layers required to turn backend services into a usable application.",
+
+        "technologies": [
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "Azure",
+          "Firebase",
+          "Google Cloud"
+        ]
+      }
+    ],
+
+    "about": "Backend is where I bring the strongest technical depth, while still thinking about how the complete application works around it.",
+
+    "more": "More about me"
+  },
+
+  "featuredProjects": {
+    "eyebrow": "Featured Projects",
+
+    "title": "Projects that show how I build and deliver software",
+
+    "description": "Selected work covering backend APIs, application orchestration, automation and complete software delivery.",
+
+    "featured": "Featured project",
+
+    "viewAll": "View all projects"
+  },
+
+  "process": {
+    "eyebrow": "How I Work",
+
+    "title": "From problem to working software",
+
+    "description": "I start with the problem and application responsibilities, then design and connect the services, data, automation and supporting layers needed for a working result.",
+
+    "items": [
+      {
+        "title": "Understand",
+        "description": "Clarify the problem, users, business goals and technical requirements before choosing an implementation."
+      },
+
+      {
+        "title": "Design",
+        "description": "Define backend responsibilities, APIs, data flow, permissions, integrations and the overall application structure."
+      },
+
+      {
+        "title": "Build",
+        "description": "Implement the core services and workflows, then connect the required data, UI, automation and external integrations."
+      },
+
+      {
+        "title": "Deliver",
+        "description": "Configure the runtime or production environment and verify that the complete application workflow works in practice."
+      }
+    ]
+  },
+
+  "technicalNotes": {
+    "eyebrow": "Technical Notes",
+
+    "title": "Notes from building and operating software",
+
+    "description": "Practical notes on backend APIs, automation, deployment, integration and the lessons that come from building AI-enabled applications.",
+
+    "viewAll": "View all notes"
+  },
+
+  "contact": {
+    "eyebrow": "Let's Talk",
+
+    "title": "Building a backend, API or AI-enabled application?",
+
+    "description": "I'm open to freelance projects, contract work and full-time opportunities involving backend development, APIs, automation and practical AI-powered software.",
+
+    "availability": "Available for new opportunities",
+
+    "action": "Get in touch"
+  },
+
+  "contactPage": {
+    "availability": "Available for new opportunities",
+
+    "eyebrow": "Contact",
+
+    "title": "Let's build something useful.",
+
+    "description": "Whether you're looking for backend development, API work, automation or an AI-enabled application, feel free to get in touch and tell me what you're working on.",
+
+    "openTo": {
+      "eyebrow": "Open To",
+
+      "title": "Projects and opportunities",
+
+      "description": "My main focus is backend development, particularly work where backend systems connect with automation, AI and complete application delivery.",
+
+      "backend": "Backend systems, APIs and application logic with C#/.NET",
+
+      "automation": "Python automation, integrations and workflow-oriented software",
+
+      "ai": "Practical AI-enabled applications and AI API integration",
+
+      "opportunities": "Freelance, contract and full-time software development opportunities"
+    },
+
+    "connect": "Elsewhere",
+
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+
+      "reason": "I'm contacting you about",
+      "reasonPlaceholder": "Select an option",
+
+      "message": "Message",
+      "messagePlaceholder": "Tell me about the project, problem or opportunity.",
+
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thanks — your message has been sent.",
+      "error": "Something went wrong. Please try again."
+    },
+
+    "reasons": [
+      {
+        "value": "freelance",
+        "label": "Freelance Project"
+      },
+      {
+        "value": "contract",
+        "label": "Contract Work"
+      },
+      {
+        "value": "full-time",
+        "label": "Full-time Opportunity"
+      },
+      {
+        "value": "other",
+        "label": "Other"
+      }
+    ]
+  }
+}

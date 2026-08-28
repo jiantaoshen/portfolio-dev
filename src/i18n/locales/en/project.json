@@ -1,0 +1,515 @@
+{
+  "page": {
+    "eyebrow": "Projects",
+    "title": "Software I've built",
+    "description": "Projects focused on backend development, APIs, automation, application delivery and my growing work with AI-powered software."
+  },
+
+    "detail": {
+    "eyebrow": "Project",
+    "notFound": "Project not found",
+    "back": "Back to projects",
+
+    "overview": "Overview",
+    "problem": "The Problem",
+    "solution": "Solution",
+    "architecture": "Architecture",
+    "features": "Key Features",
+    "challenges": "Challenges & Decisions",
+    "deployment": "Deployment",
+    "learned": "What I Learned",
+    "future": "Future Improvements",
+
+    "technologies": "Technologies",
+    "status": "Status",
+    "type": "Project Type"
+  },
+
+  "items": [
+    {
+      "id": "light-manager",
+
+      "title": "LightManager",
+
+      "category": "Backend & API Development",
+
+      "status": "Live",
+
+      "description": "A project management application built around an ASP.NET Core Web API, with authentication, role-based authorization, project and task workflows, persistent PostgreSQL data and Azure deployment.",
+
+      "technologies": [
+        "C#",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "PostgreSQL",
+        "React",
+        "TypeScript",
+        "Microsoft Azure"
+      ],
+
+      "highlights": [
+        "ASP.NET Core Web API with structured backend application logic",
+        "Authentication with ASP.NET Identity and JWT",
+        "Role-based project permissions and authorization",
+        "Project membership and task assignment workflows",
+        "PostgreSQL persistence through Entity Framework Core and Neon",
+        "Frontend and backend deployed separately on Microsoft Azure"
+      ],
+
+      "overview": "LightManager is an open-source project management application designed for small and medium-sized teams that need a straightforward way to organize projects and tasks without the complexity of enterprise project management software. The application is built around an ASP.NET Core backend and includes authentication, authorization, role-based permissions, project membership, task assignment and a Kanban workflow.",
+
+      "problem": "A useful project management application requires more than CRUD operations. Users, projects, memberships, roles and tasks need to work together while the backend ensures that users can only perform operations they are authorized to perform. The goal was to build these connected workflows while keeping the product simple and easy to use.",
+
+      "solution": "The application separates responsibilities between a React frontend and an ASP.NET Core Web API. ASP.NET Identity manages user identity, JWT tokens authenticate protected requests, Entity Framework Core manages relational data access and PostgreSQL stores persistent application data. Important business and authorization rules are enforced by the backend rather than depending on the frontend.",
+
+      "architecture": [
+        {
+          "label": "Application UI",
+          "value": "React · TypeScript · Vite · Tailwind CSS"
+        },
+        {
+          "label": "Backend API",
+          "value": "C# · ASP.NET Core Web API"
+        },
+        {
+          "label": "Authentication & Authorization",
+          "value": "ASP.NET Identity · JWT · Role-Based Permissions"
+        },
+        {
+          "label": "Data Access",
+          "value": "Entity Framework Core"
+        },
+        {
+          "label": "Database",
+          "value": "PostgreSQL · Neon"
+        },
+        {
+          "label": "Delivery",
+          "value": "Azure Static Web Apps · Azure App Service"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "Authentication",
+          "description": "Users authenticate through ASP.NET Identity and protected API requests use JWT tokens."
+        },
+        {
+          "title": "Authorization",
+          "description": "Backend endpoints enforce application permissions independently of what is displayed in the frontend."
+        },
+        {
+          "title": "Role-Based Permissions",
+          "description": "Project operations depend on the user's role and relationship to the project."
+        },
+        {
+          "title": "Project Management",
+          "description": "Users can create, edit, archive and delete projects."
+        },
+        {
+          "title": "Task Management",
+          "description": "Tasks can be created, edited, deleted and assigned to members of the project."
+        },
+        {
+          "title": "Kanban Workflow",
+          "description": "Tasks can be moved between states using a drag-and-drop Kanban board."
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "Backend Authorization",
+          "description": "Permissions must be enforced by the API rather than relying on buttons or routes being hidden in the frontend."
+        },
+        {
+          "title": "Relational Application Data",
+          "description": "Users, projects, memberships, roles, tasks and assignments need clear relationships and predictable behaviour."
+        },
+        {
+          "title": "Separate Frontend and Backend",
+          "description": "The React application and ASP.NET Core API are independent deployments and need correct authentication, configuration and production communication."
+        }
+      ],
+
+      "deployment": "The React frontend is deployed with Azure Static Web Apps, the ASP.NET Core API runs on Azure App Service and PostgreSQL is hosted with Neon. The project previously used Vercel and Render before moving to Microsoft Azure in August 2026. Because the application currently uses free-tier services, the backend can experience a cold start after a period of inactivity.",
+
+      "learnings": [
+        "ASP.NET Core Web API design",
+        "Authentication with ASP.NET Identity",
+        "JWT-based API authentication",
+        "Backend authorization and role-based permissions",
+        "Relational application modelling",
+        "Entity Framework Core and PostgreSQL",
+        "Connecting a React frontend to a separate backend API",
+        "Production configuration and Azure deployment"
+      ],
+
+      "futureImprovements": [
+        "Use AI to generate suggested tasks from a project description",
+        "Add task search and filtering to the Kanban board"
+      ],
+
+      "links": {
+        "github": "https://github.com/jiantaoshen/LightManager",
+        "live": "https://thankful-beach-0211add0f.7.azurestaticapps.net"
+      }
+    },
+
+    {
+      "id": "price-watch",
+
+      "title": "Price Watch",
+
+      "category": "Backend & Automation Development",
+
+      "status": "Local Application",
+
+      "description": "A local price monitoring system built around ASP.NET Core and Python automation. It manages products, runs scheduled price checks, validates scraped data, tracks price history, detects suspicious changes and sends email alerts.",
+
+      "technologies": [
+        "C#",
+        "ASP.NET Core",
+        ".NET 10",
+        "Python",
+        "Playwright",
+        "React",
+        "TypeScript"
+      ],
+
+      "highlights": [
+        "ASP.NET Core acts as the orchestration layer between the UI and Python scraper",
+        "Python and Playwright handle browser automation and price extraction",
+        "Manual and scheduled monitoring workflows",
+        "Price validation and suspicious-change detection",
+        "Historical price tracking and dashboard visualization",
+        "Email alerts with notification deduplication",
+        "Diagnostics and failed-run metadata",
+        "Cross-process protection against overlapping scraper runs"
+      ],
+
+      "overview": "Price Watch is a local product price monitoring system built with React, TypeScript, ASP.NET Core, Python and Playwright. It automatically checks product prices, compares them with target prices, stores historical data, detects suspicious changes, sends email alerts and displays price trends through a local dashboard.",
+
+      "problem": "Price monitoring is more than extracting a number from a webpage. A reliable system needs to know what to monitor, when checks should run, whether an extracted price is believable, whether a notification should be sent, whether the same alert has already been sent and why a particular scraper run failed.",
+
+      "solution": "Price Watch separates application orchestration from browser automation. ASP.NET Core acts as the central application layer and manages products, scraper execution, email configuration and scheduling. Python and Playwright handle page loading, extraction, validation and diagnostics. The React frontend provides configuration, monitoring and historical visualization.",
+
+      "architecture": [
+        {
+          "label": "Application UI",
+          "value": "React · TypeScript · Vite · Tailwind CSS · Recharts"
+        },
+        {
+          "label": "Application Backend",
+          "value": "C# · ASP.NET Core · .NET 10"
+        },
+        {
+          "label": "Automation & Scraping",
+          "value": "Python · Playwright · Firefox · Pydantic"
+        },
+        {
+          "label": "Runtime Data",
+          "value": "Latest Results · Price History · Configuration · Diagnostics"
+        },
+        {
+          "label": "Scheduling",
+          "value": "Windows Task Scheduler"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "Product Management",
+          "description": "Products and target prices can be configured directly through the application."
+        },
+        {
+          "title": "Manual & Scheduled Checks",
+          "description": "Price checks can be started through the UI or triggered automatically through Windows Task Scheduler."
+        },
+        {
+          "title": "Price History",
+          "description": "Historical price information is stored locally and visualized in the dashboard."
+        },
+        {
+          "title": "Price Validation",
+          "description": "Suspicious extracted values can be detected instead of immediately being accepted as valid price data."
+        },
+        {
+          "title": "Scraper Diagnostics",
+          "description": "Failed and suspicious runs include metadata and local diagnostic information for investigation."
+        },
+        {
+          "title": "Email Alerts",
+          "description": "Relevant price conditions can generate email notifications with deduplication to avoid repeated alerts."
+        },
+        {
+          "title": "Concurrency Protection",
+          "description": "Cross-process protection prevents scheduled and manually triggered scraper runs from overlapping."
+        },
+        {
+          "title": "Automated Testing",
+          "description": "The Python scraper includes automated tests using pytest."
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "Unreliable External Data",
+          "description": "External websites can change independently of the application, so extraction results need validation and diagnostics."
+        },
+        {
+          "title": "Application Orchestration",
+          "description": "The ASP.NET Core backend coordinates frontend requests, Python processes, scheduling, configuration and notification workflows."
+        },
+        {
+          "title": "Overlapping Automation",
+          "description": "Manual and scheduled execution can happen close together, requiring protection against concurrent scraper runs."
+        },
+        {
+          "title": "Cloud Restrictions",
+          "description": "Some monitored websites restrict traffic from cloud data centers, so the scraper intentionally runs locally rather than trying to bypass those restrictions."
+        }
+      ],
+
+      "deployment": "Price Watch is intentionally designed as a local application. The scraper runs locally because some monitored websites may restrict traffic from cloud data centers. Runtime data is stored locally and Windows Task Scheduler handles automated execution.",
+
+      "learnings": [
+        "Using ASP.NET Core as an application orchestration layer",
+        "Integrating .NET and Python in one application workflow",
+        "Browser automation with Playwright",
+        "Structured price extraction and validation",
+        "Designing automation for failure and diagnostics",
+        "Scheduling background work through Windows Task Scheduler",
+        "Cross-process concurrency protection",
+        "Email notification workflows and deduplication",
+        "React dashboard integration and price visualization",
+        "Automated testing with pytest"
+      ],
+
+      "futureImprovements": [
+        "Continue improving the dashboard and overall UI",
+        "Improve the first-run and setup experience",
+        "Add additional site-specific scraper adapters when needed",
+        "Refine notification preferences and controls",
+        "Add useful price analytics without overcomplicating the dashboard",
+        "Prepare Windows packaging and distribution"
+      ],
+
+      "links": {
+        "github": "https://github.com/jiantaoshen/WishList"
+      }
+    },
+
+    {
+      "id": "portfolio",
+
+      "title": "Developer Portfolio",
+
+      "category": "Web Application & Delivery",
+
+      "status": "In Development",
+
+      "description": "A multilingual developer portfolio built with React and TypeScript to present backend-focused projects, technical writing and software development experience through a clear and maintainable application structure.",
+
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "i18next",
+        "Firebase",
+        "Google Cloud"
+      ],
+
+      "highlights": [
+        "Migrated the previous portfolio approach from JavaScript to TypeScript",
+        "Multilingual content in English, Swedish and Chinese",
+        "Reusable project and article detail architecture",
+        "Responsive interface built with Tailwind CSS",
+        "Content structured around backend, APIs and AI application development",
+        "Designed for deployment through Firebase Hosting and Google Cloud"
+      ],
+
+      "overview": "This portfolio is a React and TypeScript application designed to present my software projects, technical experience and development direction. Rather than functioning as a simple static profile page, it uses reusable routes, multilingual content and structured project case studies.",
+
+      "problem": "A developer portfolio needs to communicate more than a list of technologies. It should make technical strengths, project evidence and professional direction clear to recruiters, clients and engineering teams without becoming overly complex or visually distracting.",
+
+      "solution": "The application uses React Router for independent pages, i18next for multilingual content and reusable content structures for projects and technical notes. Tailwind CSS provides a consistent visual system while the content hierarchy emphasizes backend development, APIs, automation and practical AI applications.",
+
+      "architecture": [
+        {
+          "label": "Application",
+          "value": "React · TypeScript · Vite"
+        },
+        {
+          "label": "Routing",
+          "value": "React Router"
+        },
+        {
+          "label": "Internationalization",
+          "value": "i18next · English · Swedish · Chinese"
+        },
+        {
+          "label": "UI",
+          "value": "Tailwind CSS"
+        },
+        {
+          "label": "Delivery",
+          "value": "Firebase Hosting · Google Cloud"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "Multilingual Content",
+          "description": "The site supports English, Swedish and Chinese through structured i18next translation namespaces."
+        },
+        {
+          "title": "Project Case Studies",
+          "description": "Projects have independent routes and structured technical detail pages."
+        },
+        {
+          "title": "Technical Notes",
+          "description": "The site includes a technical writing section for documenting development and engineering decisions."
+        },
+        {
+          "title": "Responsive Design",
+          "description": "The layout is designed to work across desktop and mobile screen sizes."
+        },
+        {
+          "title": "Semantic Design System",
+          "description": "Reusable typography, card, button and color primitives keep the interface consistent without over-componentizing the application."
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "Clear Positioning",
+          "description": "The content needed to distinguish backend expertise from broader application delivery skills without presenting every technology as an equal specialization."
+        },
+        {
+          "title": "Multilingual Structure",
+          "description": "Translation content needs to remain consistent across English, Swedish and Chinese while project IDs and application routes stay language-independent."
+        },
+        {
+          "title": "Reusable Without Overengineering",
+          "description": "The interface needed enough reusable primitives for consistency while keeping one-off component composition directly in React and Tailwind."
+        }
+      ],
+
+      "deployment": "The portfolio is designed for deployment through Firebase Hosting and Google Cloud. This project also serves as part of my application delivery experience by taking the site from implementation and content architecture through production hosting.",
+
+      "learnings": [
+        "Building React applications with TypeScript",
+        "Structuring multilingual applications with i18next",
+        "React Router and reusable detail pages",
+        "Tailwind CSS design systems",
+        "Content architecture for technical portfolios",
+        "Responsive application design",
+        "Firebase and Google Cloud deployment workflows"
+      ],
+
+      "futureImprovements": [
+        "Continue expanding project case studies",
+        "Add more technical notes as new projects are developed",
+        "Improve project visuals and architecture diagrams",
+        "Continue refining accessibility and performance",
+        "Deploy the production version through Firebase Hosting and Google Cloud"
+      ]
+    },
+
+    {
+      "id": "ai-character-chat",
+
+      "title": "AI Character Chat",
+
+      "category": "AI Application Development",
+
+      "status": "In Development",
+
+      "description": "An experimental AI chat application combining a React and TypeScript interface with a Python service and locally hosted language models through Ollama.",
+
+      "technologies": [
+        "Python",
+        "Ollama",
+        "React",
+        "TypeScript",
+        "AI Integration"
+      ],
+
+      "highlights": [
+        "Python-based AI service",
+        "Local language model integration with Ollama",
+        "React and TypeScript application interface",
+        "Separation between application UI and AI service logic",
+        "Foundation for future backend, API and persistent data features"
+      ],
+
+      "overview": "AI Character Chat is an experimental application exploring how locally hosted language models can be integrated into a real software application. The current version combines a React and TypeScript interface with a Python service and Ollama.",
+
+      "problem": "Many AI examples stop at sending a prompt to a model and displaying the response. The goal of this project is to explore how AI functionality can become one part of a larger application architecture rather than remaining an isolated model demo.",
+
+      "solution": "The application separates the frontend interface from Python-based AI logic. Ollama provides the local model runtime while the application structure leaves room for future APIs, persistent data, user state and more structured AI workflows.",
+
+      "architecture": [
+        {
+          "label": "Application UI",
+          "value": "React · TypeScript"
+        },
+        {
+          "label": "AI Service",
+          "value": "Python"
+        },
+        {
+          "label": "Model Runtime",
+          "value": "Ollama"
+        },
+        {
+          "label": "AI Model",
+          "value": "Local LLM"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "Local AI",
+          "description": "Language models run locally through Ollama instead of requiring an external hosted model API."
+        },
+        {
+          "title": "Separated AI Service",
+          "description": "AI logic is kept outside the React interface to create a clearer boundary between UI and model-related functionality."
+        },
+        {
+          "title": "Character Interaction",
+          "description": "The application explores conversational experiences built around AI-powered characters."
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "Application Structure",
+          "description": "The project needs to remain flexible enough to grow from a simple local model integration into a more complete backend-driven AI application."
+        },
+        {
+          "title": "Model Integration",
+          "description": "AI behaviour needs to be connected to application logic rather than treated as an isolated text generation endpoint."
+        }
+      ],
+
+      "deployment": "The project currently uses locally hosted Ollama models and is still under active development.",
+
+      "learnings": [
+        "Connecting application interfaces to Python AI services",
+        "Working with locally hosted language models through Ollama",
+        "Separating AI logic from frontend responsibilities",
+        "Thinking about AI as part of a larger application architecture"
+      ],
+
+      "futureImprovements": [
+        "Introduce a more complete backend API when application responsibilities justify it",
+        "Add persistent conversation and user data",
+        "Explore hosted AI APIs alongside local models",
+        "Develop more structured AI workflows and application features"
+      ]
+    }
+  ]
+}

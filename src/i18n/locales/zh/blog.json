@@ -1,0 +1,183 @@
+{
+  "hero": {
+    "eyebrow": "技术笔记",
+    "title": "构建和运行软件过程中的记录。",
+    "description": "基于真实项目中遇到的问题，记录后端开发、API、自动化、部署以及 AI 集成方面的实际经验。"
+  },
+  "detail": {
+    "eyebrow": "技术笔记",
+    "back": "返回技术笔记",
+    "published": "发布时间",
+    "readingTime": "阅读时间",
+    "topics": "主题",
+    "notFoundEyebrow": "技术笔记",
+    "notFound": "未找到该文章"
+  },
+  "posts": {
+    "eyebrow": "开发记录",
+    "title": "最新笔记",
+    "description": "关于实现决策、系统集成、部署经验以及项目过程中实际收获的简短技术记录。",
+    "items": [
+      {
+        "id": "dotnet-azure-neon",
+        "title": "使用 Azure 和 Neon 部署 .NET 应用",
+        "description": "记录如何将 ASP.NET Core 应用连接到托管 PostgreSQL，并部署到 Azure。",
+        "date": "2026",
+        "readingTime": "6 分钟",
+        "tags": [
+          ".NET",
+          "Azure",
+          "PostgreSQL",
+          "Neon"
+        ],
+        "sections": [
+          {
+            "title": "为什么选择这个方案",
+            "paragraphs": [
+              "目标是把一个带数据库的 .NET 应用从本地开发环境部署出去，同时避免引入过多基础设施复杂度。",
+              "使用 Azure 托管应用，再使用 Neon 提供托管 PostgreSQL，可以在保持基础设施管理相对简单的同时完成完整部署。"
+            ]
+          },
+          {
+            "title": "连接 PostgreSQL",
+            "paragraphs": [
+              "应用在生产环境中需要使用与本地开发不同的数据库连接配置。",
+              "这意味着连接字符串和环境变量应该作为部署配置管理，而不是直接写死在应用代码中。"
+            ]
+          },
+          {
+            "title": "迁移到 Azure",
+            "paragraphs": [
+              "部署过程中出现了一些本地开发环境中不存在的问题，尤其是环境配置和外部数据库连接。",
+              "因此需要测试完整的线上应用，因为构建成功并不代表所有生产环境依赖都已经正确配置。"
+            ]
+          },
+          {
+            "title": "我的收获",
+            "paragraphs": [
+              "托管和数据库配置也是应用架构的一部分，而不仅仅是开发结束后的额外步骤。",
+              "像 Neon 这样的托管服务可以减少基础设施复杂度，让规模较小的应用更容易运行和维护。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dotnet-python-price-watch",
+        "title": "使用 ASP.NET Core 编排 Python 自动化",
+        "description": "记录我如何在一个使用 ASP.NET Core、Python 和 Playwright 的本地价格监控系统中，将应用编排与浏览器自动化分离。",
+        "date": "2026",
+        "readingTime": "7 分钟",
+        "tags": [
+          ".NET",
+          "Python",
+          "Playwright",
+          "Automation"
+        ],
+        "sections": [
+          {
+            "title": "分离系统职责",
+            "paragraphs": [
+              "价格监控不仅仅是浏览器自动化。应用还需要处理商品配置、定时执行、通知、运行控制以及历史结果。",
+              "因此我没有把这些职责全部放进 scraper，而是让 ASP.NET Core 负责应用层，让 Python 专注于自动化。"
+            ]
+          },
+          {
+            "title": "ASP.NET Core 作为编排层",
+            "paragraphs": [
+              "ASP.NET Core 应用负责管理商品、手动执行、邮件设置和定时任务，同时协调 Python scraper 进程。",
+              "这种方式可以把应用职责与浏览器相关的提取逻辑分开，让整个工作流更加清晰。"
+            ]
+          },
+          {
+            "title": "应对不可靠的外部数据",
+            "paragraphs": [
+              "外部网站可能随时发生变化，因此 scraper 不能默认每次提取到的数据都是正确的。",
+              "整个流程包含数据验证、异常价格变化检测和诊断信息，使失败或异常的运行结果能够被进一步调查。"
+            ]
+          },
+          {
+            "title": "为什么选择本地运行",
+            "paragraphs": [
+              "部分被监控的网站可能会限制来自云数据中心的流量，因此 scraper 被设计为在本地运行，而不是尝试绕过这些限制。",
+              "Windows Task Scheduler 负责定时执行，同时应用也支持手动触发检查。"
+            ]
+          },
+          {
+            "title": "我的收获",
+            "paragraphs": [
+              "当不同运行环境承担清晰职责时，.NET 和 Python 可以很好地组合在同一个应用工作流中。",
+              "如果从设计阶段就考虑调度、验证、诊断、通知和并发控制，自动化系统会更加可靠。"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "react-python-ollama",
+        "title": "使用 React、Python 和 Ollama 构建 AI 应用",
+        "description": "记录 React 前端如何与 Python AI 服务以及通过 Ollama 本地运行的语言模型进行通信。",
+        "date": "2026",
+        "readingTime": "8 分钟",
+        "tags": [
+          "React",
+          "Python",
+          "Ollama",
+          "AI"
+        ],
+        "sections": [
+          {
+            "title": "分离界面和 AI 逻辑",
+            "paragraphs": [
+              "React 前端应该主要负责应用交互体验，而不需要了解语言模型具体如何运行。",
+              "把模型通信放在 Python 服务中，可以在界面代码和 AI 相关功能之间建立更清晰的边界。"
+            ]
+          },
+          {
+            "title": "在本地使用 Ollama",
+            "paragraphs": [
+              "Ollama 提供了一种方便的方式，可以在开发阶段直接在本地试验语言模型。",
+              "本地运行可以用于测试 Prompt、角色行为和模型集成，然后再决定是否需要使用托管 AI 服务。"
+            ]
+          },
+          {
+            "title": "为后续扩展准备",
+            "paragraphs": [
+              "在探索 AI 交互阶段，初始应用可以保持相对简单。",
+              "随着需求增加，身份认证、持久化对话、用户以及应用规则可以逐步进入更完整的后端和数据模型中。"
+            ]
+          },
+          {
+            "title": "我的收获",
+            "paragraphs": [
+              "AI 应用仍然需要传统软件架构中的很多基本原则。",
+              "把模型集成与前端职责分开，可以让未来更换模型、供应商或应用工作流变得更容易。"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "topics": {
+    "eyebrow": "写作主题",
+    "title": "我主要记录什么",
+    "description": "这些笔记来自我在构建软件时实际使用的技术、架构决策以及遇到的问题。",
+    "items": [
+      {
+        "title": "后端与 API",
+        "description": "ASP.NET Core、API 设计、身份认证、权限控制、数据访问以及后端架构。"
+      },
+      {
+        "title": "自动化与系统集成",
+        "description": "Python 自动化、Playwright、应用编排，以及如何将不同服务连接成实际工作流。"
+      },
+      {
+        "title": "AI 应用",
+        "description": "关于将语言模型和 AI API 集成到实际软件应用中的实践与经验。"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "项目",
+    "title": "看看这些技术如何真正应用在项目中。",
+    "description": "查看这些技术笔记背后的实际应用，包括后端系统、自动化工作流和 AI 集成。"
+  }
+}

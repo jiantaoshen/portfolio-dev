@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "eyebrow": "Om mig",
+    "title": "Backendfokuserad utvecklare som bygger mjukvara kring verkliga applikationsproblem.",
+    "description": "Jag arbetar främst med C#/.NET och Python, med mitt största tekniska djup inom backendsystem, API:er, applikationslogik och automation."
+  },
+  "story": {
+    "eyebrow": "Min bakgrund",
+    "title": "Backend först, med ett bredare perspektiv på produkten",
+    "paragraphs": [
+      "Min utvecklarbakgrund började med C# och .NET, vilket fortfarande är området där jag har mitt största tekniska djup. Jag tycker om att arbeta med backendlogik, API:er, behörigheter, dataflöden och de system som ligger bakom en applikation.",
+      "Med tiden har jag börjat använda Python mer för automation och integration. Projekt som Price Watch har gett mig praktisk erfarenhet av att koppla samman .NET-applikationer med Python-processer, webbläsarautomation och externa arbetsflöden.",
+      "När ett projekt behöver en komplett produkt arbetar jag även med React, TypeScript, databaser och driftsättning. På längre sikt vill jag kombinera den applikationserfarenheten med backendutveckling för att bygga praktisk mjukvara där AI blir en del av verkliga produktflöden."
+    ]
+  },
+  "focus": {
+    "eyebrow": "Tekniska styrkor",
+    "title": "Hur jag arbetar med mjukvaruutveckling",
+    "items": [
+      {
+        "title": "Backenddesign",
+        "description": "Jag tänker noggrant på API-ansvar, affärslogik, autentisering, auktorisering och hur data rör sig genom en applikation."
+      },
+      {
+        "title": "Integration & automation",
+        "description": "Jag tycker om att koppla samman tjänster och verktyg i praktiska arbetsflöden, inklusive .NET-applikationer, Python-automation och externa integrationer."
+      },
+      {
+        "title": "Produktperspektiv",
+        "description": "Jag fokuserar hellre på det faktiska applikationsproblemet än att behandla varje tekniskt lager som en isolerad implementation."
+      },
+      {
+        "title": "Leverans från början till slut",
+        "description": "När det behövs arbetar jag även med UI, data, konfiguration och driftsättning så att backenddelen blir en komplett och användbar applikation."
+      }
+    ]
+  },
+  "skills": {
+    "eyebrow": "Kompetens",
+    "title": "Kärnkompetens och applikationsleverans",
+    "description": "Mitt största tekniska djup ligger inom backendutveckling, kompletterat med verktyg för automation, integration och komplett applikationsleverans.",
+    "items": [
+      {
+        "title": "Backend & API:er",
+        "items": [
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "REST APIs",
+          "Entity Framework Core",
+          "Authentication",
+          "Authorization",
+          "JWT"
+        ]
+      },
+      {
+        "title": "Automation & AI",
+        "items": [
+          "Python",
+          "Playwright",
+          "Automation",
+          "Ollama",
+          "AI APIs",
+          "AI Integration"
+        ]
+      },
+      {
+        "title": "Applikationsleverans",
+        "items": [
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "Neon",
+          "Azure",
+          "Firebase",
+          "Google Cloud"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Kontakta mig",
+    "title": "Söker du en backendutvecklare som tänker längre än bara API:et?",
+    "description": "Jag är öppen för projekt och möjligheter inom backendsystem, API:er, automation och praktisk AI-baserad mjukvara."
+  }
+}

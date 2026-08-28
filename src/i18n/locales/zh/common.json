@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "services": "服务",
+    "projects": "项目",
+    "about": "关于我",
+    "blog": "技术文章",
+    "contact": "联系我"
+  },
+
+  "buttons": {
+    "discussProject": "讨论项目",
+    "viewWork": "查看项目",
+    "downloadCV": "下载简历",
+    "github": "GitHub",
+    "liveDemo": "在线演示",
+    "caseStudy": "查看案例"
+  },
+
+  "language": {
+    "english": "English",
+    "swedish": "Svenska",
+    "chinese": "中文"
+  },
+
+  "readArticle": "阅读文章",
+
+  "notFound": {
+  "title": "这个页面不存在。",
+  "description": "页面可能已经移动、删除，或者当前地址不正确。",
+  "home": "返回首页"
+}
+}

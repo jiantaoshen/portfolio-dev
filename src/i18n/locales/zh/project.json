@@ -1,0 +1,516 @@
+{
+  "page": {
+    "eyebrow": "项目",
+    "title": "我开发的软件项目",
+    "description": "这些项目涵盖后端开发、API、自动化、应用交付，以及我正在持续深入的 AI 应用开发方向。"
+  },
+
+  "detail": {
+    "eyebrow": "项目",
+    "notFound": "未找到该项目",
+    "back": "返回项目列表",
+
+    "overview": "项目概览",
+    "problem": "问题与目标",
+    "solution": "解决方案",
+    "architecture": "系统架构",
+    "features": "核心功能",
+    "challenges": "挑战与技术决策",
+    "deployment": "部署与运行",
+    "learned": "项目收获",
+    "future": "未来改进",
+
+    "technologies": "技术栈",
+    "status": "状态",
+    "type": "项目类型"
+  },
+
+  "items": [
+    {
+      "id": "light-manager",
+
+      "title": "LightManager",
+
+      "category": "后端与 API 开发",
+
+      "status": "已上线",
+
+      "description": "一个以后端 ASP.NET Core Web API 为核心的项目管理应用，包含身份认证、基于角色的权限控制、项目与任务工作流、PostgreSQL 持久化数据以及 Azure 部署。",
+
+      "technologies": [
+        "C#",
+        "ASP.NET Core",
+        "Entity Framework Core",
+        "PostgreSQL",
+        "React",
+        "TypeScript",
+        "Azure"
+      ],
+
+      "highlights": [
+        "使用 ASP.NET Core Web API 构建结构清晰的后端应用逻辑",
+        "使用 ASP.NET Identity 与 JWT 实现身份认证",
+        "基于角色的授权与项目权限控制",
+        "项目成员关系与任务分配工作流",
+        "通过 Entity Framework Core、PostgreSQL 和 Neon 实现数据持久化",
+        "前端与后端分别部署到 Microsoft Azure"
+      ],
+
+      "overview": "LightManager 是一个开源项目管理应用，面向希望以简单方式组织项目和任务的中小型团队。它避免企业级项目管理工具中大量复杂功能，重点提供清晰、实用的核心工作流。应用以后端 ASP.NET Core 为核心，并实现了身份认证、授权、基于角色的权限、项目成员管理、任务分配以及 Kanban 工作流。",
+
+      "problem": "一个真正的项目管理应用并不只是简单的 CRUD。用户、项目、项目成员、角色和任务之间存在相互关联，同时后端必须确保用户只能执行自己有权限进行的操作。这个项目的目标是在保持产品简单易用的同时，正确处理这些相互关联的业务流程。",
+
+      "solution": "应用将职责划分为 React 前端和 ASP.NET Core Web API。ASP.NET Identity 负责用户身份管理，JWT 用于认证受保护的 API 请求，Entity Framework Core 负责关系型数据访问，PostgreSQL 用于持久化应用数据。重要的业务规则和权限控制都由后端执行，而不是依赖前端界面。",
+
+      "architecture": [
+        {
+          "label": "应用界面",
+          "value": "React · TypeScript · Vite · Tailwind CSS"
+        },
+        {
+          "label": "后端 API",
+          "value": "C# · ASP.NET Core Web API"
+        },
+        {
+          "label": "身份认证与授权",
+          "value": "ASP.NET Identity · JWT · Role-Based Permissions"
+        },
+        {
+          "label": "数据访问",
+          "value": "Entity Framework Core"
+        },
+        {
+          "label": "数据库",
+          "value": "PostgreSQL · Neon"
+        },
+        {
+          "label": "应用交付",
+          "value": "Azure Static Web Apps · Azure App Service"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "身份认证",
+          "description": "用户通过 ASP.NET Identity 登录，受保护的 API 请求使用 JWT 进行认证。"
+        },
+        {
+          "title": "权限控制",
+          "description": "后端 API 会独立验证用户权限，而不是依赖前端是否显示某个按钮或页面。"
+        },
+        {
+          "title": "基于角色的权限",
+          "description": "项目操作会根据用户在项目中的角色和成员关系决定是否允许执行。"
+        },
+        {
+          "title": "项目管理",
+          "description": "用户可以创建、编辑、归档和删除项目。"
+        },
+        {
+          "title": "任务管理",
+          "description": "用户可以创建、编辑和删除任务，并将任务分配给对应项目中的成员。"
+        },
+        {
+          "title": "Kanban 工作流",
+          "description": "任务可以通过拖放式 Kanban 看板在不同状态之间移动。"
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "后端权限验证",
+          "description": "权限必须真正由 API 强制执行，而不能只依赖前端隐藏按钮、页面或操作入口。"
+        },
+        {
+          "title": "关系型应用数据",
+          "description": "用户、项目、成员关系、角色、任务和任务分配之间需要清晰的数据关系和稳定的业务行为。"
+        },
+        {
+          "title": "前后端独立部署",
+          "description": "React 应用和 ASP.NET Core API 分别部署，因此需要正确处理认证、环境配置以及生产环境中的前后端通信。"
+        }
+      ],
+
+      "deployment": "React 前端部署在 Azure Static Web Apps，ASP.NET Core API 运行在 Azure App Service，PostgreSQL 数据库由 Neon 托管。项目此前使用 Vercel 和 Render，并于 2026 年 8 月迁移到 Microsoft Azure。目前使用免费层服务，因此后端长时间未活动后可能出现冷启动。",
+
+      "learnings": [
+        "ASP.NET Core Web API 设计",
+        "使用 ASP.NET Identity 实现身份认证",
+        "JWT API 身份认证",
+        "后端授权与基于角色的权限设计",
+        "关系型应用数据建模",
+        "Entity Framework Core 与 PostgreSQL",
+        "连接 React 前端与独立后端 API",
+        "生产环境配置与 Azure 部署"
+      ],
+
+      "futureImprovements": [
+        "根据项目描述使用 AI 自动生成建议任务",
+        "为 Kanban 看板增加任务搜索与筛选功能"
+      ],
+
+      "links": {
+        "github": "https://github.com/jiantaoshen/LightManager",
+        "live": "https://thankful-beach-0211add0f.7.azurestaticapps.net"
+      }
+    },
+
+    {
+      "id": "price-watch",
+
+      "title": "Price Watch",
+
+      "category": "后端与自动化开发",
+
+      "status": "本地应用",
+
+      "description": "一个以 ASP.NET Core 和 Python 自动化为核心的本地价格监控系统，可以管理商品、执行定时价格检查、验证抓取数据、记录历史价格、检测异常价格变化并发送邮件提醒。",
+
+      "technologies": [
+        "C#",
+        "ASP.NET Core",
+        ".NET 10",
+        "Python",
+        "Playwright",
+        "React",
+        "TypeScript"
+      ],
+
+      "highlights": [
+        "ASP.NET Core 负责协调 UI、Python 爬虫和本地自动化流程",
+        "Python 与 Playwright 负责浏览器自动化和价格提取",
+        "支持手动和定时价格监控",
+        "异常价格与失败运行检测",
+        "历史价格记录与可视化",
+        "带去重机制的邮件通知",
+        "防止多个爬虫任务重叠运行的跨进程保护",
+        "使用 pytest 对 Python 自动化逻辑进行测试"
+      ],
+
+      "overview": "Price Watch 是一个使用 React、TypeScript、ASP.NET Core、Python 和 Playwright 构建的本地商品价格监控系统。它可以自动检查商品价格，与目标价格进行比较，保存历史数据，检测异常变化，发送邮件通知，并通过本地 Dashboard 展示价格趋势。",
+
+      "problem": "可靠的价格监控远不只是从网页中提取一个数字。系统还需要管理监控商品、运行时间、价格验证、历史数据、通知逻辑、失败状态以及诊断信息，同时还必须面对外部网页结构随时可能变化的问题。",
+
+      "solution": "Price Watch 将应用编排与浏览器自动化分开。ASP.NET Core 作为 React 界面与 Python 自动化之间的核心应用层，负责商品配置、爬虫执行、邮件设置和任务调度。Python 与 Playwright 则负责加载网页、提取价格、验证结果以及生成诊断信息。",
+
+      "architecture": [
+        {
+          "label": "应用界面",
+          "value": "React · TypeScript · Vite · Tailwind CSS · Recharts"
+        },
+        {
+          "label": "应用后端",
+          "value": "C# · ASP.NET Core · .NET 10"
+        },
+        {
+          "label": "自动化与网页抓取",
+          "value": "Python · Playwright · Firefox · Pydantic"
+        },
+        {
+          "label": "运行数据",
+          "value": "Price History · Configuration · Run Metadata · Diagnostics"
+        },
+        {
+          "label": "任务调度",
+          "value": "Windows Task Scheduler"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "商品管理",
+          "description": "可以直接通过应用界面管理商品以及对应的目标价格。"
+        },
+        {
+          "title": "手动与定时检查",
+          "description": "价格检查既可以从界面手动触发，也可以通过 Windows Task Scheduler 自动执行。"
+        },
+        {
+          "title": "价格历史",
+          "description": "历史价格会保存在本地，并通过 Dashboard 进行趋势可视化。"
+        },
+        {
+          "title": "价格验证",
+          "description": "系统会识别可疑的抓取结果，避免异常数据直接作为可信价格写入历史记录。"
+        },
+        {
+          "title": "运行诊断",
+          "description": "失败或异常的爬虫运行会保存元数据和本地调试信息，方便后续排查。"
+        },
+        {
+          "title": "邮件提醒",
+          "description": "符合条件的价格变化可以触发邮件通知，并通过去重机制避免重复发送相同提醒。"
+        },
+        {
+          "title": "并发保护",
+          "description": "通过跨进程保护机制避免手动任务和定时任务同时运行多个爬虫实例。"
+        },
+        {
+          "title": "自动化测试",
+          "description": "Python 自动化部分使用 pytest 编写自动化测试。"
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "不可靠的外部数据源",
+          "description": "外部网页可以随时改变，因此提取的数据不能直接完全信任，需要额外的验证和诊断机制。"
+        },
+        {
+          "title": "应用流程编排",
+          "description": "ASP.NET Core 后端需要协调前端请求、Python 进程、配置、调度以及通知等多个独立流程。"
+        },
+        {
+          "title": "自动化任务重叠",
+          "description": "用户手动执行和系统定时执行可能同时发生，因此需要避免多个抓取任务相互干扰。"
+        },
+        {
+          "title": "本地优先运行",
+          "description": "部分监控网站会限制来自云数据中心的访问，因此爬虫有意保持本地运行，而不是尝试绕过这些限制。"
+        }
+      ],
+
+      "deployment": "Price Watch 有意设计为本地应用。由于部分监控网站可能限制来自云数据中心的流量，因此网页抓取部分运行在本地。运行数据保存在本地，Windows Task Scheduler 负责自动执行定时任务。",
+
+      "learnings": [
+        "使用 ASP.NET Core 作为应用编排层",
+        "在同一个软件工作流中集成 .NET 与 Python",
+        "使用 Playwright 进行浏览器自动化",
+        "结构化价格提取与数据验证",
+        "为自动化失败设计诊断机制",
+        "使用 Windows Task Scheduler 进行任务调度",
+        "跨进程并发保护",
+        "邮件通知与去重工作流",
+        "React Dashboard 与价格趋势可视化",
+        "使用 pytest 进行自动化测试"
+      ],
+
+      "futureImprovements": [
+        "继续优化 Dashboard 和整体 UI",
+        "改善首次运行和初始配置体验",
+        "根据需要增加更多针对特定网站的 scraper adapter",
+        "进一步完善通知偏好和控制功能",
+        "增加实用的价格分析功能",
+        "准备 Windows 安装包和应用分发"
+      ],
+
+      "links": {
+        "github": "https://github.com/jiantaoshen/WishList"
+      }
+    },
+
+    {
+      "id": "portfolio",
+
+      "title": "Developer Portfolio",
+
+      "category": "Web 应用与交付",
+
+      "status": "开发中",
+
+      "description": "一个使用 React 和 TypeScript 构建的多语言开发者 Portfolio，用于展示后端项目、技术文章和软件开发经验，同时保持清晰、可维护的应用结构。",
+
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "i18next",
+        "Firebase",
+        "Google Cloud"
+      ],
+
+      "highlights": [
+        "使用 React 与 TypeScript 构建应用结构",
+        "支持英文、瑞典语和中文三种语言",
+        "可复用的项目详情和技术笔记路由结构",
+        "使用 Tailwind CSS 构建响应式界面",
+        "内容定位围绕后端、API 和 AI 应用开发",
+        "计划通过 Firebase Hosting 与 Google Cloud 完成部署"
+      ],
+
+      "overview": "这个 Portfolio 是一个使用 React 和 TypeScript 构建的应用，用于展示我的软件项目、技术经验和未来开发方向。它不仅是一个简单的静态个人介绍页面，还包含独立路由、多语言内容以及结构化的项目 Case Study。",
+
+      "problem": "开发者 Portfolio 不应该只是技术名称的列表。它需要清楚地向招聘者、客户和工程团队展示技术优势、真实项目证据以及未来发展方向，同时又不能变成一个复杂或视觉干扰过多的网站。",
+
+      "solution": "应用使用 React Router 实现独立页面，通过 i18next 管理多语言内容，并使用可复用的数据结构构建项目和技术笔记页面。Tailwind CSS 提供统一的视觉系统，同时整个内容层级重点强调后端开发、API、自动化以及实际 AI 应用方向。",
+
+      "architecture": [
+        {
+          "label": "应用",
+          "value": "React · TypeScript · Vite"
+        },
+        {
+          "label": "路由",
+          "value": "React Router"
+        },
+        {
+          "label": "国际化",
+          "value": "i18next · English · Swedish · Chinese"
+        },
+        {
+          "label": "界面",
+          "value": "Tailwind CSS"
+        },
+        {
+          "label": "应用交付",
+          "value": "Firebase Hosting · Google Cloud"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "多语言内容",
+          "description": "通过结构化的 i18next namespace 管理英文、瑞典语和中文内容。"
+        },
+        {
+          "title": "项目 Case Study",
+          "description": "每个项目拥有独立路由，并使用可复用的技术详情页面结构。"
+        },
+        {
+          "title": "技术笔记",
+          "description": "网站包含技术文章区域，用于记录开发过程、技术决策和工程经验。"
+        },
+        {
+          "title": "响应式设计",
+          "description": "界面针对桌面和移动设备进行了响应式设计。"
+        },
+        {
+          "title": "可复用设计系统",
+          "description": "通过语义化的字体、卡片、按钮和颜色 primitives 保持界面一致，同时避免过度抽象和组件化。"
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "清晰的个人定位",
+          "description": "网站需要明确区分我的后端专业深度与完整应用交付能力，而不是把所有技术都表现成同等程度的专业方向。"
+        },
+        {
+          "title": "多语言结构",
+          "description": "英文、瑞典语和中文内容需要保持结构一致，同时项目 ID 和应用路由不能随着语言发生变化。"
+        },
+        {
+          "title": "复用但不过度设计",
+          "description": "界面需要有足够的可复用 primitives 保持一致性，同时简单的一次性布局仍然直接使用 React 和 Tailwind 完成。"
+        }
+      ],
+
+      "deployment": "Portfolio 计划通过 Firebase Hosting 和 Google Cloud 部署，从应用实现、多语言内容架构一直到最终生产环境交付都由项目本身完成。",
+
+      "learnings": [
+        "使用 TypeScript 构建 React 应用",
+        "使用 i18next 设计多语言应用结构",
+        "React Router 与可复用详情页面",
+        "Tailwind CSS 设计系统",
+        "技术 Portfolio 的内容架构",
+        "响应式应用设计",
+        "Firebase 与 Google Cloud 部署流程"
+      ],
+
+      "futureImprovements": [
+        "继续扩展项目 Case Study",
+        "增加更多技术笔记",
+        "改善项目架构图和视觉展示",
+        "持续优化无障碍体验和性能",
+        "完成 Firebase Hosting 与 Google Cloud 的生产环境部署"
+      ]
+    },
+
+    {
+      "id": "ai-character-chat",
+
+      "title": "AI Character Chat",
+
+      "category": "AI 应用开发",
+
+      "status": "开发中",
+
+      "description": "一个实验性的 AI 对话应用，将 React 与 TypeScript 界面、Python 服务以及通过 Ollama 运行的本地语言模型结合在一起。",
+
+      "technologies": [
+        "Python",
+        "Ollama",
+        "React",
+        "TypeScript",
+        "AI Integration"
+      ],
+
+      "highlights": [
+        "基于 Python 的 AI 服务",
+        "通过 Ollama 集成本地语言模型",
+        "React 与 TypeScript 应用界面",
+        "将 UI 与 AI 服务职责进行分离",
+        "为未来的后端 API 和持久化数据功能预留扩展空间"
+      ],
+
+      "overview": "AI Character Chat 是一个实验性项目，用于探索如何将本地运行的大语言模型集成到真正的软件应用中。目前版本由 React 和 TypeScript 前端、Python AI 服务以及 Ollama 模型运行环境组成。",
+
+      "problem": "很多 AI 示例仅仅停留在向模型发送 Prompt，然后把返回文本显示出来。这个项目希望探索如何让 AI 功能成为完整应用架构中的一个组成部分，而不是独立存在的模型 Demo。",
+
+      "solution": "应用将前端界面和基于 Python 的 AI 逻辑分离。Ollama 提供本地模型运行环境，同时整体架构为未来加入 API、持久化数据、用户状态以及更结构化的 AI 工作流保留扩展空间。",
+
+      "architecture": [
+        {
+          "label": "应用界面",
+          "value": "React · TypeScript"
+        },
+        {
+          "label": "AI 服务",
+          "value": "Python"
+        },
+        {
+          "label": "模型运行环境",
+          "value": "Ollama"
+        },
+        {
+          "label": "AI 模型",
+          "value": "Local LLM"
+        }
+      ],
+
+      "features": [
+        {
+          "title": "本地 AI",
+          "description": "语言模型通过 Ollama 在本地运行，不依赖外部托管的模型 API。"
+        },
+        {
+          "title": "独立 AI 服务",
+          "description": "AI 相关逻辑与 React 界面分离，使 UI 和模型功能之间保持清晰的应用边界。"
+        },
+        {
+          "title": "角色对话",
+          "description": "应用探索基于 AI 角色构建的对话式交互体验。"
+        }
+      ],
+
+      "challenges": [
+        {
+          "title": "应用架构",
+          "description": "项目需要保持足够灵活，使其能够从简单的本地模型集成逐步发展成更完整的后端驱动 AI 应用。"
+        },
+        {
+          "title": "模型集成",
+          "description": "AI 行为需要真正连接到应用逻辑，而不是长期停留在独立的文本生成接口。"
+        }
+      ],
+
+      "deployment": "项目目前使用本地运行的 Ollama 模型，并仍处于持续开发阶段。",
+
+      "learnings": [
+        "将应用界面连接到 Python AI 服务",
+        "使用 Ollama 运行和集成本地语言模型",
+        "分离 AI 逻辑与前端职责",
+        "从完整应用架构的角度思考 AI 集成"
+      ],
+
+      "futureImprovements": [
+        "在应用职责需要时加入更完整的后端 API",
+        "增加持久化对话和用户数据",
+        "探索托管 AI API 与本地模型结合的方式",
+        "开发更加结构化的 AI 工作流和产品功能"
+      ]
+    }
+  ]
+}
+

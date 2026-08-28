@@ -1,0 +1,166 @@
+{
+  "hero": {
+    "availability": "Tillgänglig för nya möjligheter",
+    "eyebrow": "Backend · API:er · AI-applikationer",
+    "titleBefore": "Jag bygger",
+    "titleHighlight": "backendsystem",
+    "titleAfter": "och AI-drivna applikationer.",
+    "description": "Backendfokuserad mjukvaruutvecklare som arbetar med C#/.NET och Python för att bygga API:er, automation och applikationer som omvandlar AI-funktionalitet till praktiska mjukvaruprodukter.",
+    "architecture": {
+      "title": "Från backend till fungerande produkt",
+      "frontend": {
+        "label": "Applikationsgränssnitt",
+        "value": "React + TypeScript"
+      },
+      "backend": {
+        "label": "Kärnbackend",
+        "value": "C# / .NET APIs"
+      },
+      "data": {
+        "label": "Data",
+        "value": "PostgreSQL"
+      },
+      "deployment": {
+        "label": "Leverans",
+        "value": "Azure · Firebase · GCP"
+      },
+      "ai": {
+        "label": "AI & automation",
+        "value": "Python · Ollama · AI APIs"
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "Vad jag gör",
+    "title": "Backendsystem, automation och AI-baserade applikationer",
+    "description": "Jag arbetar inom tre områden som hänger nära samman: att bygga backend, koppla in automation och AI-funktionalitet samt leverera de övriga applikationslager som behövs för en användbar produkt.",
+    "items": [
+      {
+        "title": "Backend- & API-utveckling",
+        "description": "Jag bygger backendtjänster, REST API:er och applikationslogik med C# och ASP.NET Core, inklusive autentisering, auktorisering, dataåtkomst och affärsregler.",
+        "technologies": [
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "REST APIs"
+        ]
+      },
+      {
+        "title": "Automation & AI-applikationer",
+        "description": "Jag använder Python för automation, tjänsteintegration och för att koppla AI-funktionalitet till praktiska applikationsflöden, från lokala modeller till AI API:er.",
+        "technologies": [
+          "Python",
+          "Automation",
+          "Playwright",
+          "Ollama",
+          "AI APIs"
+        ]
+      },
+      {
+        "title": "Applikationsleverans",
+        "description": "När ett projekt behöver en komplett produkt arbetar jag även med frontend, data och driftsättning för att ta backendtjänster vidare till en användbar applikation.",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "Azure",
+          "Firebase",
+          "Google Cloud"
+        ]
+      }
+    ],
+    "about": "Backend är området där jag har mitt största tekniska djup, samtidigt som jag tänker på hur hela applikationen fungerar runt backenddelen.",
+    "more": "Mer om mig"
+  },
+  "featuredProjects": {
+    "eyebrow": "Utvalda projekt",
+    "title": "Projekt som visar hur jag bygger och levererar mjukvara",
+    "description": "Utvalda projekt inom backend-API:er, applikationsorkestrering, automation och komplett mjukvaruleverans.",
+    "featured": "Utvalt projekt",
+    "viewAll": "Visa alla projekt"
+  },
+  "process": {
+    "eyebrow": "Så arbetar jag",
+    "title": "Från problem till fungerande mjukvara",
+    "description": "Jag börjar med problemet och applikationens viktigaste ansvarsområden och utformar sedan de tjänster, dataflöden, automationer och övriga lager som behövs för ett fungerande resultat.",
+    "items": [
+      {
+        "title": "Förstå",
+        "description": "Tydliggör problemet, användarna, affärsmålen och de tekniska kraven innan en lösning väljs."
+      },
+      {
+        "title": "Designa",
+        "description": "Definiera backendansvar, API:er, dataflöden, behörigheter, integrationer och den övergripande applikationsstrukturen."
+      },
+      {
+        "title": "Bygga",
+        "description": "Implementera kärntjänster och arbetsflöden och koppla sedan in nödvändig data, UI, automation och externa integrationer."
+      },
+      {
+        "title": "Leverera",
+        "description": "Konfigurera kör- eller produktionsmiljön och verifiera att hela applikationsflödet fungerar i praktiken."
+      }
+    ]
+  },
+  "technicalNotes": {
+    "eyebrow": "Tekniska anteckningar",
+    "title": "Anteckningar från att bygga och köra mjukvara",
+    "description": "Praktiska anteckningar om backend-API:er, automation, driftsättning, integration och erfarenheter från utveckling av AI-baserade applikationer.",
+    "viewAll": "Visa alla anteckningar"
+  },
+  "contact": {
+    "eyebrow": "Kontakta mig",
+    "title": "Bygger du en backend, ett API eller en AI-baserad applikation?",
+    "description": "Jag är öppen för frilansprojekt, kontraktsarbete och heltidsroller inom backendutveckling, API:er, automation och praktisk AI-driven mjukvara.",
+    "availability": "Tillgänglig för nya möjligheter",
+    "action": "Kontakta mig"
+  },
+  "contactPage": {
+    "availability": "Tillgänglig för nya möjligheter",
+    "eyebrow": "Kontakt",
+    "title": "Låt oss bygga något användbart.",
+    "description": "Oavsett om du söker hjälp med backendutveckling, API:er, automation eller en AI-baserad applikation är du välkommen att höra av dig och berätta vad du arbetar med.",
+    "openTo": {
+      "eyebrow": "Öppen för",
+      "title": "Projekt och möjligheter",
+      "description": "Mitt huvudsakliga fokus är backendutveckling, särskilt arbete där backendsystem kombineras med automation, AI och komplett applikationsleverans.",
+      "backend": "Backendsystem, API:er och applikationslogik med C#/.NET",
+      "automation": "Python-automation, integrationer och mjukvara byggd kring praktiska arbetsflöden",
+      "ai": "Praktiska AI-applikationer och integration av AI API:er",
+      "opportunities": "Frilansprojekt, kontraktsarbete och heltidsroller inom mjukvaruutveckling"
+    },
+    "connect": "Andra plattformar",
+    "form": {
+      "name": "Namn",
+      "namePlaceholder": "Ditt namn",
+      "email": "E-post",
+      "emailPlaceholder": "du@example.com",
+      "reason": "Jag kontaktar dig angående",
+      "reasonPlaceholder": "Välj ett alternativ",
+      "message": "Meddelande",
+      "messagePlaceholder": "Berätta kort om projektet, problemet eller möjligheten.",
+      "submit": "Skicka meddelande",
+      "sending": "Skickar...",
+      "success": "Tack — ditt meddelande har skickats.",
+      "error": "Något gick fel. Försök igen."
+    },
+    "reasons": [
+      {
+        "value": "freelance",
+        "label": "Frilansprojekt"
+      },
+      {
+        "value": "contract",
+        "label": "Kontraktsarbete"
+      },
+      {
+        "value": "full-time",
+        "label": "Heltidsmöjlighet"
+      },
+      {
+        "value": "other",
+        "label": "Annat"
+      }
+    ]
+  }
+}

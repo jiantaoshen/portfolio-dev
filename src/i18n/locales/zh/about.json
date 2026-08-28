@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "eyebrow": "关于我",
+    "title": "以后端为核心，围绕真实应用问题构建软件。",
+    "description": "我主要使用 C#/.NET 和 Python，其中技术深度最强的方向是后端系统、API、应用逻辑和自动化。"
+  },
+  "story": {
+    "eyebrow": "我的背景",
+    "title": "以后端为核心，同时关注完整产品",
+    "paragraphs": [
+      "我的开发经历从 C# 和 .NET 开始，这也是目前我技术深度最强的方向。我喜欢设计后端逻辑、API、权限、数据流，以及支撑整个应用运行的核心系统。",
+      "随着项目经验增加，我开始更多使用 Python 进行自动化和系统集成。像 Price Watch 这样的项目，也让我积累了将 .NET 应用、Python 进程、浏览器自动化以及外部工作流连接起来的实际经验。",
+      "当项目需要完整产品时，我也会使用 React、TypeScript、数据库和部署平台完成其他部分。长期来看，我希望进一步将这些应用开发经验与后端工程结合，构建把 AI 真正融入实际产品工作流的软件。"
+    ]
+  },
+  "focus": {
+    "eyebrow": "工程能力",
+    "title": "我如何思考软件开发",
+    "items": [
+      {
+        "title": "后端设计",
+        "description": "我会重点考虑 API 职责、业务逻辑、身份认证、权限控制，以及数据如何在应用中流动。"
+      },
+      {
+        "title": "集成与自动化",
+        "description": "我喜欢把不同服务和工具连接成实际工作流，包括 .NET 应用、Python 自动化以及外部系统集成。"
+      },
+      {
+        "title": "产品思维",
+        "description": "相比把每一个技术层都当作孤立的实现任务，我更关注如何解决应用真正需要解决的问题。"
+      },
+      {
+        "title": "端到端交付",
+        "description": "当项目需要时，我也会完成界面、数据、配置和部署工作，让核心后端真正成为一个完整可用的应用。"
+      }
+    ]
+  },
+  "skills": {
+    "eyebrow": "技术能力",
+    "title": "核心技术与应用交付",
+    "description": "我的主要技术深度集中在后端开发，同时使用自动化、系统集成和完整应用交付所需要的相关工具。",
+    "items": [
+      {
+        "title": "后端与 API",
+        "items": [
+          "C#",
+          ".NET",
+          "ASP.NET Core",
+          "REST APIs",
+          "Entity Framework Core",
+          "Authentication",
+          "Authorization",
+          "JWT"
+        ]
+      },
+      {
+        "title": "自动化与 AI",
+        "items": [
+          "Python",
+          "Playwright",
+          "Automation",
+          "Ollama",
+          "AI APIs",
+          "AI Integration"
+        ]
+      },
+      {
+        "title": "应用交付",
+        "items": [
+          "React",
+          "TypeScript",
+          "PostgreSQL",
+          "Neon",
+          "Azure",
+          "Firebase",
+          "Google Cloud"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "联系我",
+    "title": "正在寻找一个不仅只关注 API 的后端开发者？",
+    "description": "我目前接受后端系统、API、自动化以及实际 AI 应用相关的项目与工作机会。"
+  }
+}
