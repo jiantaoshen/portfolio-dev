@@ -10,11 +10,6 @@ type BlogPost = {
   tags: string[];
 };
 
-type Topic = {
-  title: string;
-  description: string;
-};
-
 function toArray<T>(value: unknown): T[] {
   return Array.isArray(value) ? (value as T[]) : [];
 }
@@ -24,13 +19,6 @@ export default function Blog() {
 
   const posts = toArray<BlogPost>(
     t("posts.items", {
-      ns: "blog",
-      returnObjects: true,
-    }),
-  );
-
-  const topics = toArray<Topic>(
-    t("topics.items", {
       ns: "blog",
       returnObjects: true,
     }),
@@ -109,42 +97,6 @@ export default function Blog() {
                     <span aria-hidden="true">→</span>
                   </Link>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Topics */}
-      <section className="section bg-surface-muted">
-        <div className="container">
-          <div className="section-head">
-            <p className="text-label text-brand">
-              {t("topics.eyebrow", { ns: "blog" })}
-            </p>
-
-            <h2 className="text-title mt-3 text-text">
-              {t("topics.title", { ns: "blog" })}
-            </h2>
-
-            <p className="text-large mt-4 text-text-muted">
-              {t("topics.description", { ns: "blog" })}
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {topics.map((topic) => (
-              <article
-                key={topic.title}
-                className="card p-6 shadow-none"
-              >
-                <h3 className="text-heading text-text">
-                  {topic.title}
-                </h3>
-
-                <p className="text-body mt-3 text-text-muted">
-                  {topic.description}
-                </p>
               </article>
             ))}
           </div>

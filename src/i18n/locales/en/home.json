@@ -159,32 +159,22 @@
     "action": "Get in touch"
   },
 
+
   "contactPage": {
     "availability": "Available for new opportunities",
-
     "eyebrow": "Contact",
-
     "title": "Let's build something useful.",
-
-    "description": "Whether you're looking for backend development, API work, automation or an AI-enabled application, feel free to get in touch and tell me what you're working on.",
+    "description": "Have a project, role or software problem in mind? Tell me what you're working on.",
 
     "openTo": {
       "eyebrow": "Open To",
-
       "title": "Projects and opportunities",
 
-      "description": "My main focus is backend development, particularly work where backend systems connect with automation, AI and complete application delivery.",
-
       "backend": "Backend systems, APIs and application logic with C#/.NET",
-
-      "automation": "Python automation, integrations and workflow-oriented software",
-
+      "automation": "Python automation and software integrations",
       "ai": "Practical AI-enabled applications and AI API integration",
-
-      "opportunities": "Freelance, contract and full-time software development opportunities"
+      "opportunities": "Freelance, contract and full-time software development roles"
     },
-
-    "connect": "Elsewhere",
 
     "form": {
       "name": "Name",

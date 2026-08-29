@@ -84,64 +84,73 @@ export default function ContactPage() {
 
       <section className="section bg-app">
         <div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <div>
-            <p className="text-label text-brand">
-              {t("contactPage.openTo.eyebrow")}
-            </p>
-
-            <h2 className="text-title mt-3 text-text">
-              {t("contactPage.openTo.title")}
-            </h2>
-
-            <p className="text-large mt-5 text-text-muted">
-              {t("contactPage.openTo.description")}
-            </p>
-
-            <div className="mt-8 space-y-4">
-              {[
-                t("contactPage.openTo.backend"),
-                t("contactPage.openTo.automation"),
-                t("contactPage.openTo.ai"),
-                t("contactPage.openTo.opportunities"),
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 text-sm leading-6 text-text-muted"
-                >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10 border-t border-border pt-8">
-              <p className="text-label text-text-subtle">
-                {t("contactPage.connect")}
+            <div>
+              <p className="text-label text-brand">
+                {t("contactPage.openTo.eyebrow")}
               </p>
 
-              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
-                <a
-                  href="https://www.linkedin.com/in/jiantaoshen/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-brand"
-                >
-                  LinkedIn
-                  <span aria-hidden="true">↗</span>
-                </a>
+              <h2 className="text-title mt-3 text-text">
+                {t("contactPage.openTo.title")}
+              </h2>
 
-                <a
-                  href="https://github.com/jiantaoshen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-brand"
-                >
-                  GitHub
-                  <span aria-hidden="true">↗</span>
-                </a>
+              <div className="mt-8 space-y-4">
+                {[
+                  t("contactPage.openTo.backend"),
+                  t("contactPage.openTo.automation"),
+                  t("contactPage.openTo.ai"),
+                  t("contactPage.openTo.opportunities"),
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-6 text-text-muted"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 space-y-4">
+                {[
+                  t("contactPage.openTo.backend"),
+                  t("contactPage.openTo.automation"),
+                  t("contactPage.openTo.ai"),
+                  t("contactPage.openTo.opportunities"),
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-6 text-text-muted"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 border-t border-border pt-8">
+                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+                  <a
+                    href="https://www.linkedin.com/in/jiantaoshen/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-brand"
+                  >
+                    LinkedIn
+                    <span aria-hidden="true">↗</span>
+                  </a>
+
+                  <a
+                    href="https://github.com/jiantaoshen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-brand"
+                  >
+                    GitHub
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
           <div className="card rounded-3xl p-6 sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-5">

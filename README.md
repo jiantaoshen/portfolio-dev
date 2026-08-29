@@ -4,6 +4,10 @@ A multilingual developer portfolio built with React and TypeScript.
 
 The site presents my projects, technical notes and software development experience, with a primary focus on backend development, APIs, automation and practical AI-enabled applications.
 
+Live site: 
+
+https://jiantao-portfolio-dev.web.app 
+
 ## Tech Stack
 
 * React
@@ -12,6 +16,7 @@ The site presents my projects, technical notes and software development experien
 * Tailwind CSS
 * React Router
 * i18next
+* Firebase Hosting
 
 ## Languages
 
