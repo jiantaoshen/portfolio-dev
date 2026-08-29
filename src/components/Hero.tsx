@@ -1,7 +1,21 @@
 import { useTranslation } from "react-i18next";
 
 export default function Hero() {
-  const { t } = useTranslation(["home", "common"]);
+  const { t, i18n } = useTranslation(["home", "common"]);
+
+  const getCVFile = () => {
+    const language = i18n.resolvedLanguage ?? "en";
+
+    if (language.startsWith("sv")) {
+      return "/cv/Jiantao_Shen_CV_SV.pdf";
+    }
+
+    if (language.startsWith("zh")) {
+      return "/cv/Jiantao_Shen_CV_ZH.pdf";
+    }
+
+    return "/cv/Jiantao_Shen_CV_EN.pdf";
+  };
 
   return (
     <section className="hero">
@@ -38,7 +52,11 @@ export default function Hero() {
               {t("buttons.viewWork", { ns: "common" })}
             </a>
 
-            <a href="/cv.pdf" className="btn btn-secondary">
+            <a
+              href={getCVFile()}
+              download
+              className="btn btn-secondary"
+            >
               {t("buttons.downloadCV", { ns: "common" })}
               <span aria-hidden="true">↓</span>
             </a>
@@ -66,7 +84,10 @@ export default function Hero() {
                 </p>
               </div>
 
-              <div className="flex justify-center text-text-dark-muted" aria-hidden="true">
+              <div
+                className="flex justify-center text-text-dark-muted"
+                aria-hidden="true"
+              >
                 ↓
               </div>
 
@@ -80,7 +101,10 @@ export default function Hero() {
                 </p>
               </div>
 
-              <div className="flex justify-center text-text-dark-muted" aria-hidden="true">
+              <div
+                className="flex justify-center text-text-dark-muted"
+                aria-hidden="true"
+              >
                 ↓
               </div>
 
@@ -106,7 +130,10 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="flex justify-center text-text-dark-muted" aria-hidden="true">
+              <div
+                className="flex justify-center text-text-dark-muted"
+                aria-hidden="true"
+              >
                 ↓
               </div>
 

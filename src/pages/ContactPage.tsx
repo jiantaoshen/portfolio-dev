@@ -110,23 +110,6 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="mt-8 space-y-4">
-                {[
-                  t("contactPage.openTo.backend"),
-                  t("contactPage.openTo.automation"),
-                  t("contactPage.openTo.ai"),
-                  t("contactPage.openTo.opportunities"),
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-3 text-sm leading-6 text-text-muted"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-
               <div className="mt-10 border-t border-border pt-8">
                 <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
                   <a
