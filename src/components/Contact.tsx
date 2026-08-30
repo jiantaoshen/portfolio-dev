@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function Contact() {
@@ -7,54 +6,39 @@ export default function Contact() {
   return (
     <section id="contact" className="section bg-app">
       <div className="container">
-        <div className="rounded-3xl bg-dark p-8 text-white sm:p-10 lg:p-12">
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-16">
-            <div className="max-w-3xl">
-              <div className="status mb-6">
-                <span className="status-dot" />
-                {t("contact.availability")}
-              </div>
-
+        <div className="rounded-3xl bg-dark px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div className="max-w-2xl">
               <p className="text-label text-brand-muted">
                 {t("contact.eyebrow")}
               </p>
 
-              <h2 className="text-title mt-3 max-w-2xl text-white">
+              <h2 className="text-section mt-4 text-white">
                 {t("contact.title")}
               </h2>
 
-              <p className="text-large mt-5 max-w-2xl text-text-dark">
+              <p className="text-large mt-5 max-w-xl text-text-dark">
                 {t("contact.description")}
               </p>
-
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-                <a
-                  href="https://www.linkedin.com/in/jiantaoshen/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-brand"
-                >
-                  LinkedIn
-                  <span aria-hidden="true">↗</span>
-                </a>
-
-                <a
-                  href="https://github.com/jiantaoshen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-brand"
-                >
-                  GitHub
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
             </div>
 
-            <div className="shrink-0">
-              <Link to="/contact" className="btn btn-primary">
-                {t("contact.action")}
+            <div className="flex flex-wrap gap-3 lg:justify-end">
+              <a
+                href="mailto:jiantaos98@outlook.com"
+                className="btn btn-light"
+              >
+                {t("contact.email")}
                 <span aria-hidden="true">→</span>
-              </Link>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/jiantaoshen/"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-secondary"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
         </div>

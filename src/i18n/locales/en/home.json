@@ -149,69 +149,8 @@
 
   "contact": {
     "eyebrow": "Let's Talk",
-
     "title": "Building a backend, API or AI-enabled application?",
-
-    "description": "I'm open to freelance projects, contract work and full-time opportunities involving backend development, APIs, automation and practical AI-powered software.",
-
-    "availability": "Available for new opportunities",
-
-    "action": "Get in touch"
-  },
-
-
-  "contactPage": {
-    "availability": "Available for new opportunities",
-    "eyebrow": "Contact",
-    "title": "Let's build something useful.",
-    "description": "Have a project, role or software problem in mind? Tell me what you're working on.",
-
-    "openTo": {
-      "eyebrow": "Open To",
-      "title": "Projects and opportunities",
-
-      "backend": "Backend systems, APIs and application logic with C#/.NET",
-      "automation": "Python automation and software integrations",
-      "ai": "Practical AI-enabled applications and AI API integration",
-      "opportunities": "Freelance, contract and full-time software development roles"
-    },
-
-    "form": {
-      "name": "Name",
-      "namePlaceholder": "Your name",
-
-      "email": "Email",
-      "emailPlaceholder": "you@example.com",
-
-      "reason": "I'm contacting you about",
-      "reasonPlaceholder": "Select an option",
-
-      "message": "Message",
-      "messagePlaceholder": "Tell me about the project, problem or opportunity.",
-
-      "submit": "Send Message",
-      "sending": "Sending...",
-      "success": "Thanks — your message has been sent.",
-      "error": "Something went wrong. Please try again."
-    },
-
-    "reasons": [
-      {
-        "value": "freelance",
-        "label": "Freelance Project"
-      },
-      {
-        "value": "contract",
-        "label": "Contract Work"
-      },
-      {
-        "value": "full-time",
-        "label": "Full-time Opportunity"
-      },
-      {
-        "value": "other",
-        "label": "Other"
-      }
-    ]
+    "description": "Have a project, role or software opportunity in mind? Feel free to contact me by email or LinkedIn.",
+    "email": "Email Me"
   }
 }

@@ -1,48 +1,31 @@
 # Developer Portfolio
 
-A multilingual developer portfolio built with React and TypeScript.
+A multilingual developer portfolio built with React, TypeScript and Vite.
 
-The site presents my projects, technical notes and software development experience, with a primary focus on backend development, APIs, automation and practical AI-enabled applications.
-
-Live site: 
-
-https://jiantao-portfolio-dev.web.app 
+**Live site:**
+https://jiantao-portfolio-dev.web.app
 
 ## Tech Stack
 
 * React
 * TypeScript
 * Vite
-* Tailwind CSS
 * React Router
+* Tailwind CSS
 * i18next
 * Firebase Hosting
 
-## Languages
+## Features
 
-The website currently supports:
+* English, Swedish and Chinese support
+* Project case studies with dedicated routes
+* Technical notes
+* Responsive design
+* Language-specific CV downloads
 
-* English
-* Swedish
-* Chinese
-
-## Main Sections
-
-* **Home** — Overview of my development focus, featured projects and technical notes
-* **Projects** — Detailed project case studies covering architecture, features, technical decisions and deployment
-* **About** — Background, engineering strengths and technical skills
-* **Technical Notes** — Practical notes from backend development, automation, deployment and AI integration
-* **Contact** — Contact form for projects and opportunities
-
-## Getting Started
+## Development
 
 ```bash
 npm install
 npm run dev
-```
-
-## Build
-
-```bash
-npm run build
 ```

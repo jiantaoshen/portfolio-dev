@@ -110,57 +110,8 @@
   },
   "contact": {
     "eyebrow": "联系我",
-    "title": "正在构建后端、API 或 AI 应用？",
-    "description": "我目前接受 Freelance、Contract 和全职开发机会，主要涉及后端开发、API、自动化以及实际 AI 驱动的软件。",
-    "availability": "目前接受新的合作与工作机会",
-    "action": "联系我"
-  },
-  "contactPage": {
-    "availability": "目前接受新的合作与工作机会",
-    "eyebrow": "联系",
-    "title": "一起做点真正有用的软件。",
-    "description": "无论你正在寻找后端开发、API、自动化，还是希望把 AI 能力集成到实际应用中，都欢迎联系我并介绍一下你正在做的项目。",
-    "openTo": {
-      "eyebrow": "合作方向",
-      "title": "项目与工作机会",
-      "description": "我的主要方向是后端开发，尤其对后端系统与自动化、AI 以及完整应用交付相结合的工作感兴趣。",
-      "backend": "使用 C#/.NET 构建后端系统、API 和应用逻辑",
-      "automation": "Python 自动化、系统集成以及围绕实际工作流的软件",
-      "ai": "实际 AI 应用开发与 AI API 集成",
-      "opportunities": "Freelance、Contract 以及全职软件开发机会"
-    },
-    "connect": "其他平台",
-    "form": {
-      "name": "姓名",
-      "namePlaceholder": "你的姓名",
-      "email": "邮箱",
-      "emailPlaceholder": "you@example.com",
-      "reason": "联系原因",
-      "reasonPlaceholder": "请选择",
-      "message": "留言",
-      "messagePlaceholder": "简单介绍一下项目、问题或工作机会。",
-      "submit": "发送消息",
-      "sending": "发送中...",
-      "success": "谢谢，你的消息已经发送成功。",
-      "error": "发送失败，请稍后重试。"
-    },
-    "reasons": [
-      {
-        "value": "freelance",
-        "label": "Freelance 项目"
-      },
-      {
-        "value": "contract",
-        "label": "Contract 工作"
-      },
-      {
-        "value": "full-time",
-        "label": "全职工作机会"
-      },
-      {
-        "value": "other",
-        "label": "其他"
-      }
-    ]
+    "title": "正在开发后端、API 或 AI 应用？",
+    "description": "如果你有项目、职位机会或其他软件开发相关的合作想法，欢迎通过邮箱或 LinkedIn 联系我。",
+    "email": "发送邮件"
   }
 }

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import githubIcon from "../assets/Github.svg";
 import linkedinIcon from "../assets/Linkedin.svg";
+import { Mail } from "lucide-react";
 
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -31,36 +32,36 @@ export default function Layout() {
             onClick={closeMenu}
             className="inline-flex items-center rounded-lg px-1 py-1 text-xl font-extrabold tracking-tight"
           >
-            <span className="text-white">JIANTAO</span>
+            <span className="!text-white">JIANTAO</span>
             <span className="text-brand-muted">.dev</span>
           </NavLink>
 
           <div className="hidden items-center gap-7 md:flex">
             <NavLink to="/projects" className={navLinkClass}>
-              {t("Projects")}
+              {t("nav.projects")}
             </NavLink>
 
             <NavLink to="/about" className={navLinkClass}>
-              {t("About")}
+              {t("nav.about")}
             </NavLink>
 
             <NavLink to="/blog" className={navLinkClass}>
-              {t("Blog")}
+              {t("nav.blog")}
             </NavLink>
 
-            <NavLink
-              to="/contact"
+            <a
+              href="mailto:jiantaos98@outlook.com"
               className="btn btn-primary !px-4 !py-2.5"
             >
-              {t("Contact")}
-            </NavLink>
+              {t("nav.contact")}
+            </a>
 
             <LanguageSwitcher />
           </div>
 
           <button
             type="button"
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={() => setMenuOpen((current) => !current)}
             aria-label="Toggle navigation"
             aria-expanded={menuOpen}
             className="menu-button"
@@ -85,7 +86,7 @@ export default function Layout() {
                 onClick={closeMenu}
                 className={mobileLinkClass}
               >
-                {t("home")}
+                {t("nav.home")}
               </NavLink>
 
               <NavLink
@@ -93,7 +94,7 @@ export default function Layout() {
                 onClick={closeMenu}
                 className={mobileLinkClass}
               >
-                {t("projects")}
+                {t("nav.projects")}
               </NavLink>
 
               <NavLink
@@ -101,7 +102,7 @@ export default function Layout() {
                 onClick={closeMenu}
                 className={mobileLinkClass}
               >
-                {t("about")}
+                {t("nav.about")}
               </NavLink>
 
               <NavLink
@@ -109,19 +110,19 @@ export default function Layout() {
                 onClick={closeMenu}
                 className={mobileLinkClass}
               >
-                {t("blog")}
+                {t("nav.blog")}
               </NavLink>
 
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-5 flex flex-col gap-3">
                 <LanguageSwitcher />
 
-                <NavLink
-                  to="/contact"
+                <a
+                  href="mailto:jiantaos98@outlook.com"
+                  className="btn btn-primary justify-center"
                   onClick={closeMenu}
-                  className="btn btn-primary flex-1"
                 >
-                  {t("contact")}
-                </NavLink>
+                  {t("nav.contact")}
+                </a>
               </div>
             </div>
           </div>
@@ -133,42 +134,48 @@ export default function Layout() {
       </main>
 
       <footer className="border-t border-white/[0.06] bg-dark text-text-dark">
-  <div className="container flex flex-col gap-5 py-8 sm:flex-row sm:items-center sm:justify-between">
-    <div className="flex items-center gap-4">
-      <a
-        href="https://github.com/jiantaoshen"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        className="transition duration-200 hover:opacity-100"
-      >
-        <img
-          src={githubIcon}
-          alt=""
-          className="h-7 w-7 object-contain opacity-70"
-        />
-      </a>
+        <div className="container flex flex-col gap-5 py-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-5">
+            <a
+              href="https://github.com/jiantaoshen"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="transition duration-200 hover:opacity-100"
+            >
+              <img
+                src={githubIcon}
+                className="h-7 w-7 object-contain opacity-70"
+              />
+            </a>
 
-      <a
-        href="https://www.linkedin.com/in/jiantaoshen/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-        className="transition duration-200 hover:opacity-100"
-      >
-        <img
-          src={linkedinIcon}
-          alt=""
-          className="h-7 w-7 object-contain opacity-70"
-        />
-      </a>
-    </div>
+            <a
+              href="https://www.linkedin.com/in/jiantaoshen/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="transition duration-200 hover:opacity-100"
+            >
+              <img
+                src={linkedinIcon}
+                className="h-7 w-7 object-contain opacity-70"
+              />
+            </a>
 
-    <p className="text-sm text-text-dark-muted">
-      © {new Date().getFullYear()} JIANTAO. {t("rights")}
-    </p>
-  </div>
-</footer>
+            <a
+              href="mailto:jiantaos98@outlook.com"
+              aria-label="Email"
+              className="text-white/70 transition-colors hover:text-white"
+            >
+              <Mail className="h-7 w-7" />
+            </a>
+          </div>
+
+          <p className="text-sm text-text-dark-muted">
+            © {new Date().getFullYear()} JIANTAO. {t("rights")}
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -155,360 +155,421 @@
       }
     },
 
+{
+  "id": "price-watch",
+
+  "title": "Price Watch",
+
+  "category": "Fullstack- och automationsutveckling",
+
+  "status": "Klar",
+
+  "description": "En local-first-applikation för prisbevakning byggd med React, TypeScript, ASP.NET Core, Python och Playwright för att automatiskt följa produktpriser, prishistorik, målpriser och resultat från scraper-körningar.",
+
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "Tailwind CSS",
+    "ASP.NET Core",
+    ".NET 10",
+    "Python",
+    "Playwright",
+    "Pydantic",
+    "Windows Task Scheduler"
+  ],
+
+  "highlights": [
+    "Dashboard för prisbevakning byggd med React och TypeScript",
+    "ASP.NET Core som tillhandahåller ett gemensamt lokalt REST-API",
+    "Automatisk laddning och analys av produktsidor med Python och Playwright",
+    "JSON-LD som primär priskälla med en försiktig DOM fallback",
+    "Stöd för produkthantering, målpriser, prishistorik och produktdetaljer",
+    "Identifiering av misstänkta prisförändringar för att minska risken för felaktiga priser",
+    "E-postnotifieringar med kontroll av duplicerade aviseringar",
+    "Automatiska priskontroller genom Windows Task Scheduler",
+    "Lokal JSON-lagring för kördata, historik och konfiguration"
+  ],
+
+  "overview": "Price Watch är ett local-first-system för prisbevakning som automatiskt kontrollerar produktpriser på olika e-handelssajter. Applikationen består av ett frontend byggt med React och TypeScript, ett lokalt ASP.NET Core-API, en scraping-tjänst med Python och Playwright samt ett lokalt JSON-baserat datalager. Användaren kan hantera bevakade produkter, ange målpriser, se aktuella och historiska priser samt köra priskontroller manuellt eller automatiskt.",
+
+  "problem": "Produktsidor på olika e-handelssajter följer inte en gemensam struktur. Priser kan komma från JSON-LD, dynamiskt renderade DOM-element eller annat innehåll på sidan, samtidigt som webbplatser kan ändra produktnamn, URL-sluggar eller sidstruktur. Att enbart förlita sig på fasta CSS-selektorer eller rå sidtext kan därför leda till misslyckad scraping eller felaktiga priser. Ett komplett prisbevakningssystem behöver dessutom hantera historik, avvikande priser, schemalagda körningar och notifieringar.",
+
+  "solution": "Projektet separerar frontend, API, scraping och databehandling i tydliga ansvarsområden. React-frontend kommunicerar med ett ASP.NET Core-API för att hantera produkter, starta scraping-jobb och läsa historiska data. Python använder Playwright för att ladda produktsidor och extraherar priser genom en utbyggbar scraper- och strategy-arkitektur. Systemet prioriterar Schema.org JSON-LD och använder endast en försiktig DOM fallback när strukturerad data saknas. Resultaten valideras innan de skrivs till lokala JSON-filer tillsammans med historik, körstatus och notifieringsstatus.",
+
+  "architecture": [
     {
-      "id": "price-watch",
-
-      "title": "Price Watch",
-
-      "category": "Backend & automation",
-
-      "status": "Lokal applikation",
-
-      "description": "Ett lokalt prisövervakningssystem byggt kring ASP.NET Core och Python-automation. Systemet hanterar produkter, kör schemalagda priskontroller, validerar insamlad data, lagrar prishistorik, upptäcker misstänkta förändringar och skickar e-postaviseringar.",
-
-      "technologies": [
-        "C#",
-        "ASP.NET Core",
-        ".NET 10",
-        "Python",
-        "Playwright",
-        "React",
-        "TypeScript"
-      ],
-
-      "highlights": [
-        "ASP.NET Core koordinerar användargränssnittet, Python-scrapern och lokala automationsflöden",
-        "Python och Playwright hanterar webbläsarautomation och prisextraktion",
-        "Manuell och schemalagd prisövervakning",
-        "Identifiering av misstänkta priser och misslyckade körningar",
-        "Historisk prisdata och visualisering",
-        "E-postaviseringar med deduplicering",
-        "Skydd mot överlappande scraper-körningar mellan processer",
-        "Automatiserade Python-tester med pytest"
-      ],
-
-      "overview": "Price Watch är ett lokalt produktprisövervakningssystem byggt med React, TypeScript, ASP.NET Core, Python och Playwright. Det kontrollerar automatiskt produktpriser, jämför dem med målpriser, sparar historisk information, identifierar misstänkta förändringar, skickar e-postaviseringar och visar prisutveckling i en lokal dashboard.",
-
-      "problem": "Tillförlitlig prisövervakning innebär mer än att extrahera ett nummer från en webbsida. Systemet behöver hantera produkter, schemaläggning, validering, historisk data, notifieringar, fel och diagnostisk information samtidigt som externa webbplatser kan förändras oberoende av applikationen.",
-
-      "solution": "Price Watch separerar applikationsorkestrering från webbläsarautomation. ASP.NET Core fungerar som det centrala applikationslagret mellan React-gränssnittet och Python-automationen och hanterar produktkonfiguration, scraper-körningar, e-postinställningar och schemaläggning. Python och Playwright hanterar sidladdning, extraktion, validering och diagnostik.",
-
-      "architecture": [
-        {
-          "label": "Applikationsgränssnitt",
-          "value": "React · TypeScript · Vite · Tailwind CSS · Recharts"
-        },
-        {
-          "label": "Applikationsbackend",
-          "value": "C# · ASP.NET Core · .NET 10"
-        },
-        {
-          "label": "Automation & scraping",
-          "value": "Python · Playwright · Firefox · Pydantic"
-        },
-        {
-          "label": "Runtime-data",
-          "value": "Price History · Configuration · Run Metadata · Diagnostics"
-        },
-        {
-          "label": "Schemaläggning",
-          "value": "Windows Task Scheduler"
-        }
-      ],
-
-      "features": [
-        {
-          "title": "Produkthantering",
-          "description": "Produkter och målpriser kan konfigureras direkt genom applikationen."
-        },
-        {
-          "title": "Manuella & schemalagda kontroller",
-          "description": "Priskontroller kan startas via gränssnittet eller automatiskt genom Windows Task Scheduler."
-        },
-        {
-          "title": "Prishistorik",
-          "description": "Historiska priser lagras lokalt och visualiseras i dashboarden."
-        },
-        {
-          "title": "Prisvalidering",
-          "description": "Misstänkta extraherade värden kan identifieras innan de accepteras som tillförlitlig prisdata."
-        },
-        {
-          "title": "Diagnostik",
-          "description": "Misslyckade och misstänkta körningar sparar metadata och lokal debug-information för felsökning."
-        },
-        {
-          "title": "E-postaviseringar",
-          "description": "Relevanta prisförändringar kan generera aviseringar med deduplicering för att undvika upprepade meddelanden."
-        },
-        {
-          "title": "Samtidighetsskydd",
-          "description": "Skydd mellan processer förhindrar att manuella och schemalagda scraper-körningar överlappar varandra."
-        },
-        {
-          "title": "Automatiserade tester",
-          "description": "Python-delen innehåller automatiserade tester med pytest."
-        }
-      ],
-
-      "challenges": [
-        {
-          "title": "Opålitliga externa datakällor",
-          "description": "Externa webbsidor kan ändras när som helst, vilket innebär att extraherade värden behöver validering och diagnostik."
-        },
-        {
-          "title": "Applikationsorkestrering",
-          "description": "ASP.NET Core-backend behöver koordinera frontend-anrop, Python-processer, konfiguration, schemaläggning och notifieringar."
-        },
-        {
-          "title": "Överlappande automation",
-          "description": "Manuella och schemalagda körningar kan starta samtidigt och kräver därför skydd mot parallella scraper-processer."
-        },
-        {
-          "title": "Lokal körmiljö",
-          "description": "Vissa övervakade webbplatser begränsar trafik från molndatacenter, därför körs scrapern avsiktligt lokalt istället för att försöka kringgå sådana begränsningar."
-        }
-      ],
-
-      "deployment": "Price Watch är avsiktligt utformad som en lokal applikation. Scrapern körs lokalt eftersom vissa övervakade webbplatser kan begränsa trafik från molndatacenter. Runtime-data lagras lokalt och Windows Task Scheduler hanterar automatiserad körning.",
-
-      "learnings": [
-        "ASP.NET Core som applikations- och orkestreringslager",
-        "Integration av .NET och Python i samma mjukvaruflöde",
-        "Webbläsarautomation med Playwright",
-        "Strukturerad prisextraktion och validering",
-        "Design av automation för fel och diagnostik",
-        "Schemaläggning med Windows Task Scheduler",
-        "Skydd mot samtidiga processer",
-        "E-postnotifieringar och deduplicering",
-        "React-dashboard och visualisering av prisdata",
-        "Automatiserade tester med pytest"
-      ],
-
-      "futureImprovements": [
-        "Fortsätta förbättra dashboarden och användargränssnittet",
-        "Förbättra första uppstarten och konfigurationsflödet",
-        "Lägga till fler webbplatsspecifika scraper-adapters vid behov",
-        "Förfina notifieringsinställningar och kontroller",
-        "Lägga till användbar prisanalys",
-        "Förbereda Windows-paketering och distribution"
-      ],
-
-      "links": {
-        "github": "https://github.com/jiantaoshen/WishList"
-      }
+      "label": "Applikationsgränssnitt",
+      "value": "React · TypeScript · Vite"
     },
-
     {
-      "id": "portfolio",
-
-      "title": "Developer Portfolio",
-
-      "category": "Webbapplikation & leverans",
-
-      "status": "Under utveckling",
-
-      "description": "En flerspråkig utvecklarportfolio byggd med React och TypeScript för att presentera backendfokuserade projekt, tekniskt skrivande och mjukvaruerfarenhet genom en tydlig och underhållbar applikationsstruktur.",
-
-      "technologies": [
-        "React",
-        "TypeScript",
-        "Vite",
-        "Tailwind CSS",
-        "i18next",
-        "Firebase",
-        "Google Cloud"
-      ],
-
-      "highlights": [
-        "Applikationsstruktur byggd med React och TypeScript",
-        "Flerspråkigt innehåll på engelska, svenska och kinesiska",
-        "Återanvändbara routes för projekt och tekniska anteckningar",
-        "Responsivt gränssnitt byggt med Tailwind CSS",
-        "Innehåll strukturerat kring backend, API:er och AI-applikationer",
-        "Förberedd för leverans med Firebase Hosting och Google Cloud"
-      ],
-
-      "overview": "Den här portfolion är en React- och TypeScript-applikation skapad för att presentera mina mjukvaruprojekt, tekniska erfarenheter och utvecklingsinriktning. Istället för att fungera som en enkel statisk profilsida använder den separata routes, flerspråkigt innehåll och strukturerade projektstudier.",
-
-      "problem": "En utvecklarportfolio behöver kommunicera mer än en lista över tekniker. Den ska tydligt visa tekniska styrkor, konkreta projekt och professionell riktning för rekryterare, kunder och utvecklingsteam utan att bli onödigt komplex eller visuellt distraherande.",
-
-      "solution": "Applikationen använder React Router för separata sidor, i18next för flerspråkigt innehåll och återanvändbara datastrukturer för projekt och tekniska anteckningar. Tailwind CSS ger ett konsekvent visuellt system medan innehållshierarkin betonar backendutveckling, API:er, automation och praktiska AI-applikationer.",
-
-      "architecture": [
-        {
-          "label": "Applikation",
-          "value": "React · TypeScript · Vite"
-        },
-        {
-          "label": "Routing",
-          "value": "React Router"
-        },
-        {
-          "label": "Internationalisering",
-          "value": "i18next · English · Swedish · Chinese"
-        },
-        {
-          "label": "UI",
-          "value": "Tailwind CSS"
-        },
-        {
-          "label": "Leverans",
-          "value": "Firebase Hosting · Google Cloud"
-        }
-      ],
-
-      "features": [
-        {
-          "title": "Flerspråkigt innehåll",
-          "description": "Engelskt, svenskt och kinesiskt innehåll hanteras genom strukturerade i18next-namespaces."
-        },
-        {
-          "title": "Projektstudier",
-          "description": "Projekt har egna routes och återanvändbara layouts för tekniska detaljsidor."
-        },
-        {
-          "title": "Tekniska anteckningar",
-          "description": "Webbplatsen innehåller en teknisk skrivsektion för dokumentation av utvecklingsbeslut och erfarenheter."
-        },
-        {
-          "title": "Responsiv design",
-          "description": "Gränssnittet är utformat för både desktop och mobila skärmstorlekar."
-        },
-        {
-          "title": "Återanvändbart designsystem",
-          "description": "Semantisk typografi, kort, knappar och färgprimitiver håller gränssnittet konsekvent utan onödig abstraktion."
-        }
-      ],
-
-      "challenges": [
-        {
-          "title": "Tydlig positionering",
-          "description": "Webbplatsen behövde skilja mellan djup backendkompetens och bredare leveransförmåga utan att presentera varje teknik som en lika stark specialisering."
-        },
-        {
-          "title": "Flerspråkig struktur",
-          "description": "Innehållet måste förbli konsekvent på engelska, svenska och kinesiska samtidigt som projekt-ID:n och routes förblir språkoberoende."
-        },
-        {
-          "title": "Återanvändning utan överdesign",
-          "description": "Gränssnittet behövde återanvändbara primitiver samtidigt som enkel engångskomposition kunde stanna direkt i React och Tailwind."
-        }
-      ],
-
-      "deployment": "Portfolion är avsedd att distribueras genom Firebase Hosting och Google Cloud, från implementation och flerspråkig innehållsarkitektur till slutlig produktionsleverans.",
-
-      "learnings": [
-        "Bygga React-applikationer med TypeScript",
-        "Strukturera flerspråkiga applikationer med i18next",
-        "React Router och återanvändbara detaljsidor",
-        "Designsystem med Tailwind CSS",
-        "Innehållsarkitektur för tekniska portfolios",
-        "Responsiv applikationsdesign",
-        "Arbetsflöden för Firebase och Google Cloud"
-      ],
-
-      "futureImprovements": [
-        "Utöka projektstudierna",
-        "Lägga till fler tekniska anteckningar",
-        "Förbättra arkitekturvisualiseringar",
-        "Fortsätta förbättra tillgänglighet och prestanda",
-        "Slutföra produktionsdriftsättning med Firebase Hosting och Google Cloud"
-      ]
+      "label": "Lokalt API",
+      "value": "ASP.NET Core · .NET 10"
     },
+    {
+      "label": "Web scraping",
+      "value": "Python · Playwright"
+    },
+    {
+      "label": "Prisextraktion",
+      "value": "JSON-LD · DOM Fallback"
+    },
+    {
+      "label": "Datalagring",
+      "value": "Local JSON"
+    },
+    {
+      "label": "Automatisering",
+      "value": "Windows Task Scheduler · PowerShell"
+    }
+  ],
+
+  "features": [
+    {
+      "title": "Produktbevakning",
+      "description": "Besöker automatiskt konfigurerade produktsidor, hämtar aktuella priser och jämför dem med målpriser och tidigare priser."
+    },
+    {
+      "title": "Prisextraktion med flera strategier",
+      "description": "Prioriterar Schema.org JSON-LD och använder en försiktig DOM fallback när strukturerad data saknas, vilket förbättrar kompatibiliteten mellan olika webbplatser."
+    },
+    {
+      "title": "Produkthantering",
+      "description": "Gör det möjligt att lägga till, uppdatera och ta bort bevakade produkter via React-gränssnittet och ASP.NET Core-API, där produkt-ID genereras automatiskt av backend."
+    },
+    {
+      "title": "Prishistorik",
+      "description": "Sparar scraping-resultat som lokal historik och visar prisförändringar i dashboarden och på respektive produkts detaljsida."
+    },
+    {
+      "title": "Målpriser",
+      "description": "Gör det möjligt att ange ett målpris för varje produkt och identifierar automatiskt när det aktuella priset når målet."
+    },
+    {
+      "title": "Identifiering av misstänkta priser",
+      "description": "Markerar ovanligt stora prisförändringar som suspicious för att minska risken att delbetalningar, fraktkostnader eller annan felaktig data accepteras som produktpris."
+    },
+    {
+      "title": "Körstatus",
+      "description": "Registrerar resultatet från varje scraper-körning och visar hälsostatus, lyckade resultat, fel och avvikande resultat i applikationen."
+    },
+    {
+      "title": "E-postnotifieringar",
+      "description": "Skickar e-postnotifieringar när definierade prisvillkor uppfylls och sparar notifieringsstatus för att minska duplicerade aviseringar."
+    },
+    {
+      "title": "Automatisk schemaläggning",
+      "description": "Använder Windows Task Scheduler för återkommande priskontroller samtidigt som manuell körning via Run Now stöds."
+    }
+  ],
+
+  "challenges": [
+    {
+      "title": "Olika prisstrukturer mellan webbplatser",
+      "description": "Olika e-handelssajter använder olika JSON-LD-format, produktidentifierare och DOM-strukturer, vilket innebär att scrapern måste balansera kompatibilitet med tillförlitlighet."
+    },
+    {
+      "title": "Undvika felaktiga priser",
+      "description": "Produktsidor kan innehålla ordinarie priser, delbetalningspriser, fraktkostnader och priser för relaterade produkter, vilket kräver att DOM fallback är försiktig och använder kontext och tillförlitlighetsbedömning."
+    },
+    {
+      "title": "Produktidentifiering",
+      "description": "Webbplatser kan ändra produktnamn eller URL-sluggar, vilket innebär att JSON-LD-matchning inte enbart kan baseras på exakt URL utan även behöver använda stabila identifierare som productID, SKU och MPN."
+    },
+    {
+      "title": "Tydliga lokala ansvarsområden",
+      "description": "Projektet behöver behålla tydliga gränser mellan React, ASP.NET Core, Python-scrapern och lokala datafiler samtidigt som alla delar fungerar tillsammans som en komplett applikation."
+    }
+  ],
+
+  "deployment": "Price Watch använder en local-first-arkitektur. React-applikationen serveras genom ASP.NET Core, det lokala API:t hanterar applikationsfunktioner och scraper-anrop, Python- och Playwright-scrapern körs i en Windows-miljö och kördata samt historik lagras i lokala JSON-filer. Automatiska körningar hanteras genom Windows Task Scheduler.",
+
+  "learnings": [
+    "Bygga en datadriven dashboard med React och TypeScript",
+    "Designa ett lokalt REST-API med ASP.NET Core",
+    "Koppla samman ASP.NET Core med automatiseringsuppgifter i Python",
+    "Hämta dynamiskt webbinnehåll med Playwright",
+    "Extrahera produktpriser från Schema.org JSON-LD",
+    "Designa lagerbaserade scraping-strategier med JSON-LD och DOM fallback",
+    "Hantera produktidentifiering genom URL, SKU, MPN och productID",
+    "Designa prisvalidering, avvikelsedetektering och körstatus",
+    "Använda lokala JSON-filer som ett lättviktigt persistenslager",
+    "Bygga lokala automationsflöden med Windows Task Scheduler och PowerShell"
+  ],
+
+  "links": {
+    "github": "https://github.com/jiantaoshen/PriceWatch"
+  }
+},
+
+
+
+{
+  "id": "portfolio",
+
+  "title": "Developer Portfolio",
+
+  "category": "Applikations- och webbleverans",
+
+  "status": "Live",
+
+  "description": "En flerspråkig utvecklarportfolio byggd med React och TypeScript för att presentera backendprojekt, tekniska anteckningar och erfarenhet inom mjukvaruutveckling genom en tydlig, responsiv och underhållbar applikationsstruktur.",
+
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "React Router",
+    "Tailwind CSS",
+    "i18next",
+    "Firebase Hosting"
+  ],
+
+  "highlights": [
+    "Byggde applikationsstrukturen med React och TypeScript",
+    "Stöd för engelska, svenska och kinesiska",
+    "Återanvändbar routingstruktur för projektstudier och tekniska anteckningar",
+    "Språkspecifika CV-nedladdningar",
+    "Responsivt gränssnitt byggt med Tailwind CSS",
+    "Innehåll strukturerat kring backendutveckling, API:er, automation och praktiska AI-applikationer",
+    "Driftsatt som produktionsapplikation på Firebase Hosting"
+  ],
+
+  "overview": "Den här portfolion är en React- och TypeScript-applikation byggd för att presentera mina mjukvaruprojekt, tekniska erfarenheter och utvecklingsinriktning. I stället för att vara en enkel statisk presentationssida innehåller den separata routes, flerspråkigt innehåll, strukturerade projektstudier, tekniska anteckningar och språkspecifika CV-nedladdningar.",
+
+  "problem": "En utvecklarportfolio bör förmedla mer än en lista över tekniker. Den behöver tydligt visa tekniska styrkor, konkreta projektbevis och utvecklingsinriktning för rekryterare, kunder och tekniska team utan att bli onödigt komplex eller visuellt distraherande.",
+
+  "solution": "Applikationen använder React Router för separata sidor, i18next för flerspråkigt innehåll och återanvändbara datastrukturer för projektstudier och tekniska anteckningar. Tailwind CSS ger ett konsekvent och responsivt designsystem, medan innehållshierarkin betonar backendutveckling, API:er, automation och praktiska AI-applikationer. Kontakt hålls medvetet enkel genom direkt e-post och LinkedIn i stället för onödig backendinfrastruktur.",
+
+  "architecture": [
+    {
+      "label": "Applikation",
+      "value": "React · TypeScript · Vite"
+    },
+    {
+      "label": "Routing",
+      "value": "React Router"
+    },
+    {
+      "label": "Internationalisering",
+      "value": "i18next · Engelska · Svenska · Kinesiska"
+    },
+    {
+      "label": "Gränssnitt",
+      "value": "Tailwind CSS"
+    },
+    {
+      "label": "Innehåll",
+      "value": "Strukturerad JSON · Återanvändbar projekt- och artikeldata"
+    },
+    {
+      "label": "Applikationsleverans",
+      "value": "Firebase Hosting"
+    }
+  ],
+
+  "features": [
+    {
+      "title": "Flerspråkigt innehåll",
+      "description": "Engelskt, svenskt och kinesiskt innehåll hanteras genom strukturerade i18next-namespaces medan routes och projekt-ID:n förblir språkoberoende."
+    },
+    {
+      "title": "Projektstudier",
+      "description": "Varje projekt har en egen route och använder en återanvändbar struktur för att presentera arkitektur, funktioner, utmaningar, driftsättning och tekniska lärdomar."
+    },
+    {
+      "title": "Tekniska anteckningar",
+      "description": "Webbplatsen innehåller en sektion för tekniska texter om backendutveckling, automation, driftsättning, integration och experiment med AI-applikationer."
+    },
+    {
+      "title": "Språkspecifika CV-nedladdningar",
+      "description": "Besökare kan ladda ner den engelska, svenska eller kinesiska versionen av CV:t beroende på valt språk på webbplatsen."
+    },
+    {
+      "title": "Responsiv design",
+      "description": "Gränssnittet är utformat för både datorer och mobila enheter med responsiv navigation, layout och innehåll."
+    },
+    {
+      "title": "Återanvändbart designsystem",
+      "description": "Semantisk typografi, kort, knappar, färger och layout-primitives skapar visuell konsekvens utan onödig abstraktion eller överdriven komponentisering."
+    },
+    {
+      "title": "Enkel kontakt",
+      "description": "Besökare kan kontakta mig direkt via e-post eller LinkedIn utan behov av separat kontaktbackend eller kontosystem."
+    }
+  ],
+
+  "challenges": [
+    {
+      "title": "Tydlig professionell profil",
+      "description": "Webbplatsen behövde tydligt skilja min djupare backendkompetens från min bredare förmåga att leverera kompletta applikationer, i stället för att presentera alla tekniker som likvärdiga specialområden."
+    },
+    {
+      "title": "Flerspråkig struktur",
+      "description": "Engelskt, svenskt och kinesiskt innehåll behövde behålla samma struktur samtidigt som projekt-ID:n, artikel-ID:n och applikationens routes förblev språkoberoende."
+    },
+    {
+      "title": "Informationstäthet",
+      "description": "Webbplatsen behövde ge tillräckligt med tekniska bevis för rekryterare och utvecklingsteam utan att upprepa samma professionella positionering i flera sektioner."
+    },
+    {
+      "title": "Återanvändning utan överdesign",
+      "description": "Gränssnittet behövde tillräckligt många återanvändbara primitives och datastrukturer för konsekvens, samtidigt som enkla engångslayouter kunde implementeras direkt med React och Tailwind."
+    }
+  ],
+
+  "deployment": "Portfolion är driftsatt som en produktionsbyggd Vite-applikation på Firebase Hosting, med SPA-routing konfigurerad för React Router och flerspråkigt innehåll levererat genom i18next.",
+
+  "learnings": [
+    "Bygga underhållbara React-applikationer med TypeScript",
+    "Designa flerspråkiga applikationsstrukturer med i18next",
+    "React Router och återanvändbara detaljsidor",
+    "Strukturera projekt- och artikelinnehåll med återanvändbara datamodeller",
+    "Designsystem med Tailwind CSS",
+    "Responsiv applikationsdesign",
+    "Innehållsarkitektur för en teknisk portfolio",
+    "Språkspecifik leverans av statiska resurser",
+    "Firebase Hosting och SPA-driftsättning"
+  ],
+
+  "links": {
+    "github": "https://github.com/jiantaoshen/portfolio-dev",
+    "live": "https://jiantao-portfolio-dev.web.app"
+  }
+},
 
     {
-      "id": "ai-character-chat",
+      "id": "ai-roleplay",
 
-      "title": "AI Character Chat",
+      "title": "AI Roleplay",
 
       "category": "AI-applikationsutveckling",
 
       "status": "Under utveckling",
 
-      "description": "En experimentell AI-chattapplikation som kombinerar ett React- och TypeScript-gränssnitt med en Python-tjänst och lokalt körda språkmodeller genom Ollama.",
+      "description": "En AI-baserad rollspelschatt byggd med React, ASP.NET Core, FastAPI och Ollama, med stöd för flera karaktärer, strömmande svar, kontext över flera meddelanden, strukturerade karaktärsprompter och konversationssammanfattning.",
 
       "technologies": [
-        "Python",
-        "Ollama",
-        "React",
-        "TypeScript",
-        "AI Integration"
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "ASP.NET Core",
+      "C#",
+      "Python",
+      "FastAPI",
+      "Ollama",
+      "Qwen3"
       ],
 
       "highlights": [
-        "Python-baserad AI-tjänst",
-        "Integration av lokala modeller genom Ollama",
-        "Användargränssnitt i React och TypeScript",
-        "Separation mellan UI och AI-tjänstens ansvar",
-        "Grund för framtida backend-API:er och persistent applikationsdata"
+      "Chattgränssnitt byggt med React och TypeScript",
+      "ASP.NET Core används som huvudbackend och proxy mot AI-tjänsten",
+      "FastAPI ansvarar för karaktärsprompter, kontext och AI-logik",
+      "Lokal qwen3:4b-modell körs via Ollama",
+      "Strömmande svar genom hela applikationskedjan",
+      "Flera karaktärer med dynamisk inläsning",
+      "Stöd för Stop Generation och Regenerate",
+      "Conversation Summary för komprimering av långa konversationer",
+      "Refaktorering av frontend-komponenter och backendens service-lager"
       ],
 
-      "overview": "AI Character Chat är en experimentell applikation som utforskar hur lokalt körda språkmodeller kan integreras i riktig mjukvara. Den nuvarande versionen kombinerar ett React- och TypeScript-gränssnitt med en Python-tjänst och Ollama.",
+      "overview": "AI Roleplay är ett experimentellt projekt för att utforska arkitekturen bakom en komplett AI-baserad karaktärschatt. Projektet använder React i frontend, ASP.NET Core som huvudbackend, FastAPI som separat AI-tjänst och Ollama som lokal modellmiljö. Den nuvarande versionen har färdigställt kärnan i AI Roleplay-MVP:n och fokuserar på tydliga skillnader mellan karaktärer, strömmande konversationer, kontext över flera meddelanden och sammanfattning av längre konversationer.",
 
-      "problem": "Många AI-exempel stannar vid att skicka en prompt till en modell och visa svaret. Det här projektet utforskar hur AI-funktionalitet kan bli en del av en större applikationsarkitektur istället för att förbli en isolerad modelldemo.",
+      "problem": "Många AI-chattdemonstrationer stannar vid att skicka en prompt till en språkmodell och visa svaret. De saknar ofta en riktig applikationsarkitektur, strukturerad hantering av karaktärer, kontextkontroll och tydliga gränser mellan olika tjänster. När konversationer blir längre kan även problem med stora kontextfönster, inkonsekvent karaktärsbeteende och otydlig ansvarsfördelning uppstå.",
 
-      "solution": "Applikationen separerar frontendgränssnittet från den Python-baserade AI-logiken. Ollama tillhandahåller den lokala modellmiljön samtidigt som arkitekturen lämnar utrymme för framtida API:er, persistent data, användarstatus och mer strukturerade AI-arbetsflöden.",
+      "solution": "Projektet delar upp ansvaret i tre applikationslager. React hanterar användargränssnitt, interaktion och rendering av strömmande svar. ASP.NET Core tillhandahåller applikationens huvudsakliga API och fungerar som länken mellan frontend och AI-tjänsten. FastAPI ansvarar för Character Engine, Prompt Builder, konversationskontext, sammanfattning och modellintegration. Ollama används som lokal LLM-runtime. Denna arkitektur håller AI-logik separerad från produktlogik och gör det möjligt att senare lägga till persistens, långtidsminne, autentisering och produktionsdriftsättning.",
 
       "architecture": [
-        {
-          "label": "Applikationsgränssnitt",
-          "value": "React · TypeScript"
-        },
-        {
-          "label": "AI-tjänst",
-          "value": "Python"
-        },
-        {
-          "label": "Modellmiljö",
-          "value": "Ollama"
-        },
-        {
-          "label": "AI-modell",
-          "value": "Local LLM"
-        }
+      {
+      "label": "Frontend",
+      "value": "React · TypeScript · Tailwind CSS"
+      },
+      {
+      "label": "Huvudbackend",
+      "value": "ASP.NET Core · C#"
+      },
+      {
+      "label": "AI-tjänst",
+      "value": "FastAPI · Python"
+      },
+      {
+      "label": "Modellmiljö",
+      "value": "Ollama"
+      },
+      {
+      "label": "AI-modell",
+      "value": "qwen3:4b"
+      }
       ],
 
       "features": [
-        {
-          "title": "Lokal AI",
-          "description": "Språkmodeller körs lokalt genom Ollama istället för att kräva ett externt hostat modell-API."
-        },
-        {
-          "title": "Separat AI-tjänst",
-          "description": "AI-relaterad logik hålls utanför React-gränssnittet för att skapa en tydlig gräns mellan UI och modellfunktionalitet."
-        },
-        {
-          "title": "Karaktärsinteraktion",
-          "description": "Applikationen utforskar konversationsupplevelser byggda kring AI-drivna karaktärer."
-        }
+      {
+      "title": "Chatt med flera karaktärer",
+      "description": "Karaktärer hanteras genom strukturerad konfiguration. React laddar tillgängliga karaktärer dynamiskt och skickar chattförfrågningar baserat på characterId."
+      },
+      {
+      "title": "Character Engine",
+      "description": "Karaktärskonfigurationen innehåller bakgrund, personlighet, talstil, scenario, relation, svarsregler och exempelkonversationer för att skapa tydligt differentierade personligheter."
+      },
+      {
+      "title": "Strömmande chatt",
+      "description": "Svar från Ollama strömmas genom FastAPI StreamingResponse och ASP.NET Core-proxyn innan de renderas i realtid med React ReadableStream."
+      },
+      {
+      "title": "Kontext över flera meddelanden",
+      "description": "React behåller den aktuella konversationshistoriken och skickar den vid varje generering så att modellen kan fortsätta dialogen utifrån tidigare meddelanden."
+      },
+      {
+      "title": "Conversation Summary",
+      "description": "När konversationen blir längre än det aktuella meddelandefönstret sammanfattar FastAPI äldre meddelanden och kombinerar sammanfattningen med de senaste 20 meddelandena."
+      },
+      {
+      "title": "Stop och Regenerate",
+      "description": "Användaren kan avbryta en pågående generering med AbortController eller generera om det senaste AI-svaret utan att förlora den aktuella kontexten."
+      }
       ],
 
       "challenges": [
-        {
-          "title": "Applikationsstruktur",
-          "description": "Projektet behöver vara tillräckligt flexibelt för att växa från en enkel lokal modellintegration till en mer komplett backenddriven AI-applikation."
-        },
-        {
-          "title": "Modellintegration",
-          "description": "AI-beteendet behöver kopplas till applikationslogik istället för att förbli en isolerad textgenereringsfunktion."
-        }
+      {
+      "title": "Konsekvent karaktärsbeteende",
+      "description": "Karaktärskonfiguration, promptkonstruktion och exempelkonversationer måste skapa tydliga personligheter utan att modellen mekaniskt upprepar exempel eller hittar på gemensamma minnen."
+      },
+      {
+      "title": "Långa konversationer",
+      "description": "Att skicka hela konversationshistoriken blir ineffektivt när chatten växer, därför används ett fönster med de senaste meddelandena tillsammans med Conversation Summary."
+      },
+      {
+      "title": "Streamingarkitektur",
+      "description": "AI-svaret måste fortsätta vara strömmande genom Ollama, FastAPI, ASP.NET Core och React utan att buffras till ett komplett svar i något mellanlager."
+      },
+      {
+      "title": "Ansvarsfördelning",
+      "description": "Projektet separerar successivt frontendens UI-logik, ASP.NET Core-baserad produktlogik och Python-baserad AI-logik för att undvika att enskilda komponenter eller controllers får för stort ansvar."
+      }
       ],
 
-      "deployment": "Projektet använder för närvarande lokalt körda Ollama-modeller och är fortfarande under aktiv utveckling.",
+      "deployment": "Projektet utvecklas och körs för närvarande lokalt. React, ASP.NET Core och FastAPI kan startas tillsammans med dev.ps1, medan AI-modellen körs lokalt via Ollama. PostgreSQL och produktionsdriftsättning har ännu inte lagts till.",
 
       "learnings": [
-        "Koppla applikationsgränssnitt till Python-baserade AI-tjänster",
-        "Arbeta med lokalt körda språkmodeller genom Ollama",
-        "Separera AI-logik från frontendansvar",
-        "Tänka på AI som en del av en större applikationsarkitektur"
+      "Bygga en komplett AI-kedja med React → ASP.NET Core → FastAPI → Ollama",
+      "Implementera strömmande AI-svar genom flera tjänstelager",
+      "Designa strukturerade karaktärsprompter och tydligt differentierade personligheter",
+      "Hantera längre konversationer med Conversation Summary",
+      "Använda AbortController för att avbryta AI-generering",
+      "Refaktorera en React-applikation till komponenter, services och gemensamma typer",
+      "Refaktorera ASP.NET Core från direkt controller-logik till Controller → Service-arkitektur",
+      "Designa AI-integration som en del av en komplett mjukvaruapplikation istället för som en fristående modelldemo"
       ],
 
       "futureImprovements": [
-        "Introducera ett mer komplett backend-API när applikationens ansvar kräver det",
-        "Lägga till persistent konversations- och användardata",
-        "Utforska hostade AI API:er tillsammans med lokala modeller",
-        "Utveckla mer strukturerade AI-arbetsflöden och produktfunktioner"
+      "Spara Conversations och Messages permanent med PostgreSQL",
+      "Spara och uppdatera Conversation Summary inkrementellt",
+      "Lägga till konversationshistorik och möjlighet att växla mellan konversationer",
+      "Bygga långtidsminne med pgvector",
+      "Lägga till registrering, autentisering och ägarskap av konversationer",
+      "Lägga till funktioner för att skapa, redigera och upptäcka karaktärer",
+      "Lägga till användningsmätning, credits och prenumerationer",
+      "Introducera Docker och CI/CD för produktionsdriftsättning"
       ]
     }
   ]

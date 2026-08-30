@@ -109,58 +109,9 @@
     "viewAll": "Visa alla anteckningar"
   },
   "contact": {
-    "eyebrow": "Kontakta mig",
-    "title": "Bygger du en backend, ett API eller en AI-baserad applikation?",
-    "description": "Jag är öppen för frilansprojekt, kontraktsarbete och heltidsroller inom backendutveckling, API:er, automation och praktisk AI-driven mjukvara.",
-    "availability": "Tillgänglig för nya möjligheter",
-    "action": "Kontakta mig"
-  },
-  "contactPage": {
-    "availability": "Tillgänglig för nya möjligheter",
     "eyebrow": "Kontakt",
-    "title": "Låt oss bygga något användbart.",
-    "description": "Oavsett om du söker hjälp med backendutveckling, API:er, automation eller en AI-baserad applikation är du välkommen att höra av dig och berätta vad du arbetar med.",
-    "openTo": {
-      "eyebrow": "Öppen för",
-      "title": "Projekt och möjligheter",
-      "description": "Mitt huvudsakliga fokus är backendutveckling, särskilt arbete där backendsystem kombineras med automation, AI och komplett applikationsleverans.",
-      "backend": "Backendsystem, API:er och applikationslogik med C#/.NET",
-      "automation": "Python-automation, integrationer och mjukvara byggd kring praktiska arbetsflöden",
-      "ai": "Praktiska AI-applikationer och integration av AI API:er",
-      "opportunities": "Frilansprojekt, kontraktsarbete och heltidsroller inom mjukvaruutveckling"
-    },
-    "connect": "Andra plattformar",
-    "form": {
-      "name": "Namn",
-      "namePlaceholder": "Ditt namn",
-      "email": "E-post",
-      "emailPlaceholder": "du@example.com",
-      "reason": "Jag kontaktar dig angående",
-      "reasonPlaceholder": "Välj ett alternativ",
-      "message": "Meddelande",
-      "messagePlaceholder": "Berätta kort om projektet, problemet eller möjligheten.",
-      "submit": "Skicka meddelande",
-      "sending": "Skickar...",
-      "success": "Tack — ditt meddelande har skickats.",
-      "error": "Något gick fel. Försök igen."
-    },
-    "reasons": [
-      {
-        "value": "freelance",
-        "label": "Frilansprojekt"
-      },
-      {
-        "value": "contract",
-        "label": "Kontraktsarbete"
-      },
-      {
-        "value": "full-time",
-        "label": "Heltidsmöjlighet"
-      },
-      {
-        "value": "other",
-        "label": "Annat"
-      }
-    ]
+    "title": "Bygger du ett backend-system, API eller en AI-baserad applikation?",
+    "description": "Har du ett projekt, en tjänst eller en annan möjlighet inom mjukvaruutveckling? Kontakta mig gärna via e-post eller LinkedIn.",
+    "email": "Skicka e-post"
   }
 }
