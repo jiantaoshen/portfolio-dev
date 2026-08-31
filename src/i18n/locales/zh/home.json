@@ -7,7 +7,7 @@
     "titleAfter": "与 AI 驱动的应用。",
     "description": "以后端开发为核心，主要使用 C#/.NET 和 Python 构建 API、自动化和应用系统，并将 AI 能力融入实际的软件产品。",
     "architecture": {
-      "title": "从后端到可用产品",
+      "title": "从前端到可用产品",
       "frontend": {
         "label": "应用界面",
         "value": "React + TypeScript"
@@ -22,7 +22,7 @@
       },
       "deployment": {
         "label": "应用交付",
-        "value": "Azure · Firebase · GCP"
+        "value": "Microsoft Azure · Firebase · GCP"
       },
       "ai": {
         "label": "AI 与自动化",

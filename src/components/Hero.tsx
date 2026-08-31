@@ -74,6 +74,22 @@ export default function Hero() {
             </div>
 
             <div className="space-y-3">
+              <div className="rounded-xl border border-white/10 bg-dark-muted/80 p-4">
+                  <p className="text-label text-text-dark-muted">
+                    {t("hero.architecture.frontend.label", { ns: "home" })}
+                  </p>
+
+                  <p className="mt-2 font-semibold text-white">
+                    {t("hero.architecture.frontend.value", { ns: "home" })}
+                  </p>
+                </div>
+              <div
+                className="flex justify-center text-text-dark-muted"
+                aria-hidden="true"
+              >
+                ↓
+              </div>
+
               <div className="rounded-xl border border-brand/30 bg-brand/10 p-4">
                 <p className="text-label text-brand-muted">
                   {t("hero.architecture.backend.label", { ns: "home" })}
@@ -84,22 +100,7 @@ export default function Hero() {
                 </p>
               </div>
 
-              <div
-                className="flex justify-center text-text-dark-muted"
-                aria-hidden="true"
-              >
-                ↓
-              </div>
-
-              <div className="rounded-xl border border-brand/20 bg-brand/[0.08] p-4">
-                <p className="text-label text-brand-muted">
-                  {t("hero.architecture.ai.label", { ns: "home" })}
-                </p>
-
-                <p className="mt-2 font-semibold text-white">
-                  {t("hero.architecture.ai.value", { ns: "home" })}
-                </p>
-              </div>
+              
 
               <div
                 className="flex justify-center text-text-dark-muted"
@@ -109,13 +110,13 @@ export default function Hero() {
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-white/10 bg-dark-muted/80 p-4">
-                  <p className="text-label text-text-dark-muted">
-                    {t("hero.architecture.frontend.label", { ns: "home" })}
+                <div className="rounded-xl border border-brand/20 bg-brand/[0.08] p-4">
+                  <p className="text-label text-brand-muted">
+                    {t("hero.architecture.ai.label", { ns: "home" })}
                   </p>
 
                   <p className="mt-2 font-semibold text-white">
-                    {t("hero.architecture.frontend.value", { ns: "home" })}
+                    {t("hero.architecture.ai.value", { ns: "home" })}
                   </p>
                 </div>
 

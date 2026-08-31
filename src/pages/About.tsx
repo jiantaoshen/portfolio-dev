@@ -58,9 +58,9 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story + Engineering Strengths */}
+      {/* Story */}
       <section className="section bg-app">
-        <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div className="container grid gap-12 lg:gap-16">
           <div>
             <p className="text-label text-brand">
               {t("story.eyebrow", { ns: "about" })}
@@ -78,33 +78,6 @@ export default function About() {
                 >
                   {paragraph}
                 </p>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="text-label text-brand">
-              {t("focus.eyebrow", { ns: "about" })}
-            </p>
-
-            <h2 className="text-title mt-3 text-text">
-              {t("focus.title", { ns: "about" })}
-            </h2>
-
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              {focus.map((item) => (
-                <article
-                  key={item.title}
-                  className="card p-6"
-                >
-                  <h3 className="text-heading text-text">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-body mt-3 text-text-muted">
-                    {item.description}
-                  </p>
-                </article>
               ))}
             </div>
           </div>

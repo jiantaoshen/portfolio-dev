@@ -10,7 +10,7 @@
     "description": "Backend-focused software developer working with C#/.NET and Python to build APIs, automation and applications that turn AI capabilities into practical software products.",
 
     "architecture": {
-      "title": "From backend to working product",
+      "title": "From frontend to working product",
 
       "frontend": {
         "label": "Application UI",
@@ -29,7 +29,7 @@
 
       "deployment": {
         "label": "Delivery",
-        "value": "Azure · Firebase · GCP"
+        "value": "Microsoft Azure · Firebase · GCP"
       },
 
       "ai": {

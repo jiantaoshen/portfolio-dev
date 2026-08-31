@@ -7,7 +7,7 @@
     "titleAfter": "och AI-drivna applikationer.",
     "description": "Backendfokuserad mjukvaruutvecklare som arbetar med C#/.NET och Python för att bygga API:er, automation och applikationer som omvandlar AI-funktionalitet till praktiska mjukvaruprodukter.",
     "architecture": {
-      "title": "Från backend till fungerande produkt",
+      "title": "Från frontend till fungerande produkt",
       "frontend": {
         "label": "Applikationsgränssnitt",
         "value": "React + TypeScript"
@@ -22,7 +22,7 @@
       },
       "deployment": {
         "label": "Leverans",
-        "value": "Azure · Firebase · GCP"
+        "value": "Microsoft Azure · Firebase · GCP"
       },
       "ai": {
         "label": "AI & automation",

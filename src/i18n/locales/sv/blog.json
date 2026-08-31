@@ -1,72 +1,31 @@
 {
   "hero": {
     "eyebrow": "Tekniska anteckningar",
-    "title": "Anteckningar från att bygga och köra mjukvara.",
-    "description": "Praktiska anteckningar om backendutveckling, API:er, automation, driftsättning och AI-integration baserade på problem jag har stött på i riktiga projekt."
+    "title": "Anteckningar från arbetet med att bygga och köra mjukvara.",
+    "description": "Praktiska erfarenheter inom backendutveckling, API:er, automation, driftsättning och AI-integration, baserade på problem som uppstått i verkliga projekt."
   },
+
   "detail": {
-    "eyebrow": "Teknisk anteckning",
+    "eyebrow": "Tekniska anteckningar",
     "back": "Tillbaka till tekniska anteckningar",
     "published": "Publicerad",
     "readingTime": "Lästid",
     "topics": "Ämnen",
-    "notFoundEyebrow": "Teknisk anteckning",
+    "notFoundEyebrow": "Tekniska anteckningar",
     "notFound": "Artikeln kunde inte hittas"
   },
+
   "posts": {
-    "eyebrow": "Från utvecklingsloggen",
+    "eyebrow": "Utvecklingslogg",
     "title": "Senaste anteckningarna",
-    "description": "Korta tekniska genomgångar av implementationsbeslut, integrationsproblem, driftsättning och lärdomar från utvecklingsarbetet.",
+    "description": "Korta tekniska anteckningar om implementeringsbeslut, systemintegration, driftsättning och praktiska lärdomar från arbetet med olika projekt.",
     "items": [
       {
-        "id": "dotnet-azure-neon",
-        "title": "Driftsätta en .NET-applikation med Azure och Neon",
-        "description": "En praktisk genomgång av hur en ASP.NET Core-applikation kopplas till hanterad PostgreSQL och driftsätts i Azure.",
-        "date": "2026",
-        "readingTime": "6 min läsning",
-        "tags": [
-          ".NET",
-          "Azure",
-          "PostgreSQL",
-          "Neon"
-        ],
-        "sections": [
-          {
-            "title": "Varför den här lösningen",
-            "paragraphs": [
-              "Målet var att flytta en databasdriven .NET-applikation från lokal utveckling till en riktig driftmiljö utan att introducera onödig infrastruktur.",
-              "Azure för applikationshosting och Neon för hanterad PostgreSQL gav ett praktiskt sätt att driftsätta applikationen samtidigt som infrastrukturen kunde hållas relativt enkel."
-            ]
-          },
-          {
-            "title": "Ansluta PostgreSQL",
-            "paragraphs": [
-              "Applikationen behövde en produktionsanslutning till databasen som var separat från den lokala utvecklingskonfigurationen.",
-              "Det innebar att anslutningssträngar och miljövariabler behövde hanteras som driftsättningskonfiguration istället för att hårdkodas i applikationen."
-            ]
-          },
-          {
-            "title": "Flytten till Azure",
-            "paragraphs": [
-              "Driftsättningen introducerade problem som inte syntes under lokal utveckling, särskilt kring miljökonfiguration och anslutningen till den externa databasen.",
-              "Det var viktigt att testa hela den driftsatta applikationen eftersom en lyckad build inte automatiskt innebär att alla produktionsberoenden är korrekt konfigurerade."
-            ]
-          },
-          {
-            "title": "Vad jag lärde mig",
-            "paragraphs": [
-              "Hosting och databaskonfiguration är en del av applikationsarkitekturen och inte bara uppgifter som sker efter utvecklingen.",
-              "Hanterade tjänster som Neon kan minska infrastrukturens komplexitet och göra mindre applikationer enklare att driva."
-            ]
-          }
-        ]
-      },
-      {
         "id": "dotnet-python-price-watch",
-        "title": "Orkestrera Python-automation från ASP.NET Core",
+        "title": "Orkestrera Python-automation med ASP.NET Core",
         "description": "Hur jag separerade applikationsorkestrering från webbläsarautomation i ett lokalt prisövervakningssystem byggt med ASP.NET Core, Python och Playwright.",
         "date": "2026",
-        "readingTime": "7 min läsning",
+        "readingTime": "5 min",
         "tags": [
           ".NET",
           "Python",
@@ -75,48 +34,115 @@
         ],
         "sections": [
           {
-            "title": "Separera ansvarsområden",
+            "title": "Problemet",
             "paragraphs": [
-              "Prisövervakning handlar om mer än webbläsarautomation. Applikationen behöver även hantera produktkonfiguration, schemaläggning, notifieringar, körningskontroll och historiska resultat.",
-              "Istället för att lägga allt ansvar i scrapern behöll jag ASP.NET Core som applikationslager och Python som automationslager."
+              "Prisövervakning handlar om mer än att hämta priser från webbsidor. Systemet behöver även hantera produktkonfiguration, schemalagd körning, notifieringar, historiska resultat och körningskontroll.",
+              "Om all logik placeras i scrapern blir automationslogiken och applikationslogiken allt svårare att underhålla när funktionaliteten växer."
             ]
           },
           {
-            "title": "ASP.NET Core som orkestreringslager",
+            "title": "Övervägda alternativ",
             "paragraphs": [
-              "ASP.NET Core-applikationen hanterar produkter, manuella körningar, e-postinställningar och schemaläggning samtidigt som den koordinerar Python-processen för scraping.",
-              "Det håller applikationsansvaret separerat från webbläsarspecifik extraktionslogik och gör hela arbetsflödet enklare att förstå."
+              "A. Använd C# + Playwright for .NET för hela systemet.",
+              "B. Använd Python + Playwright för hela systemet.",
+              "C. Låt ASP.NET Core ansvara för applikationsorkestrering och Python + Playwright för webbläsarautomation."
             ]
           },
           {
-            "title": "Design för opålitlig extern data",
+            "title": "Avvägningar",
             "paragraphs": [
-              "Externa webbplatser kan förändras oberoende av applikationen, vilket innebär att en scraper inte kan utgå från att varje extraherat värde är korrekt.",
-              "Arbetsflödet innehåller därför validering, upptäckt av misstänkta prisförändringar och diagnostisk information så att misslyckade eller ovanliga körningar kan undersökas."
+              "A ger en enhetlig teknikstack och förenklar driftsättning och underhåll, men applikationslogik och automationslogik blir koncentrerade till samma teknikstack.",
+              "B gör webbläsarautomation enkel och direkt, men när konfiguration, schemaläggning, notifieringar och körningshantering växer behöver applikationsstrukturen organiseras mer noggrant.",
+              "C skapar en tydlig gräns mellan applikationslagret och automationslagret, men introducerar ytterligare komplexitet kring kommunikation mellan processer, felhantering och hantering av körmiljön.",
+              "Jag valde slutligen C, där ASP.NET Core hanterar applikationens arbetsflöde och Python fokuserar på webbläsarautomation."
             ]
           },
           {
-            "title": "Varför scrapern körs lokalt",
+            "title": "Potentiella risker",
             "paragraphs": [
-              "Vissa webbplatser kan begränsa trafik från molndatacenter, därför är scrapern avsiktligt byggd för att köras lokalt istället för att försöka kringgå sådana begränsningar.",
-              "Windows Task Scheduler hanterar schemalagd körning samtidigt som applikationen även stöder manuella kontroller."
+              "Externa webbplatser kan ändra sidstruktur, prisformat eller nätverksbeteende.",
+              "Python-processer kan också få timeout, avslutas oväntat eller köras parallellt. Därför innehåller systemet datavalidering, identifiering av misstänkta prisförändringar, diagnostisk loggning och kontroll av parallell körning."
             ]
           },
           {
-            "title": "Vad jag lärde mig",
+            "title": "Kriterier för ett lyckat resultat",
             "paragraphs": [
-              ".NET och Python fungerar bra tillsammans när varje runtime har ett tydligt ansvar.",
-              "Automation blir mer tillförlitlig när schemaläggning, validering, diagnostik, notifieringar och samtidighetskontroll behandlas som delar av applikationsdesignen från början."
+              "Schemalagda jobb kan köras stabilt.",
+              "Felaktiga data och scraper-fel kan upptäckas.",
+              "Upprepade körningar skapar inte konflikter.",
+              "När en webbplats förändras kan ändringarna i största möjliga utsträckning begränsas till automationslagret utan att påverka hela applikationen."
             ]
           }
         ]
       },
+
+      {
+        "id": "price-watch-deployment",
+        "title": "Driftsättning av scraper: molnet eller lokal körning",
+        "description": "Varför jag gick från Google Cloud Run till lokal körning, inklusive testresultaten och avvägningarna bakom beslutet.",
+        "date": "2026",
+        "readingTime": "4 min",
+        "tags": [
+          "Deployment",
+          "Google Cloud",
+          "Automation",
+          "Windows"
+        ],
+        "sections": [
+          {
+            "title": "Problemet",
+            "paragraphs": [
+              "Prisövervakningen behöver köras automatiskt enligt ett schema. Jag ville från början att scrapern skulle kunna köras oberoende av min lokala dator och övervägde därför först en molnbaserad driftsättning."
+            ]
+          },
+          {
+            "title": "Försök och resultat",
+            "paragraphs": [
+              "Till en början driftsatte jag scrapern med Google Cloud Run + Cloud Scheduler, där Scheduler skulle starta priskontroller med jämna mellanrum.",
+              "Själva driftsättningen fungerade korrekt, men i praktiska tester misslyckades inläsningen av samtliga målwebbsidor.",
+              "Samma scraper fungerade däremot korrekt från mitt lokala nätverk. Det tydde på att problemet troligen var kopplat till körmiljön och att vissa målwebbplatser kan begränsa trafik från molndatacenter."
+            ]
+          },
+          {
+            "title": "Övervägda alternativ",
+            "paragraphs": [
+              "A. Fortsätta använda Cloud Run och undersöka andra sätt att hantera åtkomstbegränsningarna.",
+              "B. Testa andra molnbaserade körmiljöer.",
+              "C. Avstå från molnkörning och köra scrapern lokalt."
+            ]
+          },
+          {
+            "title": "Avvägningar",
+            "paragraphs": [
+              "A och B skulle kunna lösa problemet, men skulle kräva ytterligare tid för att undersöka nätverksmiljöer och webbplatsernas begränsningar. Även om problemet kunde lösas tillfälligt finns ingen garanti för att målwebbplatserna inte ändrar sina begränsningar igen.",
+              "Projektets mål är att övervaka priser på ett tillförlitligt sätt, inte att lösa webbplatsernas begränsningar för trafik från molndatacenter. Därför var nyttan av att lägga betydligt mer tid på problemet begränsad.",
+              "C har mindre avancerad infrastruktur än en molnbaserad lösning, men är enkel och praktiska tester visade att den lokala miljön kunde komma åt målwebbplatserna på ett stabilt sätt.",
+              "Jag valde därför slutligen C."
+            ]
+          },
+          {
+            "title": "Potentiella risker",
+            "paragraphs": [
+              "Schemalagda uppgifter kan inte köras när den lokala datorn är avstängd, i viloläge eller saknar nätverksanslutning.",
+              "Scraperns anropsfrekvens behöver också kontrolleras för att undvika upprepade förfrågningar till målwebbplatser inom korta tidsperioder."
+            ]
+          },
+          {
+            "title": "Kriterier för ett lyckat resultat",
+            "paragraphs": [
+              "Scrapern körs enligt schema med Windows Task Scheduler samtidigt som applikationen behåller möjligheten att starta en manuell priskontroll.",
+              "Vid en normal anropsfrekvens kan målwebbsidorna läsas kontinuerligt och hela prisövervakningsflödet fungerar utan att vara beroende av ytterligare molnbaserade åtkomstlösningar."
+            ]
+          }
+        ]
+      },
+
       {
         "id": "react-python-ollama",
         "title": "Bygga en AI-applikation med React, Python och Ollama",
-        "description": "Hur ett React-gränssnitt kan kommunicera med en Python-baserad AI-tjänst och lokalt hostade språkmodeller genom Ollama.",
+        "description": "Hur jag separerade frontend, AI-tjänsten och den lokala modellmiljön samtidigt som tydliga systemgränser behölls för framtida vidareutveckling.",
         "date": "2026",
-        "readingTime": "8 min läsning",
+        "readingTime": "6 min",
         "tags": [
           "React",
           "Python",
@@ -125,59 +151,115 @@
         ],
         "sections": [
           {
-            "title": "Separera UI och AI-logik",
+            "title": "Problemet",
             "paragraphs": [
-              "React-gränssnittet bör fokusera på applikationsupplevelsen istället för att känna till hur språkmodellerna körs.",
-              "Genom att hålla modellkommunikationen i en Python-tjänst skapas en tydligare gräns mellan gränssnittskod och AI-specifik funktionalitet."
+              "Applikationen behöver låta React-frontend kommunicera med en språkmodell utan att modellanrop, prompts och AI-relaterad logik placeras direkt i frontend.",
+              "Det behövs också ett sätt att köra modeller som passar utvecklingsfasen och gör det enkelt att snabbt testa olika prompts och interaktionsmönster."
             ]
           },
           {
-            "title": "Använda Ollama lokalt",
+            "title": "Övervägda alternativ",
             "paragraphs": [
-              "Ollama ger ett praktiskt sätt att experimentera med språkmodeller lokalt under utvecklingen.",
-              "Lokal körning gör det möjligt att testa prompts, karaktärsbeteende och modellintegration innan man bestämmer om en hostad AI-leverantör behövs."
+              "A. Låt React-frontend anropa modelltjänsten direkt.",
+              "B. Använd Python som AI-tjänstelager och anslut till ett hostat språkmodell-API.",
+              "C. Använd Python som AI-tjänstelager och kör samtidigt språkmodeller lokalt via Ollama."
             ]
           },
           {
-            "title": "Förbereda för vidare utveckling",
+            "title": "Avvägningar",
             "paragraphs": [
-              "Den första versionen av applikationen kan hållas relativt liten medan AI-interaktionen utforskas.",
-              "När kraven växer kan autentisering, permanenta konversationer, användare och applikationsregler flyttas till en mer komplett backend och datamodell."
+              "A ger den enklaste arkitekturen, men frontend blir direkt beroende av modellens gränssnitt. AI-logik och gränssnittslogik riskerar att kopplas för tätt samman och modellrelaterad konfiguration blir svårare att hålla privat.",
+              "B behåller en tydlig gräns mellan frontend och backend och kan ge mer stabil modellåtkomst genom en hostad tjänst, men utveckling och testning blir beroende av ett externt API.",
+              "C separerar också frontend från AI-logiken och gör det samtidigt möjligt att snabbt testa prompts, modeller och interaktionsflöden lokalt. Nackdelen är att en lokal körmiljö krävs och att modellernas prestanda begränsas av den lokala hårdvaran.",
+              "Jag valde slutligen C under utvecklingsfasen och använde React + Python + Ollama för att behålla flexibiliteten i modellexperimenten utan att göra frontend direkt beroende av en specifik modell."
             ]
           },
           {
-            "title": "Vad jag lärde mig",
+            "title": "Potentiella risker",
             "paragraphs": [
-              "AI-applikationer har fortfarande stor nytta av traditionell mjukvaruarkitektur.",
-              "Att separera modellintegration från frontendansvar gör det enklare att byta modell, leverantör eller applikationsflöde senare."
+              "Lokala modellers prestanda och svarstid beror på den enhet de körs på, och olika modeller har olika krav på minne och beräkningsresurser.",
+              "Om systemet senare byter till en hostad modell eller en annan leverantör kan modellgränssnitt och svarsformat förändras. Därför bör dessa detaljer inte spridas till frontend."
+            ]
+          },
+          {
+            "title": "Kriterier för ett lyckat resultat",
+            "paragraphs": [
+              "React-frontend ansvarar endast för användarinteraktionen och är inte direkt beroende av en specifik språkmodell.",
+              "Python-tjänsten hanterar prompts, modellanrop och omvandling av svar självständigt.",
+              "Under utvecklingen gör Ollama det möjligt att snabbt byta mellan och testa lokala modeller.",
+              "Ett framtida byte till en annan modell eller hostad tjänst ska inte kräva omfattande ändringar i frontend."
             ]
           }
         ]
-      }
+      },
+
+      {
+"id": "firebase-hosting-cost",
+"title": "Firebase Hosting: gratisnivå, användningsbaserad debitering och kostnadsrisk",
+"description": "Anteckningar om hur jag vägde tillgänglighet, användningsbaserad debitering och risken för oväntade kostnader när jag driftsatte en personlig webbplats med Firebase Hosting.",
+"date": "2026",
+"readingTime": "4 min",
+"tags": [
+"Firebase",
+"Hosting",
+"Deployment",
+"Cost"
+],
+"sections": [
+{
+"title": "Problemet",
+"paragraphs": [
+"Trafiken till en personlig portfolio är vanligtvis låg, så gratisnivån i Firebase Hosting är normalt tillräcklig. Efter en uppgradering till Blaze kan användning som överstiger gratisnivån däremot fortsätta generera kostnader. Jag är mindre orolig för den lilla kostnaden från normal trafik än för oväntade fakturor som kan orsakas av onormal trafik, felaktig konfiguration eller skadliga förfrågningar, därför behövde jag väga tillgänglighet mot förutsägbara kostnader."
+]
+},
+{
+"title": "Alternativ",
+"paragraphs": [
+"A. Behålla gratisplanen Spark och acceptera tillfällig otillgänglighet om gränserna för gratis användning nås.",
+"B. Uppgradera till Blaze och övervaka kostnader med Budget Alerts.",
+"C. Använda Blaze och samtidigt lägga till autentisering, rate limiting, resursbegränsningar och övervakning för dynamiska tjänster.",
+"D. Separera den statiska Portfolion från framtida Backend- eller AI-tjänster med högre kostnadsrisk genom att använda olika projekt."
+]
+},
+{
+"title": "Avvägningar",
+"paragraphs": [
+"A ger lägst tillgänglighetstak men gör kostnaden mest förutsägbar. För den nuvarande statiska Portfolion accepterar jag hellre tillfällig otillgänglighet i ett extremfall än oförutsägbara användningsbaserade kostnader.",
+"B gör det möjligt för Hosting att fortsätta fungera efter att gratisnivån har överskridits, men Budget Alerts är bara aviseringar och inte hårda kostnadstak. De kan därför inte helt förhindra oväntade kostnader.",
+"C passar bättre för applikationer som faktiskt behöver Cloud Functions, Cloud Run, databaser eller AI-tjänster. En enda förfrågan till en dynamisk tjänst kan innebära kostnader för nätverk, beräkning och tredjeparts-API:er, vilket kräver ytterligare skydd på applikationsnivå.",
+"D ger bättre kostnadsisolering genom att den publika Portfolion och dyrare backend-tjänster får separata resurs- och budgetgränser.",
+"För det nuvarande projektet valde jag att stanna kvar på Spark. Portfolion behöver ännu inte de funktioner som motiverar Blaze, därför finns det liten anledning att ta på sig risken med användningsbaserad debitering innan det är nödvändigt."
+]
+},
+{
+"title": "Risker",
+"paragraphs": [
+"Om gränserna för gratis användning i Spark nås kan webbplatsen tillfälligt bli otillgänglig.",
+"Om projektet senare uppgraderas till Blaze kan onormal trafik redan ha genererat extra kostnader innan en Budget Alert skickas, eftersom aviseringarna inte fungerar som kostnadstak i realtid.",
+"Stora statiska filer, felaktig cache-konfiguration eller ovanligt många förfrågningar kan öka mängden dataöverföring.",
+"Om Backend, Database eller AI-API:er läggs till senare blir kostnadsrisken betydligt högre än för enbart statisk Hosting. Billing-inställningar bör därför kombineras med autentisering, rate limiting, resursbegränsningar och övervakning."
+]
+},
+{
+"title": "Framgångskriterier",
+"paragraphs": [
+"Portfolion ligger inom gratisnivån vid normal trafik.",
+"Den nuvarande driftsättningen kräver inte användningsbaserad debitering för funktioner som ännu inte behövs.",
+"Om Blaze införs senare går det tydligt att övervaka resursanvändning och kostnadsförändringar, samtidigt som dyrare tjänster har lämpliga begränsningar.",
+"Den statiska Portfolion och framtida Backend- eller AI-workloads med högre kostnad kan isoleras från varandra.",
+"Driftsättningen har en rimlig balans mellan tillgänglighet, underhållskomplexitet och kostnadsrisk i värsta fall."
+]
+}
+]
+}
+
     ]
   },
-  "topics": {
-    "eyebrow": "Skrivområden",
-    "title": "Vad jag skriver om",
-    "description": "Anteckningarna kommer från tekniker, arkitekturbeslut och praktiska problem jag stöter på när jag bygger mjukvara.",
-    "items": [
-      {
-        "title": "Backend & API:er",
-        "description": "ASP.NET Core, API-design, autentisering, auktorisering, dataåtkomst och backendarkitektur."
-      },
-      {
-        "title": "Automation & integration",
-        "description": "Python-automation, Playwright, applikationsorkestrering och hur tjänster kopplas samman i praktiska arbetsflöden."
-      },
-      {
-        "title": "AI-applikationer",
-        "description": "Praktiska experiment och lärdomar från att integrera språkmodeller och AI API:er i mjukvaruapplikationer."
-      }
-    ]
-  },
+
   "cta": {
     "eyebrow": "Projekt",
-    "title": "Se hur idéerna används i riktiga projekt.",
-    "description": "Utforska applikationerna bakom anteckningarna, inklusive backendsystem, automationsflöden och AI-integration."
+    "title": "Se hur teknikerna används i riktiga projekt.",
+    "description": "Utforska de praktiska tillämpningarna bakom dessa tekniska anteckningar, inklusive backendsystem, automationsflöden och AI-integration."
   }
 }
+
