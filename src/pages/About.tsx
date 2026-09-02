@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-type FocusItem = {
-  title: string;
-  description: string;
-};
-
 type SkillGroup = {
   title: string;
   items: string[];
@@ -20,13 +15,6 @@ export default function About() {
 
   const story = toArray<string>(
     t("story.paragraphs", {
-      ns: "about",
-      returnObjects: true,
-    }),
-  );
-
-  const focus = toArray<FocusItem>(
-    t("focus.items", {
       ns: "about",
       returnObjects: true,
     }),

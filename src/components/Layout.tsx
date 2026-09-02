@@ -37,12 +37,13 @@ export default function Layout() {
           </NavLink>
 
           <div className="hidden items-center gap-7 md:flex">
-            <NavLink to="/projects" className={navLinkClass}>
-              {t("nav.projects")}
-            </NavLink>
 
             <NavLink to="/about" className={navLinkClass}>
               {t("nav.about")}
+            </NavLink>
+
+            <NavLink to="/projects" className={navLinkClass}>
+              {t("nav.projects")}
             </NavLink>
 
             <NavLink to="/blog" className={navLinkClass}>
@@ -82,11 +83,11 @@ export default function Layout() {
           <div className="border-t border-white/10 bg-dark/98 backdrop-blur-xl md:hidden">
             <div className="container flex flex-col py-4">
               <NavLink
-                to="/"
+                to="/about"
                 onClick={closeMenu}
                 className={mobileLinkClass}
               >
-                {t("nav.home")}
+                {t("nav.about")}
               </NavLink>
 
               <NavLink
@@ -95,14 +96,6 @@ export default function Layout() {
                 className={mobileLinkClass}
               >
                 {t("nav.projects")}
-              </NavLink>
-
-              <NavLink
-                to="/about"
-                onClick={closeMenu}
-                className={mobileLinkClass}
-              >
-                {t("nav.about")}
               </NavLink>
 
               <NavLink

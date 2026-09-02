@@ -30,48 +30,6 @@
       }
     }
   },
-  "services": {
-    "eyebrow": "开发方向",
-    "title": "后端系统、自动化与 AI 应用",
-    "description": "我的工作主要集中在三个相互关联的方向：构建核心后端、连接自动化与 AI 能力，以及完成一个可用产品所需要的其他应用层。",
-    "items": [
-      {
-        "title": "后端与 API 开发",
-        "description": "使用 C# 和 ASP.NET Core 构建后端服务、REST API 和应用逻辑，包括身份认证、权限控制、数据访问和业务规则。",
-        "technologies": [
-          "C#",
-          ".NET",
-          "ASP.NET Core",
-          "REST APIs"
-        ]
-      },
-      {
-        "title": "自动化与 AI 应用",
-        "description": "使用 Python 构建自动化、进行服务集成，并将 AI 能力连接到实际的应用工作流中，包括本地模型和 AI API。",
-        "technologies": [
-          "Python",
-          "Automation",
-          "Playwright",
-          "Ollama",
-          "AI APIs"
-        ]
-      },
-      {
-        "title": "完整应用交付",
-        "description": "当项目需要完整产品时，我也会完成所需的前端、数据和部署工作，将后端服务进一步构建成真正可使用的应用。",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "PostgreSQL",
-          "Azure",
-          "Firebase",
-          "Google Cloud"
-        ]
-      }
-    ],
-    "about": "后端是我技术深度最强的方向，同时我也会从完整应用的角度思考后端周围的各个部分如何协同工作。",
-    "more": "了解更多"
-  },
   "featuredProjects": {
     "eyebrow": "精选项目",
     "title": "通过真实项目展示我如何构建和交付软件",

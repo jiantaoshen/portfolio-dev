@@ -39,62 +39,6 @@
     }
   },
 
-  "services": {
-    "eyebrow": "What I Do",
-
-    "title": "Backend systems, automation and AI-enabled applications",
-
-    "description": "I work across three connected areas: building the backend, connecting automation and AI capabilities, and delivering the supporting application layers needed for a usable product.",
-
-    "items": [
-      {
-        "title": "Backend & API Development",
-
-        "description": "I build backend services, REST APIs and application logic with C# and ASP.NET Core, including authentication, authorization, data access and business rules.",
-
-        "technologies": [
-          "C#",
-          ".NET",
-          "ASP.NET Core",
-          "REST APIs"
-        ]
-      },
-
-      {
-        "title": "Automation & AI Applications",
-
-        "description": "I use Python for automation, service integration and connecting AI capabilities to practical application workflows, from local models to AI APIs.",
-
-        "technologies": [
-          "Python",
-          "Automation",
-          "Playwright",
-          "Ollama",
-          "AI APIs"
-        ]
-      },
-
-      {
-        "title": "Application Delivery",
-
-        "description": "When a project needs a complete product, I also work across the frontend, data and deployment layers required to turn backend services into a usable application.",
-
-        "technologies": [
-          "React",
-          "TypeScript",
-          "PostgreSQL",
-          "Azure",
-          "Firebase",
-          "Google Cloud"
-        ]
-      }
-    ],
-
-    "about": "Backend is where I bring the strongest technical depth, while still thinking about how the complete application works around it.",
-
-    "more": "More about me"
-  },
-
   "featuredProjects": {
     "eyebrow": "Featured Projects",
 
