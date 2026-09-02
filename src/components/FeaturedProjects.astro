@@ -1,0 +1,282 @@
+---
+import { getCollection } from "astro:content";
+
+import type { Locale } from "../i18n";
+
+import type {
+  HomeTranslation,
+  CommonTranslation,
+} from "../i18n/types";
+
+interface Props {
+  lang: Locale;
+  home: HomeTranslation;
+  common: CommonTranslation;
+}
+
+const {
+  lang,
+  home,
+  common,
+} = Astro.props;
+
+const featuredProjects = (
+  await getCollection(
+    "projects",
+    ({ data }) =>
+      !data.draft &&
+      data.lang === lang &&
+      data.featured,
+  )
+).sort(
+  (a, b) =>
+    (a.data.featuredOrder ?? 999) -
+    (b.data.featuredOrder ?? 999),
+);
+
+const [
+  mainProject,
+  ...sideProjects
+] = featuredProjects;
+
+const architecture =
+  mainProject?.data.architecture ?? [];
+
+function getProjectSlug(id: string) {
+  const [, ...parts] = id.split("/");
+  return parts.join("/");
+}
+---
+
+{
+  mainProject && (
+    <section
+      id="projects"
+      class="section bg-surface-muted"
+    >
+      <div class="container">
+
+        <!-- Section header -->
+        <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <p class="text-label text-brand">
+              {home.featuredProjects.eyebrow}
+            </p>
+
+            <h2 class="text-title mt-3 text-text">
+              {home.featuredProjects.title}
+            </h2>
+
+            <p class="text-large mt-4 text-text-muted">
+              {home.featuredProjects.description}
+            </p>
+          </div>
+
+          <a
+            href={`/${lang}/projects/`}
+            class="link-brand shrink-0"
+          >
+            {home.featuredProjects.viewAll}
+            <span aria-hidden="true">
+              →
+            </span>
+          </a>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+
+          <!-- Main project -->
+          <article class="card card-hover overflow-hidden rounded-3xl">
+            <div class="grid h-full lg:grid-cols-[1.1fr_0.9fr]">
+
+              <!-- Main project content -->
+              <div class="flex flex-col p-7 sm:p-9">
+
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <span class="text-label text-brand">
+                    {mainProject.data.category}
+                  </span>
+
+                  <span class="tag">
+                    {mainProject.data.status}
+                  </span>
+                </div>
+
+                <div class="mt-10">
+                  <p class="text-label text-text-subtle">
+                    {home.featuredProjects.featured}
+                  </p>
+
+                  <h3 class="mt-4 text-3xl font-bold tracking-tight text-text sm:text-4xl">
+                    {mainProject.data.title}
+                  </h3>
+
+                  <p class="text-large mt-5 text-text-muted">
+                    {mainProject.data.description}
+                  </p>
+
+                  <!-- Technologies -->
+                  {
+                    mainProject.data.technologies.length > 0 && (
+                      <div class="mt-6 flex flex-wrap gap-2">
+                        {
+                          mainProject.data.technologies
+                            .slice(0, 5)
+                            .map((technology) => (
+                              <span class="tag">
+                                {technology}
+                              </span>
+                            ))
+                        }
+                      </div>
+                    )
+                  }
+                </div>
+
+                <div class="mt-8">
+                  <a
+                    href={`/${lang}/projects/${getProjectSlug(
+                      mainProject.id,
+                    )}/`}
+                    class="btn btn-light"
+                  >
+                    {common.buttons.caseStudy}
+
+                    <span aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Architecture -->
+              {
+                architecture.length > 0 && (
+                  <div class="border-t border-border bg-brand/[0.035] p-6 sm:p-7 lg:border-l lg:border-t-0">
+                    <div class="flex h-full flex-col">
+
+                      <div>
+                        <p class="text-label text-brand">
+                          Architecture
+                        </p>
+
+                        <p class="mt-2 text-sm text-text-muted">
+                          How the application fits together
+                        </p>
+                      </div>
+
+                      <div class="mt-7 flex flex-1 flex-col justify-center">
+                        {
+                          architecture.map(
+                            (step, index) => (
+                              <div>
+                                <div
+                                  class={
+                                    index === 1
+                                      ? "rounded-xl border border-brand/25 bg-brand/[0.08] p-4"
+                                      : "rounded-xl border border-border bg-surface p-4"
+                                  }
+                                >
+                                  <p
+                                    class={
+                                      index === 1
+                                        ? "text-label text-brand"
+                                        : "text-label text-text-subtle"
+                                    }
+                                  >
+                                    {step.label}
+                                  </p>
+
+                                  <p class="mt-2 font-semibold text-text">
+                                    {step.value}
+                                  </p>
+                                </div>
+
+                                {
+                                  index <
+                                    architecture.length -
+                                      1 && (
+                                    <div
+                                      class="flex h-7 items-center justify-center text-text-subtle"
+                                      aria-hidden="true"
+                                    >
+                                      ↓
+                                    </div>
+                                  )
+                                }
+                              </div>
+                            ),
+                          )
+                        }
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </article>
+
+          <!-- Side projects -->
+          <div class="grid gap-6">
+            {
+              sideProjects.map((project) => (
+                <article class="card card-hover flex h-full flex-col p-6">
+
+                  <div class="flex flex-wrap items-center justify-between gap-3">
+                    <span class="text-label text-brand">
+                      {project.data.category}
+                    </span>
+
+                    <span class="tag">
+                      {project.data.status}
+                    </span>
+                  </div>
+
+                  <h3 class="mt-5 text-2xl font-bold tracking-tight text-text">
+                    {project.data.title}
+                  </h3>
+
+                  <p class="text-body mt-4 flex-1 text-text-muted">
+                    {project.data.description}
+                  </p>
+
+                  {
+                    project.data.technologies.length >
+                      0 && (
+                      <div class="mt-5 flex flex-wrap gap-2">
+                        {
+                          project.data.technologies
+                            .slice(0, 4)
+                            .map((technology) => (
+                              <span class="tag">
+                                {technology}
+                              </span>
+                            ))
+                        }
+                      </div>
+                    )
+                  }
+
+                  <div class="mt-6 border-t border-border pt-5">
+                    <a
+                      href={`/${lang}/projects/${getProjectSlug(
+                        project.id,
+                      )}/`}
+                      class="link-brand"
+                    >
+                      {common.buttons.caseStudy}
+
+                      <span aria-hidden="true">
+                        →
+                      </span>
+                    </a>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

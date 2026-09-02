@@ -1,0 +1,91 @@
+---
+import type { Locale } from "../i18n";
+
+type CommonTranslation = {
+  rights: string;
+};
+
+interface Props {
+  lang: Locale;
+  common: CommonTranslation;
+}
+
+const {
+  common,
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="border-t border-white/[0.06] bg-dark text-text-dark"
+>
+  <div
+    class="container flex flex-col gap-5 py-8 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <div class="flex items-center gap-5">
+
+      <!-- GitHub -->
+      <a
+        href="https://github.com/jiantaoshen"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="transition duration-200 hover:opacity-100"
+      >
+        <img
+          src="/icons/Github.svg"
+          alt=""
+          class="h-7 w-7 object-contain opacity-70"
+        />
+      </a>
+
+      <!-- LinkedIn -->
+      <a
+        href="https://www.linkedin.com/in/jiantaoshen/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        class="transition duration-200 hover:opacity-100"
+      >
+        <img
+          src="/icons/Linkedin.svg"
+          alt=""
+          class="h-7 w-7 object-contain opacity-70"
+        />
+      </a>
+
+      <!-- Email -->
+      <a
+        href="mailto:jiantaos98@outlook.com"
+        aria-label="Email"
+        class="text-white/70 transition-colors hover:text-white"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-7 w-7"
+          aria-hidden="true"
+        >
+          <rect
+            width="20"
+            height="16"
+            x="2"
+            y="4"
+            rx="2"
+          ></rect>
+
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <p class="text-sm text-text-dark-muted">
+      © {year} JIANTAO. {common.rights}
+    </p>
+  </div>
+</footer>

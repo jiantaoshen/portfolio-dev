@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+import {
+  getCollection,
+  render,
+} from "astro:content";
+
+import {
+  getTranslations,
+  type Locale,
+} from "../../../i18n";
+
+import type {
+  CommonTranslation,
+} from "../../../i18n/types";
+
+export async function getStaticPaths() {
+  const posts = await getCollection(
+    "blog",
+    ({ data }) => !data.draft,
+  );
+
+  console.log(
+  posts.map((post) => ({
+    id: post.id,
+    lang: post.data.lang,
+  })),
+);
+
+  return posts.map((post) => {
+    const [lang, ...slug] = post.id.split("/");
+
+    return {
+      params: {
+        lang,
+        slug: slug.join("/") || undefined,
+      },
+
+      props: {
+        post,
+      },
+    };
+  });
+}
+
+const lang = Astro.params.lang as Locale;
+
+const { post } = Astro.props;
+
+const common =
+  getTranslations<CommonTranslation>(
+    lang,
+    "common",
+  );
+
+const { Content, headings } =
+  await render(post);
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${post.data.title} | JIANTAO.dev`}
+>
+  <!-- Hero -->
+  <section class="bg-dark pb-16 pt-32 text-white">
+    <div class="container">
+      <a
+        href={`/${lang}/blog/`}
+        class="mb-8 inline-flex items-center gap-2 text-sm text-text-dark-muted transition hover:text-white"
+      >
+        ← {common.nav.blog}
+      </a>
+
+      <div class="flex items-center gap-3 text-sm text-text-dark-muted">
+        <time datetime={post.data.date.toISOString()}>
+          {
+            post.data.date.toLocaleDateString(
+              lang === "sv"
+                ? "sv-SE"
+                : lang === "zh"
+                  ? "zh-CN"
+                  : "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              },
+            )
+          }
+        </time>
+
+        <span aria-hidden="true">
+          •
+        </span>
+
+        <span>
+          {post.data.readingTime}
+        </span>
+      </div>
+
+      <h1 class="text-display mt-5 max-w-4xl text-white">
+        {post.data.title}
+      </h1>
+
+      <p class="text-large mt-6 max-w-3xl text-text-dark">
+        {post.data.description}
+      </p>
+
+      <div class="mt-7 flex flex-wrap gap-2">
+        {
+          post.data.tags.map((tag) => (
+            <span class="tag-dark">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Article -->
+  <section class="section bg-app">
+    <div
+      class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_260px]"
+    >
+      <article class="min-w-0">
+        <div class="article-content">
+          <Content />
+        </div>
+      </article>
+
+      {
+        headings.length > 0 && (
+          <aside class="hidden lg:block">
+            <div class="sticky top-28">
+              <p class="text-label text-text-subtle">
+                Contents
+              </p>
+
+              <nav class="mt-4 flex flex-col gap-3">
+                {
+                  headings
+                    .filter(
+                      (heading) =>
+                        heading.depth === 2 ||
+                        heading.depth === 3,
+                    )
+                    .map((heading) => (
+                      <a
+                        href={`#${heading.slug}`}
+                        class:list={[
+                          "text-sm text-text-muted transition hover:text-brand",
+                          heading.depth === 3 &&
+                            "pl-4 text-xs",
+                        ]}
+                      >
+                        {heading.text}
+                      </a>
+                    ))
+                }
+              </nav>
+            </div>
+          </aside>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

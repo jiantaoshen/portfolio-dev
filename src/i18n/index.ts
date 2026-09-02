@@ -1,68 +1,35 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+export const locales = ["en", "sv", "zh"] as const;
 
-import enCommon from "./locales/en/common.json";
-import enHome from "./locales/en/home.json";
-import enAbout from "./locales/en/about.json";
-import enProject from "./locales/en/project.json";
-import enBlog from "./locales/en/blog.json";
+export type Locale = (typeof locales)[number];
 
-import zhCommon from "./locales/zh/common.json";
-import zhHome from "./locales/zh/home.json";
-import zhAbout from "./locales/zh/about.json";
-import zhProject from "./locales/zh/project.json";
-import zhBlog from "./locales/zh/blog.json";
+export type Namespace =
+  | "about"
+  | "blog"
+  | "common"
+  | "home"
+  | "project";
 
-import svCommon from "./locales/sv/common.json";
-import svHome from "./locales/sv/home.json";
-import svAbout from "./locales/sv/about.json";
-import svProject from "./locales/sv/project.json";
-import svBlog from "./locales/sv/blog.json";
+const translations = import.meta.glob(
+  "./locales/*/*.json",
+  {
+    eager: true,
+    import: "default",
+  },
+) as Record<string, unknown>;
 
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: {
-        common: enCommon,
-        home: enHome,
-        about: enAbout,
-        project: enProject,
-        blog: enBlog,
-      },
+export function getTranslations<T>(
+  locale: Locale,
+  namespace: Namespace,
+): T {
+  const path = `./locales/${locale}/${namespace}.json`;
 
-      sv: {
-        common: svCommon,
-        home: svHome,
-        about: svAbout,
-        project: svProject,
-        blog: svBlog,
-      },
+  const data = translations[path];
 
-      zh: {
-        common: zhCommon,
-        home: zhHome,
-        about: zhAbout,
-        project: zhProject,
-        blog: zhBlog,
-      },
-    },
+  if (!data) {
+    throw new Error(
+      `Missing translation: ${locale}/${namespace}`,
+    );
+  }
 
-    supportedLngs: ["en", "sv", "zh"],
-    load: "languageOnly",
-    fallbackLng: "en",
-    defaultNS: "common",
-
-    interpolation: {
-      escapeValue: false,
-    },
-
-    detection: {
-      order: ["localStorage", "navigator"],
-      caches: ["localStorage"],
-    },
-  });
-
-export default i18n;
+  return data as T;
+}
