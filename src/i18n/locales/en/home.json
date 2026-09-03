@@ -51,36 +51,6 @@
     "viewAll": "View all projects"
   },
 
-  "process": {
-    "eyebrow": "How I Work",
-
-    "title": "From problem to working software",
-
-    "description": "I start with the problem and application responsibilities, then design and connect the services, data, automation and supporting layers needed for a working result.",
-
-    "items": [
-      {
-        "title": "Understand",
-        "description": "Clarify the problem, users, business goals and technical requirements before choosing an implementation."
-      },
-
-      {
-        "title": "Design",
-        "description": "Define backend responsibilities, APIs, data flow, permissions, integrations and the overall application structure."
-      },
-
-      {
-        "title": "Build",
-        "description": "Implement the core services and workflows, then connect the required data, UI, automation and external integrations."
-      },
-
-      {
-        "title": "Deliver",
-        "description": "Configure the runtime or production environment and verify that the complete application workflow works in practice."
-      }
-    ]
-  },
-
   "technicalNotes": {
     "eyebrow": "Technical Notes",
 

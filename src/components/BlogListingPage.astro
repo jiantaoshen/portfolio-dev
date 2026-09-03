@@ -1,0 +1,265 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import type {
+  CollectionEntry,
+} from "astro:content";
+
+import type { Locale } from "../i18n";
+
+import type {
+  BlogTranslation,
+  CommonTranslation,
+} from "../i18n/types";
+
+interface Props {
+  lang: Locale;
+  blog: BlogTranslation;
+  common: CommonTranslation;
+
+  posts: CollectionEntry<"blog">[];
+
+  currentPage: number;
+  totalPages: number;
+}
+
+const {
+  lang,
+  blog,
+  common,
+  posts,
+  currentPage,
+  totalPages,
+} = Astro.props;
+
+function getPostSlug(id: string) {
+  const [, ...parts] = id.split("/");
+  return parts.join("/");
+}
+
+function getPageHref(page: number) {
+  return page === 1
+    ? `/${lang}/blog/`
+    : `/${lang}/blog/page/${page}/`;
+}
+
+function formatDate(date: Date) {
+  const locale =
+    lang === "sv"
+      ? "sv-SE"
+      : lang === "zh"
+        ? "zh-CN"
+        : "en-US";
+
+  return date.toLocaleDateString(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+const pageNumbers = Array.from(
+  {
+    length: totalPages,
+  },
+  (_, index) => index + 1,
+);
+
+const pageTitle =
+  currentPage === 1
+    ? `${blog.hero.title} | JIANTAO.dev`
+    : `${blog.hero.title} — ${blog.pagination.page} ${currentPage} | JIANTAO.dev`;
+---
+
+<BaseLayout
+  lang={lang}
+  title={pageTitle}
+  description={blog.hero.description}
+>
+  <!-- Hero -->
+  <section class="bg-dark pb-20 pt-32 text-white">
+    <div class="container">
+      <p class="text-label text-brand-muted">
+        {blog.hero.eyebrow}
+      </p>
+
+      <h1 class="text-display mt-4 max-w-4xl text-white">
+        {blog.hero.title}
+      </h1>
+
+      <p class="text-large mt-6 max-w-3xl text-text-dark">
+        {blog.hero.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="section bg-app">
+    <div class="container">
+      {
+        posts.length > 0 ? (
+          <>
+            <!-- Article grid -->
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {
+                posts.map((post) => {
+                  const slug =
+                    getPostSlug(post.id);
+
+                  return (
+                    <article class="card card-hover flex h-full flex-col p-6">
+                      <div class="flex items-center gap-3 text-xs text-text-subtle">
+                        <time
+                          datetime={post.data.date.toISOString()}
+                        >
+                          {formatDate(post.data.date)}
+                        </time>
+
+                        <span aria-hidden="true">
+                          •
+                        </span>
+
+                        <span>
+                          {post.data.readingTime}
+                        </span>
+                      </div>
+
+                      <h2 class="text-heading mt-5 leading-snug text-text">
+                        {post.data.title}
+                      </h2>
+
+                      <p class="text-body mt-4 flex-1 text-text-muted">
+                        {post.data.description}
+                      </p>
+
+                      {
+                        post.data.tags.length >
+                          0 && (
+                          <div class="mt-5 flex flex-wrap gap-2">
+                            {
+                              post.data.tags.map(
+                                (tag) => (
+                                  <span class="tag">
+                                    {tag}
+                                  </span>
+                                ),
+                              )
+                            }
+                          </div>
+                        )
+                      }
+
+                      <div class="mt-6 border-t border-border pt-5">
+                        <a
+                          href={`/${lang}/blog/${slug}/`}
+                          class="link-brand"
+                        >
+                          {common.readArticle}
+
+                          <span aria-hidden="true">
+                            →
+                          </span>
+                        </a>
+                      </div>
+                    </article>
+                  );
+                })
+              }
+            </div>
+
+            <!-- Pagination -->
+            {
+              totalPages > 1 && (
+                <nav
+                  class="mt-12 flex flex-wrap items-center justify-center gap-2"
+                  aria-label="Blog pagination"
+                >
+                  <!-- Previous -->
+                  {
+                    currentPage > 1 && (
+                      <a
+                        href={getPageHref(
+                          currentPage - 1,
+                        )}
+                        class="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-surface px-4 text-sm font-semibold text-text transition hover:border-brand-muted hover:text-brand"
+                      >
+                        <span
+                          class="mr-2"
+                          aria-hidden="true"
+                        >
+                          ←
+                        </span>
+
+                        {
+                          blog.pagination
+                            .previous
+                        }
+                      </a>
+                    )
+                  }
+
+                  <!-- Page numbers -->
+                  {
+                    pageNumbers.map(
+                      (page) => (
+                        <a
+                          href={getPageHref(
+                            page,
+                          )}
+                          aria-current={
+                            page ===
+                            currentPage
+                              ? "page"
+                              : undefined
+                          }
+                          class:list={[
+                            "inline-flex h-10 min-w-10 items-center justify-center rounded-xl border px-3 text-sm font-semibold transition",
+                            page ===
+                            currentPage
+                              ? "border-brand bg-brand text-white"
+                              : "border-border bg-surface text-text hover:border-brand-muted hover:text-brand",
+                          ]}
+                        >
+                          {page}
+                        </a>
+                      ),
+                    )
+                  }
+
+                  <!-- Next -->
+                  {
+                    currentPage <
+                      totalPages && (
+                      <a
+                        href={getPageHref(
+                          currentPage + 1,
+                        )}
+                        class="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-surface px-4 text-sm font-semibold text-text transition hover:border-brand-muted hover:text-brand"
+                      >
+                        {
+                          blog.pagination
+                            .next
+                        }
+
+                        <span
+                          class="ml-2"
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      </a>
+                    )
+                  }
+                </nav>
+              )
+            }
+          </>
+        ) : (
+          <p class="text-text-muted">
+            No articles yet.
+          </p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

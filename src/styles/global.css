@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
-
 /* ============================================================
    Theme
    ============================================================ */
@@ -163,28 +160,6 @@ button:disabled {
 
 .status {
   @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-text-dark;
-}
-
-.status-dot {
-  @apply h-2 w-2 rounded-full bg-success;
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
-}
-
-
-/* ============================================================
-   Forms
-   ============================================================ */
-
-.input {
-  @apply w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-text outline-none transition placeholder:text-text-subtle focus:border-brand;
-}
-
-.input-dark {
-  @apply w-full rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm text-white outline-none transition placeholder:text-text-dark-muted focus:border-brand focus:bg-white/[0.08];
-}
-
-.select-dark {
-  @apply w-full rounded-xl border border-white/10 bg-dark-muted px-4 py-3 text-sm text-text-dark outline-none transition focus:border-brand;
 }
 
 

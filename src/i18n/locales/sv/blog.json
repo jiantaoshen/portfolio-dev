@@ -1,8 +1,7 @@
 {
   "hero": {
-    "eyebrow": "Tekniska anteckningar",
-    "title": "Anteckningar från arbetet med att bygga och köra mjukvara.",
-    "description": "Praktiska erfarenheter inom backendutveckling, API:er, automation, driftsättning och AI-integration, baserade på problem som uppstått i verkliga projekt."
+    "title": "Tekniska anteckningar",
+    "description": "Korta tekniska anteckningar om implementeringsbeslut, systemintegration, driftsättning och praktiska lärdomar från arbetet med olika projekt."
   },
 
   "detail": {
@@ -15,16 +14,10 @@
     "notFound": "Artikeln kunde inte hittas"
   },
 
-  "posts": {
-    "eyebrow": "Utvecklingslogg",
-    "title": "Senaste anteckningarna",
-    "description": "Korta tekniska anteckningar om implementeringsbeslut, systemintegration, driftsättning och praktiska lärdomar från arbetet med olika projekt."
-  },
-
-  "cta": {
-    "eyebrow": "Projekt",
-    "title": "Se hur teknikerna används i riktiga projekt.",
-    "description": "Utforska de praktiska tillämpningarna bakom dessa tekniska anteckningar, inklusive backendsystem, automationsflöden och AI-integration."
+  "pagination": {
+    "previous": "Föregående",
+    "next": "Nästa",
+    "page": "Sida"
   }
 }
 

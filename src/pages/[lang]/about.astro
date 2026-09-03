@@ -113,40 +113,4 @@ const common =
       </div>
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="section bg-app">
-    <div class="container">
-      <div class="rounded-3xl bg-dark p-8 text-white sm:p-10">
-        <p class="text-label text-brand-muted">
-          {about.cta.eyebrow}
-        </p>
-
-        <h2 class="text-title mt-3 max-w-2xl text-white">
-          {about.cta.title}
-        </h2>
-
-        <p class="text-large mt-5 max-w-2xl text-text-dark">
-          {about.cta.description}
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={`/${lang}/contact/`}
-            class="btn btn-primary"
-          >
-            {common.nav.contact}
-            <span aria-hidden="true">→</span>
-          </a>
-
-          <a
-            href={`/${lang}/projects/`}
-            class="btn btn-secondary"
-          >
-            {common.buttons.viewWork}
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

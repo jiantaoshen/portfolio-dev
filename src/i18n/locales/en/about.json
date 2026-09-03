@@ -1,7 +1,6 @@
 {
   "hero": {
-    "eyebrow": "About",
-    "title": "Backend-focused developer building software around real application problems.",
+    "title": "Backend-focused developer",
     "description": "I work primarily with C#/.NET and Python, with the strongest technical depth in backend systems, APIs and automation."
   },
 
@@ -13,30 +12,6 @@
       "Over time, I expanded into Python for automation and integration, while also working with React, TypeScript, databases and deployment when projects require a complete product. Projects such as Price Watch have given me practical experience connecting .NET applications with Python processes and automation workflows, and I’m increasingly interested in applying that backend experience to practical AI-enabled software."
     ]
   },
-
-  "focus": {
-    "eyebrow": "Engineering Strengths",
-    "title": "How I approach software development",
-    "items": [
-      {
-        "title": "Backend Design",
-        "description": "I think carefully about API responsibilities, business logic, authentication, authorization and how data moves through an application."
-      },
-      {
-        "title": "Integration & Automation",
-        "description": "I like connecting services and tools into practical workflows, including .NET applications, Python automation and external integrations."
-      },
-      {
-        "title": "Product Thinking",
-        "description": "I focus on solving the actual application problem rather than treating each technical layer as an isolated implementation task."
-      },
-      {
-        "title": "End-to-End Delivery",
-        "description": "When needed, I work across UI, data, configuration and deployment so the core backend becomes a complete usable application."
-      }
-    ]
-  },
-
 
   "skills": {
     "eyebrow": "Skills",

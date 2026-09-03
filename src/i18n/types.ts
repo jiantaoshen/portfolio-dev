@@ -72,12 +72,6 @@ export type AboutTranslation = {
     description: string;
     items: SkillGroup[];
   };
-
-  cta: {
-    eyebrow: string;
-    title: string;
-    description: string;
-  };
 };
 
 export type HomeTranslation = {
@@ -152,10 +146,10 @@ export type BlogTranslation = {
     description: string;
   };
 
-  cta: {
-    eyebrow: string;
-    title: string;
-    description: string;
+  pagination: {
+    previous: string;
+    next: string;
+    page: string;
   };
 };
 

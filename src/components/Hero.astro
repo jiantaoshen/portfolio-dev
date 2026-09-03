@@ -32,11 +32,6 @@ const cvFile = cvFiles[lang];
     class="container grid min-h-screen items-center gap-14 pb-20 pt-32 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:pb-24 lg:pt-28"
   >
     <div class="max-w-2xl">
-      <div class="status mb-6">
-        <span class="status-dot"></span>
-        {home.hero.availability}
-      </div>
-
       <p class="text-label text-brand-muted">
         {home.hero.eyebrow}
       </p>
@@ -56,12 +51,7 @@ const cvFile = cvFiles[lang];
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-3">
-        <a href="#contact" class="btn btn-primary">
-          {common.buttons.discussProject}
-          <span aria-hidden="true">→</span>
-        </a>
-
-        <a href="#projects" class="btn btn-secondary">
+        <a href="#projects" class="btn btn-primary">
           {common.buttons.viewWork}
         </a>
 
@@ -71,7 +61,6 @@ const cvFile = cvFiles[lang];
           class="btn btn-secondary"
         >
           {common.buttons.downloadCV}
-          <span aria-hidden="true">↓</span>
         </a>
       </div>
     </div>

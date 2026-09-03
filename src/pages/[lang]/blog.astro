@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogListingPage from "../../components/BlogListingPage.astro";
 
 import { getCollection } from "astro:content";
 
@@ -16,11 +16,16 @@ import type {
 
 export function getStaticPaths() {
   return locales.map((lang) => ({
-    params: { lang },
+    params: {
+      lang,
+    },
   }));
 }
 
-const lang = Astro.params.lang as Locale;
+const PAGE_SIZE = 6;
+
+const lang =
+  Astro.params.lang as Locale;
 
 const blog =
   getTranslations<BlogTranslation>(
@@ -34,7 +39,7 @@ const common =
     "common",
   );
 
-const posts = (
+const allPosts = (
   await getCollection(
     "blog",
     ({ data }) =>
@@ -47,172 +52,25 @@ const posts = (
     a.data.date.getTime(),
 );
 
-function getPostSlug(id: string) {
-  const [, ...parts] = id.split("/");
-  return parts.join("/");
-}
+const totalPages = Math.max(
+  1,
+  Math.ceil(
+    allPosts.length / PAGE_SIZE,
+  ),
+);
 
-function formatDate(date: Date) {
-  const locale =
-    lang === "sv"
-      ? "sv-SE"
-      : lang === "zh"
-        ? "zh-CN"
-        : "en-US";
-
-  return date.toLocaleDateString(locale, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
+const posts =
+  allPosts.slice(
+    0,
+    PAGE_SIZE,
+  );
 ---
 
-<BaseLayout
+<BlogListingPage
   lang={lang}
-  title={`${blog.hero.title} | JIANTAO.dev`}
->
-  <!-- Hero -->
-  <section class="bg-dark pb-20 pt-32 text-white">
-    <div class="container">
-      <p class="text-label text-brand-muted">
-        {blog.hero.eyebrow}
-      </p>
-
-      <h1 class="text-display mt-4 max-w-4xl text-white">
-        {blog.hero.title}
-      </h1>
-
-      <p class="text-large mt-6 max-w-3xl text-text-dark">
-        {blog.hero.description}
-      </p>
-    </div>
-  </section>
-
-  <!-- Articles -->
-  <section class="section bg-app">
-    <div class="container">
-      <div class="mb-12 max-w-2xl">
-        <p class="text-label text-brand">
-          {blog.posts.eyebrow}
-        </p>
-
-        <h2 class="text-title mt-3 text-text">
-          {blog.posts.title}
-        </h2>
-
-        <p class="text-large mt-4 text-text-muted">
-          {blog.posts.description}
-        </p>
-      </div>
-
-      {
-        posts.length > 0 ? (
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {
-              posts.map((post) => {
-                const slug = getPostSlug(post.id);
-
-                return (
-                  <article class="card card-hover flex h-full flex-col p-6">
-                    <div class="flex items-center gap-3 text-xs text-text-subtle">
-                      <time datetime={post.data.date.toISOString()}>
-                        {formatDate(post.data.date)}
-                      </time>
-
-                      <span aria-hidden="true">
-                        •
-                      </span>
-
-                      <span>
-                        {post.data.readingTime}
-                      </span>
-                    </div>
-
-                    <h2 class="text-heading mt-5 leading-snug text-text">
-                      {post.data.title}
-                    </h2>
-
-                    <p class="text-body mt-4 flex-1 text-text-muted">
-                      {post.data.description}
-                    </p>
-
-                    {
-                      post.data.tags.length > 0 && (
-                        <div class="mt-5 flex flex-wrap gap-2">
-                          {
-                            post.data.tags.map((tag) => (
-                              <span class="tag">
-                                {tag}
-                              </span>
-                            ))
-                          }
-                        </div>
-                      )
-                    }
-
-                    <div class="mt-6 border-t border-border pt-5">
-                      <a
-                        href={`/${lang}/blog/${slug}/`}
-                        class="link-brand"
-                      >
-                        {common.readArticle}
-
-                        <span aria-hidden="true">
-                          →
-                        </span>
-                      </a>
-                    </div>
-                  </article>
-                );
-              })
-            }
-          </div>
-        ) : (
-          <p class="text-text-muted">
-            No articles yet.
-          </p>
-        )
-      }
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-app pb-24">
-    <div class="container">
-      <div class="rounded-3xl bg-dark p-8 text-white sm:p-10">
-        <p class="text-label text-brand-muted">
-          {blog.cta.eyebrow}
-        </p>
-
-        <h2 class="text-title mt-3 max-w-2xl text-white">
-          {blog.cta.title}
-        </h2>
-
-        <p class="text-large mt-5 max-w-2xl text-text-dark">
-          {blog.cta.description}
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={`/${lang}/projects/`}
-            class="btn btn-primary"
-          >
-            {common.buttons.viewWork}
-
-            <span aria-hidden="true">
-              →
-            </span>
-          </a>
-
-          <a
-            href="mailto:jiantaos98@outlook.com"
-            class="btn btn-secondary"
-          >
-            {common.nav.contact}
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+  blog={blog}
+  common={common}
+  posts={posts}
+  currentPage={1}
+  totalPages={totalPages}
+/>

@@ -1,8 +1,7 @@
 {
   "hero": {
-    "eyebrow": "Technical Notes",
-    "title": "Notes from building and running software.",
-    "description": "Practical notes on backend development, APIs, automation, deployment and AI integration, based on problems encountered in real projects."
+    "title": "Technical Notes",
+    "description": "Short technical notes on implementation decisions, system integration, deployment experience and practical lessons learned while building projects."
   },
 
   "detail": {
@@ -15,15 +14,9 @@
     "notFound": "Article not found"
   },
 
-  "posts": {
-    "eyebrow": "Development Log",
-    "title": "Latest Notes",
-    "description": "Short technical notes on implementation decisions, system integration, deployment experience and practical lessons learned while building projects."
-  },
-
-  "cta": {
-    "eyebrow": "Projects",
-    "title": "See how these technologies are applied in real projects.",
-    "description": "Explore the practical applications behind these technical notes, including backend systems, automation workflows and AI integration."
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page"
   }
 }
