@@ -1,10 +1,9 @@
 {
   "nav": {
-    "services": "服务",
     "projects": "项目",
-    "about": "关于我",
+    "about": "生涯",
     "blog": "技术文章",
-    "contact": "联系我"
+    "contact": "联系邮箱"
   },
 
   "buttons": {

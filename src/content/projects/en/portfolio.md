@@ -2,7 +2,7 @@
 lang: en
 title: "Developer Portfolio"
 description: "A multilingual developer portfolio built with Astro, TypeScript and Tailwind CSS, using static HTML, Content Collections and Markdown to present projects, technical notes and software development experience."
-category: "Application & Web Delivery"
+category: "Static Website"
 status: "Live"
 order: 3
 featured: true
@@ -23,19 +23,6 @@ highlights:
   - "Responsive interface built with Tailwind CSS"
   - "Minimal client-side JavaScript for content-heavy pages"
   - "Designed for static deployment on Firebase Hosting"
-architecture:
-  - label: "Application"
-    value: "Astro · TypeScript"
-  - label: "Styling"
-    value: "Tailwind CSS"
-  - label: "Content"
-    value: "Astro Content Collections · Markdown"
-  - label: "Internationalization"
-    value: "Static i18n · English · Swedish · Chinese"
-  - label: "Rendering"
-    value: "Pre-rendered Static HTML"
-  - label: "Delivery"
-    value: "Firebase Hosting"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"

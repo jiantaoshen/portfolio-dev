@@ -26,17 +26,6 @@ highlights:
   - "Stop Generation and Regenerate support"
   - "Conversation Summary for compressing long chat history"
   - "Frontend component refactor and backend service-layer refactor"
-architecture:
-  - label: "Frontend"
-    value: "React · TypeScript · Tailwind CSS"
-  - label: "Main Backend"
-    value: "ASP.NET Core · C#"
-  - label: "AI Service"
-    value: "FastAPI · Python"
-  - label: "Model Runtime"
-    value: "Ollama"
-  - label: "AI Model"
-    value: "qwen3:4b"
 draft: false
 ---
 

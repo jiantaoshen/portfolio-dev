@@ -2,7 +2,7 @@
 lang: sv
 title: "Developer Portfolio"
 description: "En flerspråkig utvecklarportfolio byggd med Astro, TypeScript och Tailwind CSS, där statisk HTML, Content Collections och Markdown används för att presentera projekt, tekniska anteckningar och erfarenhet inom mjukvaruutveckling."
-category: "Applikations- och webbleverans"
+category: "Static webbsida"
 status: "Live"
 order: 3
 featured: true
@@ -23,19 +23,6 @@ highlights:
   - "Responsivt gränssnitt byggt med Tailwind CSS"
   - "Minimal klientbaserad JavaScript för innehållstunga sidor"
   - "Utformad för statisk driftsättning på Firebase Hosting"
-architecture:
-  - label: "Applikation"
-    value: "Astro · TypeScript"
-  - label: "Styling"
-    value: "Tailwind CSS"
-  - label: "Innehåll"
-    value: "Astro Content Collections · Markdown"
-  - label: "Internationalisering"
-    value: "Statisk i18n · Engelska · Svenska · Kinesiska"
-  - label: "Rendering"
-    value: "Förgenererad statisk HTML"
-  - label: "Leverans"
-    value: "Firebase Hosting"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"

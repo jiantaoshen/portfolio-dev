@@ -26,17 +26,6 @@ highlights:
   - "Stöd för Stop Generation och Regenerate"
   - "Conversation Summary för komprimering av långa konversationer"
   - "Refaktorering av frontend-komponenter och backendens service-lager"
-architecture:
-  - label: "Frontend"
-    value: "React · TypeScript · Tailwind CSS"
-  - label: "Huvudbackend"
-    value: "ASP.NET Core · C#"
-  - label: "AI-tjänst"
-    value: "FastAPI · Python"
-  - label: "Modellmiljö"
-    value: "Ollama"
-  - label: "AI-modell"
-    value: "qwen3:4b"
 draft: false
 ---
 

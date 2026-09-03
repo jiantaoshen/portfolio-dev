@@ -51,15 +51,6 @@ const projects = defineCollection({
       .array(z.string())
       .default([]),
 
-    architecture: z
-      .array(
-        z.object({
-          label: z.string(),
-          value: z.string(),
-        }),
-      )
-      .default([]),
-
     links: z
       .object({
         github: z.httpUrl().optional(),

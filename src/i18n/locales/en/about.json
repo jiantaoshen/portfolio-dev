@@ -5,27 +5,39 @@
   },
 
   "story": {
-    "eyebrow": "My Background",
-    "title": "Backend first, with a broader view of the product",
+    "title": "Background",
     "paragraphs": [
-      "My development background started with C# and .NET, which remain the technologies where I have the strongest technical depth. I enjoy designing backend logic, APIs, permissions, data flows and the systems that sit behind an application.",
-      "Over time, I expanded into Python for automation and integration, while also working with React, TypeScript, databases and deployment when projects require a complete product. Projects such as Price Watch have given me practical experience connecting .NET applications with Python processes and automation workflows, and I’m increasingly interested in applying that backend experience to practical AI-enabled software."
+      "M.Sc. in Robotics with experience in machine learning, systems development, and full-stack development. Hands-on experience with C#/.NET, ASP.NET Core Web API, PostgreSQL, React, and TypeScript, as well as building REST-based applications with authentication and role-based access control. Also experienced in deploying applications to Microsoft Azure and Firebase."
     ]
   },
 
   "skills": {
-    "eyebrow": "Skills",
+    "title": "Skills",
 
-    "title": "Core expertise and application delivery",
-
-    "description": "My strongest technical depth is in backend development, supported by the tools I use for automation, integration and complete application delivery.",
+    "description": "Tags with star indicate the technologies I am studying in depth.",
 
     "items": [
       {
-        "title": "Backend & APIs",
+        "title": "Frontend",
 
         "items": [
-          "C#",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ]
+      },
+
+      {
+        "title": "Backend",
+
+        "staritem":[
+          "C#"
+        ],
+        
+        "items": [
           ".NET",
           "ASP.NET Core",
           "REST APIs",
@@ -33,6 +45,15 @@
           "Authentication",
           "Authorization",
           "JWT"
+        ]
+      },
+
+      {
+        "title": "Databases",
+
+        "items": [
+          "PostgreSQL",
+          "Entity Framework Core"
         ]
       },
 
@@ -50,27 +71,57 @@
       },
 
       {
-        "title": "Application Delivery",
+        "title": "Cloud & Deployment",
 
         "items": [
-          "React",
-          "TypeScript",
-          "PostgreSQL",
-          "Neon",
           "Azure",
           "Firebase",
-          "Google Cloud"
+          "Google Cloud",
+          "Neon",
+          "Git",
+          "GitHub"
+        ]
+      },
+
+      {
+        "title": "Communication & Languages",
+
+        "items": [
+          "Chinese",
+          "English",
+          "Swedish"
         ]
       }
     ]
   },
 
-  "cta": {
-    "eyebrow": "Let's Talk",
 
-    "title": "Looking for a backend developer who can think beyond the API?",
-
-    "description": "I'm open to projects and opportunities involving backend systems, APIs, automation and practical AI-enabled software."
+  "education": {
+    "title": "Education & Learning",
+    "description": "My academic background, vocational training, and continued learning.",
+    "items": [
+      {
+        "period": "March 2026 – Present",
+        "degree": "AI Programmer (Vocational Training)",
+        "school": "Lexicon AB, Malmö · Remote",
+        "description": "Currently studying the development of web applications and cloud services."
+      },
+      {
+        "period": "July 2024 – March 2026",
+        "degree": "Employment Preparation & Language Courses",
+        "school": "Sweden",
+        "description": "Participated in employment preparation activities and studied Swedish and English to strengthen my communication skills and prepare for professional life in Sweden."
+      },
+      {
+        "period": "September 2019 – July 2024",
+        "degree": "M.Sc. in Engineering, Robotics",
+        "school": "Mälardalen University, Västerås",
+        "description": "Studied robotics, embedded systems, artificial intelligence, and electronics. For my master's thesis, I developed a radar-based hand gesture recognition system using Python, TensorFlow, and convolutional neural networks (CNNs). The system achieved 95% classification accuracy with a prediction time of approximately 25 ms.",
+        "thesis": "Implementation of Machine Learning Algorithm for Radar-Based Hand Gesture Recognition",
+        "thesisUrl": "https://mdu.diva-portal.org/smash/record.jsf?pid=diva2%3A1870908&dswid=-2606"
+      }
+    ]
   }
+
 }
 

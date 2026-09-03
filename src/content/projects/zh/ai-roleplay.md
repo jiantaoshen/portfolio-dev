@@ -26,17 +26,6 @@ highlights:
   - "支持 Stop Generation 和 Regenerate"
   - "通过 Conversation Summary 压缩长对话上下文"
   - "完成 Frontend Component 和 Backend Service Layer 重构"
-architecture:
-  - label: "Frontend"
-    value: "React · TypeScript · Tailwind CSS"
-  - label: "Main Backend"
-    value: "ASP.NET Core · C#"
-  - label: "AI Service"
-    value: "FastAPI · Python"
-  - label: "Model Runtime"
-    value: "Ollama"
-  - label: "AI Model"
-    value: "qwen3:4b"
 draft: false
 ---
 

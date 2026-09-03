@@ -76,26 +76,13 @@ const pageTitle =
   title={pageTitle}
   description={blog.hero.description}
 >
-  <!-- Hero -->
-  <section class="bg-dark pb-20 pt-32 text-white">
+  <!-- Articles -->
+  <section class="section bg-app text-center">
     <div class="container">
-      <p class="text-label text-brand-muted">
-        {blog.hero.eyebrow}
-      </p>
-
-      <h1 class="text-display mt-4 max-w-4xl text-white">
+      <h1 class="text-display mt-4 mb-10 text-dark">
         {blog.hero.title}
       </h1>
 
-      <p class="text-large mt-6 max-w-3xl text-text-dark">
-        {blog.hero.description}
-      </p>
-    </div>
-  </section>
-
-  <!-- Articles -->
-  <section class="section bg-app">
-    <div class="container">
       {
         posts.length > 0 ? (
           <>

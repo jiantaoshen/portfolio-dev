@@ -5,12 +5,10 @@
   },
 
   "detail": {
-    "eyebrow": "Tekniska anteckningar",
     "back": "Tillbaka till tekniska anteckningar",
     "published": "Publicerad",
     "readingTime": "Lästid",
     "topics": "Ämnen",
-    "notFoundEyebrow": "Tekniska anteckningar",
     "notFound": "Artikeln kunde inte hittas"
   },
 

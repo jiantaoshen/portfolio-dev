@@ -57,24 +57,13 @@ function getProjectSlug(id: string) {
   lang={lang}
   title={`${project.page.title} | JIANTAO.dev`}
 >
-  <section class="bg-dark pb-20 pt-32 text-white">
+  <section class="section bg-app text-center">
     <div class="container">
-      <p class="text-label text-brand-muted">
-        {project.page.eyebrow}
-      </p>
 
-      <h1 class="text-display mt-4 text-white">
+      <h1 class="text-display mt-4 mb-10 text-dark">
         {project.page.title}
       </h1>
 
-      <p class="text-large mt-6 max-w-3xl text-text-dark">
-        {project.page.description}
-      </p>
-    </div>
-  </section>
-
-  <section class="section bg-app">
-    <div class="container">
       <div class="grid gap-6 lg:grid-cols-2">
         {
           projects.map((item) => {

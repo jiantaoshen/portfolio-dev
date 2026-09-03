@@ -1,18 +1,15 @@
 {
   "page": {
-    "title": "项目",
-    "description": "这些项目涵盖后端开发、API、自动化、应用交付，以及我正在持续深入的 AI 应用开发方向。"
+    "title": "项目"
   },
 
   "detail": {
-    "eyebrow": "项目",
     "notFound": "未找到该项目",
     "back": "返回项目列表",
 
     "overview": "项目概览",
     "problem": "问题与目标",
     "solution": "解决方案",
-    "architecture": "系统架构",
     "features": "核心功能",
     "challenges": "挑战与技术决策",
     "deployment": "部署与运行",

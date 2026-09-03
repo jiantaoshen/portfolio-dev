@@ -1,27 +1,37 @@
 {
-  "hero": {
-    "title": "后端工程师",
-    "description": "我主要使用 C#/.NET 和 Python，其中技术深度最强的方向是后端系统、API、应用逻辑和自动化。"
-  },
+
   "story": {
-    "eyebrow": "我的背景",
-    "title": "以后端为核心，同时关注完整产品",
+    "title": "背景介绍",
     "paragraphs": [
-      "我的开发经历从 C# 和 .NET 开始，这也是目前我技术深度最强的方向。我喜欢设计后端逻辑、API、权限、数据流，以及支撑整个应用运行的核心系统。",
-      "随着项目经验增加，我开始更多使用 Python 进行自动化和系统集成。像 Price Watch 这样的项目，也让我积累了将 .NET 应用、Python 进程、浏览器自动化以及外部工作流连接起来的实际经验。",
-      "当项目需要完整产品时，我也会使用 React、TypeScript、数据库和部署平台完成其他部分。长期来看，我希望进一步将这些应用开发经验与后端工程结合，构建把 AI 真正融入实际产品工作流的软件。"
+      "机器人方向工程硕士，具备机器学习、系统开发及全栈开发经验。拥有 C#/.NET、ASP.NET Core Web API、PostgreSQL、React 和 TypeScript 的实际开发经验，并熟悉基于 REST API 的应用开发，包括身份认证与权限控制。同时具备将应用部署至 Microsoft Azure 和 Firebase 的实践经验。"
     ]
   },
  
   "skills": {
-    "eyebrow": "技术能力",
-    "title": "核心技术与应用交付",
-    "description": "我的主要技术深度集中在后端开发，同时使用自动化、系统集成和完整应用交付所需要的相关工具。",
+    "title": "技术能力",
+    "description": "带星号的标签表示我正在深入学习的技术。",
     "items": [
       {
-        "title": "后端与 API",
+        "title": "Frontend",
+
         "items": [
-          "C#",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ]
+      },
+
+      {
+        "title": "Backend",
+
+        "staritem":[
+          "C#"
+        ],
+        
+        "items": [
           ".NET",
           "ASP.NET Core",
           "REST APIs",
@@ -31,8 +41,19 @@
           "JWT"
         ]
       },
+
       {
-        "title": "自动化与 AI",
+        "title": "Databases",
+
+        "items": [
+          "PostgreSQL",
+          "Entity Framework Core"
+        ]
+      },
+
+      {
+        "title": "Automation & AI",
+
         "items": [
           "Python",
           "Playwright",
@@ -42,23 +63,56 @@
           "AI Integration"
         ]
       },
+
       {
-        "title": "应用交付",
+        "title": "Cloud & Deployment",
+
         "items": [
-          "React",
-          "TypeScript",
-          "PostgreSQL",
-          "Neon",
           "Azure",
           "Firebase",
-          "Google Cloud"
+          "Google Cloud",
+          "Neon",
+          "Git",
+          "GitHub"
+        ]
+      },
+
+      {
+        "title": "Communication & Languages",
+
+        "items": [
+          "中文",
+          "英语",
+          "瑞典语"
         ]
       }
     ]
   },
-  "cta": {
-    "eyebrow": "联系我",
-    "title": "正在寻找一个不仅只关注 API 的后端开发者？",
-    "description": "我目前接受后端系统、API、自动化以及实际 AI 应用相关的项目与工作机会。"
+
+  "education": {
+    "title": "教育与学习经历",
+    "description": "我的学术背景、职业培训以及持续学习经历。",
+    "items": [
+      {
+        "period": "2026年3月 – 至今",
+        "degree": "AI 程序开发（职业培训）",
+        "school": "Lexicon AB，马尔默 · 远程",
+        "description": "目前主要学习 Web 应用程序开发与云服务相关技术。"
+      },
+      {
+        "period": "2024年7月 – 2026年3月",
+        "degree": "就业准备活动与语言课程",
+        "school": "瑞典",
+        "description": "参加就业准备相关活动，并学习瑞典语和英语，以提升沟通能力并为在瑞典的职业发展做好准备。"
+      },
+      {
+        "period": "2019年9月 – 2024年7月",
+        "degree": "机器人方向工程硕士",
+        "school": "梅拉达伦大学，韦斯特罗斯",
+        "description": "主要学习机器人技术、嵌入式系统、人工智能和电子技术。硕士毕业论文中，使用 Python、TensorFlow 和卷积神经网络（CNN）开发了基于雷达的手势识别系统，分类准确率达到 95%，单次预测时间约为 25 毫秒。",
+        "thesis": "Implementation of Machine Learning Algorithm for Radar-Based Hand Gesture Recognition",
+        "thesisUrl": "https://mdu.diva-portal.org/smash/record.jsf?pid=diva2%3A1870908&dswid=-2606"
+      }
+    ]
   }
 }

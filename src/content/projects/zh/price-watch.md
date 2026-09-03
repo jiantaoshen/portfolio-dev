@@ -2,7 +2,7 @@
 lang: zh
 title: "Price Watch"
 description: "一个本地优先的商品价格监控应用，使用 React、TypeScript、ASP.NET Core、Python 和 Playwright 构建，用于自动追踪商品价格、价格历史、目标价格状态和抓取运行结果。"
-category: "全栈 Web 与自动化开发"
+category: "本地自动化开发"
 status: "已完成"
 order: 2
 featured: true
@@ -28,19 +28,6 @@ highlights:
   - "支持邮件价格通知和重复通知控制"
   - "通过 Windows Task Scheduler 实现自动价格检查"
   - "使用本地 JSON 保存运行数据、历史数据和配置"
-architecture:
-  - label: "应用界面"
-    value: "React · TypeScript · Vite"
-  - label: "本地 API"
-    value: "ASP.NET Core · .NET 10"
-  - label: "网页抓取"
-    value: "Python · Playwright"
-  - label: "价格提取"
-    value: "JSON-LD · DOM Fallback"
-  - label: "数据存储"
-    value: "Local JSON"
-  - label: "自动化"
-    value: "Windows Task Scheduler · PowerShell"
 links:
   github: "https://github.com/jiantaoshen/PriceWatch"
 draft: false

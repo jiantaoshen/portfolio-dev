@@ -2,7 +2,7 @@
 lang: zh
 title: "LightManager"
 description: "一个以后端 ASP.NET Core Web API 为核心的项目管理应用，包含身份认证、基于角色的权限控制、项目与任务工作流、PostgreSQL 持久化数据以及 Azure 部署。"
-category: "后端与 API 开发"
+category: "全栈开发"
 status: "已上线"
 order: 1
 featured: true
@@ -22,19 +22,6 @@ highlights:
   - "项目成员关系与任务分配工作流"
   - "通过 Entity Framework Core、PostgreSQL 和 Neon 实现数据持久化"
   - "前端与后端分别部署到 Microsoft Azure"
-architecture:
-  - label: "应用界面"
-    value: "React · TypeScript · Vite · Tailwind CSS"
-  - label: "后端 API"
-    value: "C# · ASP.NET Core Web API"
-  - label: "身份认证与授权"
-    value: "ASP.NET Identity · JWT · Role-Based Permissions"
-  - label: "数据访问"
-    value: "Entity Framework Core"
-  - label: "数据库"
-    value: "PostgreSQL · Neon"
-  - label: "应用交付"
-    value: "Azure Static Web Apps · Azure App Service"
 links:
   github: "https://github.com/jiantaoshen/LightManager"
   live: "https://thankful-beach-0211add0f.7.azurestaticapps.net"
