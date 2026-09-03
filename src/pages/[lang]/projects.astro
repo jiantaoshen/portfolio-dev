@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { getCollection } from "astro:content";
+
+import {
+  locales,
+  getTranslations,
+  type Locale,
+} from "../../i18n";
+
+import type {
+  ProjectTranslation,
+  CommonTranslation,
+} from "../../i18n/types";
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const lang = Astro.params.lang as Locale;
+
+const project =
+  getTranslations<ProjectTranslation>(
+    lang,
+    "project",
+  );
+
+const common =
+  getTranslations<CommonTranslation>(
+    lang,
+    "common",
+  );
+
+const projects = (
+  await getCollection(
+    "projects",
+    ({ data }) =>
+      !data.draft &&
+      data.lang === lang,
+  )
+).sort(
+  (a, b) =>
+    a.data.order -
+    b.data.order,
+);
+
+function getProjectSlug(id: string) {
+  const [, ...parts] = id.split("/");
+  return parts.join("/");
+}
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${project.page.title} | JIANTAO.dev`}
+>
+  <section class="bg-dark pb-20 pt-32 text-white">
+    <div class="container">
+      <p class="text-label text-brand-muted">
+        {project.page.eyebrow}
+      </p>
+
+      <h1 class="text-display mt-4 text-white">
+        {project.page.title}
+      </h1>
+
+      <p class="text-large mt-6 max-w-3xl text-text-dark">
+        {project.page.description}
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-app">
+    <div class="container">
+      <div class="grid gap-6 lg:grid-cols-2">
+        {
+          projects.map((item) => {
+            const slug =
+              getProjectSlug(item.id);
+
+            return (
+              <article class="card card-hover flex flex-col p-7">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="text-label text-brand">
+                    {item.data.category}
+                  </span>
+
+                  <span class="tag">
+                    {item.data.status}
+                  </span>
+                </div>
+
+                <h2 class="text-heading mt-5 text-text">
+                  {item.data.title}
+                </h2>
+
+                <p class="text-body mt-4 flex-1 text-text-muted">
+                  {item.data.description}
+                </p>
+
+                {
+                  item.data.technologies.length > 0 && (
+                    <div class="mt-6 flex flex-wrap gap-2">
+                      {
+                        item.data.technologies.map(
+                          (technology) => (
+                            <span class="tag">
+                              {technology}
+                            </span>
+                          ),
+                        )
+                      }
+                    </div>
+                  )
+                }
+
+                {
+                  item.data.highlights.length > 0 && (
+                    <ul class="mt-6 space-y-2 text-sm text-text-muted">
+                      {
+                        item.data.highlights.map(
+                          (highlight) => (
+                            <li class="flex gap-2">
+                              <span class="text-brand">
+                                •
+                              </span>
+
+                              <span>
+                                {highlight}
+                              </span>
+                            </li>
+                          ),
+                        )
+                      }
+                    </ul>
+                  )
+                }
+
+                <div class="mt-7 border-t border-border pt-5">
+                  <a
+                    href={`/${lang}/projects/${slug}/`}
+                    class="link-brand"
+                  >
+                    {common.buttons.caseStudy}
+
+                    <span aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

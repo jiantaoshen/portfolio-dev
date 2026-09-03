@@ -1,0 +1,153 @@
+---
+import { getCollection } from "astro:content";
+
+import type { Locale } from "../i18n";
+
+import type {
+  HomeTranslation,
+  CommonTranslation,
+} from "../i18n/types";
+
+interface Props {
+  lang: Locale;
+  home: HomeTranslation;
+  common: CommonTranslation;
+}
+
+const {
+  lang,
+  home,
+  common,
+} = Astro.props;
+
+const previewPosts = (
+  await getCollection(
+    "blog",
+    ({ data }) =>
+      !data.draft &&
+      data.lang === lang,
+  )
+)
+  .sort(
+    (a, b) =>
+      b.data.date.getTime() -
+      a.data.date.getTime(),
+  )
+  .slice(0, 3);
+
+function getPostSlug(id: string) {
+  const [, ...parts] = id.split("/");
+  return parts.join("/");
+}
+
+function formatDate(date: Date) {
+  const locale =
+    lang === "sv"
+      ? "sv-SE"
+      : lang === "zh"
+        ? "zh-CN"
+        : "en-US";
+
+  return date.toLocaleDateString(locale, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+---
+
+<section
+  id="blog"
+  class="section bg-surface-muted"
+>
+  <div class="container">
+    <div
+      class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+    >
+      <div class="max-w-2xl">
+        <p class="text-label text-brand">
+          {home.technicalNotes.eyebrow}
+        </p>
+
+        <h2 class="text-title mt-3 text-text">
+          {home.technicalNotes.title}
+        </h2>
+
+        <p class="text-large mt-4 text-text-muted">
+          {home.technicalNotes.description}
+        </p>
+      </div>
+
+      <a
+        href={`/${lang}/blog/`}
+        class="link-brand shrink-0"
+      >
+        {home.technicalNotes.viewAll}
+
+        <span aria-hidden="true">
+          →
+        </span>
+      </a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        previewPosts.map((post) => {
+          const slug =
+            getPostSlug(post.id);
+
+          return (
+            <article class="card card-hover flex h-full flex-col p-6">
+              <div class="flex items-center gap-3 text-xs text-text-subtle">
+                <time datetime={post.data.date.toISOString()}>
+                  {formatDate(post.data.date)}
+                </time>
+
+                <span aria-hidden="true">
+                  •
+                </span>
+
+                <span>
+                  {post.data.readingTime}
+                </span>
+              </div>
+
+              <h3 class="text-heading mt-5 leading-snug text-text">
+                {post.data.title}
+              </h3>
+
+              <p class="text-body mt-4 flex-1 text-text-muted">
+                {post.data.description}
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                {
+                  (post.data.tags ?? [])
+                    .slice(0, 4)
+                    .map((tag) => (
+                      <span class="tag">
+                        {tag}
+                      </span>
+                    ))
+                }
+              </div>
+
+              <div class="mt-6 border-t border-border pt-5">
+                <a
+                  href={`/${lang}/blog/${slug}/`}
+                  class="link-brand"
+                >
+                  {common.readArticle}
+
+                  <span aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

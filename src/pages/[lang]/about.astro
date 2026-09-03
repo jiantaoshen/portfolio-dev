@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import {
+  locales,
+  getTranslations,
+  type Locale,
+} from "../../i18n";
+
+import type {
+  AboutTranslation,
+  CommonTranslation,
+} from "../../i18n/types";
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const lang = Astro.params.lang as Locale;
+
+const about =
+  getTranslations<AboutTranslation>(
+    lang,
+    "about",
+  );
+
+const common =
+  getTranslations<CommonTranslation>(
+    lang,
+    "common",
+  );
+---
+
+<BaseLayout
+  lang={lang}
+  title={about.hero.title}
+>
+  <!-- Hero -->
+  <section class="bg-dark pb-20 pt-32 text-white">
+    <div class="container">
+      <p class="text-label text-brand-muted">
+        {about.hero.eyebrow}
+      </p>
+
+      <h1 class="text-display mt-4 max-w-4xl text-white">
+        {about.hero.title}
+      </h1>
+
+      <p class="text-large mt-6 max-w-3xl text-text-dark">
+        {about.hero.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section bg-app">
+    <div class="container grid gap-12 lg:gap-16">
+      <div>
+        <p class="text-label text-brand">
+          {about.story.eyebrow}
+        </p>
+
+        <h2 class="text-title mt-3 text-text">
+          {about.story.title}
+        </h2>
+
+        <div class="mt-6 space-y-5">
+          {about.story.paragraphs.map((paragraph) => (
+            <p class="text-large text-text-muted">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section bg-surface-muted">
+    <div class="container">
+      <div class="section-head">
+        <p class="text-label text-brand">
+          {about.skills.eyebrow}
+        </p>
+
+        <h2 class="text-title mt-3 text-text">
+          {about.skills.title}
+        </h2>
+
+        <p class="text-large mt-4 text-text-muted">
+          {about.skills.description}
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        {about.skills.items.map((group) => (
+          <article class="card p-6">
+            <h3 class="text-heading text-text">
+              {group.title}
+            </h3>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span class="tag">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

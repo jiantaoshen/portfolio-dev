@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+import {
+  getTranslations,
+  type Locale,
+} from "../i18n";
+
+type CommonTranslation = {
+  nav: {
+    about: string;
+    projects: string;
+    blog: string;
+    contact: string;
+  };
+
+  rights: string;
+};
+
+interface Props {
+  title?: string;
+  lang: Locale;
+}
+
+const {
+  title = "JIANTAO.dev",
+  lang,
+} = Astro.props;
+
+const common =
+  getTranslations<CommonTranslation>(
+    lang,
+    "common",
+  );
+---
+
+<!doctype html>
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div class="flex min-h-screen w-full flex-col">
+      <Navbar
+        lang={lang}
+        common={common}
+      />
+
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <Footer
+        lang={lang}
+        common={common}
+      />
+    </div>
+  </body>
+</html>

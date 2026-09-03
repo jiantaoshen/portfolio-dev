@@ -1,7 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Om mig",
-    "title": "Backendfokuserad utvecklare som bygger mjukvara kring verkliga applikationsproblem.",
+    "title": "Backendfokuserad utvecklare",
     "description": "Jag arbetar främst med C#/.NET och Python, med mitt största tekniska djup inom backendsystem, API:er, applikationslogik och automation."
   },
   "story": {
@@ -11,28 +10,6 @@
       "Min utvecklarbakgrund började med C# och .NET, vilket fortfarande är området där jag har mitt största tekniska djup. Jag tycker om att arbeta med backendlogik, API:er, behörigheter, dataflöden och de system som ligger bakom en applikation.",
       "Med tiden har jag börjat använda Python mer för automation och integration. Projekt som Price Watch har gett mig praktisk erfarenhet av att koppla samman .NET-applikationer med Python-processer, webbläsarautomation och externa arbetsflöden.",
       "När ett projekt behöver en komplett produkt arbetar jag även med React, TypeScript, databaser och driftsättning. På längre sikt vill jag kombinera den applikationserfarenheten med backendutveckling för att bygga praktisk mjukvara där AI blir en del av verkliga produktflöden."
-    ]
-  },
-  "focus": {
-    "eyebrow": "Tekniska styrkor",
-    "title": "Hur jag arbetar med mjukvaruutveckling",
-    "items": [
-      {
-        "title": "Backenddesign",
-        "description": "Jag tänker noggrant på API-ansvar, affärslogik, autentisering, auktorisering och hur data rör sig genom en applikation."
-      },
-      {
-        "title": "Integration & automation",
-        "description": "Jag tycker om att koppla samman tjänster och verktyg i praktiska arbetsflöden, inklusive .NET-applikationer, Python-automation och externa integrationer."
-      },
-      {
-        "title": "Produktperspektiv",
-        "description": "Jag fokuserar hellre på det faktiska applikationsproblemet än att behandla varje tekniskt lager som en isolerad implementation."
-      },
-      {
-        "title": "Leverans från början till slut",
-        "description": "När det behövs arbetar jag även med UI, data, konfiguration och driftsättning så att backenddelen blir en komplett och användbar applikation."
-      }
     ]
   },
   "skills": {
