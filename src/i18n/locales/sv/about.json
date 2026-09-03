@@ -55,8 +55,11 @@
       {
         "title": "Automation & AI",
 
+        "staritem":[
+          "Python"
+        ],
+
         "items": [
-          "Python",
           "Playwright",
           "Automation",
           "Ollama",
@@ -64,6 +67,7 @@
           "AI Integration"
         ]
       },
+
 
       {
         "title": "Cloud & Deployment",

@@ -72,7 +72,6 @@ button:disabled {
   @apply py-20 sm:py-24 lg:py-28;
 }
 
-
 /* ============================================================
    Typography
    ============================================================ */
@@ -135,10 +134,6 @@ button:disabled {
   @apply border border-white/20 bg-white/5 text-white hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10;
 }
 
-.btn-light {
-  @apply border border-border bg-surface text-text shadow-sm hover:-translate-y-0.5 hover:border-brand-muted hover:text-brand;
-}
-
 /* ============================================================
    Tags
    ============================================================ */
@@ -152,11 +147,7 @@ button:disabled {
 }
 
 .tag-star {
-  @apply border-brand/30 bg-brand/10 text-brand;
-}
-
-.tag-star-icon {
-  @apply text-xs;
+  @apply border-brand text-brand text-xs;
 }
 
 /* ============================================================
@@ -164,11 +155,11 @@ button:disabled {
    ============================================================ */
 
 .nav-link {
-  @apply text-sm font-medium text-text-dark transition hover:text-white;
+  @apply rounded-lg px-2.5 py-2 font-medium transition text-sm text-text-dark hover:text-white;
 }
 
 .nav-active {
-  @apply text-white;
+  @apply bg-white/10 text-white;
 }
 
 .nav-mobile {
@@ -195,11 +186,9 @@ button:disabled {
   display: none;
 }
 
-
 /* ============================================================
    Hero
    ============================================================ */
-
 .hero {
   position: relative;
   isolation: isolate;
@@ -231,8 +220,6 @@ button:disabled {
 .link-brand {
   @apply inline-flex items-center gap-2 text-sm font-semibold text-brand transition hover:text-brand-hover;
 }
-
-
 
 /* ============================================================
    Article Content

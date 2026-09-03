@@ -2,7 +2,6 @@
 lang: sv
 title: "LightManager"
 description: "En projektledningsapplikation byggd kring ett ASP.NET Core Web API med autentisering, rollbaserad behörighet, projekt- och uppgiftsflöden, persistent PostgreSQL-data och driftsättning på Azure."
-category: "Fullstacksutveckling"
 status: "Live"
 order: 1
 featured: true

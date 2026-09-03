@@ -60,8 +60,11 @@
       {
         "title": "Automation & AI",
 
+        "staritem":[
+          "Python"
+        ],
+
         "items": [
-          "Python",
           "Playwright",
           "Automation",
           "Ollama",

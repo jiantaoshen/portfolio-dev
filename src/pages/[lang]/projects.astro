@@ -73,18 +73,14 @@ function getProjectSlug(id: string) {
             return (
               <article class="card card-hover flex flex-col p-7">
                 <div class="flex items-center justify-between gap-4">
-                  <span class="text-label text-brand">
-                    {item.data.category}
-                  </span>
+                  <h2 class="text-heading mt-5 text-text">
+                    {item.data.title}
+                  </h2>
 
                   <span class="tag">
                     {item.data.status}
                   </span>
                 </div>
-
-                <h2 class="text-heading mt-5 text-text">
-                  {item.data.title}
-                </h2>
 
                 <p class="text-body mt-4 flex-1 text-text-muted">
                   {item.data.description}
@@ -103,28 +99,6 @@ function getProjectSlug(id: string) {
                         )
                       }
                     </div>
-                  )
-                }
-
-                {
-                  item.data.highlights.length > 0 && (
-                    <ul class="mt-6 space-y-2 text-sm text-text-muted">
-                      {
-                        item.data.highlights.map(
-                          (highlight) => (
-                            <li class="flex gap-2">
-                              <span class="text-brand">
-                                •
-                              </span>
-
-                              <span>
-                                {highlight}
-                              </span>
-                            </li>
-                          ),
-                        )
-                      }
-                    </ul>
                   )
                 }
 

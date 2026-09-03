@@ -16,7 +16,6 @@ export type ProjectLinks = {
 export type ProjectItem = {
   id: string;
   title: string;
-  category: string;
   status: string;
   description: string;
 

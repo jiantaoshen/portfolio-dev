@@ -80,12 +80,8 @@ function getProjectSlug(id: string) {
             featuredProjects.map((project) => (
               <article class="card card-hover flex flex-col overflow-hidden p-7 sm:p-8">
 
-                <!-- Category + status -->
+                <!-- status -->
                 <div class="flex flex-wrap items-center justify-between gap-3">
-                  <span class="text-label text-brand">
-                    {project.data.category}
-                  </span>
-
                   <span class="tag">
                     {project.data.status}
                   </span>

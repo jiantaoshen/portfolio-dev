@@ -2,7 +2,6 @@
 lang: zh
 title: "LightManager"
 description: "一个以后端 ASP.NET Core Web API 为核心的项目管理应用，包含身份认证、基于角色的权限控制、项目与任务工作流、PostgreSQL 持久化数据以及 Azure 部署。"
-category: "全栈开发"
 status: "已上线"
 order: 1
 featured: true

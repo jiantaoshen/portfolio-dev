@@ -35,7 +35,6 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
 
-    category: z.string(),
     status: z.string(),
 
     order: z.number().int().default(999),

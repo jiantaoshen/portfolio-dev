@@ -2,7 +2,6 @@
 lang: sv
 title: "Price Watch"
 description: "En local-first-applikation för prisbevakning byggd med React, TypeScript, ASP.NET Core, Python och Playwright för att automatiskt följa produktpriser, prishistorik, målpriser och resultat från scraper-körningar."
-category: "Lokal automationsutveckling"
 status: "Klar"
 order: 2
 featured: true

@@ -2,7 +2,6 @@
 lang: en
 title: "Price Watch"
 description: "A local-first product price monitoring application built with React, TypeScript, ASP.NET Core, Python, and Playwright to automatically track product prices, price history, target price status, and scraper run results."
-category: "Local Automation"
 status: "Done"
 order: 2
 featured: true

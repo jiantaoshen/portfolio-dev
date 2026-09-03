@@ -2,7 +2,6 @@
 lang: zh
 title: "Developer Portfolio"
 description: "一个使用 Astro、TypeScript 和 Tailwind CSS 构建的多语言开发者 Portfolio，通过静态 HTML、Content Collections 和 Markdown 展示项目、技术笔记和软件开发经验。"
-category: "静态网页"
 status: "已上线"
 order: 3
 featured: true

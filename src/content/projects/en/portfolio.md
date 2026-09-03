@@ -2,7 +2,6 @@
 lang: en
 title: "Developer Portfolio"
 description: "A multilingual developer portfolio built with Astro, TypeScript and Tailwind CSS, using static HTML, Content Collections and Markdown to present projects, technical notes and software development experience."
-category: "Static Website"
 status: "Live"
 order: 3
 featured: true

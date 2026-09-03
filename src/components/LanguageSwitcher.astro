@@ -39,10 +39,8 @@ const languages: {
           language.code === lang ? "page" : undefined
         }
         class:list={[
-          "rounded-lg px-2.5 py-2 text-sm font-medium transition",
-          language.code === lang
-            ? "bg-white/10 text-white"
-            : "text-text-dark hover:bg-white/5 hover:text-white",
+          "nav-link",
+          language.code === lang ? "nav-active" : "",
         ]}
       >
         {language.label}

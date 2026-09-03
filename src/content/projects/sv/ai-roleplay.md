@@ -2,7 +2,6 @@
 lang: sv
 title: "AI Roleplay"
 description: "En AI-baserad rollspelschatt byggd med React, ASP.NET Core, FastAPI och Ollama, med stöd för flera karaktärer, strömmande svar, kontext över flera meddelanden, strukturerade karaktärsprompter och konversationssammanfattning."
-category: "AI-applikationsutveckling"
 status: "Under utveckling"
 order: 4
 featured: false

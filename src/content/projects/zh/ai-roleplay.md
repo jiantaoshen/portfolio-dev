@@ -2,7 +2,6 @@
 lang: zh
 title: "AI Roleplay"
 description: "一个基于 React、ASP.NET Core、FastAPI 和 Ollama 构建的 AI 角色扮演聊天应用，支持多角色、流式回复、多轮上下文、角色 Prompt 构建和对话摘要。"
-category: "AI 应用开发"
 status: "开发中"
 order: 4
 featured: false

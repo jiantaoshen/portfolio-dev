@@ -2,7 +2,6 @@
 lang: sv
 title: "Developer Portfolio"
 description: "En flerspråkig utvecklarportfolio byggd med Astro, TypeScript och Tailwind CSS, där statisk HTML, Content Collections och Markdown används för att presentera projekt, tekniska anteckningar och erfarenhet inom mjukvaruutveckling."
-category: "Static webbsida"
 status: "Live"
 order: 3
 featured: true
