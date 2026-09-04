@@ -1,75 +1,27 @@
 {
   "hero": {
-    "availability": "Tillgänglig för nya möjligheter",
-    "eyebrow": "Backend · API:er · AI-applikationer",
-    "titleBefore": "Jag bygger",
-    "titleHighlight": "backendsystem",
-    "titleAfter": "och AI-drivna applikationer.",
-    "description": "Backendfokuserad mjukvaruutvecklare som arbetar med C#/.NET och Python för att bygga API:er, automation och applikationer som omvandlar AI-funktionalitet till praktiska mjukvaruprodukter.",
-    "architecture": {
-      "title": "Från frontend till fungerande produkt",
-      "frontend": {
-        "label": "Applikationsgränssnitt",
-        "value": "React + TypeScript"
-      },
-      "backend": {
-        "label": "Kärnbackend",
-        "value": "C# / .NET APIs"
-      },
-      "data": {
-        "label": "Data",
-        "value": "PostgreSQL"
-      },
-      "deployment": {
-        "label": "Leverans",
-        "value": "Microsoft Azure · Firebase · GCP"
-      },
-      "ai": {
-        "label": "AI & automation",
-        "value": "Python · Ollama · AI APIs"
-      }
-    }
+    "titleBefore": "Hej, jag är ",
+
+    "titleHighlight": "Jiantao Shen",
+
+    "description": "Jag är en backendfokuserad utvecklare som arbetar med C#/.NET och Python för att bygga API:er och applikationer som omvandlar AI-funktionalitet till praktiska mjukvaruprodukter."
   },
   "featuredProjects": {
-    "eyebrow": "Utvalda projekt",
-    "title": "Projekt som visar hur jag bygger och levererar mjukvara",
-    "description": "Utvalda projekt inom backend-API:er, applikationsorkestrering, automation och komplett mjukvaruleverans.",
-    "featured": "Utvalt projekt",
+    "title": "Utvalda projekt",
+
+    "description": "Projekt som visar min kompetens",
+
     "viewAll": "Visa alla projekt"
   },
-  "process": {
-    "eyebrow": "Så arbetar jag",
-    "title": "Från problem till fungerande mjukvara",
-    "description": "Jag börjar med problemet och applikationens viktigaste ansvarsområden och utformar sedan de tjänster, dataflöden, automationer och övriga lager som behövs för ett fungerande resultat.",
-    "items": [
-      {
-        "title": "Förstå",
-        "description": "Tydliggör problemet, användarna, affärsmålen och de tekniska kraven innan en lösning väljs."
-      },
-      {
-        "title": "Designa",
-        "description": "Definiera backendansvar, API:er, dataflöden, behörigheter, integrationer och den övergripande applikationsstrukturen."
-      },
-      {
-        "title": "Bygga",
-        "description": "Implementera kärntjänster och arbetsflöden och koppla sedan in nödvändig data, UI, automation och externa integrationer."
-      },
-      {
-        "title": "Leverera",
-        "description": "Konfigurera kör- eller produktionsmiljön och verifiera att hela applikationsflödet fungerar i praktiken."
-      }
-    ]
-  },
+ 
   "technicalNotes": {
-    "eyebrow": "Tekniska anteckningar",
-    "title": "Anteckningar från att bygga och köra mjukvara",
-    "description": "Praktiska anteckningar om backend-API:er, automation, driftsättning, integration och erfarenheter från utveckling av AI-baserade applikationer.",
+    "title": "Blogg & Tekniska anteckningar",
+    "description": "Personliga noteringar och artiklar om webb- och mjukvaruutveckling.",
     "viewAll": "Visa alla anteckningar"
   },
   "contact": {
-    "eyebrow": "Kontakt",
-    "title": "Bygger du ett backend-system, API eller en AI-baserad applikation?",
-    "description": "Har du ett projekt, en tjänst eller en annan möjlighet inom mjukvaruutveckling? Kontakta mig gärna via e-post eller LinkedIn.",
+    "title": "Har du ett projekt, en tjänst eller en annan möjlighet inom mjukvaruutveckling?",
+    "description": " Kontakta mig gärna via e-post eller LinkedIn.",
     "email": "Skicka e-post"
   }
 }

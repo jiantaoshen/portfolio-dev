@@ -2,7 +2,6 @@
 lang: en
 title: "AI Roleplay"
 description: "An AI roleplay chat application built with React, ASP.NET Core, FastAPI, and Ollama, featuring multiple characters, streaming responses, multi-turn context, character prompt construction, and conversation summarization."
-category: "AI Application Development"
 status: "In Development"
 order: 4
 featured: false
@@ -26,17 +25,6 @@ highlights:
   - "Stop Generation and Regenerate support"
   - "Conversation Summary for compressing long chat history"
   - "Frontend component refactor and backend service-layer refactor"
-architecture:
-  - label: "Frontend"
-    value: "React · TypeScript · Tailwind CSS"
-  - label: "Main Backend"
-    value: "ASP.NET Core · C#"
-  - label: "AI Service"
-    value: "FastAPI · Python"
-  - label: "Model Runtime"
-    value: "Ollama"
-  - label: "AI Model"
-    value: "qwen3:4b"
 draft: false
 ---
 

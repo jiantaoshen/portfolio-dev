@@ -76,26 +76,13 @@ const pageTitle =
   title={pageTitle}
   description={blog.hero.description}
 >
-  <!-- Hero -->
-  <section class="bg-dark pb-20 pt-32 text-white">
-    <div class="container">
-      <p class="text-label text-brand-muted">
-        {blog.hero.eyebrow}
-      </p>
-
-      <h1 class="text-display mt-4 max-w-4xl text-white">
-        {blog.hero.title}
-      </h1>
-
-      <p class="text-large mt-6 max-w-3xl text-text-dark">
-        {blog.hero.description}
-      </p>
-    </div>
-  </section>
-
   <!-- Articles -->
   <section class="section bg-app">
     <div class="container">
+      <h1 class="text-title text-center text-dark">
+        {blog.hero.title}
+      </h1>
+
       {
         posts.length > 0 ? (
           <>
@@ -124,18 +111,18 @@ const pageTitle =
                         </span>
                       </div>
 
-                      <h2 class="text-heading mt-5 leading-snug text-text">
+                      <h3 class="text-card-title leading-snug text-text">
                         {post.data.title}
-                      </h2>
+                      </h3>
 
-                      <p class="text-body mt-4 flex-1 text-text-muted">
+                      <p class="text-body max-w-xl text-text-muted">
                         {post.data.description}
                       </p>
 
                       {
                         post.data.tags.length >
                           0 && (
-                          <div class="mt-5 flex flex-wrap gap-2">
+                          <div class="mb-5 flex flex-wrap gap-2">
                             {
                               post.data.tags.map(
                                 (tag) => (
@@ -149,7 +136,7 @@ const pageTitle =
                         )
                       }
 
-                      <div class="mt-6 border-t border-border pt-5">
+                      <div class="mt-auto border-t border-border pt-5">
                         <a
                           href={`/${lang}/blog/${slug}/`}
                           class="link-brand"

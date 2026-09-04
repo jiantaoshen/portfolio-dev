@@ -1,75 +1,24 @@
 {
   "hero": {
-    "availability": "目前接受新的合作与工作机会",
-    "eyebrow": "后端 · API · AI 应用",
-    "titleBefore": "我专注构建",
-    "titleHighlight": "后端系统",
-    "titleAfter": "与 AI 驱动的应用。",
-    "description": "以后端开发为核心，主要使用 C#/.NET 和 Python 构建 API、自动化和应用系统，并将 AI 能力融入实际的软件产品。",
-    "architecture": {
-      "title": "从前端到可用产品",
-      "frontend": {
-        "label": "应用界面",
-        "value": "React + TypeScript"
-      },
-      "backend": {
-        "label": "核心后端",
-        "value": "C# / .NET APIs"
-      },
-      "data": {
-        "label": "数据",
-        "value": "PostgreSQL"
-      },
-      "deployment": {
-        "label": "应用交付",
-        "value": "Microsoft Azure · Firebase · GCP"
-      },
-      "ai": {
-        "label": "AI 与自动化",
-        "value": "Python · Ollama · AI APIs"
-      }
-    }
+    "titleBefore": "您好，我是 ",
+    "titleHighlight": "沈键涛",
+    "description": "本人专注于后端开发，主要使用 C#/.NET 和 Python 构建 API 和应用系统，并将 AI 能力融入实际的软件产品。"
   },
+
   "featuredProjects": {
-    "eyebrow": "精选项目",
-    "title": "通过真实项目展示我如何构建和交付软件",
-    "description": "涵盖后端 API、应用编排、自动化以及完整软件交付的代表项目。",
-    "featured": "重点项目",
+    "title": "精选项目",
+    "description": "展示我技能的精选作品",
     "viewAll": "查看全部项目"
   },
-  "process": {
-    "eyebrow": "我的工作方式",
-    "title": "从问题到可运行的软件",
-    "description": "我首先理解问题和应用的核心职责，然后设计并连接服务、数据、自动化以及实现完整结果所需要的其他应用层。",
-    "items": [
-      {
-        "title": "理解",
-        "description": "在选择实现方式之前，先明确问题、用户、业务目标和技术要求。"
-      },
-      {
-        "title": "设计",
-        "description": "定义后端职责、API、数据流、权限、系统集成以及整体应用结构。"
-      },
-      {
-        "title": "构建",
-        "description": "实现核心服务和工作流，再连接所需要的数据、界面、自动化和外部集成。"
-      },
-      {
-        "title": "交付",
-        "description": "配置运行或生产环境，并验证完整的应用工作流在实际环境中能够正常运行。"
-      }
-    ]
-  },
+
   "technicalNotes": {
-    "eyebrow": "技术笔记",
-    "title": "构建和运行软件过程中的记录",
-    "description": "关于后端 API、自动化、部署、系统集成，以及构建 AI 应用过程中实际经验的技术记录。",
+    "title": "个人笔记与技术文章",
+    "description": "关于网站和软件开发的个人笔记和文章",
     "viewAll": "查看全部笔记"
   },
   "contact": {
-    "eyebrow": "联系我",
-    "title": "正在开发后端、API 或 AI 应用？",
-    "description": "如果你有项目、职位机会或其他软件开发相关的合作想法，欢迎通过邮箱或 LinkedIn 联系我。",
+    "title": "有项目、职位机会或其他软件开发相关的合作想法？",
+    "description": "欢迎通过邮箱或 LinkedIn 联系我！",
     "email": "发送邮件"
   }
 }

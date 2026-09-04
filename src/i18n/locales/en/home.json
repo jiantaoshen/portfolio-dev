@@ -1,70 +1,34 @@
 {
   "hero": {
-    "availability": "Available for new opportunities",
-    "eyebrow": "Backend · APIs · AI Applications",
 
-    "titleBefore": "I build",
-    "titleHighlight": "backend systems",
-    "titleAfter": "and AI-powered applications.",
+    "titleBefore": "Hello， I'm ",
+    
+    "titleHighlight": "Jiantao Shen",
 
-    "description": "Backend-focused software developer working with C#/.NET and Python to build APIs, automation and applications that turn AI capabilities into practical software products.",
-
-    "architecture": {
-      "title": "From frontend to working product",
-
-      "frontend": {
-        "label": "Application UI",
-        "value": "React + TypeScript"
-      },
-
-      "backend": {
-        "label": "Core Backend",
-        "value": "C# / .NET APIs"
-      },
-
-      "data": {
-        "label": "Data",
-        "value": "PostgreSQL"
-      },
-
-      "deployment": {
-        "label": "Delivery",
-        "value": "Microsoft Azure · Firebase · GCP"
-      },
-
-      "ai": {
-        "label": "AI & Automation",
-        "value": "Python · Ollama · AI APIs"
-      }
-    }
+    "description": "I'm a Backend-focused software developer working with C#/.NET and Python to build APIs and applications that turn AI capabilities into practical software products."
   },
 
   "featuredProjects": {
-    "eyebrow": "Featured Projects",
+    "title": "Featured Projects",
 
-    "title": "Projects that show how I build and deliver software",
-
-    "description": "Selected work covering backend APIs, application orchestration, automation and complete software delivery.",
-
-    "featured": "Featured project",
+    "description": "Selected work that demonstrates my skills.",
 
     "viewAll": "View all projects"
   },
 
   "technicalNotes": {
-    "eyebrow": "Technical Notes",
+    "title": "Blogs & Technical Notes",
 
-    "title": "Notes from building and operating software",
-
-    "description": "Practical notes on backend APIs, automation, deployment, integration and the lessons that come from building AI-enabled applications.",
+    "description": "Personal notes and articles on website and software development.",
 
     "viewAll": "View all notes"
   },
 
   "contact": {
-    "eyebrow": "Let's Talk",
-    "title": "Building a backend, API or AI-enabled application?",
-    "description": "Have a project, role or software opportunity in mind? Feel free to contact me by email or LinkedIn.",
+    "title": "Have a project, role or software opportunity in mind? ",
+
+    "description": "Feel free to contact me by email or LinkedIn.",
+
     "email": "Email Me"
   }
 }

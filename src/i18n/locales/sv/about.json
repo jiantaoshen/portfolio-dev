@@ -1,26 +1,38 @@
 {
-  "hero": {
-    "title": "Backendfokuserad utvecklare",
-    "description": "Jag arbetar främst med C#/.NET och Python, med mitt största tekniska djup inom backendsystem, API:er, applikationslogik och automation."
-  },
   "story": {
-    "eyebrow": "Min bakgrund",
-    "title": "Backend först, med ett bredare perspektiv på produkten",
+    "title": "Bakgrund",
     "paragraphs": [
-      "Min utvecklarbakgrund började med C# och .NET, vilket fortfarande är området där jag har mitt största tekniska djup. Jag tycker om att arbeta med backendlogik, API:er, behörigheter, dataflöden och de system som ligger bakom en applikation.",
-      "Med tiden har jag börjat använda Python mer för automation och integration. Projekt som Price Watch har gett mig praktisk erfarenhet av att koppla samman .NET-applikationer med Python-processer, webbläsarautomation och externa arbetsflöden.",
-      "När ett projekt behöver en komplett produkt arbetar jag även med React, TypeScript, databaser och driftsättning. På längre sikt vill jag kombinera den applikationserfarenheten med backendutveckling för att bygga praktisk mjukvara där AI blir en del av verkliga produktflöden."
+      "Civilingenjör inom robotik med erfarenhet av maskininlärning, systemutveckling och full-stackutveckling. Har praktisk erfarenhet av C#/.NET, ASP.NET Core Web API, PostgreSQL, React och TypeScript samt av att utveckla REST-baserade applikationer med autentisering och behörighetsstyrning. Har även erfarenhet av driftsättning och molntjänster i Microsoft Azure och Firebase."
     ]
   },
+
   "skills": {
-    "eyebrow": "Kompetens",
-    "title": "Kärnkompetens och applikationsleverans",
-    "description": "Mitt största tekniska djup ligger inom backendutveckling, kompletterat med verktyg för automation, integration och komplett applikationsleverans.",
+    "title": "Kompetens",
+
+    "description": "Taggar med stjärna indikerar de teknologier jag studerar på djupet.",
+    
     "items": [
       {
-        "title": "Backend & API:er",
+        "title": "Frontend",
+
         "items": [
-          "C#",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Tailwind CSS"
+        ]
+      },
+
+      {
+        "title": "Backend",
+
+        "staritem":[
+          "C#"
+        ],
+        
+        "items": [
           ".NET",
           "ASP.NET Core",
           "REST APIs",
@@ -30,10 +42,24 @@
           "JWT"
         ]
       },
+
+      {
+        "title": "Databases",
+
+        "items": [
+          "PostgreSQL",
+          "Entity Framework Core"
+        ]
+      },
+
       {
         "title": "Automation & AI",
+
+        "staritem":[
+          "Python"
+        ],
+
         "items": [
-          "Python",
           "Playwright",
           "Automation",
           "Ollama",
@@ -41,23 +67,58 @@
           "AI Integration"
         ]
       },
+
+
       {
-        "title": "Applikationsleverans",
+        "title": "Cloud & Deployment",
+
         "items": [
-          "React",
-          "TypeScript",
-          "PostgreSQL",
-          "Neon",
           "Azure",
           "Firebase",
-          "Google Cloud"
+          "Google Cloud",
+          "Neon",
+          "Git",
+          "GitHub"
+        ]
+      },
+
+      {
+        "title": "Communication & Languages",
+
+        "items": [
+          "Kinesiska",
+          "Engelska",
+          "Svenska"
         ]
       }
     ]
   },
-  "cta": {
-    "eyebrow": "Kontakta mig",
-    "title": "Söker du en backendutvecklare som tänker längre än bara API:et?",
-    "description": "Jag är öppen för projekt och möjligheter inom backendsystem, API:er, automation och praktisk AI-baserad mjukvara."
+
+  "education": {
+    "title": "Utbildning och lärande",
+    "description": "Min akademiska bakgrund, yrkesutbildning och kompletterande studier.",
+    "items": [
+      {
+        "period": "Mars 2026 – pågående",
+        "degree": "Programmerare AI (yrkesutbildning)",
+        "school": "Lexicon AB, Malmö · Distans",
+        "description": "Studerar utveckling av webbapplikationer och molntjänster."
+      },
+      {
+        "period": "Juli 2024 – mars 2026",
+        "degree": "Arbetsmarknadsaktiviteter och språkkurser",
+        "school": "Sverige",
+        "description": "Deltog i arbetsmarknadsaktiviteter och studerade svenska och engelska för att stärka min kommunikationsförmåga och förbereda mig för arbetslivet i Sverige."
+      },
+      {
+        "period": "September 2019 – juli 2024",
+        "degree": "Civilingenjör inom robotik",
+        "school": "Mälardalens universitet, Västerås",
+        "description": "Studerade robotik, inbyggda system, artificiell intelligens och elektronik. Examensarbetet fokuserade på utveckling av ett radarbaserat system för handgestigenkänning med Python, TensorFlow och CNN. Systemet uppnådde 95 % klassificeringsnoggrannhet och cirka 25 ms prediktionstid.",
+        "thesis": "Implementation of Machine Learning Algorithm for Radar-Based Hand Gesture Recognition",
+        "thesisUrl": "https://mdu.diva-portal.org/smash/record.jsf?pid=diva2%3A1870908&dswid=-2606"
+      }
+    ]
   }
+
 }

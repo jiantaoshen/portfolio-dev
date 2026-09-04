@@ -1,10 +1,9 @@
 {
   "nav": {
-    "services": "Tjänster",
     "projects": "Projekt",
     "about": "Om mig",
     "blog": "Artiklar",
-    "contact": "Kontakta mig"
+    "contact": "E-post"
   },
 
   "buttons": {

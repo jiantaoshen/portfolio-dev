@@ -2,7 +2,6 @@
 lang: sv
 title: "LightManager"
 description: "En projektledningsapplikation byggd kring ett ASP.NET Core Web API med autentisering, rollbaserad behörighet, projekt- och uppgiftsflöden, persistent PostgreSQL-data och driftsättning på Azure."
-category: "Backend- & API-utveckling"
 status: "Live"
 order: 1
 featured: true
@@ -22,19 +21,6 @@ highlights:
   - "Projektmedlemskap och arbetsflöden för uppgiftstilldelning"
   - "Entity Framework Core med PostgreSQL och Neon"
   - "Separat frontend- och backenddriftsättning på Microsoft Azure"
-architecture:
-  - label: "Applikationsgränssnitt"
-    value: "React · TypeScript · Vite · Tailwind CSS"
-  - label: "Backend API"
-    value: "C# · ASP.NET Core Web API"
-  - label: "Autentisering & auktorisering"
-    value: "ASP.NET Identity · JWT · Role-Based Permissions"
-  - label: "Dataåtkomst"
-    value: "Entity Framework Core"
-  - label: "Databas"
-    value: "PostgreSQL · Neon"
-  - label: "Leverans"
-    value: "Azure Static Web Apps · Azure App Service"
 links:
   github: "https://github.com/jiantaoshen/LightManager"
   live: "https://thankful-beach-0211add0f.7.azurestaticapps.net"

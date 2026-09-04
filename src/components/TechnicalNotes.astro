@@ -58,22 +58,16 @@ function formatDate(date: Date) {
 
 <section
   id="blog"
-  class="section bg-surface-muted"
+  class="section bg-surface"
 >
   <div class="container">
-    <div
-      class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
-    >
+    <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
-        <p class="text-label text-brand">
-          {home.technicalNotes.eyebrow}
-        </p>
-
-        <h2 class="text-title mt-3 text-text">
+        <h1 class="text-title text-text">
           {home.technicalNotes.title}
-        </h2>
+        </h1>
 
-        <p class="text-large mt-4 text-text-muted">
+        <p class="text-large text-text-muted">
           {home.technicalNotes.description}
         </p>
       </div>
@@ -112,15 +106,15 @@ function formatDate(date: Date) {
                 </span>
               </div>
 
-              <h3 class="text-heading mt-5 leading-snug text-text">
+              <h3 class="text-card-title leading-snug text-text">
                 {post.data.title}
               </h3>
 
-              <p class="text-body mt-4 flex-1 text-text-muted">
+              <p class="text-body flex-1 text-text-muted">
                 {post.data.description}
               </p>
 
-              <div class="mt-5 flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-2">
                 {
                   (post.data.tags ?? [])
                     .slice(0, 4)

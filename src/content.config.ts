@@ -35,7 +35,6 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
 
-    category: z.string(),
     status: z.string(),
 
     order: z.number().int().default(999),
@@ -49,15 +48,6 @@ const projects = defineCollection({
 
     highlights: z
       .array(z.string())
-      .default([]),
-
-    architecture: z
-      .array(
-        z.object({
-          label: z.string(),
-          value: z.string(),
-        }),
-      )
       .default([]),
 
     links: z

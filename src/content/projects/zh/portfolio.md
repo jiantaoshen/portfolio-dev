@@ -2,7 +2,6 @@
 lang: zh
 title: "Developer Portfolio"
 description: "一个使用 Astro、TypeScript 和 Tailwind CSS 构建的多语言开发者 Portfolio，通过静态 HTML、Content Collections 和 Markdown 展示项目、技术笔记和软件开发经验。"
-category: "应用与 Web 交付"
 status: "已上线"
 order: 3
 featured: true
@@ -23,19 +22,6 @@ highlights:
   - "使用 Tailwind CSS 构建响应式界面"
   - "内容型页面尽量减少客户端 JavaScript"
   - "面向 Firebase Hosting 的静态部署结构"
-architecture:
-  - label: "应用"
-    value: "Astro · TypeScript"
-  - label: "样式"
-    value: "Tailwind CSS"
-  - label: "内容"
-    value: "Astro Content Collections · Markdown"
-  - label: "国际化"
-    value: "静态 i18n · English · Swedish · Chinese"
-  - label: "渲染"
-    value: "预渲染静态 HTML"
-  - label: "应用交付"
-    value: "Firebase Hosting"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"

@@ -1,18 +1,14 @@
 {
   "page": {
-    "title": "Projects",
-    "description": "Projects focused on backend development, APIs, automation, application delivery and my growing work with AI-powered software."
+    "title": "Projects"
   },
 
     "detail": {
-    "eyebrow": "Project",
-    "notFound": "Project not found",
     "back": "Back to projects",
 
     "overview": "Overview",
     "problem": "The Problem",
     "solution": "Solution",
-    "architecture": "Architecture",
     "features": "Key Features",
     "challenges": "Challenges & Decisions",
     "deployment": "Deployment",

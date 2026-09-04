@@ -62,7 +62,7 @@ function mobileClass(path: string) {
     <!-- Logo -->
     <a
       href={`/${lang}/`}
-      class="inline-flex items-center rounded-lg px-1 py-1 text-xl font-extrabold tracking-tight"
+      class="text-xl font-extrabold tracking-tight inline-flex items-center"
     >
       <span class="text-white">JIANTAO</span>
       <span class="text-brand-muted">.dev</span>
@@ -113,7 +113,7 @@ function mobileClass(path: string) {
     <!-- Mobile -->
     <details class="mobile-navigation md:hidden">
       <summary
-        class="menu-button list-none"
+        class="menu-button"
         aria-label="Toggle navigation"
       >
         <span class="menu-open-icon flex flex-col gap-1.5">
@@ -130,9 +130,7 @@ function mobileClass(path: string) {
         </span>
       </summary>
 
-      <div
-        class="fixed left-0 right-0 top-20 border-t border-white/10 bg-dark/98 backdrop-blur-xl"
-      >
+      <div class="menu-list">
         <div class="container flex flex-col py-4">
           <a
             href={href("about")}

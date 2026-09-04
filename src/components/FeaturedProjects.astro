@@ -53,15 +53,11 @@ function getProjectSlug(id: string) {
         <!-- Section header -->
         <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div class="max-w-2xl">
-            <p class="text-label text-brand">
-              {home.featuredProjects.eyebrow}
-            </p>
-
-            <h2 class="text-title mt-3 text-text">
+            <h1 class="text-title text-text">
               {home.featuredProjects.title}
-            </h2>
+            </h1>
 
-            <p class="text-large mt-4 text-text-muted">
+            <p class="text-large text-text-muted">
               {home.featuredProjects.description}
             </p>
           </div>
@@ -84,35 +80,27 @@ function getProjectSlug(id: string) {
             featuredProjects.map((project) => (
               <article class="card card-hover flex flex-col overflow-hidden p-7 sm:p-8">
 
-                <!-- Category + status -->
+                <!-- status -->
                 <div class="flex flex-wrap items-center justify-between gap-3">
-                  <span class="text-label text-brand">
-                    {project.data.category}
-                  </span>
-
                   <span class="tag">
                     {project.data.status}
                   </span>
                 </div>
 
                 <!-- Content -->
-                <div class="mt-7 flex-1">
-                  <p class="text-label text-text-subtle">
-                    {home.featuredProjects.featured}
-                  </p>
-
-                  <h3 class="mt-3 text-2xl font-bold tracking-tight text-text sm:text-3xl">
+                <div>
+                  <h3 class="text-card-title text-text">
                     {project.data.title}
                   </h3>
 
-                  <p class="text-body mt-4 max-w-xl text-text-muted">
+                  <p class="text-body max-w-xl text-text-muted">
                     {project.data.description}
                   </p>
 
                   <!-- Technologies -->
                   {
                     project.data.technologies.length > 0 && (
-                      <div class="mt-6 flex flex-wrap gap-2">
+                      <div class="flex flex-wrap gap-2">
                         {
                           project.data.technologies
                             .slice(0, 5)
@@ -125,39 +113,10 @@ function getProjectSlug(id: string) {
                       </div>
                     )
                   }
-
-                  <!-- Architecture summary -->
-                  {
-                    project.data.architecture.length > 0 && (
-                      <div class="mt-7 border-t border-border pt-6">
-                        <p class="text-label text-text-subtle">
-                          Architecture
-                        </p>
-
-                        <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                          {
-                            project.data.architecture
-                              .slice(0, 4)
-                              .map((item) => (
-                                <div class="rounded-xl bg-surface-muted p-3">
-                                  <p class="text-xs font-semibold text-text-subtle">
-                                    {item.label}
-                                  </p>
-
-                                  <p class="mt-1 text-sm font-medium text-text">
-                                    {item.value}
-                                  </p>
-                                </div>
-                              ))
-                          }
-                        </div>
-                      </div>
-                    )
-                  }
                 </div>
 
                 <!-- Link -->
-                <div class="mt-7 border-t border-border pt-5">
+                <div class="mt-6 border-t border-border pt-5">
                   <a
                     href={`/${lang}/projects/${getProjectSlug(
                       project.id,

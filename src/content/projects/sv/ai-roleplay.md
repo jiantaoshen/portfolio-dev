@@ -2,7 +2,6 @@
 lang: sv
 title: "AI Roleplay"
 description: "En AI-baserad rollspelschatt byggd med React, ASP.NET Core, FastAPI och Ollama, med stöd för flera karaktärer, strömmande svar, kontext över flera meddelanden, strukturerade karaktärsprompter och konversationssammanfattning."
-category: "AI-applikationsutveckling"
 status: "Under utveckling"
 order: 4
 featured: false
@@ -26,17 +25,6 @@ highlights:
   - "Stöd för Stop Generation och Regenerate"
   - "Conversation Summary för komprimering av långa konversationer"
   - "Refaktorering av frontend-komponenter och backendens service-lager"
-architecture:
-  - label: "Frontend"
-    value: "React · TypeScript · Tailwind CSS"
-  - label: "Huvudbackend"
-    value: "ASP.NET Core · C#"
-  - label: "AI-tjänst"
-    value: "FastAPI · Python"
-  - label: "Modellmiljö"
-    value: "Ollama"
-  - label: "AI-modell"
-    value: "qwen3:4b"
 draft: false
 ---
 

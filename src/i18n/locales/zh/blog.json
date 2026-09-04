@@ -5,12 +5,9 @@
   },
 
   "detail": {
-    "eyebrow": "技术笔记",
     "back": "返回技术笔记",
     "published": "发布时间",
     "readingTime": "阅读时间",
-    "topics": "主题",
-    "notFoundEyebrow": "技术笔记",
     "notFound": "未找到该文章"
   },
 

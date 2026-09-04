@@ -35,78 +35,116 @@ const common =
 
 <BaseLayout
   lang={lang}
-  title={about.hero.title}
 >
-  <!-- Hero -->
-  <section class="bg-dark pb-20 pt-32 text-white">
-    <div class="container">
-      <p class="text-label text-brand-muted">
-        {about.hero.eyebrow}
-      </p>
-
-      <h1 class="text-display mt-4 max-w-4xl text-white">
-        {about.hero.title}
-      </h1>
-
-      <p class="text-large mt-6 max-w-3xl text-text-dark">
-        {about.hero.description}
-      </p>
-    </div>
-  </section>
-
   <!-- Story -->
   <section class="section bg-app">
-    <div class="container grid gap-12 lg:gap-16">
-      <div>
-        <p class="text-label text-brand">
-          {about.story.eyebrow}
+    <div class="container">
+      <h1 class="text-title text-text text-center">
+        {about.story.title}
+      </h1>
+
+      {about.story.paragraphs.map((paragraph) => (
+        <p class="text-large text-text-muted">
+          {paragraph}
         </p>
-
-        <h2 class="text-title mt-3 text-text">
-          {about.story.title}
-        </h2>
-
-        <div class="mt-6 space-y-5">
-          {about.story.paragraphs.map((paragraph) => (
-            <p class="text-large text-text-muted">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
   <!-- Skills -->
   <section class="section bg-surface-muted">
     <div class="container">
-      <div class="section-head">
-        <p class="text-label text-brand">
-          {about.skills.eyebrow}
-        </p>
+      <h1 class="text-title text-text text-center">
+        {about.skills.title}
+      </h1>
 
-        <h2 class="text-title mt-3 text-text">
-          {about.skills.title}
-        </h2>
-
-        <p class="text-large mt-4 text-text-muted">
-          {about.skills.description}
-        </p>
-      </div>
+      <p class="text-large text-text-muted text-center ">
+        {about.skills.description}
+      </p>
 
       <div class="grid gap-5 md:grid-cols-3">
         {about.skills.items.map((group) => (
           <article class="card p-6">
-            <h3 class="text-heading text-text">
+            <h3 class="text-card-title text-text">
               {group.title}
             </h3>
 
-            <div class="mt-5 flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2">
+              {group.staritem?.map((item) => (
+                <span class="tag tag-star">
+                  <span aria-hidden="true">
+                    ★
+                  </span>
+                  {item}
+                </span>
+              ))}
+
               {group.items.map((item) => (
                 <span class="tag">
                   {item}
                 </span>
               ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+    <!-- Education -->
+  <section class="section bg-app">
+    <div class="container">
+      <h1 class="text-title text-text text-center">
+        {about.education.title}
+      </h1>
+
+      <p class="text-large text-text-muted text-center mb-5">
+        {about.education.description}
+      </p>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        {about.education.items.map((item) => (
+          <article class="card p-6">
+            <div class="flex flex-col gap-2">
+              <p class="text-sm font-semibold text-brand">
+                {item.period}
+              </p>
+
+              <h3 class="text-card-title text-text">
+                {item.degree}
+              </h3>
+
+              <p class="text-base font-medium text-text-muted">
+                {item.school}
+              </p>
+
+              {item.description && (
+                <p class="leading-7 text-text-muted">
+                  {item.description}
+                </p>
+              )}
+
+              {item.thesis && (
+                <p class="mt-3 text-sm text-text-muted">
+                  <span class="font-semibold text-text">
+                    Thesis:
+                  </span>{" "}
+
+                  {item.thesisUrl ? (
+                    <a
+                      href={item.thesisUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 text-brand hover:underline"
+                    >
+                      {item.thesis}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    item.thesis
+                  )}
+                </p>
+              )}
             </div>
           </article>
         ))}

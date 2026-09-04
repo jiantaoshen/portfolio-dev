@@ -2,7 +2,6 @@
 lang: sv
 title: "Price Watch"
 description: "En local-first-applikation för prisbevakning byggd med React, TypeScript, ASP.NET Core, Python och Playwright för att automatiskt följa produktpriser, prishistorik, målpriser och resultat från scraper-körningar."
-category: "Fullstack- och automationsutveckling"
 status: "Klar"
 order: 2
 featured: true
@@ -28,19 +27,6 @@ highlights:
   - "E-postnotifieringar med kontroll av duplicerade aviseringar"
   - "Automatiska priskontroller genom Windows Task Scheduler"
   - "Lokal JSON-lagring för kördata, historik och konfiguration"
-architecture:
-  - label: "Applikationsgränssnitt"
-    value: "React · TypeScript · Vite"
-  - label: "Lokalt API"
-    value: "ASP.NET Core · .NET 10"
-  - label: "Web scraping"
-    value: "Python · Playwright"
-  - label: "Prisextraktion"
-    value: "JSON-LD · DOM Fallback"
-  - label: "Datalagring"
-    value: "Local JSON"
-  - label: "Automatisering"
-    value: "Windows Task Scheduler · PowerShell"
 links:
   github: "https://github.com/jiantaoshen/PriceWatch"
 draft: false

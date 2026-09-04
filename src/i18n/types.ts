@@ -3,11 +3,6 @@ export type SkillGroup = {
   items: string[];
 };
 
-export type ArchitectureItem = {
-  label: string;
-  value: string;
-};
-
 export type DetailItem = {
   title: string;
   description: string;
@@ -21,7 +16,6 @@ export type ProjectLinks = {
 export type ProjectItem = {
   id: string;
   title: string;
-  category: string;
   status: string;
   description: string;
 
@@ -32,7 +26,6 @@ export type ProjectItem = {
   problem: string;
   solution: string;
 
-  architecture?: ArchitectureItem[];
   features?: DetailItem[];
   challenges?: DetailItem[];
 
@@ -55,62 +48,54 @@ export type BlogPost = {
 
 export type AboutTranslation = {
   hero: {
-    eyebrow: string;
     title: string;
     description: string;
   };
 
   story: {
-    eyebrow: string;
     title: string;
     paragraphs: string[];
   };
 
   skills: {
-    eyebrow: string;
     title: string;
     description: string;
     items: SkillGroup[];
+  };
+
+  education: {
+    title: string;
+    description: string;
+    items: {
+      period: string;
+      degree: string;
+      school: string;
+      description?: string;
+      thesis?: string;
+    }[];
   };
 };
 
 export type HomeTranslation = {
   hero: {
-    availability: string;
-    eyebrow: string;
     titleBefore: string;
     titleHighlight: string;
-    titleAfter: string;
     description: string;
-
-    architecture: {
-      title: string;
-
-      frontend: ArchitectureItem;
-      backend: ArchitectureItem;
-      ai: ArchitectureItem;
-      data: ArchitectureItem;
-      deployment: ArchitectureItem;
-    };
   };
 
   featuredProjects: {
-    eyebrow: string;
     title: string;
     description: string;
     viewAll: string;
-    featured: string;
   };
 
   technicalNotes: {
-    eyebrow: string;
     title: string;
     description: string;
     viewAll: string;
   };
 
   contact: {
-    eyebrow: string;
     title: string;
     description: string;
     email: string;
@@ -119,7 +104,6 @@ export type HomeTranslation = {
 
 export type ProjectTranslation = {
   page: {
-    eyebrow: string;
     title: string;
     description: string;
   };
@@ -135,13 +119,11 @@ export type ProjectTranslation = {
 
 export type BlogTranslation = {
   hero: {
-    eyebrow: string;
     title: string;
     description: string;
   };
 
   posts: {
-    eyebrow: string;
     title: string;
     description: string;
   };
