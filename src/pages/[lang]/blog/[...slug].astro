@@ -99,15 +99,15 @@ const { Content, headings } =
         </span>
       </div>
 
-      <h1 class="text-display mt-5 max-w-4xl text-white">
+      <h1 class="text-title max-w-4xl text-white">
         {post.data.title}
       </h1>
 
-      <p class="text-large mt-6 max-w-3xl text-text-dark">
+      <p class="text-large max-w-3xl text-text-dark">
         {post.data.description}
       </p>
 
-      <div class="mt-7 flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-2">
         {
           post.data.tags.map((tag) => (
             <span class="tag-dark">

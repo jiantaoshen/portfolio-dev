@@ -77,9 +77,9 @@ const pageTitle =
   description={blog.hero.description}
 >
   <!-- Articles -->
-  <section class="section bg-app text-center">
+  <section class="section bg-app">
     <div class="container">
-      <h1 class="text-display mt-4 mb-10 text-dark">
+      <h1 class="text-title text-center text-dark">
         {blog.hero.title}
       </h1>
 
@@ -111,18 +111,18 @@ const pageTitle =
                         </span>
                       </div>
 
-                      <h2 class="text-heading mt-5 leading-snug text-text">
+                      <h3 class="text-card-title leading-snug text-text">
                         {post.data.title}
-                      </h2>
+                      </h3>
 
-                      <p class="text-body mt-4 flex-1 text-text-muted">
+                      <p class="text-body max-w-xl text-text-muted">
                         {post.data.description}
                       </p>
 
                       {
                         post.data.tags.length >
                           0 && (
-                          <div class="mt-5 flex flex-wrap gap-2">
+                          <div class="mb-5 flex flex-wrap gap-2">
                             {
                               post.data.tags.map(
                                 (tag) => (
@@ -136,7 +136,7 @@ const pageTitle =
                         )
                       }
 
-                      <div class="mt-6 border-t border-border pt-5">
+                      <div class="mt-auto border-t border-border pt-5">
                         <a
                           href={`/${lang}/blog/${slug}/`}
                           class="link-brand"

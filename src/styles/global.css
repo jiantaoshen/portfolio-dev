@@ -22,8 +22,6 @@
   --color-border: #e2e8f0;
   --color-border-hover: #cbd5e1;
 
-  --color-success: #22c55e;
-
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
@@ -76,30 +74,25 @@ button:disabled {
    Typography
    ============================================================ */
 
-.text-display {
-  @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
-}
-
 .text-title {
-  @apply text-3xl font-bold tracking-tight sm:text-4xl;
+  @apply text-3xl font-bold tracking-tight mt-5 mb-5 sm:text-4xl;
 }
 
-.text-heading {
-  @apply text-xl font-bold tracking-tight;
+.text-card-title {
+  @apply text-xl font-bold tracking-tight mt-3 mb-3;
 }
 
 .text-large {
-  @apply text-base leading-7 sm:text-lg sm:leading-8;
+  @apply text-base leading-7 mb-5 sm:text-lg sm:leading-8;
 }
 
 .text-body {
-  @apply text-sm leading-6;
+  @apply text-sm leading-6 mb-5;
 }
 
 .text-label {
   @apply text-xs font-semibold uppercase tracking-[0.16em];
 }
-
 
 /* ============================================================
    Cards
@@ -112,11 +105,6 @@ button:disabled {
 .card-hover {
   @apply transition duration-200 hover:-translate-y-1 hover:border-brand-muted hover:shadow-md;
 }
-
-.card-dark {
-  @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm;
-}
-
 
 /* ============================================================
    Buttons
@@ -166,8 +154,12 @@ button:disabled {
   @apply border-b border-white/6 py-4 text-sm font-medium transition hover:text-white;
 }
 
+.menu-list{
+  @apply fixed left-0 right-0 top-20 border-t border-white/10 bg-dark/98 backdrop-blur-xl
+}
+
 .menu-button {
-  @apply flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden;
+  @apply flex h-10 w-10 items-center justify-center rounded-lg list-none border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden;
 }
 
 .mobile-navigation .menu-close-icon {
@@ -201,7 +193,6 @@ button:disabled {
 }
 
 .hero::before {
-  content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -211,10 +202,6 @@ button:disabled {
     linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black, transparent 88%);
-}
-
-.section-head {
-  @apply mx-auto mb-12 max-w-2xl text-center lg:mb-16;
 }
 
 .link-brand {

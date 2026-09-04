@@ -38,60 +38,53 @@ const common =
 >
   <!-- Story -->
   <section class="section bg-app">
-    <div class="container grid gap-12 lg:gap-16 ">
+    <div class="container">
+      <h1 class="text-title text-text text-center">
+        {about.story.title}
+      </h1>
 
-        <h2 class="text-title text-text text-center">
-          {about.story.title}
-        </h2>
-
-        <div class="space-y-5">
-          {about.story.paragraphs.map((paragraph) => (
-            <p class="text-large text-text-muted">
-              {paragraph}
-            </p>
-          ))}
-      </div>
+      {about.story.paragraphs.map((paragraph) => (
+        <p class="text-large text-text-muted">
+          {paragraph}
+        </p>
+      ))}
     </div>
   </section>
 
   <!-- Skills -->
   <section class="section bg-surface-muted">
     <div class="container">
-      <div class="section-head">
-        <h2 class="text-title mt-3 text-text">
-          {about.skills.title}
-        </h2>
+      <h1 class="text-title text-text text-center">
+        {about.skills.title}
+      </h1>
 
-        <p class="text-large mt-4 text-text-muted">
-          {about.skills.description}
-        </p>
-      </div>
+      <p class="text-large text-text-muted text-center ">
+        {about.skills.description}
+      </p>
 
       <div class="grid gap-5 md:grid-cols-3">
         {about.skills.items.map((group) => (
           <article class="card p-6">
-            <h3 class="text-heading text-text">
+            <h3 class="text-card-title text-text">
               {group.title}
             </h3>
 
-            <div class="mt-5 flex flex-wrap gap-2">
-
-            {group.staritem?.map((item) => (
-              <span class="tag tag-star">
-                <span aria-hidden="true">
-                  ★
+            <div class="flex flex-wrap gap-2">
+              {group.staritem?.map((item) => (
+                <span class="tag tag-star">
+                  <span aria-hidden="true">
+                    ★
+                  </span>
+                  {item}
                 </span>
-                {item}
-              </span>
-            ))}
+              ))}
 
-            {group.items.map((item) => (
-              <span class="tag">
-                {item}
-              </span>
-            ))}
-
-          </div>
+              {group.items.map((item) => (
+                <span class="tag">
+                  {item}
+                </span>
+              ))}
+            </div>
           </article>
         ))}
       </div>
@@ -101,15 +94,13 @@ const common =
     <!-- Education -->
   <section class="section bg-app">
     <div class="container">
-      <div class="section-head">
-        <h2 class="text-title mt-3 text-text">
-          {about.education.title}
-        </h2>
+      <h1 class="text-title text-text text-center">
+        {about.education.title}
+      </h1>
 
-        <p class="text-large mt-4 text-text-muted">
-          {about.education.description}
-        </p>
-      </div>
+      <p class="text-large text-text-muted text-center mb-5">
+        {about.education.description}
+      </p>
 
       <div class="grid gap-5 md:grid-cols-2">
         {about.education.items.map((item) => (
@@ -119,7 +110,7 @@ const common =
                 {item.period}
               </p>
 
-              <h3 class="text-heading text-text">
+              <h3 class="text-card-title text-text">
                 {item.degree}
               </h3>
 
@@ -128,7 +119,7 @@ const common =
               </p>
 
               {item.description && (
-                <p class="mt-3 leading-7 text-text-muted">
+                <p class="leading-7 text-text-muted">
                   {item.description}
                 </p>
               )}

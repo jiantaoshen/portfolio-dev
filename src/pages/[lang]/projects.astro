@@ -3,16 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
 
-import {
-  locales,
-  getTranslations,
-  type Locale,
-} from "../../i18n";
+import { locales, getTranslations, type Locale} from "../../i18n";
 
-import type {
-  ProjectTranslation,
-  CommonTranslation,
-} from "../../i18n/types";
+import type {ProjectTranslation, CommonTranslation} from "../../i18n/types";
 
 export function getStaticPaths() {
   return locales.map((lang) => ({
@@ -57,10 +50,10 @@ function getProjectSlug(id: string) {
   lang={lang}
   title={`${project.page.title} | JIANTAO.dev`}
 >
-  <section class="section bg-app text-center">
+  <section class="section bg-app">
     <div class="container">
 
-      <h1 class="text-display mt-4 mb-10 text-dark">
+      <h1 class="text-title text-dark text-center">
         {project.page.title}
       </h1>
 
@@ -73,22 +66,22 @@ function getProjectSlug(id: string) {
             return (
               <article class="card card-hover flex flex-col p-7">
                 <div class="flex items-center justify-between gap-4">
-                  <h2 class="text-heading mt-5 text-text">
+                  <h3 class="text-card-title text-text">
                     {item.data.title}
-                  </h2>
+                  </h3>
 
                   <span class="tag">
                     {item.data.status}
                   </span>
                 </div>
 
-                <p class="text-body mt-4 flex-1 text-text-muted">
+                <p class="text-body flex-1 text-text-muted">
                   {item.data.description}
                 </p>
 
                 {
                   item.data.technologies.length > 0 && (
-                    <div class="mt-6 flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2">
                       {
                         item.data.technologies.map(
                           (technology) => (

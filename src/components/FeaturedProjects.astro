@@ -53,11 +53,11 @@ function getProjectSlug(id: string) {
         <!-- Section header -->
         <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div class="max-w-2xl">
-            <h2 class="text-title mt-3 text-text">
+            <h1 class="text-title text-text">
               {home.featuredProjects.title}
-            </h2>
+            </h1>
 
-            <p class="text-large mt-4 text-text-muted">
+            <p class="text-large text-text-muted">
               {home.featuredProjects.description}
             </p>
           </div>
@@ -88,19 +88,19 @@ function getProjectSlug(id: string) {
                 </div>
 
                 <!-- Content -->
-                <div class="mt-7 flex-1">
-                  <h3 class="mt-3 text-2xl font-bold tracking-tight text-text sm:text-3xl">
+                <div>
+                  <h3 class="text-card-title text-text">
                     {project.data.title}
                   </h3>
 
-                  <p class="text-body mt-4 max-w-xl text-text-muted">
+                  <p class="text-body max-w-xl text-text-muted">
                     {project.data.description}
                   </p>
 
                   <!-- Technologies -->
                   {
                     project.data.technologies.length > 0 && (
-                      <div class="mt-6 flex flex-wrap gap-2">
+                      <div class="flex flex-wrap gap-2">
                         {
                           project.data.technologies
                             .slice(0, 5)
@@ -116,7 +116,7 @@ function getProjectSlug(id: string) {
                 </div>
 
                 <!-- Link -->
-                <div class="mt-7 border-t border-border pt-5">
+                <div class="mt-6 border-t border-border pt-5">
                   <a
                     href={`/${lang}/projects/${getProjectSlug(
                       project.id,

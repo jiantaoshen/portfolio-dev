@@ -87,11 +87,11 @@ const { Content, headings } =
         </span>
       </div>
 
-        <h1 class="text-display mt-5 max-w-4xl text-white">
+        <h1 class="text-title max-w-4xl text-white">
           {project.data.title}
         </h1>
 
-      <p class="text-large mt-6 mb-6 max-w-3xl text-text-dark">
+      <p class="text-large max-w-3xl text-text-dark">
         {project.data.description}
       </p>
 
@@ -163,7 +163,7 @@ const { Content, headings } =
         </div>
       </article>
 
-      <aside>
+      <aside class="hidden lg:block">
         <div class="sticky top-28 space-y-8">
           <!-- Table of contents -->
           {
