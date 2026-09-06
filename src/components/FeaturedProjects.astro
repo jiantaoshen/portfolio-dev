@@ -103,12 +103,25 @@ function getProjectSlug(id: string) {
                       <div class="flex flex-wrap gap-2">
                         {
                           project.data.technologies
-                            .slice(0, 5)
+                            .slice(0, 4)
                             .map((technology) => (
                               <span class="tag">
                                 {technology}
                               </span>
                             ))
+                        }
+
+                        {
+                          project.data.technologies.length > 4 && (
+                            <span
+                              class="tag"
+                              title={project.data.technologies
+                                .slice(4)
+                                .join(", ")}
+                            >
+                              +{project.data.technologies.length - 4}
+                            </span>
+                          )
                         }
                       </div>
                     )
