@@ -7,7 +7,7 @@ Firebase:
 https://jiantao-portfolio-dev.web.app
 
 Vercel:
-https://jiantao-portfolio-dev.vercel.app
+https://jiantao-dev.vercel.app
 
 ## Tech Stack
 
