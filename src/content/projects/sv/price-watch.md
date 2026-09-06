@@ -1,118 +1,247 @@
 ---
 lang: sv
 title: "Price Watch"
-description: "En local-first-applikation för prisbevakning byggd med React, TypeScript, ASP.NET Core, Python och Playwright för att automatiskt följa produktpriser, prishistorik, målpriser och resultat från scraper-körningar."
-status: "Klar"
+description: "En local-first-applikation för produktprisbevakning och AI-baserat köpstöd, byggd med React, TypeScript, ASP.NET Core, Python, Playwright, FastAPI och Ollama, med stöd för prisbevakning från flera butiker, prishistorik, normalisering av förpackningsstorlekar, automatiserade körningar, e-postnotiser och lokal AI-baserad prisanalys."
+status: "v.1.2.0"
 order: 2
 featured: true
 featuredOrder: 2
 technologies:
-  - "React"
-  - "TypeScript"
-  - "Vite"
-  - "Tailwind CSS"
-  - "ASP.NET Core"
-  - ".NET 10"
-  - "Python"
-  - "Playwright"
-  - "Pydantic"
-  - "Windows Task Scheduler"
+ - "React"
+ - "TypeScript"
+ - "Vite"
+ - "Tailwind CSS"
+ - "shadcn UI"
+ - "ASP.NET Core"
+ - ".NET 10"
+ - "Python"
+ - "Playwright"
+ - "Pydantic"
+ - "FastAPI"
+ - "Ollama"
+ - "Windows Task Scheduler"
 highlights:
-  - "Dashboard för prisbevakning byggd med React och TypeScript"
-  - "ASP.NET Core som tillhandahåller ett gemensamt lokalt REST-API"
-  - "Automatisk laddning och analys av produktsidor med Python och Playwright"
-  - "JSON-LD som primär priskälla med en försiktig DOM fallback"
-  - "Stöd för produkthantering, målpriser, prishistorik och produktdetaljer"
-  - "Identifiering av misstänkta prisförändringar för att minska risken för felaktiga priser"
-  - "E-postnotifieringar med kontroll av duplicerade aviseringar"
-  - "Automatiska priskontroller genom Windows Task Scheduler"
-  - "Lokal JSON-lagring för kördata, historik och konfiguration"
+ - "Byggde en Dashboard för prisbevakning med React, TypeScript och shadcn UI"
+ - "Tillhandahåller ett enhetligt lokalt REST API genom ASP.NET Core"
+ - "Extraherar produktpriser automatiskt med Python, Playwright och Product JSON-LD"
+ - "Implementerar automatiska priskontroller genom Windows Task Scheduler"
+ - "Integrerar FastAPI och Ollama för att erbjuda en lokal AI-shoppingrådgivare"
+ - "Använder lokala JSON-filer för kördata, historik, konfiguration och applikationstillstånd"
+
 links:
-  github: "https://github.com/jiantaoshen/PriceWatch"
+    github: "https://github.com/jiantaoshen/PriceWatch"
+
 draft: false
 ---
 
 ## Projektöversikt
 
-Price Watch är ett local-first-system för prisbevakning som automatiskt kontrollerar produktpriser på olika e-handelssajter. Applikationen består av ett frontend byggt med React och TypeScript, ett lokalt ASP.NET Core-API, en scraping-tjänst med Python och Playwright samt ett lokalt JSON-baserat datalager. Användaren kan hantera bevakade produkter, ange målpriser, se aktuella och historiska priser samt köra priskontroller manuellt eller automatiskt.
+Price Watch är ett local-first-system för produktprisbevakning och stöd vid köpbeslut. Applikationen består av en frontend i React och TypeScript, ett lokalt ASP.NET Core API, en Python Playwright-modul för prisinsamling, en FastAPI-baserad AI-tjänst, en lokal Ollama-modell och ett lokalt JSON-datalager.
 
-## Problemet
+Användaren kan hantera bevakade produkter och flera butikskällor, uppdatera priser automatiskt eller manuellt, jämföra faktiska priser, enhetspriser och normaliserade priser mellan olika förpackningsstorlekar, se prishistorik, körstatus och målpriser samt använda en lokal AI-shoppingrådgivare för att bedöma om det aktuella priset är värt att betala.
 
-Produktsidor på olika e-handelssajter följer inte en gemensam struktur. Priser kan komma från JSON-LD, dynamiskt renderade DOM-element eller annat innehåll på sidan, samtidigt som webbplatser kan ändra produktnamn, URL-sluggar eller sidstruktur. Att enbart förlita sig på fasta CSS-selektorer eller rå sidtext kan därför leda till misslyckad scraping eller felaktiga priser. Ett komplett prisbevakningssystem behöver dessutom hantera historik, avvikande priser, schemalagda körningar och notifieringar.
+## Problemet som ska lösas
 
-## Lösningen
+Olika e-handelsbutiker kan sälja samma produkt i olika förpackningsstorlekar. Att endast jämföra det totala priset som visas på produktsidan ger därför inte alltid en rättvis jämförelse. Systemet behöver hantera förpackningsmängd, enhetspris och en gemensam jämförelsemängd för att kunna avgöra vilken källa som faktiskt är billigast.
 
-Projektet separerar frontend, API, scraping och databehandling i tydliga ansvarsområden. React-frontend kommunicerar med ett ASP.NET Core-API för att hantera produkter, starta scraping-jobb och läsa historiska data. Python använder Playwright för att ladda produktsidor och extraherar priser genom en utbyggbar scraper- och strategy-arkitektur. Systemet prioriterar Schema.org JSON-LD och använder endast en försiktig DOM fallback när strukturerad data saknas. Resultaten valideras innan de skrivs till lokala JSON-filer tillsammans med historik, körstatus och notifieringsstatus.
+Prisinsamling från webben påverkas också av dynamiska sidor, strukturförändringar, avsaknad av strukturerad prisdata och avvikande priser. För att minska den långsiktiga underhållskostnaden behöver systemet undvika separata CSS Selectors och specialbyggd scrapinglogik för varje webbplats.
 
-## Funktioner
+Ett komplett system för prisbevakning behöver dessutom hantera produktkonfiguration, prishistorik, målpriser, avvikelsedetektering, automatisk schemaläggning, e-postnotiser och körstatus, inte bara genomföra en enstaka webbscraping.
 
-### Produktbevakning
+Utöver prisbevakningen behöver projektet även låta en lokal AI använda verkliga priser och historiska data från systemet för att hjälpa till med köpbeslut, samtidigt som frontend inte direkt kan ange eller ändra de prisuppgifter som används som faktakälla.
 
-Besöker automatiskt konfigurerade produktsidor, hämtar aktuella priser och jämför dem med målpriser och tidigare priser.
+## Lösning
 
-### Prisextraktion med flera strategier
+Projektet delar upp frontend, applikations-API, prisinsamling, databehandling och AI-tjänst i separata ansvarsområden.
 
-Prioriterar Schema.org JSON-LD och använder en försiktig DOM fallback när strukturerad data saknas, vilket förbättrar kompatibiliteten mellan olika webbplatser.
+React-frontenden hämtar endast applikationsdata genom ASP.NET Core-endpoints under `/api/`. ASP.NET Core ansvarar för produktkonfiguration, kördata, historiska data, automation, e-postinställningar, scraper-orkestrering och AI-kontext för produkter.
+
+Python använder Playwright för att ladda produktsidor och extraherar priser från Product JSON-LD. Systemet underhåller inte butiksspecifika scrapers. För källor som inte på ett tillförlitligt sätt tillhandahåller Product JSON-LD kan automatisk scraping stängas av och ett manuellt pris konfigureras.
+
+Systemet beräknar enhetspriset utifrån varje källas förpackningsmängd och använder produktens `comparison_quantity` för att normalisera olika förpackningsstorlekar till samma mängd före jämförelsen.
+
+AI-funktionen ansluter till den lokala Ollama-tjänsten genom en separat FastAPI-tjänst. React skickar endast Advisor, produkt-ID och chattmeddelanden. ASP.NET Core bygger ett verkligt Product Context från lokal konfiguration, senaste priser och historiska data baserat på produkt-ID innan informationen skickas vidare till FastAPI och Ollama för analys.
+
+## Kärnfunktioner
+
+### Produktprisbevakning
+
+Varje produkt kan konfigureras med flera butikskällor. Automatiska källor laddar sidan genom Playwright och läser Product JSON-LD, medan manuella källor använder det konfigurerade `manual_price` direkt.
+
+Automatisk scraping kan styras separat både på produktnivå och källnivå. När scraping stängs av på produktnivå använder samtliga källor för produkten manuella priser och butikssidorna öppnas inte.
+
+### JSON-LD-prisextraktion
+
+Automatisk scraping använder endast Schema.org Product JSON-LD.
+
+Om en sida inte tillhandahåller användbar Product JSON-LD betraktas källan som ett scrapingfel i stället för att gå vidare till DOM fallback eller butiksspecifik extraktionslogik.
+
+Denna design minskar komplexiteten i att underhålla CSS Selectors och separata scrapers för olika webbplatser.
 
 ### Produkthantering
 
-Gör det möjligt att lägga till, uppdatera och ta bort bevakade produkter via React-gränssnittet och ASP.NET Core-API, där produkt-ID genereras automatiskt av backend.
+Genom React-gränssnittet och ASP.NET Core API kan användaren lägga till, ändra och ta bort bevakade produkter samt hantera flera butikskällor, scrapinglägen, manuella priser, förpackningsmängder, målpriser och jämförelsemängder.
+
+### Prisjämförelse mellan flera butiker
+
+Varje källa kan konfigurera `unit_quantity`. Systemet beräknar enhetspriset genom att dividera det faktiska priset med förpackningsmängden.
+
+En produkt kan även konfigurera `comparison_quantity`, vilket gör det möjligt att konvertera olika förpackningsstorlekar till en gemensam mängd för jämförelse.
+
+Om en källa till exempel säljer ett 2-pack och en annan ett 1-pack kan systemet normalisera båda till ett Comparable Total för 2 enheter. På så sätt undviks felaktiga slutsatser som uppstår när endast förpackningarnas totalpris jämförs.
 
 ### Prishistorik
 
-Sparar scraping-resultat som lokal historik och visar prisförändringar i dashboarden och på respektive produkts detaljsida.
+Lyckade prisresultat sparas som lokal historisk data och visas på Dashboard och produktens detaljsida tillsammans med aktuella priser, historiska priser, prisstatistik och historiska trender.
+
+Misslyckade eller Suspicious-priser skrivs inte till prishistoriken som normala lyckade resultat.
 
 ### Målpriser
 
-Gör det möjligt att ange ett målpris för varje produkt och identifierar automatiskt när det aktuella priset når målet.
+Varje produkt kan ha ett målpris för totalpriset och ett målpris per enhet. Systemet kan identifiera om det aktuella priset har nått målet och använda målstatusen på Dashboard, i notiser och i AI-analysen.
 
-### Identifiering av misstänkta priser
+### Detektering av avvikande priser
 
-Markerar ovanligt stora prisförändringar som suspicious för att minska risken att delbetalningar, fraktkostnader eller annan felaktig data accepteras som produktpris.
+Systemet validerar ovanligt stora prisförändringar och markerar tveksamma resultat som `Suspicious`, vilket minskar risken för att felaktiga priser, onormal strukturerad data eller andra opålitliga resultat accepteras.
 
 ### Körstatus
 
-Registrerar resultatet från varje scraper-körning och visar hälsostatus, lyckade resultat, fel och avvikande resultat i applikationen.
+Systemet registrerar resultatet från varje scraper-körning och visar den senaste körstatusen i applikationen.
 
-### E-postnotifieringar
+Produkter kan ha statusen `Not run yet`, `Success`, `Failed` eller `Suspicious`.
 
-Skickar e-postnotifieringar när definierade prisvillkor uppfylls och sparar notifieringsstatus för att minska duplicerade aviseringar.
+Användaren kan manuellt köra en priskontroll genom Run Now.
+
+### E-postnotiser
+
+Price Watch kan skicka e-postnotiser när en produkt når sitt målpris, när ett avvikande pris upptäcks eller när en scraper-körning misslyckas.
+
+Notisstatus sparas lokalt för att minska upprepade notifieringar för samma tillstånd.
 
 ### Automatisk schemaläggning
 
-Använder Windows Task Scheduler för återkommande priskontroller samtidigt som manuell körning via Run Now stöds.
+ASP.NET Core kan hantera automatiska priskontroller genom Windows Task Scheduler samtidigt som den manuella Run Now-funktionen finns kvar.
 
-## Utmaningar & beslut
+### Lokal AI Shopping Advisor
 
-### Olika prisstrukturer mellan webbplatser
+Price Watch integrerar FastAPI och Ollama för att erbjuda en lokalt körd AI Shopping Advisor.
 
-Olika e-handelssajter använder olika JSON-LD-format, produktidentifierare och DOM-strukturer, vilket innebär att scrapern måste balansera kompatibilitet med tillförlitlighet.
+Olika Advisors använder olika köpstrategier, exempelvis ett mer försiktigt beteende, balans mellan pris och värde eller större fokus på historiska lägstanivåer. Alla Advisors använder dock samma verkliga prisdata från Price Watch.
+
+### Product-Aware AI Chat
+
+AI Chat kan välja en eller flera produkter som redan bevakas av Price Watch.
+
+React skickar endast `advisorId`, `productIds` och chattmeddelanden. ASP.NET Core bygger AI Product Context från produktkonfiguration, senaste priser och historiska data baserat på produkt-ID.
+
+AI:n kan använda aktuellt pris, målpris, föregående pris, historiskt lägsta pris, historiskt högsta pris, historiskt genomsnitt och senaste prisposter som underlag för analysen.
+
+### Ask AI
+
+Produktens detaljsida innehåller funktionen Ask AI.
+
+När användaren klickar på den öppnas AI Chat och den aktuella produkten läggs automatiskt till i Considering-listan. Användaren kan därefter direkt fråga om produkten är värd att köpa till det aktuella priset.
+
+AI:n kan utifrån tillgänglig prisdata ge rekommendationer som `BUY`, `WAIT` eller `NEUTRAL` och svarar på samma språk som användarens senaste meddelande.
+
+## Utmaningar och beslut
+
+### Olika prisstrukturer på olika webbplatser
+
+Sidstrukturen på olika e-handelswebbplatser förändras ofta. Projektet valde därför slutligen att använda generell Product JSON-LD i stället för att underhålla ett stort antal butiksspecifika scrapers, CSS Selectors eller DOM fallbacks.
+
+För webbplatser som inte på ett tillförlitligt sätt erbjuder Product JSON-LD kan Price Watch fortfarande använda manuella priser.
+
+### Rättvis jämförelse mellan olika förpackningsstorlekar
+
+Olika butiker kan sälja samma produkt i olika mängder, vilket gör att en direkt jämförelse av totalpriser lätt leder till felaktiga slutsatser.
+
+Systemet använder `unit_quantity`, enhetspris och `comparison_quantity` för att konvertera olika källor till en gemensam mängd och beräkna ett Comparable Total.
 
 ### Undvika felaktiga priser
 
-Produktsidor kan innehålla ordinarie priser, delbetalningspriser, fraktkostnader och priser för relaterade produkter, vilket kräver att DOM fallback är försiktig och använder kontext och tillförlitlighetsbedömning.
+Automatiskt insamlade priser är inte alltid tillförlitliga. Därför validerar systemet priser innan historiska poster sparas.
 
-### Produktidentifiering
+Avvikande resultat markeras som `Suspicious` i stället för att direkt lagras som normala historiska priser.
 
-Webbplatser kan ändra produktnamn eller URL-sluggar, vilket innebär att JSON-LD-matchning inte enbart kan baseras på exakt URL utan även behöver använda stabila identifierare som productID, SKU och MPN.
+### Separering av produktkonfiguration och kördata
 
-### Tydliga lokala ansvarsområden
+Produktkonfigurationen sparas i `products.json`, medan senaste körresultat och historiska poster använder separata datafiler.
 
-Projektet behöver behålla tydliga gränser mellan React, ASP.NET Core, Python-scrapern och lokala datafiler samtidigt som alla delar fungerar tillsammans som en komplett applikation.
+Dashboard kombinerar produktkonfigurationen med de senaste körresultaten. Därför kan en ny produkt som ännu inte har körts visas direkt som `Not run yet`.
+
+### Förtroendegräns för AI-data
+
+Frontend skickar inte aktuella priser eller prishistorik direkt till AI:n som auktoritativa fakta.
+
+React skickar endast produkt-ID. ASP.NET Core genererar Product Context från lokal Price Watch-data och skickar därefter informationen till FastAPI och Ollama.
+
+Det gör att olika Advisors använder samma prisfakta, kontrollerade av backend.
+
+### Tydlig ansvarsfördelning i en lokal applikation
+
+Projektet behåller tydliga gränser mellan React, ASP.NET Core, Python-scrapern, FastAPI, Ollama och lokal JSON-data.
+
+React ansvarar för UI, ASP.NET Core för applikations-API och tjänsteorkestrering, Python för prisinsamling och databehandling, FastAPI för AI Prompt och modellkommunikation, Ollama för lokal modellinferens och lokal JSON för lättviktig persistens.
 
 ## Driftsättning
 
-Price Watch använder en local-first-arkitektur. React-applikationen serveras genom ASP.NET Core, det lokala API:t hanterar applikationsfunktioner och scraper-anrop, Python- och Playwright-scrapern körs i en Windows-miljö och kördata samt historik lagras i lokala JSON-filer. Automatiska körningar hanteras genom Windows Task Scheduler.
+Price Watch använder en local-first-arkitektur.
 
-## Lärdomar
+Projektet använder ett PowerShell-startskript för att kontrollera Node.js-, npm-, .NET- och Python-miljöerna och vid behov installera frontend-beroenden, skapa virtuella Python-miljöer, installera scraper- och AI-beroenden, installera Playwright Firefox, återställa ASP.NET Core-beroenden och starta FastAPI, ASP.NET Core och Vite.
 
-- Bygga en datadriven dashboard med React och TypeScript
-- Designa ett lokalt REST-API med ASP.NET Core
-- Koppla samman ASP.NET Core med automatiseringsuppgifter i Python
-- Hämta dynamiskt webbinnehåll med Playwright
-- Extrahera produktpriser från Schema.org JSON-LD
-- Designa lagerbaserade scraping-strategier med JSON-LD och DOM fallback
-- Hantera produktidentifiering genom URL, SKU, MPN och productID
-- Designa prisvalidering, avvikelsedetektering och körstatus
-- Använda lokala JSON-filer som ett lättviktigt persistenslager
-- Bygga lokala automationsflöden med Windows Task Scheduler och PowerShell
+Python-scrapern och AI-tjänsten använder separata virtual environments.
+
+Ollama körs som en fristående lokal runtime.
+
+Kördata, historiska data, produktkonfiguration, inställningar och scraper-status lagras i lokala JSON-filer, medan Windows Task Scheduler används för automatiserad schemaläggning.
+
+## Framtida uppdateringar
+
+Nästa steg är att slå samman ett tidigare utvecklat projekt för tillgångshantering med detta projekt. Därefter kommer jag, beroende på storleken på den sammanslagna tillgångsdatan, att avgöra om fler projekt ska integreras, om databasen behöver flyttas till PostgreSQL eller om AI-delen behöver optimeras.
+
+## Extra
+
+Mer detaljerade artiklar om projektet, som inte är lika viktiga för den huvudsakliga projektöversikten, finns här.
+
+### Användningen av FastAPI
+
+FastAPI är ett Python Web API-ramverk. Det ansvarar för att ta emot och vidarebefordra `advisorId`, `products` och `messages` mellan ASP.NET Core och Ollama.
+
+Den främsta anledningen till att jag använder FastAPI är att AI-lagret redan är skrivet i Python och att FastAPI lämpar sig väl för att snabbt paketera Python-baserad AI-logik som ett HTTP API. Filer som `prompt_builder.py`, `advisor.py` och Pydantic-datamodeller kan därför ligga kvar direkt i Python.
+
+> Går det att ersätta FastAPI med ASP.NET Core?
+
+Ja, det går, men jag rekommenderar inte att göra det ännu. Om projektet senare använder stora mängder Python-baserade AI-bibliotek, till exempel LlamaIndex eller FAISS, blir det smidigare att behålla AI-lagret i Python än att flytta det till ASP.NET Core. Jag planerar dessutom att lägga till ett RAG-system i projektet senare.
+
+### Projektets bakgrund
+
+Mitt mål är att bli senior fullstackutvecklare. Enligt AI:s bedömning behöver en senior fullstackutvecklare kunna hantera stora projekt och legacy code. Det är en av anledningarna till att detta projekt skapades.
+
+När jag studerade webbutveckling på Lexicon byggde jag många olika projekt med fokus på hanteringssystem. Därför bestämde jag mig för att behandla koden från mina äldre GitHub-projekt som legacy code och försöka slå samman så mycket som möjligt i ett större projekt.
+
+Det är också därför en del kod har försvunnit från mina GitHub-repositories. När projekten har integrerats i detta projekt har jag tagit bort de flesta av dem, förutom projekt som fortfarande underhålls eller behöver finnas kvar för att kunna visas upp.
+
+Det här projektet har redan integrerat vissa tidigare AI-projekt och projekt som hämtar data från webben. Fler projekt kommer att slås samman i framtiden, med målet att förvandla denna produktbevakare till en AI-assistent för hantering av tillgångar och abonnemang.
+
+I framtiden ska den kunna berätta vilka produkter som har gått ner i pris, vilka produkter som är värda att köpa och hjälpa till att hantera redan köpta produkter och abonnemang. Jag planerar också att lägga till ett RAG-system för hantering av signerade avtal samt information och omdömen om specifika produkter.
+
+> Varför bygga en produktprisbevakare?
+
+För att jag själv också är användare när det gäller prisbevakning.
+
+Jag använder redan prisbevakning regelbundet för att avgöra vilka produkter jag ska köpa. Om jag märker att någon funktion saknas kan jag lägga till den själv. På så sätt skapas en enkel men verklig användarupplevelse, samtidigt som projektet naturligt får fortsatta uppdateringar och långsiktigt underhåll.
+
+Det hjälper mig att förbättra mina projektlednings- och förvaltningskunskaper och ger projektet en längre livscykel än projekt som endast byggs för att uppfylla ett krav och sedan blir liggande oanvända i ett repository.
+
+### Varför är artiklarna skrivna på olika sätt på olika språk?
+
+Processen för att skapa artiklarna är:
+
+> AI-generering -> egen granskning av innehållet -> AI-översättning -> egen granskning av innehållet
+
+Eftersom jag fortfarande experimenterar med skrivstilen kan artiklar som jag själv har redigerat använda olika formuleringar på olika språk, även om innehållet är detsamma.
+
+Skillnaderna finns eftersom jag fortfarande försöker hitta en skrivstil som passar mig.
+
+Om du ser en artikel som känns som en direktöversättning befinner den sig sannolikt fortfarande i AI-översättningsstadiet.
