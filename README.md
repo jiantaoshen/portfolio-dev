@@ -3,7 +3,10 @@
 A multilingual developer portfolio built with Astro, TypeScript and Tailwind CSS.
 
 **Live site:**  
+Firebase:
 https://jiantao-portfolio-dev.web.app
+
+Vercel:
 https://jiantao-portfolio-dev.vercel.app
 
 ## Tech Stack
