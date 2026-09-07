@@ -1,7 +1,7 @@
 ---
 lang: sv
 title: "Price Watch"
-description: "En local-first-light-mutedlikation för produktprisbevakning och AI-baserat köpstöd, byggd med React, TypeScript, ASP.NET Core, Python, Playwright, FastAPI och Ollama, med stöd för prisbevakning från flera butiker, prishistorik, normalisering av förpackningsstorlekar, automatiserade körningar, e-postnotiser och lokal AI-baserad prisanalys."
+description: "En lokal applikation för produktprisbevakning och AI-baserat upphandlingsanalys, med stöd för automatiserade körningar och e-postnotiser."
 status: "v.1.2.0"
 order: 2
 featured: true
@@ -36,7 +36,7 @@ draft: false
 
 ## Projektöversikt
 
-Price Watch är ett local-first-system för produktprisbevakning och stöd vid köpbeslut. Applikationen består av en frontend i React och TypeScript, ett lokalt ASP.NET Core API, en Python Playwright-modul för prisinsamling, en FastAPI-baserad AI-tjänst, en lokal Ollama-modell och ett lokalt JSON-datalager.
+Price Watch är en lokal applikation för produktprisbevakning och stöd vid köpbeslut. Applikationen består av en frontend i React och TypeScript, ett lokalt ASP.NET Core API, en Python Playwright-modul för prisinsamling, en FastAPI-baserad AI-tjänst, en lokal Ollama-modell och ett lokalt JSON-datalager.
 
 Användaren kan hantera bevakade produkter och flera butikskällor, uppdatera priser automatiskt eller manuellt, jämföra faktiska priser, enhetspriser och normaliserade priser mellan olika förpackningsstorlekar, se prishistorik, körstatus och målpriser samt använda en lokal AI-shoppingrådgivare för att bedöma om det aktuella priset är värt att betala.
 
@@ -70,13 +70,7 @@ Varje produkt kan konfigureras med flera butikskällor. Automatiska källor ladd
 
 Automatisk scraping kan styras separat både på produktnivå och källnivå. När scraping stängs av på produktnivå använder samtliga källor för produkten manuella priser och butikssidorna öppnas inte.
 
-### JSON-LD-prisextraktion
-
-Automatisk scraping använder endast Schema.org Product JSON-LD.
-
-Om en sida inte tillhandahåller användbar Product JSON-LD betraktas källan som ett scrapingfel i stället för att gå vidare till DOM fallback eller butiksspecifik extraktionslogik.
-
-Denna design minskar komplexiteten i att underhålla CSS Selectors och separata scrapers för olika webbplatser.
+Om en sida inte tillhandahåller användbar Product JSON-LD betraktas källan som ett scrapingfel och behöver användare skriva själv. Detta minskar komplexiteten i att underhålla CSS Selectors och separata scrapers för olika webbplatser.
 
 ### Produkthantering
 
@@ -148,7 +142,7 @@ AI:n kan utifrån tillgänglig prisdata ge rekommendationer som `BUY`, `WAIT` el
 
 ### Olika prisstrukturer på olika webbplatser
 
-Sidstrukturen på olika e-handelswebbplatser förändras ofta. Projektet valde därför slutligen att använda generell Product JSON-LD i stället för att underhålla ett stort antal butiksspecifika scrapers, CSS Selectors eller DOM fallbacks.
+Sidstrukturen på olika e-handelswebbplatser förändras ofta. Projektet valde därför slutligen att använda generell Product JSON-LD i stället för att underhålla ett stort antal butiksspecifika scrapers.
 
 För webbplatser som inte på ett tillförlitligt sätt erbjuder Product JSON-LD kan Price Watch fortfarande använda manuella priser.
 
@@ -184,7 +178,7 @@ Projektet behåller tydliga gränser mellan React, ASP.NET Core, Python-scrapern
 
 React ansvarar för UI, ASP.NET Core för applikations-API och tjänsteorkestrering, Python för prisinsamling och databehandling, FastAPI för AI Prompt och modellkommunikation, Ollama för lokal modellinferens och lokal JSON för lättviktig persistens.
 
-## Driftsättning
+## Användning
 
 Price Watch använder en local-first-arkitektur.
 
@@ -228,9 +222,7 @@ I framtiden ska den kunna berätta vilka produkter som har gått ner i pris, vil
 
 > Varför bygga en produktprisbevakare?
 
-För att jag själv också är användare när det gäller prisbevakning.
-
-Jag använder redan prisbevakning regelbundet för att avgöra vilka produkter jag ska köpa. Om jag märker att någon funktion saknas kan jag lägga till den själv. På så sätt skapas en enkel men verklig användarupplevelse, samtidigt som projektet naturligt får fortsatta uppdateringar och långsiktigt underhåll.
+För att testa en projekt är bra eller dåligt behöver alltid användare. Jag är användare när det gäller prisbevakning. Jag använder redan prisbevakning regelbundet för att avgöra vilka produkter jag ska köpa. Om jag märker att någon funktion saknas kan jag lägga till den själv. På så sätt skapas en enkel men verklig användarupplevelse, samtidigt som projektet naturligt får fortsatta uppdateringar och långsiktigt underhåll.
 
 Det hjälper mig att förbättra mina projektlednings- och förvaltningskunskaper och ger projektet en längre livscykel än projekt som endast byggs för att uppfylla ett krav och sedan blir liggande oanvända i ett repository.
 
@@ -240,8 +232,6 @@ Processen för att skapa artiklarna är:
 
 > AI-generering -> egen granskning av innehållet -> AI-översättning -> egen granskning av innehållet
 
-Eftersom jag fortfarande experimenterar med skrivstilen kan artiklar som jag själv har redigerat använda olika formuleringar på olika språk, även om innehållet är detsamma.
-
-Skillnaderna finns eftersom jag fortfarande försöker hitta en skrivstil som passar mig.
+Skillnaderna finns eftersom jag fortfarande försöker hitta en skrivstil som passar mig. Men innehållet är detsamma.
 
 Om du ser en artikel som känns som en direktöversättning befinner den sig sannolikt fortfarande i AI-översättningsstadiet.
