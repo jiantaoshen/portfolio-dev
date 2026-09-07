@@ -10,16 +10,16 @@ interface Props {
 const { home } = Astro.props;
 ---
 
-<section id="contact" class="section bg-surface-muted">
+<section id="contact" class="section bg-light-muted">
   <div class="container">
-    <div class="rounded-3xl bg-dark px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
+    <div class="rounded-3xl bg-dark-muted px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
       <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
         <div class="max-w-2xl">
-          <h2 class="text-title text-surface">
+          <h2 class="text-title text-light">
             {home.contact.title}
           </h2>
 
-          <p class="text-large max-w-xl text-text-dark">
+          <p class="text-large max-w-xl text-slate-muted">
             {home.contact.description}
           </p>
         </div>

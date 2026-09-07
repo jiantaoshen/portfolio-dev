@@ -1,22 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #2563eb;
-  --color-brand-muted: #93c5fd;
+  --color-navy: #2563eb;
+  --color-navy-muted: #93c5fd;
 
-  --color-surface: #ffffff;
-  --color-surface-muted: #f8fafc;
+  --color-light: #ffffff;
+  --color-light-muted: #f8fafc;
 
   --color-dark: #07111f;
-  --color-dark-soft: #13223a;
+  --color-dark-muted: #13223a;
 
-  --color-text: #0f172a;
-  --color-text-muted: #475569;
-
-  --color-text-dark: #cbd5e1;
-  --color-text-dark-soft: #94a3b8;
-
-  --color-border: #e2e8f0;
+  --color-slate: #475569;
+  --color-slate-muted: #cbd5e1;
 
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
@@ -29,12 +24,12 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--color-surface-muted);
+  background: var(--color-light-muted);
 }
 
 body {
   min-height: 100vh;
-  background: var(--color-surface-muted);
+  background: var(--color-light-muted);
   color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -47,8 +42,8 @@ select {
 }
 
 ::selection {
-  background: var(--color-brand);
-  color: var(--color-surface);
+  background: var(--color-navy);
+  color: var(--color-light);
 }
 
 /* ============================================================
@@ -92,11 +87,11 @@ select {
    ============================================================ */
 
 .card {
-  @apply rounded-2xl border border-border bg-surface shadow-sm;
+  @apply rounded-2xl border border-slate-muted bg-light shadow-sm;
 }
 
 .card-hover {
-  @apply transition duration-200 hover:-translate-y-1 hover:border-brand-muted hover:shadow-md;
+  @apply transition duration-200 hover:-translate-y-1 hover:border-navy-muted hover:shadow-md;
 }
 
 /* ============================================================
@@ -108,11 +103,11 @@ select {
 }
 
 .btn-primary {
-  @apply bg-brand text-surface hover:-translate-y-0.5  hover:bg-brand-muted;
+  @apply bg-navy text-light hover:-translate-y-0.5  hover:bg-navy-muted;
 }
 
 .btn-secondary {
-  @apply border border-surface/20 bg-surface/5 text-surface hover:-translate-y-0.5 hover:border-surface/30 hover:bg-surface/10;
+  @apply border border-light/20 bg-light/5 text-light hover:-translate-y-0.5 hover:border-light/30 hover:bg-light/10;
 }
 
 /* ============================================================
@@ -120,15 +115,15 @@ select {
    ============================================================ */
 
 .tag {
-  @apply inline-flex w-fit items-center rounded-full border border-border bg-surface-muted px-3 py-1.5 font-mono text-xs text-text-muted;
+  @apply inline-flex w-fit items-center rounded-full border border-slate-muted bg-light-muted px-3 py-1.5 font-mono text-xs text-slate;
 }
 
 .tag-dark {
-  @apply inline-flex w-fit items-center rounded-full border border-surface/10 bg-surface/5 px-3 py-1.5 font-mono text-xs text-text-dark;
+  @apply inline-flex w-fit items-center rounded-full border border-light/10 bg-light/5 px-3 py-1.5 font-mono text-xs text-slate-muted;
 }
 
 .tag-star {
-  @apply border-brand text-brand text-xs;
+  @apply border-navy text-navy text-xs;
 }
 
 /* ============================================================
@@ -136,19 +131,19 @@ select {
    ============================================================ */
 
 .nav-link {
-  @apply rounded-lg px-2.5 py-2 font-medium transition text-sm text-text-dark hover:text-surface;
+  @apply rounded-lg px-2.5 py-2 font-medium transition text-sm text-slate-muted hover:text-light;
 }
 
 .nav-active {
-  @apply bg-surface/10 text-surface;
+  @apply bg-slate text-light;
 }
 
 .menu-list{
-  @apply fixed left-0 right-0 top-20 border-t border-surface/10 bg-dark/98 backdrop-blur-xl
+  @apply fixed left-0 right-0 top-20 border-t border-light/10 bg-dark/98 backdrop-blur-xl
 }
 
 .menu-button {
-  @apply flex h-10 w-10 items-center justify-center rounded-lg list-none border border-surface/10 bg-surface/5 text-surface transition hover:bg-surface/10 md:hidden;
+  @apply flex h-10 w-10 items-center justify-center rounded-lg list-none border border-light/10 bg-light/5 text-light transition hover:bg-light/10 md:hidden;
 }
 
 .mobile-navigation .menu-close-icon {
@@ -178,11 +173,11 @@ select {
   background:
     radial-gradient(circle at 72% 38%, rgba(37, 99, 235, 0.2), transparent 32%),
     radial-gradient(circle at 18% 10%, rgba(59, 130, 246, 0.08), transparent 28%),
-    linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-soft) 55%, #081426 100%);
+    linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-muted) 55%, #081426 100%);
 }
 
-.link-brand {
-  @apply inline-flex items-center gap-2 text-sm font-semibold text-brand transition hover:text-brand-muted;
+.link-navy {
+  @apply inline-flex items-center gap-2 text-sm font-semibold text-navy transition hover:text-navy-muted;
 }
 
 /* ============================================================
@@ -190,19 +185,19 @@ select {
    ============================================================ */
 
 .article-content {
-  @apply mx-auto max-w-3xl text-base leading-8 text-text-muted;
+  @apply mx-auto max-w-3xl text-base leading-8 text-slate;
 }
 
 .article-content h1 {
-  @apply mb-6 mt-12 text-3xl font-bold tracking-tight text-text;
+  @apply mb-6 mt-12 text-3xl font-bold tracking-tight text-dark;
 }
 
 .article-content h2 {
-  @apply mb-4 mt-12 scroll-mt-28 text-2xl font-bold tracking-tight text-text;
+  @apply mb-4 mt-12 scroll-mt-28 text-2xl font-bold tracking-tight text-dark;
 }
 
 .article-content h3 {
-  @apply mb-3 mt-9 scroll-mt-28 text-xl font-bold text-text;
+  @apply mb-3 mt-9 scroll-mt-28 text-xl font-bold text-dark;
 }
 
 .article-content p {
@@ -222,23 +217,23 @@ select {
 }
 
 .article-content a {
-  @apply font-medium text-brand underline decoration-brand/30 underline-offset-4 transition hover:text-brand-muted;
+  @apply font-medium text-navy underline decoration-navy/30 underline-offset-4 transition hover:text-navy-muted;
 }
 
 .article-content strong {
-  @apply font-semibold text-text;
+  @apply font-semibold text-dark;
 }
 
 .article-content blockquote {
-  @apply my-6 border-l-4 border-brand bg-surface-muted px-5 py-3 italic;
+  @apply my-6 border-l-4 border-navy bg-light-muted px-5 py-3 italic;
 }
 
 .article-content code {
-  @apply rounded bg-surface-muted px-1.5 py-0.5 font-mono text-sm text-text;
+  @apply rounded bg-light-muted px-1.5 py-0.5 font-mono text-sm text-dark;
 }
 
 .article-content pre {
-  @apply my-7 overflow-x-auto rounded-2xl bg-dark p-5 text-sm text-text-dark;
+  @apply my-7 overflow-x-auto rounded-2xl bg-dark p-5 text-sm text-slate-muted;
 }
 
 .article-content pre code {
@@ -246,9 +241,9 @@ select {
 }
 
 .article-content hr {
-  @apply my-10 border-border;
+  @apply my-10 border-slate-muted;
 }
 
 .article-content img {
-  @apply my-8 rounded-2xl border border-border;
+  @apply my-8 rounded-2xl border border-slate-muted;
 }

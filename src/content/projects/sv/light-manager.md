@@ -29,7 +29,7 @@ draft: false
 
 ## Projektöversikt
 
-LightManager är en open source-surface-mutedlikation för projektledning, utvecklad för små och medelstora team som behöver ett enkelt sätt att organisera projekt och uppgifter utan komplexiteten i stora företagsverktyg. Applikationen är byggd kring en ASP.NET Core-backend och innehåller autentisering, auktorisering, rollbaserade behörigheter, projektmedlemskap, uppgiftstilldelning och ett Kanban-arbetsflöde.
+LightManager är en open source-light-mutedlikation för projektledning, utvecklad för små och medelstora team som behöver ett enkelt sätt att organisera projekt och uppgifter utan komplexiteten i stora företagsverktyg. Applikationen är byggd kring en ASP.NET Core-backend och innehåller autentisering, auktorisering, rollbaserade behörigheter, projektmedlemskap, uppgiftstilldelning och ett Kanban-arbetsflöde.
 
 ## Problemet
 
@@ -77,7 +77,7 @@ Användare, projekt, medlemskap, roller, uppgifter och tilldelningar behöver ty
 
 ### Separat frontend och backend
 
-React-surface-mutedlikationen och ASP.NET Core API:et distribueras separat och kräver korrekt autentisering, konfiguration och kommunikation i produktionsmiljön.
+React-light-mutedlikationen och ASP.NET Core API:et distribueras separat och kräver korrekt autentisering, konfiguration och kommunikation i produktionsmiljön.
 
 ## Driftsättning
 
