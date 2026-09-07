@@ -58,23 +58,23 @@ function formatDate(date: Date) {
 
 <section
   id="blog"
-  class="section bg-surface"
+  class="section bg-light"
 >
   <div class="container">
     <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">
-        <h2 class="text-title text-text">
+        <h2 class="text-title text-dark">
           {home.technicalNotes.title}
         </h2>
 
-        <p class="text-large text-text-muted">
+        <p class="text-large text-slate">
           {home.technicalNotes.description}
         </p>
       </div>
 
       <a
         href={`/${lang}/blog/`}
-        class="link-brand shrink-0"
+        class="link-navy shrink-0"
       >
         {home.technicalNotes.viewAll}
 
@@ -92,7 +92,7 @@ function formatDate(date: Date) {
 
           return (
             <article class="card card-hover flex h-full flex-col p-6">
-              <div class="flex items-center gap-3 text-xs text-text-subtle">
+              <div class="flex items-center gap-3 text-xs text-slate">
                 <time datetime={post.data.date.toISOString()}>
                   {formatDate(post.data.date)}
                 </time>
@@ -106,11 +106,11 @@ function formatDate(date: Date) {
                 </span>
               </div>
 
-              <h3 class="text-card-title leading-snug text-text">
+              <h3 class="text-card-title leading-snug text-dark">
                 {post.data.title}
               </h3>
 
-              <p class="text-body flex-1 text-text-muted">
+              <p class="text-body flex-1 text-slate">
                 {post.data.description}
               </p>
 
@@ -126,10 +126,10 @@ function formatDate(date: Date) {
                 }
               </div>
 
-              <div class="mt-6 border-t border-border pt-5">
+              <div class="mt-6 border-t border-slate-muted pt-5">
                 <a
                   href={`/${lang}/blog/${slug}/`}
-                  class="link-brand"
+                  class="link-navy"
                 >
                   {common.readArticle}
 

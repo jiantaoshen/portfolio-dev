@@ -77,7 +77,7 @@ const pageTitle =
   description={blog.hero.description}
 >
   <!-- Articles -->
-  <section class="section bg-app">
+  <section class="section bg-light-muted">
     <div class="container">
       <h1 class="text-title text-center text-dark">
         {blog.hero.title}
@@ -95,7 +95,7 @@ const pageTitle =
 
                   return (
                     <article class="card card-hover flex h-full flex-col p-6">
-                      <div class="flex items-center gap-3 text-xs text-text-subtle">
+                      <div class="flex items-center gap-3 text-xs text-slate">
                         <time
                           datetime={post.data.date.toISOString()}
                         >
@@ -111,11 +111,11 @@ const pageTitle =
                         </span>
                       </div>
 
-                      <h3 class="text-card-title leading-snug text-text">
+                      <h3 class="text-card-title leading-snug text-dark">
                         {post.data.title}
                       </h3>
 
-                      <p class="text-body max-w-xl text-text-muted">
+                      <p class="text-body max-w-xl text-slate">
                         {post.data.description}
                       </p>
 
@@ -136,10 +136,10 @@ const pageTitle =
                         )
                       }
 
-                      <div class="mt-auto border-t border-border pt-5">
+                      <div class="mt-auto border-t border-slate-muted pt-5">
                         <a
                           href={`/${lang}/blog/${slug}/`}
-                          class="link-brand"
+                          class="link-navy"
                         >
                           {common.readArticle}
 
@@ -168,7 +168,7 @@ const pageTitle =
                         href={getPageHref(
                           currentPage - 1,
                         )}
-                        class="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-surface px-4 text-sm font-semibold text-text transition hover:border-brand-muted hover:text-brand"
+                        class="inline-flex h-10 items-center justify-center rounded-xl border border-slate-muted bg-light px-4 text-sm font-semibold text-dark transition hover:border-navy-muted hover:text-navy"
                       >
                         <span
                           class="mr-2"
@@ -203,8 +203,8 @@ const pageTitle =
                             "inline-flex h-10 min-w-10 items-center justify-center rounded-xl border px-3 text-sm font-semibold transition",
                             page ===
                             currentPage
-                              ? "border-brand bg-brand text-white"
-                              : "border-border bg-surface text-text hover:border-brand-muted hover:text-brand",
+                              ? "border-navy bg-navy text-light"
+                              : "border-slate-muted bg-light text-dark hover:border-navy-muted hover:text-navy",
                           ]}
                         >
                           {page}
@@ -221,7 +221,7 @@ const pageTitle =
                         href={getPageHref(
                           currentPage + 1,
                         )}
-                        class="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-surface px-4 text-sm font-semibold text-text transition hover:border-brand-muted hover:text-brand"
+                        class="inline-flex h-10 items-center justify-center rounded-xl border border-slate-muted bg-light px-4 text-sm font-semibold text-text transition hover:border-navy-muted hover:text-navy"
                       >
                         {
                           blog.pagination
@@ -242,7 +242,7 @@ const pageTitle =
             }
           </>
         ) : (
-          <p class="text-text-muted">
+          <p class="text-slate">
             No articles yet.
           </p>
         )

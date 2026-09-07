@@ -46,25 +46,25 @@ function getProjectSlug(id: string) {
   featuredProjects.length > 0 && (
     <section
       id="projects"
-      class="section bg-surface-muted"
+      class="section bg-light-muted"
     >
       <div class="container">
 
         <!-- Section header -->
         <div class="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div class="max-w-2xl">
-            <h2 class="text-title text-text">
+            <h2 class="text-title text-dark">
               {home.featuredProjects.title}
             </h2>
 
-            <p class="text-large text-text-muted">
+            <p class="text-large text-slate">
               {home.featuredProjects.description}
             </p>
           </div>
 
           <a
             href={`/${lang}/projects/`}
-            class="link-brand shrink-0"
+            class="link-navy shrink-0"
           >
             {home.featuredProjects.viewAll}
 
@@ -89,18 +89,18 @@ function getProjectSlug(id: string) {
 
                 <!-- Content -->
                 <div>
-                  <h3 class="text-card-title text-text">
+                  <h3 class="text-card-title text-dark">
                     {project.data.title}
                   </h3>
 
-                  <p class="text-body max-w-xl text-text-muted">
+                  <p class="text-body max-w-xl text-slate">
                     {project.data.description}
                   </p>
 
                   <!-- Technologies -->
                   {
                     project.data.technologies.length > 0 && (
-                      <div class="flex flex-wrap gap-2">
+                      <div class="mt-auto mb-5 flex flex-wrap gap-2">
                         {
                           project.data.technologies
                             .slice(0, 4)
@@ -123,18 +123,16 @@ function getProjectSlug(id: string) {
                             </span>
                           )
                         }
+
                       </div>
                     )
                   }
                 </div>
-
+              
                 <!-- Link -->
-                <div class="mt-6 border-t border-border pt-5">
-                  <a
-                    href={`/${lang}/projects/${getProjectSlug(
-                      project.id,
-                    )}/`}
-                    class="link-brand"
+                <div class="mt-auto border-t border-slate-muted pt-5">
+                  <a href={`/${lang}/projects/${getProjectSlug(project.id)}/`}
+                    class="link-navy"
                   >
                     {common.buttons.caseStudy}
 

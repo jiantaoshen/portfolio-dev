@@ -63,16 +63,16 @@ const { Content, headings } =
   title={`${post.data.title} | JIANTAO.dev`}
 >
   <!-- Hero -->
-  <section class="bg-dark pb-16 pt-32 text-white">
+  <section class="bg-dark pb-16 pt-32 text-light">
     <div class="container">
       <a
         href={`/${lang}/blog/`}
-        class="mb-8 inline-flex items-center gap-2 text-sm text-text-dark-muted transition hover:text-white"
+        class="mb-8 inline-flex items-center gap-2 text-sm text-slate-muted transition hover:text-light"
       >
         ← {common.nav.blog}
       </a>
 
-      <div class="flex items-center gap-3 text-sm text-text-dark-muted">
+      <div class="flex items-center gap-3 text-sm text-slate-muted">
         <time datetime={post.data.date.toISOString()}>
           {
             post.data.date.toLocaleDateString(
@@ -99,11 +99,11 @@ const { Content, headings } =
         </span>
       </div>
 
-      <h1 class="text-title max-w-4xl text-white">
+      <h1 class="text-title max-w-4xl text-light">
         {post.data.title}
       </h1>
 
-      <p class="text-large max-w-3xl text-text-dark">
+      <p class="text-large max-w-3xl text-slate-muted">
         {post.data.description}
       </p>
 
@@ -120,7 +120,7 @@ const { Content, headings } =
   </section>
 
   <!-- Article -->
-  <section class="section bg-app">
+  <section class="section bg-light-muted">
     <div
       class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_260px]"
     >
@@ -134,7 +134,7 @@ const { Content, headings } =
         headings.length > 0 && (
           <aside class="hidden lg:block">
             <div class="sticky top-28">
-              <p class="text-label text-text-subtle">
+              <p class="text-label text-slate">
                 Contents
               </p>
 
@@ -150,7 +150,7 @@ const { Content, headings } =
                       <a
                         href={`#${heading.slug}`}
                         class:list={[
-                          "text-sm text-text-muted transition hover:text-brand",
+                          "text-sm text-slate transition hover:text-navy",
                           heading.depth === 3 &&
                             "pl-4 text-xs",
                         ]}
