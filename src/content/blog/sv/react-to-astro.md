@@ -77,7 +77,7 @@ Markdown / översättningsdata
 
 Projektsidor och tekniska anteckningar genereras i förväg.
 
-Webbläsaren får HTML och CSS för huvudinnehållet direkt i stället för att vänta på att en JavaScript-applikation ska bygga sidan.
+Webbläsaren får HTML och CSS för huvudinnehållet direkt i stället för att vänta på att en JavaScript-surface-mutedlikation ska bygga sidan.
 
 ## Från runtime-i18n till statiska språk-routes
 

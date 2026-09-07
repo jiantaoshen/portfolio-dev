@@ -100,7 +100,7 @@ function getProjectSlug(id: string) {
                   <!-- Technologies -->
                   {
                     project.data.technologies.length > 0 && (
-                      <div class="flex flex-wrap gap-2">
+                      <div class="mt-auto mb-5 flex flex-wrap gap-2">
                         {
                           project.data.technologies
                             .slice(0, 4)
@@ -123,17 +123,15 @@ function getProjectSlug(id: string) {
                             </span>
                           )
                         }
+
                       </div>
                     )
                   }
                 </div>
-
+              
                 <!-- Link -->
-                <div class="mt-6 border-t border-border pt-5">
-                  <a
-                    href={`/${lang}/projects/${getProjectSlug(
-                      project.id,
-                    )}/`}
+                <div class="mt-auto border-t border-border pt-5">
+                  <a href={`/${lang}/projects/${getProjectSlug(project.id)}/`}
                     class="link-brand"
                   >
                     {common.buttons.caseStudy}

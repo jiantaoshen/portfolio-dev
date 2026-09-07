@@ -72,11 +72,11 @@ const { Content, headings } =
   title={`${project.data.title} | JIANTAO.dev`}
 >
   <!-- Hero -->
-  <section class="bg-dark pb-16 pt-32 text-white">
+  <section class="bg-dark pb-16 pt-32 text-surface">
     <div class="container">
       <a
         href={`/${lang}/projects/`}
-        class="mb-8 inline-flex items-center gap-2 text-sm text-text-dark-muted transition hover:text-white"
+        class="mb-8 inline-flex items-center gap-2 text-sm text-text-dark-soft transition hover:text-surface"
       >
         ← {detail.back}
       </a>
@@ -87,7 +87,7 @@ const { Content, headings } =
         </span>
       </div>
 
-        <h1 class="text-title max-w-4xl text-white">
+        <h1 class="text-title max-w-4xl text-surface">
           {project.data.title}
         </h1>
 
@@ -99,7 +99,7 @@ const { Content, headings } =
       {
         project.data.technologies.length > 0 && (
           <div>
-            <p class="text-label text-text-subtle">
+            <p class="text-label text-text-muted">
               {detail.technologies}
             </p>
 
@@ -153,7 +153,7 @@ const { Content, headings } =
   </section>
 
   <!-- Content -->
-  <section class="section bg-app">
+  <section class="section bg-surface-muted">
     <div
       class="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_280px]"
     >
@@ -169,7 +169,7 @@ const { Content, headings } =
           {
             headings.length > 0 && (
               <div>
-                <p class="text-label text-text-subtle">
+                <p class="text-label text-text-muted">
                   Contents
                 </p>
 

@@ -1,7 +1,7 @@
 ---
 lang: sv
 title: "Price Watch"
-description: "En local-first-applikation för produktprisbevakning och AI-baserat köpstöd, byggd med React, TypeScript, ASP.NET Core, Python, Playwright, FastAPI och Ollama, med stöd för prisbevakning från flera butiker, prishistorik, normalisering av förpackningsstorlekar, automatiserade körningar, e-postnotiser och lokal AI-baserad prisanalys."
+description: "En local-first-surface-mutedlikation för produktprisbevakning och AI-baserat köpstöd, byggd med React, TypeScript, ASP.NET Core, Python, Playwright, FastAPI och Ollama, med stöd för prisbevakning från flera butiker, prishistorik, normalisering av förpackningsstorlekar, automatiserade körningar, e-postnotiser och lokal AI-baserad prisanalys."
 status: "v.1.2.0"
 order: 2
 featured: true
