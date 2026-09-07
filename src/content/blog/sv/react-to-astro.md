@@ -320,15 +320,3 @@ Browser Rendering
 ```
 
 För den här typen av webbplats är det en bättre matchning.
-
-## Vad jag lärde mig
-
-Den viktigaste lärdomen var inte att React är olämpligt för webbplatser.
-
-React är mycket användbart när webbläsaren behöver hantera omfattande applikationstillstånd och interaktion.
-
-Den viktigare lärdomen var att **ramverket bör matcha produktens faktiska beteende**.
-
-Min portfolio innehåller mycket teknisk dokumentation men relativt lite klientbaserat applikationstillstånd.
-
-När jag började se webbplatsen ur det perspektivet blev en HTML-first-arkitektur det enklare och mer naturliga valet.

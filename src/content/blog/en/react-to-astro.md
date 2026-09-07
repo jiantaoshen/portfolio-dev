@@ -319,14 +319,3 @@ Browser Rendering
 
 For this type of website, that is a better fit.
 
-## What I Learned
-
-The main lesson was not that React is unsuitable for websites.
-
-React is useful when the browser needs to manage significant application state and interaction.
-
-The more important lesson was that the framework should match the actual behavior of the product.
-
-My portfolio contains a large amount of technical documentation and relatively little client-side application state.
-
-Once I looked at the site from that perspective, an HTML-first architecture became the simpler choice.

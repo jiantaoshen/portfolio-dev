@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+import Seo from "../components/Seo.astro";
+
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from '@vercel/analytics/astro';
@@ -38,7 +40,7 @@ const common =
     "common",
   );
 
-
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -51,10 +53,11 @@ const common =
       name="viewport"
       content="width=device-width, initial-scale=1"
     />
+    
     <Analytics />
     <link rel="icon" type="image/svg+xml" href="/favicon-js.svg" />
-    <link rel="canonical" href="https://jiantao-portfolio-dev.web.app" />
-    <title>JIANTAO.dev</title>
+    <link rel="canonical" href={canonicalURL}/>
+    <title>{title}</title>
     <SpeedInsights />
   </head>
 
