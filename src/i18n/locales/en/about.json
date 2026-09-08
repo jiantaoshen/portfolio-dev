@@ -12,11 +12,10 @@
       {
         "title": "Frontend",
         "items": [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "TypeScript",
           "React",
+          "HTML/CSS",
+          "TypeScript",
+          "JavaScript",
           "Tailwind CSS",
           "Astro"
         ]
@@ -30,14 +29,13 @@
           ".NET",
           "ASP.NET Core",
           "REST APIs",
-          "Authentication",
-          "Authorization",
-          "JWT"
+          "Authentication & Authorization"
         ]
       },
       {
         "title": "Databases",
         "items": [
+          "PostgreSQL",
           "SQL",
           "Entity Framework Core"
         ]
@@ -51,7 +49,6 @@
           "Playwright",
           "Automation",
           "Ollama",
-          "AI APIs",
           "AI Integration"
         ]
       },
@@ -60,14 +57,12 @@
         "items": [
           "Azure",
           "Vercel",
-          "Google Cloud",
-          "Neon",
           "Git",
           "GitHub"
         ]
       },
       {
-        "title": "Communication & Languages",
+        "title": "Languages",
         "items": [
           "Chinese",
           "English",
