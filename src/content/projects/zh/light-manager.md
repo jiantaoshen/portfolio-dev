@@ -27,6 +27,23 @@ links:
 draft: false
 ---
 
+## 更新信息
+
+经过两个月的上线运行和开发，我发现这个项目存在不少问题。未来，我计划重新开发一个更加现代化的 TODO 应用。这个项目将作为备份保留。当新的应用能够稳定运行后，我会用新应用替代当前项目。
+
+1. **应用缺少响应式设计**
+   目前的界面设计只适用于电脑端，因此无法很好地在手机上使用。
+
+2. **缺少公开发布功能**
+   我正在考虑添加一个按钮，可以将计划设置为公开状态，这样其他人也能够查看我的计划。
+
+3. **目前使用 Azure App Service**
+   我计划将部署方式从 Azure App Service 更换为 Azure Container。
+
+4. **增加更多功能**
+   我希望未来加入更多功能，例如笔记功能。
+
+
 ## 项目概览
 
 LightManager 是一个开源项目管理应用，面向希望以简单方式组织项目和任务的中小型团队。它避免企业级项目管理工具中大量复杂功能，重点提供清晰、实用的核心工作流。应用以后端 ASP.NET Core 为核心，并实现了身份认证、授权、基于角色的权限、项目成员管理、任务分配以及 Kanban 工作流。
@@ -82,17 +99,6 @@ React 应用和 ASP.NET Core API 分别部署，因此需要正确处理认证�
 ## 部署
 
 React 前端部署在 Azure Static Web Apps，ASP.NET Core API 运行在 Azure App Service，PostgreSQL 数据库由 Neon 托管。项目此前使用 Vercel 和 Render，并于 2026 年 8 月迁移到 Microsoft Azure。目前使用免费层服务，因此后端长时间未活动后可能出现冷启动。
-
-## 技术学习
-
-- ASP.NET Core Web API 设计
-- 使用 ASP.NET Identity 实现身份认证
-- JWT API 身份认证
-- 后端授权与基于角色的权限设计
-- 关系型应用数据建模
-- Entity Framework Core 与 PostgreSQL
-- 连接 React 前端与独立后端 API
-- 生产环境配置与 Azure 部署
 
 ## 后续改进
 

@@ -27,6 +27,23 @@ links:
 draft: false
 ---
 
+## Update Information
+
+After two months of development and running the application online, I have discovered several issues with this project. In the future, I plan to build a new and more modern TODO application. I will keep this project as a backup. Once the new application is working properly, I will replace the current project with it.
+
+1. **The application lacks responsive design**
+   The current design only works well on desktop, which makes it difficult to use on mobile devices.
+
+2. **There is no public sharing feature**
+   I am considering adding a button that allows users to make their plans public, so others can view them as well.
+
+3. **It currently uses Azure App Service**
+   I am planning to switch from Azure App Service to Azure Container.
+
+4. **More features**
+   I would like to add more features in the future, such as notes.
+
+
 ## Overview
 
 LightManager is an open-source project management application designed for small and medium-sized teams that need a straightforward way to organize projects and tasks without the complexity of enterprise project management software. The application is built around an ASP.NET Core backend and includes authentication, authorization, role-based permissions, project membership, task assignment and a Kanban workflow.
@@ -82,17 +99,6 @@ The React application and ASP.NET Core API are independent deployments and need 
 ## Deployment
 
 The React frontend is deployed with Azure Static Web Apps, the ASP.NET Core API runs on Azure App Service and PostgreSQL is hosted with Neon. The project previously used Vercel and Render before moving to Microsoft Azure in August 2026. Because the application currently uses free-tier services, the backend can experience a cold start after a period of inactivity.
-
-## Learnings
-
-- ASP.NET Core Web API design
-- Authentication with ASP.NET Identity
-- JWT-based API authentication
-- Backend authorization and role-based permissions
-- Relational application modelling
-- Entity Framework Core and PostgreSQL
-- Connecting a React frontend to a separate backend API
-- Production configuration and Azure deployment
 
 ## Future Improvements
 

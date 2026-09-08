@@ -27,6 +27,29 @@ links:
 draft: false
 ---
 
+## Updatering information
+Efter två månader online och utveckling upptäcker jag många problem på det här projektet. I framtiden kommer jag att bygga en ny modern TODO applikation. Det här projektet kommer jag att använda som en backup. När ny applikation fungerar, kommer jag ersätta det.
+
+1. **Applikation saknar responsive design** 
+  Design fungerar bara på dator. Det gör att det går inte jobba med mobil.
+2. **Det saknar publicera funktion**
+  Jag funderar att lägga till en knapp som gör planering offenlig. Så alla kan se min planering samt 
+3. **Det använder Azure App Service** 
+  Jag tänker att byta till Azure Container.
+4. **Mer funktioner** 
+  Jag vill lägga mer funktioner som till exempel anteckningar.
+
+### Problem 2: 
+För det första skiljer sig min metod för applikationsutveckling från den traditionella metoden. Det här projektet baserar på traditionella metoden vilket är 
+
+> Planera -> Koda -> Dokumentera
+
+Mitt sätt är
+
+> Kommer fram ett idé -> Fråga AI -> Bygga MVP med AI -> Testa MVP -> Dokumentera
+
+
+
 ## Projektöversikt
 
 LightManager är en open source applikation för projektledning, utvecklad för små och medelstora team som behöver ett enkelt sätt att organisera projekt och uppgifter utan komplexiteten i stora företagsverktyg. Applikationen är byggd kring en ASP.NET Core-backend och innehåller autentisering, auktorisering, rollbaserade behörigheter, projektmedlemskap, uppgiftstilldelning och ett Kanban-arbetsflöde.

@@ -116,19 +116,6 @@ Astro builds the site into static HTML, CSS and assets that can be deployed to F
 
 The static architecture removes the need for SPA fallback routing for normal content pages and reduces the amount of client-side JavaScript required to render the site.
 
-## Learnings
-
-- Migrating a React SPA to an Astro static-site architecture
-- Building HTML-first pages with Astro and TypeScript
-- Designing multilingual static routes without runtime i18n libraries
-- Managing project case studies with Astro Content Collections
-- Managing technical notes as Markdown content
-- Sharing one content model across homepage previews, list pages and detail pages
-- Designing static routes from language-aware Content Collection IDs
-- Maintaining a Tailwind CSS design system across Astro components
-- Reducing client-side JavaScript for content-heavy websites
-- Preparing static Astro output for Firebase Hosting
-
 ## Future Improvements
 
 - Continue expanding project case studies and technical notes
