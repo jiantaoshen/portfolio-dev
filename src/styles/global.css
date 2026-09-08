@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../career";
 
 @theme {
   --color-navy: #2563eb;
