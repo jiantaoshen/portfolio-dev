@@ -60,7 +60,7 @@
         "title": "Cloud & Deployment",
         "items": [
           "Azure",
-          "Firebase",
+          "Vercel",
           "Google Cloud",
           "Neon",
           "Git",

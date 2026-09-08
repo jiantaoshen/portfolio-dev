@@ -87,7 +87,7 @@ export function CvEditorPage() {
         <div className="mt-1 text-sky-800">
           {mode === "trial"
             ? "Changes stay in browser memory and disappear on reset/refresh."
-            : "Save writes this JSON file through ASP.NET in Development. Production Git publishing can be added later."}
+            : "Save writes this JSON file through the local ASP.NET editor. Review git diff, then commit and push normally."}
         </div>
       </div>
       <Button variant="outline" size="sm" asChild>
@@ -148,7 +148,7 @@ export function CvEditorPage() {
 
     <div className="sticky bottom-4 z-10 flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white/95 p-4 shadow-lg backdrop-blur sm:flex-row sm:items-center sm:justify-between">
       <div className="text-sm text-zinc-600"><Badge>{locale}</Badge> {sourcePath}</div>
-      <Button disabled={saving} onClick={() => void actions.saveAbout(locale, draft)}><Save className="mr-2 h-4 w-4" />{saving ? "Saving…" : mode === "trial" ? "Apply locally" : `Save ${localeLabels[locale]}`}</Button>
+      <Button disabled={saving} onClick={() => void actions.saveAbout(locale, draft).catch(() => {})}><Save className="mr-2 h-4 w-4" />{saving ? "Saving…" : mode === "trial" ? "Apply locally" : `Save ${localeLabels[locale]}`}</Button>
     </div>
   </div>
 }

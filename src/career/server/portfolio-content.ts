@@ -11,10 +11,9 @@ function entryIdentity(id: string, fallbackLang: Locale) {
   return { clean, language, slug }
 }
 
-function iso(value: Date | string | undefined) {
-  if (value instanceof Date) return value.toISOString()
-  if (typeof value === "string") return value
-  return new Date(0).toISOString()
+function dateOnly(value: Date | string) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  return new Date(value).toISOString().slice(0, 10)
 }
 
 export async function getPortfolioContent(): Promise<PortfolioContent> {
@@ -35,20 +34,21 @@ export async function getPortfolioContent(): Promise<PortfolioContent> {
       slug,
       summary: data.description,
       contentMarkdown: entry.body ?? "",
+      status: data.status,
       technologies: data.technologies,
+      highlights: data.highlights,
       githubUrl: data.links?.github ?? "",
       demoUrl: data.links?.live ?? "",
       featured: data.featured,
+      featuredOrder: data.featuredOrder ?? null,
       published: !data.draft,
       sortOrder: data.order,
-      updatedAt: new Date(0).toISOString(),
     }
   })
 
   const blogPosts: BlogPost[] = blogEntries.map(entry => {
     const data = entry.data
     const { clean, language, slug } = entryIdentity(entry.id, data.lang)
-    const date = iso(data.date)
 
     return {
       id: `blog:${clean}`,
@@ -58,10 +58,10 @@ export async function getPortfolioContent(): Promise<PortfolioContent> {
       slug,
       excerpt: data.description,
       contentMarkdown: entry.body ?? "",
+      date: dateOnly(data.date),
+      readingTime: data.readingTime,
+      tags: data.tags,
       status: data.draft ? "draft" : "published",
-      createdAt: date,
-      updatedAt: date,
-      publishedAt: data.draft ? null : date,
     }
   })
 

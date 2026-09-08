@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react"
-import { adminApi } from "../lib/api"
+import { localContentApi } from "../lib/api"
 import type {
   AboutByLocale,
   AboutContent,
@@ -32,47 +32,138 @@ export function useCareerData(mode: DashboardMode, initialContent: PortfolioCont
   }
 
   const actions = useMemo(() => ({
+    stageProject(project: Project) {
+      const staged = clone(project)
+      patchLocal(current => ({ ...current, projects: [...current.projects, staged] }))
+      return staged
+    },
+
+    stageBlog(post: BlogPost) {
+      const staged = clone(post)
+      patchLocal(current => ({ ...current, blogPosts: [...current.blogPosts, staged] }))
+      return staged
+    },
+
     async saveAbout(locale: Locale, content: AboutContent) {
       setActionError(null)
       if (mode === "trial") {
-        patchLocal(current => ({ ...current, about: { ...current.about, [locale]: clone(content) } }))
-        return
+        const saved = clone(content)
+        patchLocal(current => ({ ...current, about: { ...current.about, [locale]: saved } }))
+        return saved
       }
 
       setSaving(true)
       try {
-        const saved = await adminApi.updateAbout(locale, content)
+        const saved = await localContentApi.updateAbout(locale, content)
         patchLocal(current => ({ ...current, about: { ...current.about, [locale]: clone(saved) } }))
+        return saved
       } catch (e) {
-        setActionError(e instanceof Error ? e.message : "Failed to save About content")
+        const message = e instanceof Error ? e.message : "Failed to save About content"
+        setActionError(message)
+        throw e
       } finally {
         setSaving(false)
       }
     },
 
-    // Blog/project source files remain Astro Content Collections in phase 1.
-    // Editing is sandbox-only in both Trial and Admin modes until Git-backed publishing is added.
     async saveProject(project: Project) {
-      patchLocal(current => ({
-        ...current,
-        projects: current.projects.some(x => x.id === project.id)
-          ? current.projects.map(x => x.id === project.id ? project : x)
-          : [...current.projects, project],
-      }))
+      setActionError(null)
+      if (mode === "trial") {
+        const saved = clone(project)
+        patchLocal(current => ({
+          ...current,
+          projects: current.projects.some(x => x.id === project.id)
+            ? current.projects.map(x => x.id === project.id ? saved : x)
+            : [...current.projects, saved],
+        }))
+        return saved
+      }
+
+      setSaving(true)
+      try {
+        const saved = await localContentApi.saveProject(project)
+        patchLocal(current => ({
+          ...current,
+          projects: current.projects.some(x => x.id === project.id)
+            ? current.projects.map(x => x.id === project.id ? clone(saved) : x)
+            : [...current.projects, clone(saved)],
+        }))
+        return saved
+      } catch (e) {
+        const message = e instanceof Error ? e.message : "Failed to save project"
+        setActionError(message)
+        throw e
+      } finally {
+        setSaving(false)
+      }
     },
-    async deleteProject(id: string) {
-      patchLocal(current => ({ ...current, projects: current.projects.filter(x => x.id !== id) }))
+
+    async deleteProject(project: Project) {
+      setActionError(null)
+      if (mode === "admin" && !project.sourceId.startsWith("new/")) {
+        setSaving(true)
+        try {
+          await localContentApi.deleteProject(project.sourceId)
+        } catch (e) {
+          const message = e instanceof Error ? e.message : "Failed to delete project"
+          setActionError(message)
+          throw e
+        } finally {
+          setSaving(false)
+        }
+      }
+
+      patchLocal(current => ({ ...current, projects: current.projects.filter(x => x.id !== project.id) }))
     },
+
     async saveBlog(post: BlogPost) {
-      patchLocal(current => ({
-        ...current,
-        blogPosts: current.blogPosts.some(x => x.id === post.id)
-          ? current.blogPosts.map(x => x.id === post.id ? post : x)
-          : [...current.blogPosts, post],
-      }))
+      setActionError(null)
+      if (mode === "trial") {
+        const saved = clone(post)
+        patchLocal(current => ({
+          ...current,
+          blogPosts: current.blogPosts.some(x => x.id === post.id)
+            ? current.blogPosts.map(x => x.id === post.id ? saved : x)
+            : [...current.blogPosts, saved],
+        }))
+        return saved
+      }
+
+      setSaving(true)
+      try {
+        const saved = await localContentApi.saveBlog(post)
+        patchLocal(current => ({
+          ...current,
+          blogPosts: current.blogPosts.some(x => x.id === post.id)
+            ? current.blogPosts.map(x => x.id === post.id ? clone(saved) : x)
+            : [...current.blogPosts, clone(saved)],
+        }))
+        return saved
+      } catch (e) {
+        const message = e instanceof Error ? e.message : "Failed to save blog post"
+        setActionError(message)
+        throw e
+      } finally {
+        setSaving(false)
+      }
     },
-    async deleteBlog(id: string) {
-      patchLocal(current => ({ ...current, blogPosts: current.blogPosts.filter(x => x.id !== id) }))
+
+    async deleteBlog(post: BlogPost) {
+      setActionError(null)
+      if (mode === "admin" && !post.sourceId.startsWith("new/")) {
+        setSaving(true)
+        try {
+          await localContentApi.deleteBlog(post.sourceId)
+        } catch (e) {
+          const message = e instanceof Error ? e.message : "Failed to delete blog post"
+          setActionError(message)
+          throw e
+        } finally {
+          setSaving(false)
+        }
+      }
+
+      patchLocal(current => ({ ...current, blogPosts: current.blogPosts.filter(x => x.id !== post.id) }))
     },
   }), [mode])
 

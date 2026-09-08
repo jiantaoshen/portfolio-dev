@@ -1,6 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import { LoginPage } from "./pages/login"
-import { ProtectedAdmin } from "./pages/protected-admin"
 import { CareerWorkspace, WorkspaceIndex } from "./workspace"
 import { OverviewPage } from "./pages/overview"
 import { CvEditorPage } from "./pages/cv-editor"
@@ -18,8 +16,6 @@ export function CareerRouterApp({
   initialAbout: AboutByLocale
 }) {
   return <BrowserRouter><Routes>
-    <Route path="/login" element={<LoginPage />} />
-
     <Route path="/trial" element={<CareerWorkspace mode="trial" initialContent={initialContent} initialAbout={initialAbout} />}>
       <Route index element={<WorkspaceIndex mode="trial" />} />
       <Route path="overview" element={<OverviewPage />} />
@@ -28,7 +24,7 @@ export function CareerRouterApp({
       <Route path="projects" element={<ProjectsEditorPage />} />
     </Route>
 
-    <Route path="/dashboard" element={<ProtectedAdmin><CareerWorkspace mode="admin" initialContent={initialContent} initialAbout={initialAbout} /></ProtectedAdmin>}>
+    <Route path="/dashboard" element={<CareerWorkspace mode="admin" initialContent={initialContent} initialAbout={initialAbout} />}>
       <Route index element={<WorkspaceIndex mode="admin" />} />
       <Route path="overview" element={<OverviewPage />} />
       <Route path="cv" element={<CvEditorPage />} />

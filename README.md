@@ -22,9 +22,6 @@ https://jiantao-dev.vercel.app
 
 * C#
 * ASP.NET Core
-* Cookie-based authentication
-* CSRF protection
-* Rate limiting
 
 ### Deployment
 
@@ -78,8 +75,6 @@ The career management interface uses separate routes:
 /trial/blog
 /trial/projects
 
-/login
-
 /dashboard
 /dashboard/cv
 /dashboard/blog
@@ -94,15 +89,10 @@ Trial changes only exist in browser state and are never written to the backend o
 
 Refreshing the page restores the original portfolio content.
 
-### Admin Dashboard
+###  Dashboard
 
-The admin dashboard is intended for authenticated content management.
+The dashboard is intended for local content management.
 
-During local development, authentication is handled by the ASP.NET Core backend.
-
-Local development credentials are stored with .NET User Secrets and are not committed to the repository.
-
-Production authentication is planned to use an external identity provider rather than the local development account.
 
 ## Content Architecture
 
@@ -304,69 +294,13 @@ http://localhost:5080
 
 The Astro development server proxies `/api` requests to the local ASP.NET Core backend.
 
-## Local Authentication
-
-Local admin authentication is intended only for development.
-
-Credentials should be configured with .NET User Secrets:
-
-```bash
-dotnet user-secrets set "LocalAuth:Enabled" "true"
-dotnet user-secrets set "LocalAuth:Email" "admin@local.test"
-dotnet user-secrets set "LocalAuth:Password" "your-local-password"
-```
-
-Secrets are stored outside the repository and should never be committed to Git.
-
-The local authentication endpoint should only be enabled when the ASP.NET Core application runs in the `Development` environment.
-
 ## Deployment
 
 The Astro frontend is deployed to Vercel.
 
 The ASP.NET Core backend is currently treated as a separate application and is not included in the Vercel frontend deployment.
 
-```text
-GitHub Repository
-
-├── Astro / React
-│       ↓
-│     Vercel
-│
-└── ASP.NET Core
-        ↓
-   Separate backend deployment
-```
-
-The repository uses `.vercelignore` to exclude:
-
-```text
-backend/
-```
-
-from the Vercel frontend deployment.
-
-## Future Content Publishing
-
-The long-term goal is to keep Git as the source of truth for public portfolio content.
-
-A future production workflow can use:
-
-```text
-Admin Dashboard
-       ↓
- ASP.NET Core
-       ↓
-   GitHub API
-       ↓
-Commit JSON / Markdown
-       ↓
-     Vercel
-       ↓
-  Astro Rebuild
-```
-
-This allows portfolio content to remain version-controlled while still providing a CMS-like editing experience.
+The repository uses `.vercelignore` to exclude backend and dashboard from the Vercel frontend deployment.
 
 ## Project Background
 

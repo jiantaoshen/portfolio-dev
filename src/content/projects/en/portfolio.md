@@ -12,7 +12,7 @@ technologies:
   - "Tailwind CSS"
   - "Content Collections"
   - "Markdown"
-  - "Firebase Hosting"
+  - "Vercel"
 highlights:
   - "Static HTML-first architecture built with Astro"
   - "Supports English, Swedish and Chinese with language-specific routes"
@@ -21,7 +21,7 @@ highlights:
   - "Language-specific CV downloads"
   - "Responsive interface built with Tailwind CSS"
   - "Minimal client-side JavaScript for content-heavy pages"
-  - "Designed for static deployment on Firebase Hosting"
+  - "Designed for static deployment on Vercel"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"

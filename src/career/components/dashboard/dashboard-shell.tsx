@@ -1,9 +1,8 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom"
-import { BookOpen, BriefcaseBusiness, FileUser, Gauge, Home, LogOut, RotateCcw, X } from "lucide-react"
+import { NavLink, Outlet } from "react-router-dom"
+import { BookOpen, BriefcaseBusiness, FileUser, Gauge, Home, RotateCcw, X } from "lucide-react"
 import { Button } from "../ui/button"
 import { cn } from "../../lib/utils"
 import type { DashboardMode } from "../../lib/types"
-import { authApi } from "../../lib/api"
 
 const items = [
   { to: "overview", label: "Overview", icon: Gauge },
@@ -13,13 +12,7 @@ const items = [
 ]
 
 export function DashboardShell({ mode, onReset, actionError, onDismissError }: { mode: DashboardMode; onReset?: () => void; actionError?: string | null; onDismissError?: () => void }) {
-  const navigate = useNavigate()
   const base = mode === "trial" ? "/trial" : "/dashboard"
-
-  async function logout() {
-    await authApi.logout()
-    navigate("/login")
-  }
 
   return (
     <div className="min-h-screen bg-zinc-50 lg:grid lg:grid-cols-[250px_1fr]">
@@ -27,7 +20,7 @@ export function DashboardShell({ mode, onReset, actionError, onDismissError }: {
         <div className="mb-6 flex items-center justify-between lg:block">
           <div>
             <div className="text-sm font-medium text-zinc-500">JIANTAO.dev</div>
-            <div className="text-xl font-bold">{mode === "trial" ? "CMS Demo" : "Content Admin"}</div>
+            <div className="text-xl font-bold">{mode === "trial" ? "CMS Demo" : "Local Content Editor"}</div>
           </div>
           <span className={cn("rounded-full px-2 py-1 text-xs font-semibold", mode === "trial" ? "bg-amber-100 text-amber-800" : "bg-emerald-100 text-emerald-800")}>{mode}</span>
         </div>
@@ -43,7 +36,6 @@ export function DashboardShell({ mode, onReset, actionError, onDismissError }: {
         <div className="mt-6 space-y-2">
           <Button variant="outline" className="w-full justify-start" asChild><a href="/"><Home className="mr-2 h-4 w-4" />Portfolio home</a></Button>
           {mode === "trial" && onReset && <Button variant="outline" className="w-full justify-start" onClick={onReset}><RotateCcw className="mr-2 h-4 w-4" />Reset demo</Button>}
-          {mode === "admin" && <Button variant="outline" className="w-full justify-start" onClick={() => void logout()}><LogOut className="mr-2 h-4 w-4" />Sign out</Button>}
         </div>
       </aside>
 
@@ -55,7 +47,7 @@ export function DashboardShell({ mode, onReset, actionError, onDismissError }: {
         )}
         {mode === "admin" && (
           <div className="border-b border-emerald-200 bg-emerald-50 px-6 py-3 text-sm text-emerald-900">
-            <strong>Development admin.</strong> CV/About saves write multilingual JSON files. Blog and Project editors are still sandbox-only until Git publishing is added.
+            <strong>Local editor.</strong> Saves write directly to portfolio JSON and Markdown source files. Review the Git diff before committing and pushing.
           </div>
         )}
         {actionError && (

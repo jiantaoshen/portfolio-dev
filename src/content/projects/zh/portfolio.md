@@ -12,7 +12,7 @@ technologies:
   - "Tailwind CSS"
   - "Content Collections"
   - "Markdown"
-  - "Firebase Hosting"
+  - "Vercel"
 highlights:
   - "使用 Astro 构建 HTML-first 静态架构"
   - "支持英文、瑞典语和中文独立语言路由"
@@ -21,7 +21,7 @@ highlights:
   - "根据当前网站语言提供对应语言的 CV 下载"
   - "使用 Tailwind CSS 构建响应式界面"
   - "内容型页面尽量减少客户端 JavaScript"
-  - "面向 Firebase Hosting 的静态部署结构"
+  - "面向 Vercel 的静态部署结构"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"

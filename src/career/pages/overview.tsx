@@ -19,7 +19,7 @@ export function OverviewPage() {
       <p className="mt-1 text-zinc-500">
         {mode === "trial"
           ? "Experiment with a temporary browser copy of the portfolio CMS. Nothing is saved."
-          : "Manage the multilingual About/CV JSON locally and preview the Markdown content already used by your Astro portfolio."}
+          : "Edit the same JSON and Markdown source files used by the Astro portfolio, then review the Git diff and commit normally."}
       </p>
     </div>
 
@@ -34,8 +34,9 @@ export function OverviewPage() {
       <CardHeader><CardTitle>Content sources</CardTitle></CardHeader>
       <CardContent className="space-y-3 text-sm text-zinc-600">
         <p><strong className="text-zinc-900">CV / About:</strong> <code>src/i18n/locales/en|sv|zh/about.json</code></p>
-        <p><strong className="text-zinc-900">Blog:</strong> <code>src/content/blog/**</code> Markdown Content Collection</p>
-        <p><strong className="text-zinc-900">Projects:</strong> <code>src/content/projects/**</code> Markdown Content Collection</p>
+        <p><strong className="text-zinc-900">Blog:</strong> <code>src/content/blog/en|sv|zh/*.md</code></p>
+        <p><strong className="text-zinc-900">Projects:</strong> <code>src/content/projects/en|sv|zh/*.md</code></p>
+        {mode === "admin" && <p><strong className="text-zinc-900">Publishing:</strong> save locally → review <code>git diff</code> → commit → push → Vercel rebuild.</p>}
       </CardContent>
     </Card>
   </div>

@@ -45,13 +45,15 @@ export type Project = {
   slug: string
   summary: string
   contentMarkdown: string
+  status: string
   technologies: string[]
+  highlights: string[]
   githubUrl: string
   demoUrl: string
   featured: boolean
+  featuredOrder?: number | null
   published: boolean
   sortOrder: number
-  updatedAt: string
 }
 
 export type BlogPost = {
@@ -62,10 +64,10 @@ export type BlogPost = {
   slug: string
   excerpt: string
   contentMarkdown: string
+  date: string
+  readingTime: string
+  tags: string[]
   status: "draft" | "published"
-  createdAt: string
-  updatedAt: string
-  publishedAt?: string | null
 }
 
 export type PortfolioContent = {
