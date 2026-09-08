@@ -32,6 +32,14 @@ export function useCareerData(mode: DashboardMode, initialContent: PortfolioCont
   }
 
   const actions = useMemo(() => ({
+    stageAbout(locale: Locale, update: AboutContent | ((current: AboutContent) => AboutContent)) {
+      patchLocal(current => {
+        const currentLocale = current.about[locale]
+        const next = typeof update === "function" ? update(currentLocale) : update
+        return { ...current, about: { ...current.about, [locale]: clone(next) } }
+      })
+    },
+
     stageProject(project: Project) {
       const staged = clone(project)
       patchLocal(current => ({ ...current, projects: [...current.projects, staged] }))

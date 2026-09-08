@@ -30,7 +30,6 @@
           ".NET",
           "ASP.NET Core",
           "REST APIs",
-          "Entity Framework Core",
           "Authentication",
           "Authorization",
           "JWT"
@@ -39,7 +38,7 @@
       {
         "title": "Databases",
         "items": [
-          "PostgreSQL",
+          "SQL",
           "Entity Framework Core"
         ]
       },

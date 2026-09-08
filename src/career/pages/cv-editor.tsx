@@ -6,11 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../co
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 import { Textarea } from "../components/ui/textarea"
+import { LocaleSwitcher, localeLabels } from "../components/dashboard/locale-switcher"
 import type { AboutContent, AboutEducationItem, AboutSkillGroup, Locale } from "../lib/types"
 import { useCareerWorkspace } from "../workspace"
-
-const localeLabels: Record<Locale, string> = { en: "English", sv: "Svenska", zh: "中文" }
-const clone = <T,>(value: T): T => structuredClone(value)
 
 function blankSkillGroup(): AboutSkillGroup {
   return { title: "New category", staritem: [], items: [] }
@@ -23,11 +21,11 @@ function blankEducation(): AboutEducationItem {
 export function CvEditorPage() {
   const { data, actions, saving, mode } = useCareerWorkspace()
   const [locale, setLocale] = useState<Locale>("en")
-  const [draft, setDraft] = useState<AboutContent>(() => clone(data.about.en))
+  const draft = data.about[locale]
 
-  useEffect(() => {
-    setDraft(clone(data.about[locale]))
-  }, [locale, data.about])
+  function setDraft(updater: AboutContent | ((current: AboutContent) => AboutContent)) {
+    actions.stageAbout(locale, updater)
+  }
 
   const previewHref = `/${locale}/about`
   const sourcePath = `src/i18n/locales/${locale}/about.json`
@@ -70,15 +68,9 @@ export function CvEditorPage() {
     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">CV / About</h1>
-        <p className="mt-1 text-zinc-500">Directly edits the same multilingual JSON structure used by your Astro About page.</p>
+        <p className="mt-1 text-zinc-500">Each language keeps its own editor state, matching the three About JSON files directly.</p>
       </div>
-      <div className="flex flex-wrap gap-2">
-        {(Object.keys(localeLabels) as Locale[]).map(item => (
-          <Button key={item} size="sm" variant={locale === item ? "default" : "outline"} onClick={() => setLocale(item)}>
-            {localeLabels[item]}
-          </Button>
-        ))}
-      </div>
+      <LocaleSwitcher value={locale} onChange={setLocale} />
     </div>
 
     <div className="flex flex-col gap-3 rounded-lg border border-sky-200 bg-sky-50 p-4 text-sm text-sky-950 sm:flex-row sm:items-center sm:justify-between">
@@ -156,6 +148,19 @@ export function CvEditorPage() {
 function SkillGroupEditor({ group, onChange, onDelete }: { group: AboutSkillGroup; onChange: (next: AboutSkillGroup) => void; onDelete: () => void }) {
   const [focusText, setFocusText] = useState((group.staritem ?? []).join(", "))
   const [itemsText, setItemsText] = useState(group.items.join(", "))
+  const [editingFocus, setEditingFocus] = useState(false)
+  const [editingItems, setEditingItems] = useState(false)
+
+  const focusValue = (group.staritem ?? []).join(", ")
+  const itemsValue = group.items.join(", ")
+
+  useEffect(() => {
+    if (!editingFocus) setFocusText(focusValue)
+  }, [focusValue, editingFocus])
+
+  useEffect(() => {
+    if (!editingItems) setItemsText(itemsValue)
+  }, [itemsValue, editingItems])
 
   return <div className="space-y-3 rounded-xl border border-zinc-200 p-4">
     <div className="flex items-center gap-2">
@@ -163,10 +168,29 @@ function SkillGroupEditor({ group, onChange, onDelete }: { group: AboutSkillGrou
       <Button variant="ghost" size="icon" aria-label="Delete skill category" onClick={onDelete}><Trash2 className="h-4 w-4" /></Button>
     </div>
     <Field label="Focus technologies (comma separated)">
-      <Input value={focusText} onChange={e => { setFocusText(e.target.value); onChange({ ...group, staritem: splitTags(e.target.value) }) }} placeholder="C#, Python" />
+      <Input
+        value={focusText}
+        onFocus={() => setEditingFocus(true)}
+        onBlur={() => setEditingFocus(false)}
+        onChange={e => {
+          setFocusText(e.target.value)
+          onChange({ ...group, staritem: splitTags(e.target.value) })
+        }}
+        placeholder="C#, Python"
+      />
     </Field>
     <Field label="Other technologies (comma separated)">
-      <Textarea rows={3} value={itemsText} onChange={e => { setItemsText(e.target.value); onChange({ ...group, items: splitTags(e.target.value) }) }} placeholder="ASP.NET Core, REST APIs, JWT" />
+      <Textarea
+        rows={3}
+        value={itemsText}
+        onFocus={() => setEditingItems(true)}
+        onBlur={() => setEditingItems(false)}
+        onChange={e => {
+          setItemsText(e.target.value)
+          onChange({ ...group, items: splitTags(e.target.value) })
+        }}
+        placeholder="ASP.NET Core, REST APIs, JWT"
+      />
     </Field>
     {(group.staritem?.length ?? 0) > 0 && <div className="flex flex-wrap gap-1">{group.staritem!.map(item => <Badge key={item} className="bg-amber-100 text-amber-800"><Star className="mr-1 h-3 w-3" />{item}</Badge>)}</div>}
   </div>
