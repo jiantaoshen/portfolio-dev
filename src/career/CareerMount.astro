@@ -1,0 +1,16 @@
+---
+import { CareerRouterApp } from "./CareerRouterApp"
+import { getAboutContent } from "./server/about-content"
+import { getPortfolioContent } from "./server/portfolio-content"
+
+const [initialContent, initialAbout] = await Promise.all([
+  getPortfolioContent(),
+  Promise.resolve(getAboutContent()),
+])
+---
+
+<CareerRouterApp
+  client:only="react"
+  initialContent={initialContent}
+  initialAbout={initialAbout}
+/>

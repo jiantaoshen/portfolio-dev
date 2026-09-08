@@ -12,7 +12,7 @@ technologies:
   - "Tailwind CSS"
   - "Content Collections"
   - "Markdown"
-  - "Firebase Hosting"
+  - "Vercel"
 highlights:
   - "Static HTML-first architecture built with Astro"
   - "Supports English, Swedish and Chinese with language-specific routes"
@@ -21,7 +21,7 @@ highlights:
   - "Language-specific CV downloads"
   - "Responsive interface built with Tailwind CSS"
   - "Minimal client-side JavaScript for content-heavy pages"
-  - "Designed for static deployment on Firebase Hosting"
+  - "Designed for static deployment on Vercel"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"
@@ -115,19 +115,6 @@ The site uses reusable Astro components for layout, navigation, project previews
 Astro builds the site into static HTML, CSS and assets that can be deployed to Firebase Hosting.
 
 The static architecture removes the need for SPA fallback routing for normal content pages and reduces the amount of client-side JavaScript required to render the site.
-
-## Learnings
-
-- Migrating a React SPA to an Astro static-site architecture
-- Building HTML-first pages with Astro and TypeScript
-- Designing multilingual static routes without runtime i18n libraries
-- Managing project case studies with Astro Content Collections
-- Managing technical notes as Markdown content
-- Sharing one content model across homepage previews, list pages and detail pages
-- Designing static routes from language-aware Content Collection IDs
-- Maintaining a Tailwind CSS design system across Astro components
-- Reducing client-side JavaScript for content-heavy websites
-- Preparing static Astro output for Firebase Hosting
 
 ## Future Improvements
 

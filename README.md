@@ -1,83 +1,96 @@
 # Developer Portfolio
 
-A multilingual developer portfolio built with Astro, TypeScript and Tailwind CSS.
+A multilingual developer portfolio built with Astro, React, TypeScript, Tailwind CSS, and ASP.NET Core.
 
-**Live site:**  
-Firebase:
-https://jiantao-portfolio-dev.web.app
-
-Vercel:
+**Live site:**
 https://jiantao-dev.vercel.app
 
 ## Tech Stack
 
-- Astro
-- TypeScript
-- Tailwind CSS
-- Astro Content Collections
-- Markdown
-- Firebase Hosting
+* Astro
+* React
+* TypeScript
+* Tailwind CSS
+* ASP.NET Core
+* Astro Content Collections
+* Markdown
+* Vercel
 
 ## Features
 
-- English, Swedish and Chinese support
-- Static language routes under `/en/`, `/sv/` and `/zh/`
-- Project case studies powered by Markdown Content Collections
-- Technical notes powered by Markdown Content Collections
-- Static HTML-first rendering
-- Responsive design
-- Language-specific CV downloads
-- Minimal client-side JavaScript
-- Reusable Astro components and layouts
+* English, Swedish, and Chinese support
+* Static language routes under `/en/`, `/sv/`, and `/zh/`
+* Multilingual About/CV content
+* Markdown-based Blog and Project content
+* Static HTML-first portfolio
+* Responsive design
+* Language-specific CV downloads
+* Public dashboard Trial mode
+* Local content management dashboard
+* Blog and Project Edit / Preview tabs
+* Git-based publishing workflow
 
 ## Content Structure
 
-Long-form content is stored in Markdown and validated through Astro Content Collections.
-
 ```text
-src/content/
-├── blog/
-│   ├── en/
-│   ├── sv/
-│   └── zh/
-└── projects/
+src/
+
+├── content/
+│   ├── blog/
+│   │   ├── en/
+│   │   ├── sv/
+│   │   └── zh/
+│   │
+│   └── projects/
+│       ├── en/
+│       ├── sv/
+│       └── zh/
+│
+└── i18n/locales/
     ├── en/
     ├── sv/
     └── zh/
 ```
 
-Shared interface translations are stored separately:
+Blog and Project content is stored in Markdown and validated with Astro Content Collections.
+
+About, Skills, and Education content is stored as multilingual JSON.
+
+## Dashboard
+
+The project includes two dashboard modes.
+
+### Trial
 
 ```text
-src/i18n/locales/
-├── en/
-├── sv/
-└── zh/
+/trial
 ```
 
-This keeps UI translations separate from project case studies and technical articles.
+A public sandbox where visitors can explore the editor interface.
 
-## Routing
+Changes only exist in browser state and are never saved.
 
-Astro generates static pages for each supported language.
-
-Examples:
+### Local Dashboard
 
 ```text
-/en/
-/sv/
-/zh/
-
-/en/projects/
-/sv/projects/
-/zh/projects/
-
-/en/blog/
-/sv/blog/
-/zh/blog/
+/dashboard
 ```
 
-Project and article detail pages are generated from Content Collection entries during the build process.
+A local content editor built with React and ASP.NET Core.
+
+```text
+Dashboard
+   ↓
+ASP.NET Core
+   ↓
+JSON / Markdown
+   ↓
+Git commit
+   ↓
+Vercel rebuild
+```
+
+The ASP.NET Core backend is used only during local development and directly edits the portfolio source files.
 
 ## Development
 
@@ -87,30 +100,40 @@ Install dependencies:
 npm install
 ```
 
-Start the Astro development server:
+Start Astro:
 
 ```bash
 npm run dev
 ```
 
-## Architecture
+Start the local content backend:
 
-The portfolio originally used a client-side React SPA architecture with React Router and react-i18next.
-
-It has since been migrated to Astro to better match the content-heavy nature of the site.
-
-The current flow is:
-
-```text
-Markdown / Translation Data
-            ↓
-           Astro
-            ↓
-       Static Build
-            ↓
-      HTML + CSS
-            ↓
-          Browser
+```bash
+cd backend/Career.Api
+dotnet run
 ```
 
-Project documentation and technical notes remain readable without requiring a client-side JavaScript framework.
+Default local addresses:
+
+```text
+Astro:   http://localhost:4321
+Backend: http://127.0.0.1:5080
+```
+
+## Architecture
+
+The public portfolio follows a content-to-code approach:
+
+```text
+JSON / Markdown
+       ↓
+      Astro
+       ↓
+ Static Build
+       ↓
+    Vercel
+```
+
+Content remains version-controlled in Git instead of being stored in a production database.
+
+The local dashboard provides a visual editing layer over the same source files, while the deployed portfolio remains static and lightweight.

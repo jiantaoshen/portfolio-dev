@@ -12,7 +12,7 @@ technologies:
   - "Tailwind CSS"
   - "Content Collections"
   - "Markdown"
-  - "Firebase Hosting"
+  - "Vercel"
 highlights:
   - "HTML-first-arkitektur med statisk rendering genom Astro"
   - "Stöd för engelska, svenska och kinesiska med språkspecifika routes"
@@ -21,7 +21,7 @@ highlights:
   - "Språkspecifika CV-nedladdningar"
   - "Responsivt gränssnitt byggt med Tailwind CSS"
   - "Minimal klientbaserad JavaScript för innehållstunga sidor"
-  - "Utformad för statisk driftsättning på Firebase Hosting"
+  - "Utformad för statisk driftsättning på Vercel"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"
@@ -115,19 +115,6 @@ Webbplatsen använder återanvändbara Astro-komponenter för layout, navigation
 Astro bygger webbplatsen till statisk HTML, CSS och andra statiska resurser som kan distribueras via Firebase Hosting.
 
 Den statiska arkitekturen minskar behovet av SPA-fallback-routing för vanliga innehållssidor och minskar mängden klientbaserad JavaScript som krävs för att rendera webbplatsen.
-
-## Lärdomar
-
-- Migrera en React-SPA till en statisk Astro-arkitektur
-- Bygga HTML-first-sidor med Astro och TypeScript
-- Designa flerspråkiga statiska routes utan runtime-baserade i18n-bibliotek
-- Hantera projektstudier med Astro Content Collections
-- Hantera tekniska anteckningar som Markdown
-- Återanvända samma innehållsmodell för startsida, listor och detaljsidor
-- Generera statiska routes från språkspecifika Content Collection-ID:n
-- Underhålla ett Tailwind CSS-designsystem i Astro-komponenter
-- Minska klientbaserad JavaScript på innehållstunga webbplatser
-- Förbereda statisk Astro-output för Firebase Hosting
 
 ## Framtida förbättringar
 

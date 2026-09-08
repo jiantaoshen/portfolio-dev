@@ -5,60 +5,48 @@
       "Civilingenjör inom robotik med erfarenhet av maskininlärning, systemutveckling och full-stackutveckling. Har praktisk erfarenhet av C#/.NET, ASP.NET Core Web API, PostgreSQL, React och TypeScript samt av att utveckla REST-baserade applikationer med autentisering och behörighetsstyrning. Har även erfarenhet av driftsättning och molntjänster i Microsoft Azure och Firebase."
     ]
   },
-
   "skills": {
     "title": "Kompetens",
-
     "description": "Taggar med stjärna indikerar de teknologier jag studerar på djupet.",
-    
     "items": [
       {
         "title": "Frontend",
-
         "items": [
           "HTML",
           "CSS",
           "JavaScript",
           "TypeScript",
           "React",
-          "Tailwind CSS"
+          "Tailwind CSS",
+          "Astro"
         ]
       },
-
       {
         "title": "Backend",
-
-        "staritem":[
+        "staritem": [
           "C#"
         ],
-        
         "items": [
           ".NET",
           "ASP.NET Core",
           "REST APIs",
-          "Entity Framework Core",
           "Authentication",
           "Authorization",
           "JWT"
         ]
       },
-
       {
         "title": "Databases",
-
         "items": [
-          "PostgreSQL",
+          "SQL",
           "Entity Framework Core"
         ]
       },
-
       {
         "title": "Automation & AI",
-
-        "staritem":[
+        "staritem": [
           "Python"
         ],
-
         "items": [
           "Playwright",
           "Automation",
@@ -67,24 +55,19 @@
           "AI Integration"
         ]
       },
-
-
       {
         "title": "Cloud & Deployment",
-
         "items": [
           "Azure",
-          "Firebase",
+          "Vercel",
           "Google Cloud",
           "Neon",
           "Git",
           "GitHub"
         ]
       },
-
       {
         "title": "Communication & Languages",
-
         "items": [
           "Kinesiska",
           "Engelska",
@@ -93,7 +76,6 @@
       }
     ]
   },
-
   "education": {
     "title": "Utbildning och lärande",
     "description": "Min akademiska bakgrund, yrkesutbildning och kompletterande studier.",
@@ -120,5 +102,4 @@
       }
     ]
   }
-
 }

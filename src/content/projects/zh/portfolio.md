@@ -12,7 +12,7 @@ technologies:
   - "Tailwind CSS"
   - "Content Collections"
   - "Markdown"
-  - "Firebase Hosting"
+  - "Vercel"
 highlights:
   - "使用 Astro 构建 HTML-first 静态架构"
   - "支持英文、瑞典语和中文独立语言路由"
@@ -21,7 +21,7 @@ highlights:
   - "根据当前网站语言提供对应语言的 CV 下载"
   - "使用 Tailwind CSS 构建响应式界面"
   - "内容型页面尽量减少客户端 JavaScript"
-  - "面向 Firebase Hosting 的静态部署结构"
+  - "面向 Vercel 的静态部署结构"
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://jiantao-portfolio-dev.web.app"
@@ -115,19 +115,6 @@ Project 和 Blog 详情页根据 Content Collection entry 自动生成。文件�
 Astro 将网站构建为静态 HTML、CSS 和资源文件，可以直接部署到 Firebase Hosting。
 
 静态架构不再需要普通内容页依赖 SPA fallback routing，也减少了浏览器为了渲染网站必须执行的客户端 JavaScript。
-
-## 技术学习
-
-- 将 React SPA 迁移到 Astro 静态网站架构
-- 使用 Astro 和 TypeScript 构建 HTML-first 页面
-- 不依赖运行时 i18n 库设计多语言静态路由
-- 使用 Astro Content Collections 管理项目 Case Study
-- 使用 Markdown 管理技术笔记
-- 在首页预览、列表页和详情页之间复用同一个内容数据源
-- 根据多语言 Content Collection ID 生成静态路由
-- 在 Astro 组件中继续维护 Tailwind CSS 设计系统
-- 减少内容型网站对客户端 JavaScript 的依赖
-- 为 Firebase Hosting 准备 Astro 静态构建输出
 
 ## 后续改进
 
