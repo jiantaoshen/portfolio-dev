@@ -1,125 +1,254 @@
 ---
 lang: en
+
 title: "Developer Portfolio"
-description: "A multilingual developer portfolio built with Astro, TypeScript and Tailwind CSS, using static HTML, Content Collections and Markdown to present projects, technical notes and software development experience."
+
+description: "A multilingual developer portfolio built with Astro, React, TypeScript and Tailwind CSS, featuring static content rendering, a public dashboard trial, and a local ASP.NET Core content editor."
+
 status: "Live"
+
 order: 3
+
 featured: true
+
 featuredOrder: 3
+
 technologies:
   - "Astro"
+  - "React"
   - "TypeScript"
   - "Tailwind CSS"
+  - "ASP.NET Core"
   - "Content Collections"
   - "Markdown"
   - "Vercel"
+
 highlights:
-  - "Static HTML-first architecture built with Astro"
+  - "Static HTML-first portfolio built with Astro"
   - "Supports English, Swedish and Chinese with language-specific routes"
   - "Project case studies and technical notes stored in Markdown Content Collections"
-  - "Reusable static routes generated for project and article detail pages"
-  - "Language-specific CV downloads"
-  - "Responsive interface built with Tailwind CSS"
-  - "Minimal client-side JavaScript for content-heavy pages"
-  - "Designed for static deployment on Vercel"
+  - "Public React-based dashboard trial with browser-only editing"
+  - "Local ASP.NET Core content editor for JSON and Markdown source files"
+  - "Multilingual CV, blog and project management through a local dashboard"
+  - "Git-based publishing workflow with automatic Vercel rebuilds"
+  - "Minimal client-side JavaScript on public content pages"
+
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
-  live: "https://jiantao-portfolio-dev.web.app"
+  live: "https://jiantao-dev.vercel.app"
+
 draft: false
 ---
 
 ## Overview
 
-This portfolio is a multilingual developer site built with Astro, TypeScript and Tailwind CSS to present my software projects, technical notes and development direction.
+This portfolio is a multilingual developer site built with Astro, React, TypeScript and Tailwind CSS to present my software projects, technical notes and development experience.
 
-The site originally used a React SPA architecture. As the content grew, most pages did not need client-side application state or runtime rendering. The current implementation therefore uses Astro to generate static HTML during the build process while keeping reusable components, TypeScript and Tailwind CSS in the development workflow.
+The public site follows a static content-to-code architecture. Astro generates HTML from structured JSON and Markdown content during the build process, while React is used only for interactive features such as the dashboard and public trial interface.
 
-Project case studies and technical notes are stored as Markdown in Astro Content Collections, while shared interface text remains in lightweight language-specific translation files.
+The project also includes a local ASP.NET Core content editor that allows portfolio content to be managed through a visual dashboard while keeping the actual source files under Git version control.
 
 ## The Problem
 
-A developer portfolio should communicate more than a list of technologies. It needs to show technical strengths, evidence from real projects and a clear development direction to recruiters, clients and engineering teams.
+A developer portfolio needs to communicate technical experience clearly while remaining easy to maintain.
 
-At the same time, a content-heavy portfolio should remain easy to maintain. Project case studies, technical notes and multilingual content should not require duplicated page components or large client-side rendering libraries.
+The site contains multilingual project case studies, technical notes, CV information and structured metadata. Maintaining these directly across multiple files can become repetitive as the amount of content grows.
 
-The previous React-based structure worked, but much of the site was fundamentally static content. Rendering those pages through a client-side application added complexity without providing much benefit.
+The previous React SPA architecture also used client-side rendering for pages that were fundamentally static, adding complexity without providing significant benefit.
+
+At the same time, moving all portfolio content into a database would not fit the static Astro build process, where Markdown and JSON files already act as the source of truth.
 
 ## Solution
 
-The current architecture uses Astro as an HTML-first static site framework.
+The portfolio uses Astro for static page generation and keeps public content directly in the repository.
 
-Each language uses the same page templates with language-specific routes such as `/en/`, `/sv/` and `/zh/`. Shared interface translations are loaded at build time, while project case studies and technical notes are stored in Markdown Content Collections.
+Project case studies and technical notes are stored in Markdown Content Collections, while multilingual About, Skills and Education data is stored in language-specific JSON files.
 
-Astro generates the final HTML during the build process. This means project pages, technical notes and most navigation content remain readable without requiring client-side JavaScript.
+A React-based dashboard provides a visual editing interface over the same content.
 
-Tailwind CSS provides a reusable responsive design system, and TypeScript is used for page data, component props and content schemas.
+The public `/trial` route demonstrates the dashboard without saving changes. All edits remain in browser state and are reset when the page is refreshed.
+
+For local development, `/dashboard` connects to a small ASP.NET Core application that directly updates the JSON and Markdown source files.
+
+The publishing workflow remains Git-based:
+
+```text
+Dashboard
+    ↓
+ASP.NET Core
+    ↓
+JSON / Markdown
+    ↓
+Git commit
+    ↓
+Git push
+    ↓
+Vercel rebuild
+```
+
+This keeps the site static in production while still providing a CMS-like editing experience locally.
 
 ## Features
 
 ### Static HTML-First Rendering
 
-Astro pre-renders content pages into static HTML. Project case studies and technical notes do not depend on a client-side framework to display their main content.
+Astro pre-renders the public portfolio into static HTML.
+
+Project case studies, technical notes and multilingual pages do not require React or another client-side framework to render their main content.
 
 ### Multilingual Routing
 
-English, Swedish and Chinese share the same Astro templates while using language-specific URLs such as `/en/projects/`, `/sv/projects/` and `/zh/projects/`.
+English, Swedish and Chinese share the same Astro templates while using language-specific routes such as:
 
-### Project Content Collections
+```text
+/en/
+/sv/
+/zh/
 
-Project case studies are stored as Markdown files under language-specific Content Collection directories. Project metadata such as technologies, architecture, status and links lives in frontmatter, while longer project documentation is written directly in Markdown.
+/en/projects/
+/sv/projects/
+/zh/projects/
 
-### Technical Notes
+/en/blog/
+/sv/blog/
+/zh/blog/
+```
 
-Technical notes use the same Content Collection approach. Adding a new Markdown file automatically makes it available to the blog list, homepage previews and detail routes without maintaining duplicate JSON article data.
+### Markdown Content Collections
+
+Projects and technical articles are stored as Markdown files under language-specific directories.
+
+Structured metadata remains in frontmatter, while longer technical content is written directly in Markdown.
+
+### Local Content Dashboard
+
+The project includes a React-based local dashboard for editing:
+
+- About / CV content
+- Skills
+- Education
+- Blog articles
+- Project case studies
+
+CV, Blog and Projects are separated into English, Swedish and Chinese views.
+
+Blog and Project editors also provide separate `Edit` and `Preview` tabs.
+
+### ASP.NET Core Local Content Editor
+
+The local dashboard communicates with an ASP.NET Core API that writes directly to the portfolio source files.
+
+For example:
+
+```text
+/dashboard/cv
+→ about.json
+
+/dashboard/blog
+→ src/content/blog/<language>/<slug>.md
+
+/dashboard/projects
+→ src/content/projects/<language>/<slug>.md
+```
+
+The backend is intentionally used only during local development and is not deployed as a production application backend.
+
+### Public Trial Mode
+
+The `/trial` route provides a public sandbox version of the dashboard.
+
+Visitors can modify CV, Blog and Project content inside the interface, but changes only exist in React state.
+
+No source files or backend data are modified.
 
 ### Language-Specific CV Downloads
 
-Visitors can download the English, Swedish or Chinese version of the CV based on the current site language.
+Visitors can download English, Swedish or Chinese CV versions based on the selected site language.
 
 ### Responsive Design
 
-The interface uses Tailwind CSS and a small reusable design system for typography, cards, buttons, navigation and layout across desktop and mobile screens.
+The interface uses Tailwind CSS with reusable components for navigation, cards, typography, forms and dashboard layouts.
 
 ### Minimal Client-Side JavaScript
 
-Content rendering, route generation, navigation state and multilingual page generation are handled at build time wherever possible. JavaScript is reserved for features that genuinely need interaction.
+The public portfolio remains primarily static.
 
-### Simple Contact Experience
-
-Visitors can contact me directly through email or LinkedIn without requiring a contact-form backend or account system.
+React is only introduced where interactive state is useful, instead of being used as the rendering layer for the entire website.
 
 ## Challenges & Decisions
 
-### Moving from React to Astro
+### Moving from React SPA to Astro
 
-The main migration challenge was separating content rendering from application behavior. React Router, react-i18next and React-based page components were removed while preserving the existing design system, multilingual structure and project URLs.
+The original version used React Router and `react-i18next`.
 
-### Multilingual Content Structure
+The migration required separating static content rendering from features that genuinely need client-side interaction.
 
-English, Swedish and Chinese need to remain structurally consistent without creating three copies of every page component. Language-specific routes and shared Astro templates solve this while keeping content files separated by locale.
+Astro now handles the public portfolio, while React remains responsible for the dashboard.
 
-### Content Model Design
+### Keeping Content as Source Code
 
-Large project descriptions and technical notes were previously stored inside JSON structures. Moving long-form content into Markdown makes writing and maintaining technical documentation significantly easier, while frontmatter keeps structured metadata available for cards, sorting and sidebars.
+A database could store portfolio content, but the site already uses Markdown and JSON as Astro build inputs.
 
-### Static Routes from Content Collections
+Using a database would introduce a second source of truth or require Astro to retrieve content from an external API during each build.
 
-Project and article detail pages are generated from Content Collection entries. File paths provide stable language-aware identifiers, allowing the same slug to be reused across English, Swedish and Chinese.
+Keeping content in the repository provides a simpler model:
 
-### Reuse Without Overengineering
+```text
+Content
+→ Git
+→ Astro build
+→ Static site
+```
 
-The site uses reusable Astro components for layout, navigation, project previews and article previews, while simple one-off page sections remain straightforward HTML and Tailwind rather than being abstracted unnecessarily.
+It also provides built-in version history, diffs and rollback through Git.
+
+### Local CMS Instead of an Online Backend
+
+The dashboard originally evolved toward a traditional online backend architecture.
+
+However, because every public content update already requires a new Astro build, an always-online backend was unnecessary.
+
+The ASP.NET Core service was therefore simplified into a local file editor.
+
+This keeps the production architecture lightweight while still providing a practical dashboard for content management.
+
+### Trial and Dashboard Separation
+
+The same React interface serves two different purposes.
+
+`/trial` is public and non-persistent.
+
+`/dashboard` is a local development tool capable of writing source files.
+
+Sharing the editor components between both modes avoids maintaining separate interfaces.
 
 ## Deployment
 
-Astro builds the site into static HTML, CSS and assets that can be deployed to Firebase Hosting.
+Astro builds the portfolio into static HTML, CSS, JavaScript and assets.
 
-The static architecture removes the need for SPA fallback routing for normal content pages and reduces the amount of client-side JavaScript required to render the site.
+The public site is deployed to Vercel.
+
+The production deployment includes the public portfolio and Trial interface, while the local ASP.NET Core backend and development dashboard are excluded from the Vercel deployment.
+
+Content updates follow the normal Git workflow:
+
+```text
+Edit
+↓
+Review git diff
+↓
+Commit
+↓
+Push
+↓
+Vercel rebuild
+```
 
 ## Future Improvements
 
 - Continue expanding project case studies and technical notes
-- Add lightweight filtering or search as the technical note collection grows
+- Improve dashboard editing workflows and validation
+- Add lightweight filtering or search for technical articles
 - Improve project architecture diagrams and technical visualizations
-- Add richer SEO metadata and structured data
+- Add richer structured SEO metadata
 - Continue improving accessibility and performance
