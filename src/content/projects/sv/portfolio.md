@@ -1,10 +1,16 @@
 ---
 lang: sv
+
 title: "Utvecklarportfolio"
-description: "En flerspråkig utvecklarportfolio byggd med Astro, React, TypeScript, Tailwind CSS och ASP.NET Core, med statisk innehållsrendering, ett publikt testläge för dashboarden och ett lokalt arbetsflöde för innehållshantering."
+
+description: "En flerspråkig utvecklarportfolio byggd med Astro, TypeScript, Tailwind CSS och ASP.NET Core, med statisk innehållsrendering, projektstudier, ett publikt dashboard i Trial-läge och ett lokalt arbetsflöde för innehållshantering."
+
 status: "Live"
+
 order: 3
+
 featured: true
+
 featuredOrder: 3
 
 technologies:
@@ -17,16 +23,6 @@ technologies:
   - "Markdown"
   - "Vercel"
 
-highlights:
-  - "Statisk HTML-first-portfolio byggd med Astro"
-  - "Stöd för engelska, svenska och kinesiska med språkspecifika routes"
-  - "Blogg- och projektinnehåll hanteras med Markdown och Astro Content Collections"
-  - "Flerspråkigt innehåll för Om mig, Kompetenser och Utbildning lagras som JSON"
-  - "Publikt Trial-läge för dashboarden med redigering endast i webbläsaren"
-  - "Lokal dashboard med React och ASP.NET Core för redigering av källinnehåll"
-  - "Blogg- och projektredigerare med separata Edit- och Preview-flikar"
-  - "Git-baserat publiceringsflöde med automatiska Vercel-byggen"
-
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://www.jiantao.dev"
@@ -36,13 +32,15 @@ draft: false
 
 ## Översikt
 
-Developer Portfolio är en flerspråkig utvecklarportfolio byggd med Astro, React, TypeScript, Tailwind CSS och ASP.NET Core.
+Developer Portfolio är en flerspråkig utvecklarportfolio byggd med Astro, TypeScript, Tailwind CSS och ASP.NET Core.
 
-Den publika webbplatsen använder Astro för att generera statiska sidor från Markdown- och JSON-innehåll. De engelska, svenska och kinesiska versionerna delar samma applikationsstruktur men använder språkspecifika routes och innehåll.
+Den publika webbplatsen använder Astro för att generera statiska sidor från Markdown- och JSON-innehåll. De engelska, svenska och kinesiska versionerna delar samma applikationsstruktur men använder språkspecifika routes och separat innehåll.
 
-Projektet innehåller också två dashboard-lägen: ett publikt Trial-gränssnitt där besökare kan testa redigeraren och en lokal dashboard med ASP.NET Core för att hantera portfolions källfiler.
+Projektstudier lagras som Markdown genom Astro Content Collections, medan strukturerat profilinnehåll som About, Skills och Education hanteras som flerspråkig JSON.
 
-Resultatet är en statisk produktionswebbplats med ett lättviktigt Git-baserat arbetsflöde för innehåll i stället för en produktionsdatabas eller ett traditionellt CMS.
+Projektet innehåller även två dashboard-lägen: ett publikt Trial-gränssnitt för att utforska redigeraren och ett lokalt dashboard med en ASP.NET Core-backend för att hantera portfolions källfiler.
+
+Resultatet är en statisk produktionswebbplats med ett lättviktigt och Git-baserat innehållsflöde i stället för en produktionsdatabas eller ett CMS.
 
 ## Problemet
 
@@ -50,37 +48,36 @@ En flerspråkig portfolio innehåller flera typer av innehåll som behöver vara
 
 Projektet innehåller:
 
-- Information om mig och CV
-- Kompetenser och utbildning
-- Bloggartiklar
-- Projektbeskrivningar
+- About- och CV-information
+- Skills och Education
+- Projektstudier
 - Innehåll på engelska, svenska och kinesiska
 
-Att redigera allt detta direkt i källfiler fungerar bra i mindre skala, men blir mindre praktiskt när mängden innehåll växer.
+Att redigera allt detta innehåll direkt i källfiler fungerar bra i liten skala, men blir mindre praktiskt när mängden strukturerat innehåll och längre projektbeskrivningar växer.
 
-Samtidigt är den publika portfolion huvudsakligen statisk. Att införa en produktionsdatabas och en permanent backend skulle skapa ytterligare infrastruktur som inte behövs för innehåll som bara ändras när webbplatsen byggs om.
+Samtidigt är den publika portfolion huvudsakligen statisk. Att införa en produktionsdatabas och en permanent backend skulle skapa ytterligare infrastruktur som inte är nödvändig för innehåll som endast ändras när webbplatsen byggs om.
 
-Målet var därför att behålla den publika webbplatsen statisk och samtidigt skapa ett enklare sätt att hantera Markdown- och JSON-innehållet.
+Målet blev därför att behålla den publika webbplatsen statisk samtidigt som det skapades ett mer praktiskt sätt att hantera Markdown- och JSON-innehållet.
 
 ## Lösning
 
-Portfolion följer en content-to-code-arkitektur.
+Portfolion använder en content-to-code-arkitektur.
 
-Blogg- och projektinnehåll lagras som Markdown och valideras med Astro Content Collections. Innehåll för Om mig, Kompetenser och Utbildning lagras som flerspråkig JSON.
+Projektstudier lagras som Markdown och valideras med Astro Content Collections. About, Skills och Education lagras som flerspråkig JSON.
 
 ```text
 JSON / Markdown
        ↓
      Astro
        ↓
- Statisk build
+ Static Build
        ↓
     Vercel
 ```
 
 Astro använder dessa källfiler under byggprocessen för att generera den publika portfolion.
 
-För innehållshantering lägger projektet till en React-baserad dashboard ovanpå samma filer.
+För innehållshantering lägger projektet till ett React-baserat dashboard ovanpå samma filer.
 
 Den publika routen `/trial` erbjuder en sandbox-version av redigeraren där ändringar endast finns i webbläsarens state.
 
@@ -98,7 +95,7 @@ Git commit
 Vercel rebuild
 ```
 
-På så sätt förblir Git källan till sanningen samtidigt som innehållet kan redigeras via ett visuellt gränssnitt.
+Detta gör att Git kan fortsätta vara den enda källan till sanning samtidigt som innehållet kan hanteras genom ett visuellt redigeringsflöde.
 
 ## Funktioner
 
@@ -106,7 +103,7 @@ På så sätt förblir Git källan till sanningen samtidigt som innehållet kan 
 
 Den publika portfolion är byggd med Astro och genereras som statiskt innehåll.
 
-Markdown och JSON omvandlas till sidor under byggprocessen, vilket håller den driftsatta webbplatsen lättviktig och väl anpassad för innehållsdrivna sidor.
+Markdown och JSON omvandlas till sidor under byggprocessen, vilket håller den driftsatta webbplatsen lättviktig och väl anpassad för en portfolio med fokus på utvecklarinformation och tekniska projektstudier.
 
 ### Flerspråkigt stöd
 
@@ -120,47 +117,38 @@ Varje språk använder statiska routes under:
 /zh/
 ```
 
-Samma struktur används även för språkspecifikt blogg- och projektinnehåll.
+Samma struktur används för språkspecifikt projektinnehåll.
 
 ```text
-/en/blog/
-/sv/blog/
-/zh/blog/
-
 /en/projects/
 /sv/projects/
 /zh/projects/
 ```
 
-Det gör det möjligt att återanvända samma mallar och komponenter samtidigt som innehållet hålls separerat per språk.
+Det gör att webbplatsen kan dela templates och komponenter samtidigt som innehållet hålls separerat mellan språken.
 
-### Markdown Content Collections
+### Project Content Collections
 
-Bloggartiklar och projektbeskrivningar lagras i språkspecifika Markdown-mappar.
+Projektstudier lagras i språkspecifika Markdown-mappar.
 
 ```text
 src/
-├── content/
-│   ├── blog/
-│   │   ├── en/
-│   │   ├── sv/
-│   │   └── zh/
-│   │
-│   └── projects/
-│       ├── en/
-│       ├── sv/
-│       └── zh/
+└── content/
+    └── projects/
+        ├── en/
+        ├── sv/
+        └── zh/
 ```
 
 Astro Content Collections används för att validera och hantera Markdown-innehållet.
 
-Frontmatter innehåller strukturerad metadata, medan själva artikel- eller projektinnehållet skrivs i Markdown.
+Frontmatter innehåller strukturerad metadata som projektstatus, tekniker och länkar, medan Markdown innehåller själva projektstudien.
 
 ### Flerspråkigt JSON-innehåll
 
-Innehåll för Om mig, Kompetenser och Utbildning lagras som flerspråkig JSON.
+About, Skills och Education lagras som flerspråkig JSON.
 
-Språkfilerna är organiserade under:
+Språkfilerna organiseras under:
 
 ```text
 src/i18n/locales/
@@ -169,11 +157,11 @@ src/i18n/locales/
 └── zh/
 ```
 
-Det separerar strukturerad profilinformation från längre Markdown-baserat innehåll samtidigt som båda typerna ligger kvar i repositoryt.
+Detta separerar strukturerad profilinformation från längre projektinnehåll samtidigt som båda formaten finns kvar i samma repository.
 
 ### Publikt Trial-läge
 
-Portfolion innehåller en publik sandbox för dashboarden på:
+Portfolion innehåller ett publikt dashboard-sandbox på:
 
 ```text
 /trial
@@ -185,41 +173,41 @@ Besökare kan utforska redigeringsgränssnittet och ändra innehåll direkt i we
 
 När sidan laddas om återställs Trial-innehållet.
 
-### Lokal innehållsdashboard
+### Lokalt Content Dashboard
 
-En separat lokal dashboard finns på:
+Ett separat lokalt dashboard finns på:
 
 ```text
 /dashboard
 ```
 
-Den erbjuder ett React-baserat gränssnitt för att hantera portfolions innehåll under utveckling.
+Det erbjuder ett React-baserat gränssnitt för att hantera portfolions innehåll under utveckling.
 
-Dashboarden stöder flerspråkig hantering av CV, Blogg och Projekt.
+Dashboardet stöder flerspråkig innehållshantering och projektredigering.
 
-Blogg- och projektredigerarna innehåller även separata `Edit`- och `Preview`-flikar, vilket gör det möjligt att granska Markdown-innehållet innan källfilerna uppdateras.
+Projektredigeraren har separata vyer för `Edit` och `Preview`, vilket gör det möjligt att kontrollera Markdown-innehållet innan källfilerna uppdateras.
 
 ### ASP.NET Core-backend för innehåll
 
-Den lokala dashboarden kommunicerar med en mindre ASP.NET Core-backend.
+Det lokala dashboardet kommunicerar med en mindre ASP.NET Core-backend.
 
-I stället för att lagra innehåll i en databas redigerar backend-tjänsten direkt de JSON- och Markdown-filer som används av Astro.
+I stället för att lagra innehåll i en databas redigerar backend-tjänsten direkt de JSON- och Markdown-filer som Astro använder.
 
 Backend-tjänsten används endast under lokal utveckling.
 
-Det innebär att den publika produktionsportfolion inte är beroende av en applikationsserver för att leverera sitt innehåll.
+Det innebär att produktionsportfolion inte är beroende av en applikationsserver för att leverera innehåll.
 
 ### Språkspecifika CV-nedladdningar
 
-Portfolion erbjuder CV-nedladdningar på engelska, svenska och kinesiska.
+Portfolion erbjuder CV-versioner på engelska, svenska och kinesiska.
 
 Besökare kan ladda ner den CV-version som motsvarar det valda språket på webbplatsen.
 
 ### Responsivt gränssnitt
 
-Tailwind CSS används för både portfolions och dashboardens layout.
+Tailwind CSS används för layouten i både portfolion och dashboardet.
 
-Gränssnittet är utformat för att fungera på både desktop och mindre skärmar och använder återanvändbara stil- och komponentmönster på olika sidor.
+Gränssnittet är utformat för att fungera på både desktop och mindre skärmar samtidigt som återanvändbara stylingmönster delas mellan sidor och komponenter.
 
 ## Arkitektur
 
@@ -232,12 +220,12 @@ Markdown / JSON
       ↓
     Astro
       ↓
- Statisk HTML
+ Static HTML
       ↓
    Vercel
 ```
 
-Den driftsatta portfolion läser sitt innehåll under byggprocessen och genererar en statisk webbplats.
+Den driftsatta portfolion läser innehållet under byggprocessen och producerar en statisk webbplats.
 
 ### Lokal innehållshantering
 
@@ -255,17 +243,17 @@ Markdown / JSON
     Vercel
 ```
 
-Dashboarden fungerar som ett visuellt redigeringslager ovanpå samma källfiler som används av den publika portfolion.
+Dashboardet fungerar som ett visuellt redigeringslager ovanpå samma källfiler som används av den publika portfolion.
 
-Det finns ingen separat produktionsdatabas för innehållet.
+Det finns ingen separat produktionsdatabas för innehåll.
 
 ## Viktiga beslut
 
 ### Behålla innehållet i Git
 
-Markdown och JSON fortsätter att vara portfolions källa till sanningen.
+Markdown och JSON fortsätter att vara portfolions enda källa till sanning.
 
-Det håller innehållet tillsammans med applikationskoden och gör att ändringar kan följa samma Git-arbetsflöde som resten av projektet.
+Det håller innehållet tillsammans med applikationskoden och gör att innehållsändringar kan följa samma Git-arbetsflöde som resten av projektet.
 
 Det innebär också att Astro kan generera hela webbplatsen direkt från innehållet i repositoryt vid varje build.
 
@@ -275,9 +263,9 @@ ASP.NET Core-backenden behövs endast när lokala källfiler ska redigeras.
 
 Den behöver inte köras som en del av den driftsatta portfolion.
 
-Det håller produktionsarkitekturen enklare samtidigt som dashboarden kan erbjuda filbaserad innehållshantering under utveckling.
+Detta håller produktionsarkitekturen enklare samtidigt som dashboardet kan erbjuda filbaserad innehållshantering under utveckling.
 
-### Separera Trial- och Dashboard-lägen
+### Separera Trial och lokalt Dashboard
 
 Projektet erbjuder två versioner av redigeringsupplevelsen för olika syften.
 
@@ -291,15 +279,51 @@ Projektet erbjuder två versioner av redigeringsupplevelsen för olika syften.
 /dashboard
 ```
 
-är avsedd för lokal utveckling och kan uppdatera det faktiska källinnehållet via ASP.NET Core.
+är avsedd för lokal utveckling och kan uppdatera det faktiska källinnehållet genom ASP.NET Core.
 
-Det gör det möjligt att demonstrera dashboarden publikt utan att exponera funktionalitet som skriver till filer.
+Det gör det möjligt att demonstrera dashboardet publikt utan att exponera funktionalitet som kan skriva till källfilerna.
 
 ### Använda Markdown och JSON för olika typer av innehåll
 
-Längre Blogg- och Projektinnehåll lagras i Markdown, medan strukturerad profilinformation som Om mig, Kompetenser och Utbildning lagras i JSON.
+Projektstudier lagras i Markdown, medan strukturerad profilinformation som About, Skills och Education lagras i JSON.
 
-Det gör att varje innehållstyp kan använda ett format som passar hur den redigeras och renderas.
+På så sätt kan varje innehållstyp använda ett format som passar hur den redigeras och renderas.
+
+### Ta bort bloggen
+
+En tidigare version av portfolion innehöll en flerspråkig teknisk blogg.
+
+Att underhålla längre artiklar på flera språk skapade en betydande innehållskostnad samtidigt som bloggen bidrog relativt lite till portfolions huvudsakliga syfte: att presentera mjukvaruprojekt och teknisk kompetens.
+
+Därför togs bloggen bort i stället för att utvecklas vidare till ett större publiceringssystem.
+
+Tekniskt skrivande som syftar till professionell synlighet passar bättre på plattformar som LinkedIn, där det redan finns ett professionellt nätverk och etablerade mekanismer för innehållsdistribution.
+
+Projektspecifika tekniska beslut, arkitekturförändringar och avvägningar finns fortfarande kvar i Project Case Studies, där de direkt stödjer och förklarar arbetet som presenteras.
+
+Det gör att portfolion kan fokusera på sina viktigaste ansvarsområden:
+
+```text
+About
+→ Vem jag är
+
+Skills
+→ Vad jag arbetar med
+
+Projects
+→ Vad jag har byggt
+
+Project case studies
+→ Hur systemen har designats och utvecklats
+
+GitHub
+→ Källkod och utvecklingshistorik
+
+LinkedIn
+→ Professionellt skrivande och offentlig kommunikation
+```
+
+Att ta bort bloggen minskar dessutom duplicerat innehåll, översättningsarbete och långsiktigt underhåll utan att ta bort de tekniska bevis som är viktigast för portfolion.
 
 ## Utveckling
 
@@ -315,7 +339,7 @@ Starta Astro:
 npm run dev
 ```
 
-Starta den lokala ASP.NET Core-backenden:
+Starta den lokala ASP.NET Core-backenden för innehåll:
 
 ```bash
 cd backend/Career.Api
@@ -329,30 +353,30 @@ Astro:   http://localhost:4321
 Backend: http://127.0.0.1:5080
 ```
 
-## Deployment
+## Driftsättning
 
-Den publika portfolion distribueras via Vercel.
+Den publika portfolion är driftsatt på Vercel.
 
 Astro bygger Markdown- och JSON-innehållet till den statiska webbplatsen, medan ASP.NET Core-tjänsten förblir en del av det lokala utvecklingsflödet.
 
 Innehållsuppdateringar följer ett Git-baserat arbetsflöde:
 
 ```text
-Redigera innehåll
-       ↓
-   Git commit
-       ↓
- Vercel rebuild
+Edit content
+     ↓
+Git commit
+     ↓
+Vercel rebuild
 ```
 
-Det gör att den driftsatta webbplatsen kan förbli statisk samtidigt som portfolioinnehållet versionshanteras i repositoryt.
+Det gör att den driftsatta webbplatsen kan förbli statisk samtidigt som portfolions innehåll versionshanteras i repositoryt.
 
 ## Framtida förbättringar
 
-- Utöka Blogg och Projekt med mer innehåll
-- Förbättra redigeringsflöden och validering i dashboarden
-- Lägga till filtrering eller sökning för innehåll
+- Förbättra redigering och validering i dashboardet
+- Fortsätta utveckla Project Case Studies i takt med att systemen utvecklas
 - Förbättra arkitekturdiagram och projektvisualiseringar
 - Lägga till rikare strukturerad SEO-metadata
 - Fortsätta förbättra tillgängligheten
 - Fortsätta förbättra prestandan
+- Fortsätta förenkla innehållsflödet när underhållskostnaden överstiger det praktiska värdet

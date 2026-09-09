@@ -1,4 +1,4 @@
-import type { AboutContent, BlogPost, Locale, Project } from "./types"
+import type { AboutContent, Locale, Project } from "./types"
 
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
   const headers = new Headers(init?.headers)
@@ -29,15 +29,6 @@ export const localContentApi = {
   updateAbout: (locale: Locale, content: AboutContent) => request<AboutContent>(`/api/local/about/${locale}`, {
     method: "PUT",
     body: JSON.stringify(content),
-  }),
-
-  saveBlog: (post: BlogPost) => request<BlogPost>("/api/local/blog", {
-    method: "PUT",
-    body: JSON.stringify(post),
-  }),
-
-  deleteBlog: (sourceId: string) => request<void>(`/api/local/blog?sourceId=${encodeURIComponent(sourceId)}`, {
-    method: "DELETE",
   }),
 
   saveProject: (project: Project) => request<Project>("/api/local/projects", {

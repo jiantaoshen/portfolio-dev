@@ -3,7 +3,6 @@ import { localContentApi } from "../lib/api"
 import type {
   AboutByLocale,
   AboutContent,
-  BlogPost,
   CareerSnapshot,
   DashboardMode,
   Locale,
@@ -43,12 +42,6 @@ export function useCareerData(mode: DashboardMode, initialContent: PortfolioCont
     stageProject(project: Project) {
       const staged = clone(project)
       patchLocal(current => ({ ...current, projects: [...current.projects, staged] }))
-      return staged
-    },
-
-    stageBlog(post: BlogPost) {
-      const staged = clone(post)
-      patchLocal(current => ({ ...current, blogPosts: [...current.blogPosts, staged] }))
       return staged
     },
 
@@ -122,56 +115,6 @@ export function useCareerData(mode: DashboardMode, initialContent: PortfolioCont
       }
 
       patchLocal(current => ({ ...current, projects: current.projects.filter(x => x.id !== project.id) }))
-    },
-
-    async saveBlog(post: BlogPost) {
-      setActionError(null)
-      if (mode === "trial") {
-        const saved = clone(post)
-        patchLocal(current => ({
-          ...current,
-          blogPosts: current.blogPosts.some(x => x.id === post.id)
-            ? current.blogPosts.map(x => x.id === post.id ? saved : x)
-            : [...current.blogPosts, saved],
-        }))
-        return saved
-      }
-
-      setSaving(true)
-      try {
-        const saved = await localContentApi.saveBlog(post)
-        patchLocal(current => ({
-          ...current,
-          blogPosts: current.blogPosts.some(x => x.id === post.id)
-            ? current.blogPosts.map(x => x.id === post.id ? clone(saved) : x)
-            : [...current.blogPosts, clone(saved)],
-        }))
-        return saved
-      } catch (e) {
-        const message = e instanceof Error ? e.message : "Failed to save blog post"
-        setActionError(message)
-        throw e
-      } finally {
-        setSaving(false)
-      }
-    },
-
-    async deleteBlog(post: BlogPost) {
-      setActionError(null)
-      if (mode === "admin" && !post.sourceId.startsWith("new/")) {
-        setSaving(true)
-        try {
-          await localContentApi.deleteBlog(post.sourceId)
-        } catch (e) {
-          const message = e instanceof Error ? e.message : "Failed to delete blog post"
-          setActionError(message)
-          throw e
-        } finally {
-          setSaving(false)
-        }
-      }
-
-      patchLocal(current => ({ ...current, blogPosts: current.blogPosts.filter(x => x.id !== post.id) }))
     },
   }), [mode])
 

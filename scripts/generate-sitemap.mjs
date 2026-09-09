@@ -11,7 +11,6 @@ const staticRoutes = [
   "/",
   "/about",
   "/projects",
-  "/blog",
 ];
 
 function escapeXml(value) {
@@ -29,20 +28,15 @@ function loadJson(relativePath) {
 }
 
 const projects = loadJson("src/data/projects.json");
-const posts = loadJson("src/data/blog.json");
 
 const projectRoutes = projects.map(
   (project) => `/projects/${project.slug ?? project.id}`
 );
 
-const blogRoutes = posts.map(
-  (post) => `/blog/${post.slug ?? post.id}`
-);
 
 const routes = [
   ...staticRoutes,
   ...projectRoutes,
-  ...blogRoutes,
 ];
 
 const urls = routes

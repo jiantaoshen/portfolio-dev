@@ -55,25 +55,6 @@ public sealed class PortfolioContentService(IWebHostEnvironment environment, ICo
         return content;
     }
 
-    public async Task<BlogPostContent> SaveBlogAsync(BlogPostContent post, CancellationToken cancellationToken)
-    {
-        Validate(post);
-
-        var root = GetContentRoot("blog");
-        var targetPath = GetTargetMarkdownPath(root, post.Language, post.Slug);
-        var sourcePath = GetExistingSourcePath(root, post.SourceId);
-
-        EnsureNoCollision(sourcePath, targetPath);
-        Directory.CreateDirectory(Path.GetDirectoryName(targetPath)!);
-
-        var markdown = BuildBlogMarkdown(post);
-        await WriteAtomicAsync(targetPath, markdown, cancellationToken);
-        DeleteOldPathIfMoved(sourcePath, targetPath);
-
-        post.SourceId = ToSourceId(root, targetPath);
-        return post;
-    }
-
     public async Task<ProjectContent> SaveProjectAsync(ProjectContent project, CancellationToken cancellationToken)
     {
         Validate(project);
@@ -91,12 +72,6 @@ public sealed class PortfolioContentService(IWebHostEnvironment environment, ICo
 
         project.SourceId = ToSourceId(root, targetPath);
         return project;
-    }
-
-    public Task DeleteBlogAsync(string sourceId)
-    {
-        DeleteMarkdown(GetContentRoot("blog"), sourceId);
-        return Task.CompletedTask;
     }
 
     public Task DeleteProjectAsync(string sourceId)
@@ -258,7 +233,6 @@ public sealed class PortfolioContentService(IWebHostEnvironment environment, ICo
         if (project.FeaturedOrder.HasValue)
             sb.Append("featuredOrder: ").Append(project.FeaturedOrder.Value).Append('\n');
         AppendList(sb, "technologies", project.Technologies);
-        AppendList(sb, "highlights", project.Highlights);
 
         if (!string.IsNullOrWhiteSpace(project.GithubUrl) || !string.IsNullOrWhiteSpace(project.DemoUrl))
         {
@@ -316,25 +290,6 @@ public sealed class PortfolioContentService(IWebHostEnvironment environment, ICo
             throw new InvalidOperationException("Too many education entries.");
     }
 
-    private static void Validate(BlogPostContent post)
-    {
-        NormalizeLocale(post.Language);
-        ValidateSlug(post.Slug);
-
-        if (string.IsNullOrWhiteSpace(post.Title))
-            throw new InvalidOperationException("Blog title is required.");
-        if (string.IsNullOrWhiteSpace(post.Excerpt))
-            throw new InvalidOperationException("Blog description is required.");
-        if (!DateOnly.TryParse(post.Date, out _))
-            throw new InvalidOperationException("Blog date must use YYYY-MM-DD format.");
-        if (string.IsNullOrWhiteSpace(post.ReadingTime))
-            throw new InvalidOperationException("Reading time is required.");
-        if (post.Status != "draft" && post.Status != "published")
-            throw new InvalidOperationException("Blog status must be draft or published.");
-        if (post.Tags.Count > 50)
-            throw new InvalidOperationException("Too many blog tags.");
-    }
-
     private static void Validate(ProjectContent project)
     {
         NormalizeLocale(project.Language);
@@ -348,8 +303,6 @@ public sealed class PortfolioContentService(IWebHostEnvironment environment, ICo
             throw new InvalidOperationException("Project status is required.");
         if (project.Technologies.Count > 50)
             throw new InvalidOperationException("Too many project technologies.");
-        if (project.Highlights.Count > 50)
-            throw new InvalidOperationException("Too many project highlights.");
 
         ValidateOptionalHttpUrl(project.GithubUrl, "GitHub URL");
         ValidateOptionalHttpUrl(project.DemoUrl, "Live URL");

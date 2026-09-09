@@ -19,13 +19,7 @@ technologies:
   - "Microsoft Azure"
   - "Vercel"
   - "Neon"
-highlights:
-  - "根据实际使用体验，将团队项目管理系统重新设计为个人任务管理工具"
-  - "基于 ASP.NET Core Web API，实现 JWT 身份验证和用户专属任务授权"
-  - "将后端模型从项目、成员和任务分配关系简化为用户直接拥有任务"
-  - "提供 Today、Inbox、Calendar 和 All Tasks 工作流，并支持响应式桌面与移动端布局"
-  - "通过 Entity Framework Core 和 Neon 实现 PostgreSQL 持久化"
-  - "前端通过 Vercel 和自定义域名部署，后端独立部署在 Azure App Service"
+
 links:
   github: "https://github.com/jiantaoshen/LightManager"
   live: "https://lightmanager.jiantao.dev"

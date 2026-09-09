@@ -1,10 +1,16 @@
 ---
 lang: en
+
 title: "Developer Portfolio"
-description: "A multilingual developer portfolio built with Astro, React, TypeScript, Tailwind CSS and ASP.NET Core, with static content rendering, a public dashboard trial and a local content management workflow."
+
+description: "A multilingual developer portfolio built with Astro, TypeScript, Tailwind CSS and ASP.NET Core, with static content rendering, project case studies, a public dashboard trial and a local content management workflow."
+
 status: "Live"
+
 order: 3
+
 featured: true
+
 featuredOrder: 3
 
 technologies:
@@ -17,16 +23,6 @@ technologies:
   - "Markdown"
   - "Vercel"
 
-highlights:
-  - "Static HTML-first portfolio built with Astro"
-  - "English, Swedish and Chinese support with language-specific routes"
-  - "Blog and Project content managed through Markdown Content Collections"
-  - "Multilingual About, Skills and Education content stored as JSON"
-  - "Public dashboard Trial mode with browser-only editing"
-  - "Local React and ASP.NET Core dashboard for editing source content"
-  - "Blog and Project editors with separate Edit and Preview tabs"
-  - "Git-based publishing workflow with Vercel rebuilds"
-
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://www.jiantao.dev"
@@ -36,11 +32,13 @@ draft: false
 
 ## Overview
 
-Developer Portfolio is a multilingual portfolio built with Astro, React, TypeScript, Tailwind CSS and ASP.NET Core.
+Developer Portfolio is a multilingual portfolio built with Astro, TypeScript, Tailwind CSS and ASP.NET Core.
 
 The public site uses Astro to generate static pages from Markdown and JSON content. English, Swedish and Chinese versions share the same application structure while using language-specific routes and content.
 
-The project also includes two dashboard modes: a public Trial interface for exploring the editor and a local dashboard backed by ASP.NET Core for managing the portfolio source files.
+Project case studies are stored as Markdown through Astro Content Collections, while structured profile content such as About, Skills and Education is maintained as multilingual JSON.
+
+The project also includes two dashboard modes: a public Trial interface for exploring the editor and a local dashboard backed by ASP.NET Core for managing portfolio source files.
 
 The result is a static production site with a lightweight Git-based content workflow instead of a production database or CMS.
 
@@ -52,11 +50,10 @@ The project includes:
 
 - About and CV information
 - Skills and education
-- Blog articles
 - Project case studies
 - Content in English, Swedish and Chinese
 
-Editing all of this content directly in source files is manageable at a small scale, but becomes less convenient as the amount of content grows.
+Editing all of this content directly in source files is manageable at a small scale, but becomes less convenient as the amount of structured and long-form project content grows.
 
 At the same time, the public portfolio is primarily static. Introducing a production database and a permanent backend would add infrastructure that is unnecessary for content that only changes when the site is rebuilt.
 
@@ -66,7 +63,7 @@ The goal was therefore to keep the public site static while creating a more conv
 
 The portfolio follows a content-to-code architecture.
 
-Blog and Project content is stored as Markdown and validated with Astro Content Collections. About, Skills and Education content is stored as multilingual JSON.
+Project case studies are stored as Markdown and validated with Astro Content Collections. About, Skills and Education content is stored as multilingual JSON.
 
 ```text
 JSON / Markdown
@@ -106,7 +103,7 @@ This keeps Git as the source of truth while still providing a visual content edi
 
 The public portfolio is built with Astro and generated as static content.
 
-Markdown and JSON are transformed into pages during the build process, keeping the deployed site lightweight and well suited to content-focused pages.
+Markdown and JSON are transformed into pages during the build process, keeping the deployed site lightweight and well suited to a portfolio focused on developer information and engineering case studies.
 
 ### Multilingual Support
 
@@ -120,13 +117,9 @@ Each language uses static routes under:
 /zh/
 ```
 
-The same structure is also used for language-specific Blog and Project content.
+The same structure is used for language-specific Project content.
 
 ```text
-/en/blog/
-/sv/blog/
-/zh/blog/
-
 /en/projects/
 /sv/projects/
 /zh/projects/
@@ -134,27 +127,22 @@ The same structure is also used for language-specific Blog and Project content.
 
 This allows the site to share templates and components while keeping content separated by language.
 
-### Markdown Content Collections
+### Project Content Collections
 
-Blog articles and Project case studies are stored in language-specific Markdown directories.
+Project case studies are stored in language-specific Markdown directories.
 
 ```text
 src/
-├── content/
-│   ├── blog/
-│   │   ├── en/
-│   │   ├── sv/
-│   │   └── zh/
-│   │
-│   └── projects/
-│       ├── en/
-│       ├── sv/
-│       └── zh/
+└── content/
+    └── projects/
+        ├── en/
+        ├── sv/
+        └── zh/
 ```
 
-Astro Content Collections are used to validate and manage this Markdown content.
+Astro Content Collections are used to validate and manage the Markdown content.
 
-Frontmatter stores structured metadata, while Markdown contains the main article or project content.
+Frontmatter stores structured metadata such as project status, technologies and links, while Markdown contains the main project case study.
 
 ### Multilingual JSON Content
 
@@ -169,7 +157,7 @@ src/i18n/locales/
 └── zh/
 ```
 
-This separates structured profile information from longer Markdown-based content while keeping both approaches inside the repository.
+This separates structured profile information from longer project content while keeping both approaches inside the repository.
 
 ### Public Trial Mode
 
@@ -195,9 +183,9 @@ A separate local dashboard is available at:
 
 It provides a React-based interface for managing portfolio content during development.
 
-The dashboard supports multilingual content management for CV, Blog and Projects.
+The dashboard supports multilingual content management and project editing.
 
-Blog and Project editors also include separate `Edit` and `Preview` tabs, making it possible to review Markdown content before updating the source files.
+The Project editor includes separate `Edit` and `Preview` views, making it possible to review Markdown content before updating the source files.
 
 ### ASP.NET Core Content Backend
 
@@ -257,8 +245,6 @@ Markdown / JSON
 
 The dashboard acts as a visual editing layer over the same source files used by the public portfolio.
 
-There is no separate production content database.
-
 ## Key Decisions
 
 ### Keeping Content in Git
@@ -297,9 +283,45 @@ This makes it possible to demonstrate the dashboard publicly without exposing fi
 
 ### Using Markdown and JSON for Different Content Types
 
-Long-form Blog and Project content is stored in Markdown, while structured profile information such as About, Skills and Education is stored in JSON.
+Project case studies are stored in Markdown, while structured profile information such as About, Skills and Education is stored in JSON.
 
 This allows each content type to use a format that matches how it is edited and rendered.
+
+### Removing the Blog
+
+An earlier version of the portfolio included a multilingual technical Blog.
+
+Maintaining long-form articles in several languages introduced significant content overhead while contributing relatively little to the portfolio's primary purpose: presenting software projects and engineering capability.
+
+The Blog was therefore removed rather than expanded into a larger publishing system.
+
+Technical writing intended for professional visibility is better suited to platforms such as LinkedIn, where an existing professional network and content distribution system already exist.
+
+Project-specific engineering decisions, architecture changes and technical trade-offs remain part of the Project case studies, where they directly support the work being presented.
+
+This keeps the portfolio focused on its strongest responsibilities:
+
+```text
+About
+→ Who I am
+
+Skills
+→ What I work with
+
+Projects
+→ What I have built
+
+Project case studies
+→ How the systems were designed and evolved
+
+GitHub
+→ Source code and development history
+
+LinkedIn
+→ Professional writing and public communication
+```
+
+Removing the Blog also reduces duplicated content, translation work and long-term maintenance without removing the engineering evidence that matters most to the portfolio.
 
 ## Development
 
@@ -349,10 +371,10 @@ This allows the deployed site to remain static while keeping portfolio content v
 
 ## Future Improvements
 
-- Expand Blog articles and Project case studies
 - Improve dashboard editing and validation
-- Add filtering or search for content
+- Continue expanding Project case studies as the systems evolve
 - Improve architecture diagrams and project visualizations
 - Add richer structured SEO metadata
 - Continue improving accessibility
 - Continue improving performance
+- Simplify the content workflow where maintenance cost exceeds practical value

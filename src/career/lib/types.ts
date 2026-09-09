@@ -47,7 +47,6 @@ export type Project = {
   contentMarkdown: string
   status: string
   technologies: string[]
-  highlights: string[]
   githubUrl: string
   demoUrl: string
   featured: boolean
@@ -56,23 +55,9 @@ export type Project = {
   sortOrder: number
 }
 
-export type BlogPost = {
-  id: string
-  sourceId: string
-  language: Locale
-  title: string
-  slug: string
-  excerpt: string
-  contentMarkdown: string
-  date: string
-  readingTime: string
-  tags: string[]
-  status: "draft" | "published"
-}
 
 export type PortfolioContent = {
   projects: Project[]
-  blogPosts: BlogPost[]
 }
 
 export type CareerSnapshot = PortfolioContent & {

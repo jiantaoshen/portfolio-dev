@@ -19,13 +19,6 @@ technologies:
   - "Microsoft Azure"
   - "Vercel"
   - "Neon"
-highlights:
-  - "Omdesignad från ett projektledningssystem för team till en personlig uppgiftshanterare baserad på faktisk användning"
-  - "ASP.NET Core Web API med JWT-autentisering och användarspecifik åtkomstkontroll för uppgifter"
-  - "Förenklad backendmodell från projekt, medlemskap och uppgiftstilldelning till direkt användarägda uppgifter"
-  - "Today-, Inbox-, Calendar- och All Tasks-flöden med responsiv layout för både desktop och mobil"
-  - "Persistent PostgreSQL-data genom Entity Framework Core och Neon"
-  - "Frontend distribuerad på Vercel med egen domän och backend distribuerad separat på Azure App Service"
 links:
   github: "https://github.com/jiantaoshen/LightManager"
   live: "https://lightmanager.jiantao.dev"

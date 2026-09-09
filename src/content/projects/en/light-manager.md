@@ -19,13 +19,7 @@ technologies:
   - "Microsoft Azure"
   - "Vercel"
   - "Neon"
-highlights:
-  - "Redesigned from a team project management system into a personal task manager based on real usage"
-  - "ASP.NET Core Web API with JWT authentication and user-specific task authorization"
-  - "Simplified backend model from projects, memberships and assignments to direct user-owned tasks"
-  - "Today, Inbox, Calendar and All Tasks workflows with responsive desktop and mobile layouts"
-  - "PostgreSQL persistence through Entity Framework Core and Neon"
-  - "Frontend deployed on Vercel with a custom domain and backend deployed independently on Azure App Service"
+
 links:
   github: "https://github.com/jiantaoshen/LightManager"
   live: "https://lightmanager.jiantao.dev"
