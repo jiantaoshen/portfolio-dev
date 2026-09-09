@@ -3,7 +3,7 @@
 A multilingual developer portfolio built with Astro, React, TypeScript, Tailwind CSS, and ASP.NET Core.
 
 **Live site:**
-https://jiantao-dev.vercel.app
+https://www.jiantao.dev
 
 ## Tech Stack
 

@@ -1,16 +1,10 @@
 ---
 lang: en
-
 title: "Developer Portfolio"
-
-description: "A multilingual developer portfolio built with Astro, React, TypeScript and Tailwind CSS, featuring static content rendering, a public dashboard trial, and a local ASP.NET Core content editor."
-
+description: "A multilingual developer portfolio built with Astro, React, TypeScript, Tailwind CSS and ASP.NET Core, with static content rendering, a public dashboard trial and a local content management workflow."
 status: "Live"
-
 order: 3
-
 featured: true
-
 featuredOrder: 3
 
 technologies:
@@ -19,236 +13,346 @@ technologies:
   - "TypeScript"
   - "Tailwind CSS"
   - "ASP.NET Core"
-  - "Content Collections"
+  - "Astro Content Collections"
   - "Markdown"
   - "Vercel"
 
 highlights:
   - "Static HTML-first portfolio built with Astro"
-  - "Supports English, Swedish and Chinese with language-specific routes"
-  - "Project case studies and technical notes stored in Markdown Content Collections"
-  - "Public React-based dashboard trial with browser-only editing"
-  - "Local ASP.NET Core content editor for JSON and Markdown source files"
-  - "Multilingual CV, blog and project management through a local dashboard"
-  - "Git-based publishing workflow with automatic Vercel rebuilds"
-  - "Minimal client-side JavaScript on public content pages"
+  - "English, Swedish and Chinese support with language-specific routes"
+  - "Blog and Project content managed through Markdown Content Collections"
+  - "Multilingual About, Skills and Education content stored as JSON"
+  - "Public dashboard Trial mode with browser-only editing"
+  - "Local React and ASP.NET Core dashboard for editing source content"
+  - "Blog and Project editors with separate Edit and Preview tabs"
+  - "Git-based publishing workflow with Vercel rebuilds"
 
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
-  live: "https://jiantao-dev.vercel.app"
+  live: "https://www.jiantao.dev"
 
 draft: false
 ---
 
 ## Overview
 
-This portfolio is a multilingual developer site built with Astro, React, TypeScript and Tailwind CSS to present my software projects, technical notes and development experience.
+Developer Portfolio is a multilingual portfolio built with Astro, React, TypeScript, Tailwind CSS and ASP.NET Core.
 
-The public site follows a static content-to-code architecture. Astro generates HTML from structured JSON and Markdown content during the build process, while React is used only for interactive features such as the dashboard and public trial interface.
+The public site uses Astro to generate static pages from Markdown and JSON content. English, Swedish and Chinese versions share the same application structure while using language-specific routes and content.
 
-The project also includes a local ASP.NET Core content editor that allows portfolio content to be managed through a visual dashboard while keeping the actual source files under Git version control.
+The project also includes two dashboard modes: a public Trial interface for exploring the editor and a local dashboard backed by ASP.NET Core for managing the portfolio source files.
+
+The result is a static production site with a lightweight Git-based content workflow instead of a production database or CMS.
 
 ## The Problem
 
-A developer portfolio needs to communicate technical experience clearly while remaining easy to maintain.
+A multilingual portfolio contains several types of content that need to stay organized and easy to update.
 
-The site contains multilingual project case studies, technical notes, CV information and structured metadata. Maintaining these directly across multiple files can become repetitive as the amount of content grows.
+The project includes:
 
-The previous React SPA architecture also used client-side rendering for pages that were fundamentally static, adding complexity without providing significant benefit.
+- About and CV information
+- Skills and education
+- Blog articles
+- Project case studies
+- Content in English, Swedish and Chinese
 
-At the same time, moving all portfolio content into a database would not fit the static Astro build process, where Markdown and JSON files already act as the source of truth.
+Editing all of this content directly in source files is manageable at a small scale, but becomes less convenient as the amount of content grows.
+
+At the same time, the public portfolio is primarily static. Introducing a production database and a permanent backend would add infrastructure that is unnecessary for content that only changes when the site is rebuilt.
+
+The goal was therefore to keep the public site static while creating a more convenient way to manage its Markdown and JSON content.
 
 ## Solution
 
-The portfolio uses Astro for static page generation and keeps public content directly in the repository.
+The portfolio follows a content-to-code architecture.
 
-Project case studies and technical notes are stored in Markdown Content Collections, while multilingual About, Skills and Education data is stored in language-specific JSON files.
+Blog and Project content is stored as Markdown and validated with Astro Content Collections. About, Skills and Education content is stored as multilingual JSON.
 
-A React-based dashboard provides a visual editing interface over the same content.
+```text
+JSON / Markdown
+       ↓
+     Astro
+       ↓
+ Static Build
+       ↓
+    Vercel
+```
 
-The public `/trial` route demonstrates the dashboard without saving changes. All edits remain in browser state and are reset when the page is refreshed.
+Astro uses these source files during the build process to generate the public portfolio.
 
-For local development, `/dashboard` connects to a small ASP.NET Core application that directly updates the JSON and Markdown source files.
+For content management, the project adds a React-based dashboard on top of the same files.
 
-The publishing workflow remains Git-based:
+The public `/trial` route provides a sandbox version of the editor where changes only exist in browser state.
+
+The local `/dashboard` route connects to an ASP.NET Core backend that can directly update the portfolio's JSON and Markdown files.
 
 ```text
 Dashboard
-    ↓
+   ↓
 ASP.NET Core
-    ↓
+   ↓
 JSON / Markdown
-    ↓
+   ↓
 Git commit
-    ↓
-Git push
-    ↓
+   ↓
 Vercel rebuild
 ```
 
-This keeps the site static in production while still providing a CMS-like editing experience locally.
+This keeps Git as the source of truth while still providing a visual content editing workflow.
 
 ## Features
 
-### Static HTML-First Rendering
+### Static HTML-First Portfolio
 
-Astro pre-renders the public portfolio into static HTML.
+The public portfolio is built with Astro and generated as static content.
 
-Project case studies, technical notes and multilingual pages do not require React or another client-side framework to render their main content.
+Markdown and JSON are transformed into pages during the build process, keeping the deployed site lightweight and well suited to content-focused pages.
 
-### Multilingual Routing
+### Multilingual Support
 
-English, Swedish and Chinese share the same Astro templates while using language-specific routes such as:
+The portfolio supports English, Swedish and Chinese.
+
+Each language uses static routes under:
 
 ```text
 /en/
 /sv/
 /zh/
+```
+
+The same structure is also used for language-specific Blog and Project content.
+
+```text
+/en/blog/
+/sv/blog/
+/zh/blog/
 
 /en/projects/
 /sv/projects/
 /zh/projects/
-
-/en/blog/
-/sv/blog/
-/zh/blog/
 ```
+
+This allows the site to share templates and components while keeping content separated by language.
 
 ### Markdown Content Collections
 
-Projects and technical articles are stored as Markdown files under language-specific directories.
-
-Structured metadata remains in frontmatter, while longer technical content is written directly in Markdown.
-
-### Local Content Dashboard
-
-The project includes a React-based local dashboard for editing:
-
-- About / CV content
-- Skills
-- Education
-- Blog articles
-- Project case studies
-
-CV, Blog and Projects are separated into English, Swedish and Chinese views.
-
-Blog and Project editors also provide separate `Edit` and `Preview` tabs.
-
-### ASP.NET Core Local Content Editor
-
-The local dashboard communicates with an ASP.NET Core API that writes directly to the portfolio source files.
-
-For example:
+Blog articles and Project case studies are stored in language-specific Markdown directories.
 
 ```text
-/dashboard/cv
-→ about.json
-
-/dashboard/blog
-→ src/content/blog/<language>/<slug>.md
-
-/dashboard/projects
-→ src/content/projects/<language>/<slug>.md
+src/
+├── content/
+│   ├── blog/
+│   │   ├── en/
+│   │   ├── sv/
+│   │   └── zh/
+│   │
+│   └── projects/
+│       ├── en/
+│       ├── sv/
+│       └── zh/
 ```
 
-The backend is intentionally used only during local development and is not deployed as a production application backend.
+Astro Content Collections are used to validate and manage this Markdown content.
+
+Frontmatter stores structured metadata, while Markdown contains the main article or project content.
+
+### Multilingual JSON Content
+
+About, Skills and Education content is stored as multilingual JSON.
+
+The language files are organized under:
+
+```text
+src/i18n/locales/
+├── en/
+├── sv/
+└── zh/
+```
+
+This separates structured profile information from longer Markdown-based content while keeping both approaches inside the repository.
 
 ### Public Trial Mode
 
-The `/trial` route provides a public sandbox version of the dashboard.
+The portfolio includes a public dashboard sandbox at:
 
-Visitors can modify CV, Blog and Project content inside the interface, but changes only exist in React state.
+```text
+/trial
+```
 
-No source files or backend data are modified.
+Visitors can explore the editing interface and modify content inside the browser.
+
+The changes only exist in browser state and are never written to the source files.
+
+Refreshing the page resets the Trial content.
+
+### Local Content Dashboard
+
+A separate local dashboard is available at:
+
+```text
+/dashboard
+```
+
+It provides a React-based interface for managing portfolio content during development.
+
+The dashboard supports multilingual content management for CV, Blog and Projects.
+
+Blog and Project editors also include separate `Edit` and `Preview` tabs, making it possible to review Markdown content before updating the source files.
+
+### ASP.NET Core Content Backend
+
+The local dashboard communicates with a small ASP.NET Core backend.
+
+Instead of storing content in a database, the backend directly edits the JSON and Markdown files used by Astro.
+
+The backend is used only during local development.
+
+This means the production portfolio does not depend on an application server for serving its content.
 
 ### Language-Specific CV Downloads
 
-Visitors can download English, Swedish or Chinese CV versions based on the selected site language.
+The portfolio provides CV downloads for English, Swedish and Chinese.
 
-### Responsive Design
+Visitors can access the CV version that matches the selected site language.
 
-The interface uses Tailwind CSS with reusable components for navigation, cards, typography, forms and dashboard layouts.
+### Responsive Interface
 
-### Minimal Client-Side JavaScript
+Tailwind CSS is used for the portfolio and dashboard layouts.
 
-The public portfolio remains primarily static.
+The interface is designed to work across desktop and smaller screen sizes while sharing reusable styling patterns across pages and components.
 
-React is only introduced where interactive state is useful, instead of being used as the rendering layer for the entire website.
+## Architecture
 
-## Challenges & Decisions
+The project separates public rendering from local content management.
 
-### Moving from React SPA to Astro
-
-The original version used React Router and `react-i18next`.
-
-The migration required separating static content rendering from features that genuinely need client-side interaction.
-
-Astro now handles the public portfolio, while React remains responsible for the dashboard.
-
-### Keeping Content as Source Code
-
-A database could store portfolio content, but the site already uses Markdown and JSON as Astro build inputs.
-
-Using a database would introduce a second source of truth or require Astro to retrieve content from an external API during each build.
-
-Keeping content in the repository provides a simpler model:
+### Public Site
 
 ```text
-Content
-→ Git
-→ Astro build
-→ Static site
+Markdown / JSON
+      ↓
+    Astro
+      ↓
+ Static HTML
+      ↓
+   Vercel
 ```
 
-It also provides built-in version history, diffs and rollback through Git.
+The deployed portfolio reads its content during the build process and produces a static site.
 
-### Local CMS Instead of an Online Backend
+### Local Content Management
 
-The dashboard originally evolved toward a traditional online backend architecture.
+```text
+React Dashboard
+       ↓
+ASP.NET Core
+       ↓
+Markdown / JSON
+       ↓
+      Git
+       ↓
+ Astro Build
+       ↓
+    Vercel
+```
 
-However, because every public content update already requires a new Astro build, an always-online backend was unnecessary.
+The dashboard acts as a visual editing layer over the same source files used by the public portfolio.
 
-The ASP.NET Core service was therefore simplified into a local file editor.
+There is no separate production content database.
 
-This keeps the production architecture lightweight while still providing a practical dashboard for content management.
+## Key Decisions
 
-### Trial and Dashboard Separation
+### Keeping Content in Git
 
-The same React interface serves two different purposes.
+Markdown and JSON remain the source of truth for the portfolio.
 
-`/trial` is public and non-persistent.
+This keeps content together with the application code and allows changes to follow the same Git workflow as the rest of the project.
 
-`/dashboard` is a local development tool capable of writing source files.
+It also means Astro can generate the entire site directly from repository content during each build.
 
-Sharing the editor components between both modes avoids maintaining separate interfaces.
+### Using a Local Backend
+
+The ASP.NET Core backend is only needed when editing local source files.
+
+It does not need to run as part of the deployed portfolio.
+
+This keeps the production architecture simpler while still allowing the dashboard to provide file-based content management during development.
+
+### Separating Trial and Local Dashboard Modes
+
+The project provides two versions of the editing experience for different purposes.
+
+```text
+/trial
+```
+
+is public and non-persistent.
+
+```text
+/dashboard
+```
+
+is intended for local development and can update the actual source content through ASP.NET Core.
+
+This makes it possible to demonstrate the dashboard publicly without exposing file-writing functionality.
+
+### Using Markdown and JSON for Different Content Types
+
+Long-form Blog and Project content is stored in Markdown, while structured profile information such as About, Skills and Education is stored in JSON.
+
+This allows each content type to use a format that matches how it is edited and rendered.
+
+## Development
+
+Install the frontend dependencies:
+
+```bash
+npm install
+```
+
+Start Astro:
+
+```bash
+npm run dev
+```
+
+Start the local ASP.NET Core content backend:
+
+```bash
+cd backend/Career.Api
+dotnet run
+```
+
+The default local addresses are:
+
+```text
+Astro:   http://localhost:4321
+Backend: http://127.0.0.1:5080
+```
 
 ## Deployment
 
-Astro builds the portfolio into static HTML, CSS, JavaScript and assets.
+The public portfolio is deployed to Vercel.
 
-The public site is deployed to Vercel.
+Astro builds the Markdown and JSON content into the static site, while the ASP.NET Core service remains part of the local development workflow.
 
-The production deployment includes the public portfolio and Trial interface, while the local ASP.NET Core backend and development dashboard are excluded from the Vercel deployment.
-
-Content updates follow the normal Git workflow:
+Content updates follow a Git-based process:
 
 ```text
-Edit
-↓
-Review git diff
-↓
-Commit
-↓
-Push
-↓
+Edit content
+     ↓
+Git commit
+     ↓
 Vercel rebuild
 ```
 
+This allows the deployed site to remain static while keeping portfolio content version-controlled in the repository.
+
 ## Future Improvements
 
-- Continue expanding project case studies and technical notes
-- Improve dashboard editing workflows and validation
-- Add lightweight filtering or search for technical articles
-- Improve project architecture diagrams and technical visualizations
+- Expand Blog articles and Project case studies
+- Improve dashboard editing and validation
+- Add filtering or search for content
+- Improve architecture diagrams and project visualizations
 - Add richer structured SEO metadata
-- Continue improving accessibility and performance
+- Continue improving accessibility
+- Continue improving performance
