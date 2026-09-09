@@ -20,7 +20,6 @@ export type ProjectItem = {
   description: string;
 
   technologies?: string[];
-  highlights?: string[];
 
   overview: string;
   problem: string;
@@ -113,7 +112,6 @@ export type ProjectTranslation = {
     technologies: string;
     status: string;
     type: string;
-    highlights: string;
   };
 };
 
@@ -139,7 +137,6 @@ export type CommonTranslation = {
   nav: {
     about: string;
     projects: string;
-    blog: string;
     contact: string;
   };
 

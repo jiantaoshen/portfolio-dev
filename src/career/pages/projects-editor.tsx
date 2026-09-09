@@ -23,7 +23,6 @@ function emptyProject(language: Locale): Project {
     contentMarkdown: "## Overview\n\nDescribe the project here.",
     status: "In development",
     technologies: ["ASP.NET Core"],
-    highlights: [],
     githubUrl: "",
     demoUrl: "",
     featured: false,
@@ -122,7 +121,6 @@ function ProjectEditor({
 }) {
   const [draft, setDraft] = useState(project)
   const [techText, setTechText] = useState(project.technologies.join(", "))
-  const [highlightsText, setHighlightsText] = useState(project.highlights.join("\n"))
   const [tab, setTab] = useState<EditorTab>("edit")
 
   async function copyMarkdown() {
@@ -134,7 +132,6 @@ function ProjectEditor({
       const saved = await onSave(draft)
       setDraft(saved)
       setTechText(saved.technologies.join(", "))
-      setHighlightsText(saved.highlights.join("\n"))
     } catch {
       // The workspace error banner already shows the backend error.
     }
@@ -168,14 +165,14 @@ function ProjectEditor({
       <div className="flex items-end"><div className="pb-2 text-sm text-zinc-500">Language: <strong>{localeLabels[draft.language]}</strong></div></div>
       <div className="md:col-span-2"><Field label="Description / summary"><Textarea rows={3} value={draft.summary} onChange={e => setDraft({ ...draft, summary: e.target.value })} /></Field></div>
       <div className="md:col-span-2"><Field label="Technologies (comma separated)"><Input value={techText} onChange={e => { setTechText(e.target.value); setDraft({ ...draft, technologies: splitComma(e.target.value) }) }} /></Field></div>
-      <div className="md:col-span-2"><Field label="Highlights (one per line)"><Textarea rows={5} value={highlightsText} onChange={e => { setHighlightsText(e.target.value); setDraft({ ...draft, highlights: splitLines(e.target.value) }) }} /></Field></div>
+  
       <Field label="GitHub URL"><Input value={draft.githubUrl} onChange={e => setDraft({ ...draft, githubUrl: e.target.value })} /></Field>
       <Field label="Live URL"><Input value={draft.demoUrl} onChange={e => setDraft({ ...draft, demoUrl: e.target.value })} /></Field>
       <Field label="Display order"><Input type="number" value={draft.sortOrder} onChange={e => setDraft({ ...draft, sortOrder: Number(e.target.value) })} /></Field>
       <Field label="Featured order"><Input type="number" value={draft.featuredOrder ?? ""} onChange={e => setDraft({ ...draft, featuredOrder: e.target.value === "" ? null : Number(e.target.value) })} placeholder="Optional" /></Field>
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={draft.published} onChange={e => setDraft({ ...draft, published: e.target.checked })} />Published (`draft: false`)</label>
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={draft.featured} onChange={e => setDraft({ ...draft, featured: e.target.checked })} />Featured</label>
-      <div className="md:col-span-2"><Field label="Content (Markdown)"><Textarea className="min-h-[520px] font-mono" value={draft.contentMarkdown} onChange={e => setDraft({ ...draft, contentMarkdown: e.target.value })} /></Field></div>
+      <div className="md:col-span-2"><Field label="Content (Markdown)"><Textarea className="min-h-130 font-mono" value={draft.contentMarkdown} onChange={e => setDraft({ ...draft, contentMarkdown: e.target.value })} /></Field></div>
 
       <div className="md:col-span-2 flex flex-wrap gap-2">
         <Button disabled={saving} onClick={() => void save()}><Save className="mr-2 h-4 w-4" />{saving ? "Saving…" : mode === "trial" ? "Apply in demo" : "Save Markdown file"}</Button>
@@ -192,7 +189,6 @@ function ProjectEditor({
         <h2 className="mt-4 text-2xl font-bold tracking-tight">{draft.title}</h2>
         {draft.summary && <p className="mt-2 text-zinc-600">{draft.summary}</p>}
         {draft.technologies.length > 0 && <div className="mt-4 flex flex-wrap gap-2">{draft.technologies.map(item => <Badge key={item}>{item}</Badge>)}</div>}
-        {draft.highlights.length > 0 && <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-zinc-600">{draft.highlights.map(item => <li key={item}>{item}</li>)}</ul>}
       </div>
       <div className="prose-lite"><ReactMarkdown>{draft.contentMarkdown}</ReactMarkdown></div>
     </CardContent>}

@@ -9,8 +9,7 @@ export function OverviewPage() {
   const stats = [
     ["Languages", 3],
     ["EN skills", skillCount],
-    ["Projects", data.projects.length],
-    ["Blog posts", data.blogPosts.length],
+    ["Projects", data.projects.length]
   ]
 
   return <div className="space-y-6">
@@ -34,7 +33,6 @@ export function OverviewPage() {
       <CardHeader><CardTitle>Content sources</CardTitle></CardHeader>
       <CardContent className="space-y-3 text-sm text-zinc-600">
         <p><strong className="text-zinc-900">CV / About:</strong> <code>src/i18n/locales/en|sv|zh/about.json</code></p>
-        <p><strong className="text-zinc-900">Blog:</strong> <code>src/content/blog/en|sv|zh/*.md</code></p>
         <p><strong className="text-zinc-900">Projects:</strong> <code>src/content/projects/en|sv|zh/*.md</code></p>
         {mode === "admin" && <p><strong className="text-zinc-900">Publishing:</strong> save locally → review <code>git diff</code> → commit → push → Vercel rebuild.</p>}
       </CardContent>

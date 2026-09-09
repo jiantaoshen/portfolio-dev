@@ -2,11 +2,10 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { CareerWorkspace, WorkspaceIndex } from "./workspace"
 import { OverviewPage } from "./pages/overview"
 import { CvEditorPage } from "./pages/cv-editor"
-import { BlogEditorPage } from "./pages/blog-editor"
 import { ProjectsEditorPage } from "./pages/projects-editor"
 import type { AboutByLocale, PortfolioContent } from "./lib/types"
 
-const emptyContent: PortfolioContent = { projects: [], blogPosts: [] }
+const emptyContent: PortfolioContent = { projects: []}
 
 export function CareerRouterApp({
   initialContent = emptyContent,
@@ -20,7 +19,6 @@ export function CareerRouterApp({
       <Route index element={<WorkspaceIndex mode="trial" />} />
       <Route path="overview" element={<OverviewPage />} />
       <Route path="cv" element={<CvEditorPage />} />
-      <Route path="blog" element={<BlogEditorPage />} />
       <Route path="projects" element={<ProjectsEditorPage />} />
     </Route>
 
@@ -28,7 +26,6 @@ export function CareerRouterApp({
       <Route index element={<WorkspaceIndex mode="admin" />} />
       <Route path="overview" element={<OverviewPage />} />
       <Route path="cv" element={<CvEditorPage />} />
-      <Route path="blog" element={<BlogEditorPage />} />
       <Route path="projects" element={<ProjectsEditorPage />} />
     </Route>
 

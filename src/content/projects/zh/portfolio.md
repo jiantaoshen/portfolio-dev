@@ -1,10 +1,16 @@
 ---
 lang: zh
+
 title: "开发者作品集"
-description: "一个使用 Astro、React、TypeScript、Tailwind CSS 和 ASP.NET Core 构建的多语言开发者作品集，采用静态内容渲染，并提供公开的 Dashboard 试用模式和本地内容管理工作流。"
+
+description: "一个使用 Astro、TypeScript、Tailwind CSS 和 ASP.NET Core 构建的多语言开发者作品集，采用静态内容渲染、项目案例展示、公开 Dashboard 试用模式和本地内容管理工作流。"
+
 status: "Live"
+
 order: 3
+
 featured: true
+
 featuredOrder: 3
 
 technologies:
@@ -17,16 +23,6 @@ technologies:
   - "Markdown"
   - "Vercel"
 
-highlights:
-  - "使用 Astro 构建的静态 HTML-first 开发者作品集"
-  - "支持英语、瑞典语和中文，并使用独立的语言路由"
-  - "Blog 和 Project 内容通过 Markdown 与 Astro Content Collections 管理"
-  - "About、Skills 和 Education 的多语言内容以 JSON 形式存储"
-  - "公开的 Dashboard Trial 模式，所有编辑仅保存在浏览器状态中"
-  - "使用 React 和 ASP.NET Core 构建的本地内容管理 Dashboard"
-  - "Blog 和 Project 编辑器提供独立的 Edit 与 Preview 标签页"
-  - "基于 Git 的发布工作流，并通过 Vercel 自动重新构建"
-
 links:
   github: "https://github.com/jiantaoshen/portfolio-dev"
   live: "https://www.jiantao.dev"
@@ -34,59 +30,58 @@ links:
 draft: false
 ---
 
-## 项目概述
+## 概述
 
-Developer Portfolio 是一个使用 Astro、React、TypeScript、Tailwind CSS 和 ASP.NET Core 构建的多语言开发者作品集。
+Developer Portfolio 是一个使用 Astro、TypeScript、Tailwind CSS 和 ASP.NET Core 构建的多语言开发者作品集。
 
-公开网站使用 Astro 根据 Markdown 和 JSON 内容生成静态页面。英语、瑞典语和中文版本共享相同的应用结构，同时使用各自独立的语言路由和内容。
+公开网站使用 Astro 根据 Markdown 和 JSON 内容生成静态页面。英语、瑞典语和中文版本共享同一套应用结构，同时使用各自独立的语言路由和内容。
 
-项目还包含两种 Dashboard 模式：一个供访客体验编辑界面的公开 Trial 模式，以及一个通过 ASP.NET Core 管理作品集源文件的本地 Dashboard。
+项目案例通过 Astro Content Collections 以 Markdown 形式存储，而 About、Skills 和 Education 等结构化个人资料内容则使用多语言 JSON 维护。
 
-最终的生产环境仍然是一个静态网站，内容管理采用轻量级的 Git 工作流，而不是生产数据库或传统 CMS。
+该项目还包含两种 Dashboard 模式：一个用于体验编辑器的公开 Trial 界面，以及一个由 ASP.NET Core 后端支持、用于管理作品集源文件的本地 Dashboard。
 
-## 问题背景
+最终形成的是一个静态生产网站，通过轻量级、基于 Git 的内容工作流进行管理，而不需要生产环境数据库或 CMS。
 
-一个多语言开发者作品集通常包含多种需要持续维护的内容。
+## 问题
 
-该项目包括：
+一个多语言作品集包含多种需要保持有序并易于更新的内容。
+
+项目包括：
 
 - About 和 CV 信息
 - Skills 和 Education
-- Blog 文章
-- Project 项目案例
+- 项目案例
 - 英语、瑞典语和中文内容
 
-当内容较少时，直接编辑源文件并不会带来太大问题。但随着内容逐渐增加，在多个文件中手动维护这些信息会变得越来越不方便。
+当内容规模较小时，直接编辑源文件是可行的。但随着结构化内容和较长的项目案例不断增加，直接维护这些文件会逐渐变得不够方便。
 
-与此同时，公开作品集本质上主要是静态内容。
+与此同时，公开作品集本质上是一个静态网站。为了只在网站重新构建时才发生变化的内容，引入生产数据库和长期运行的后端服务会增加没有必要的基础设施复杂度。
 
-如果为此引入生产数据库和长期运行的后端服务，就会增加额外的基础设施复杂度，而这些内容实际上只有在网站重新构建时才需要更新。
-
-因此，这个项目的目标是在保持生产网站静态化的同时，提供一种更加方便的 Markdown 和 JSON 内容管理方式。
+因此，该项目的目标是在保持公开网站静态化的同时，提供一种更方便的方式来管理 Markdown 和 JSON 内容。
 
 ## 解决方案
 
 作品集采用 content-to-code 架构。
 
-Blog 和 Project 内容以 Markdown 存储，并通过 Astro Content Collections 进行验证。About、Skills 和 Education 等结构化多语言内容则存储为 JSON。
+项目案例以 Markdown 形式存储，并通过 Astro Content Collections 进行验证。About、Skills 和 Education 内容则存储为多语言 JSON。
 
 ```text
 JSON / Markdown
        ↓
      Astro
        ↓
-   静态构建
+ Static Build
        ↓
     Vercel
 ```
 
-Astro 在构建阶段读取这些源文件，并生成公开作品集页面。
+Astro 在构建过程中读取这些源文件，并生成公开作品集。
 
-为了改善内容管理体验，项目在同一套源文件之上增加了一个基于 React 的 Dashboard。
+为了进行内容管理，项目在这些相同的源文件之上增加了一个基于 React 的 Dashboard。
 
-公开的 `/trial` 路由提供一个沙盒版本的编辑器，所有修改都只存在于浏览器状态中。
+公开的 `/trial` 路由提供一个沙盒版本的编辑器，其中的修改只存在于浏览器状态中。
 
-本地 `/dashboard` 路由则连接到 ASP.NET Core 后端，可以直接修改作品集中的 JSON 和 Markdown 源文件。
+本地的 `/dashboard` 路由则连接到 ASP.NET Core 后端，可以直接更新作品集中的 JSON 和 Markdown 文件。
 
 ```text
 Dashboard
@@ -100,21 +95,21 @@ Git commit
 Vercel rebuild
 ```
 
-通过这种方式，Git 仍然是内容的唯一事实来源，同时又能获得类似 CMS 的可视化编辑体验。
+这种方式让 Git 继续作为内容的唯一事实来源，同时提供可视化的内容编辑工作流。
 
 ## 功能
 
-### 静态 HTML-First 作品集
+### 静态 HTML 优先的作品集
 
-公开作品集使用 Astro 构建，并生成静态内容。
+公开作品集使用 Astro 构建，并以静态内容形式生成。
 
-Markdown 和 JSON 会在构建阶段转换为页面，使部署后的站点保持轻量，同时非常适合以内容展示为主的页面。
+Markdown 和 JSON 在构建过程中被转换为页面，使部署后的网站保持轻量，同时非常适合作为展示开发者信息和工程项目案例的平台。
 
 ### 多语言支持
 
 作品集支持英语、瑞典语和中文。
 
-每种语言都使用独立的静态路由：
+每种语言使用独立的静态路由：
 
 ```text
 /en/
@@ -122,47 +117,38 @@ Markdown 和 JSON 会在构建阶段转换为页面，使部署后的站点保�
 /zh/
 ```
 
-Blog 和 Project 内容同样采用语言独立的路由结构：
+项目内容也使用相同的语言路由结构：
 
 ```text
-/en/blog/
-/sv/blog/
-/zh/blog/
-
 /en/projects/
 /sv/projects/
 /zh/projects/
 ```
 
-这样可以让不同语言共享相同的模板和组件，同时保持各语言内容相互独立。
+这样可以让网站共享模板和组件，同时保持不同语言内容彼此独立。
 
-### Markdown Content Collections
+### Project Content Collections
 
-Blog 文章和 Project 项目案例保存在按语言划分的 Markdown 目录中。
+项目案例存储在按语言划分的 Markdown 目录中。
 
 ```text
 src/
-├── content/
-│   ├── blog/
-│   │   ├── en/
-│   │   ├── sv/
-│   │   └── zh/
-│   │
-│   └── projects/
-│       ├── en/
-│       ├── sv/
-│       └── zh/
+└── content/
+    └── projects/
+        ├── en/
+        ├── sv/
+        └── zh/
 ```
 
-项目使用 Astro Content Collections 对这些 Markdown 内容进行管理和验证。
+Astro Content Collections 用于验证和管理这些 Markdown 内容。
 
-Frontmatter 用于保存结构化元数据，正文内容则直接使用 Markdown 编写。
+Frontmatter 保存项目状态、技术栈和链接等结构化元数据，而 Markdown 正文则包含完整的项目案例内容。
 
 ### 多语言 JSON 内容
 
-About、Skills 和 Education 内容以多语言 JSON 文件的形式存储。
+About、Skills 和 Education 内容使用多语言 JSON 存储。
 
-语言文件位于：
+语言文件组织在：
 
 ```text
 src/i18n/locales/
@@ -171,9 +157,9 @@ src/i18n/locales/
 └── zh/
 ```
 
-这种方式将结构化个人资料与较长的 Markdown 内容分开，同时确保所有内容都保存在同一个 Git 仓库中。
+这种方式将结构化个人资料信息与较长的项目内容分开，同时让两种内容形式都保留在同一个代码仓库中。
 
-### 公开 Trial 模式
+### Public Trial 模式
 
 作品集提供一个公开的 Dashboard 沙盒：
 
@@ -181,51 +167,51 @@ src/i18n/locales/
 /trial
 ```
 
-访客可以在界面中体验内容编辑功能，并修改 CV、Blog 和 Project 等内容。
+访问者可以体验编辑界面，并直接在浏览器中修改内容。
 
-但所有修改都只存在于 React 的浏览器状态中，不会写入任何源文件。
+这些修改只存在于浏览器状态中，不会写入任何源文件。
 
-刷新页面后，Trial 中的修改会被重置。
+刷新页面后，Trial 内容会恢复到初始状态。
 
-### 本地内容 Dashboard
+### 本地 Content Dashboard
 
-项目还提供一个独立的本地 Dashboard：
+本地开发环境还提供一个独立的 Dashboard：
 
 ```text
 /dashboard
 ```
 
-它使用 React 构建，为开发环境中的作品集内容管理提供可视化界面。
+它提供一个基于 React 的界面，用于在开发过程中管理作品集内容。
 
-Dashboard 支持对 CV、Blog 和 Project 进行多语言管理。
+Dashboard 支持多语言内容管理和项目编辑。
 
-Blog 和 Project 编辑器还提供独立的 `Edit` 和 `Preview` 标签页，可以在更新源文件之前预览 Markdown 内容。
+Project 编辑器提供独立的 `Edit` 和 `Preview` 视图，因此可以在更新源文件之前先检查 Markdown 的最终显示效果。
 
 ### ASP.NET Core 内容后端
 
 本地 Dashboard 与一个轻量级 ASP.NET Core 后端通信。
 
-后端不会将内容保存到数据库，而是直接修改 Astro 使用的 JSON 和 Markdown 源文件。
+后端不使用数据库，而是直接编辑 Astro 所使用的 JSON 和 Markdown 文件。
 
-该后端仅用于本地开发环境。
+该后端只在本地开发环境中使用。
 
-因此，生产环境中的公开作品集不依赖应用服务器来提供页面内容。
+因此，生产环境中的作品集不依赖应用服务器来提供内容。
 
-### 多语言 CV 下载
+### 按语言提供 CV 下载
 
-作品集提供英语、瑞典语和中文版本的 CV 下载。
+作品集提供英语、瑞典语和中文 CV。
 
-访客可以根据当前选择的网站语言下载对应版本的 CV。
+访问者可以根据当前选择的网站语言下载对应版本的 CV。
 
 ### 响应式界面
 
-作品集和 Dashboard 的界面均使用 Tailwind CSS 构建。
+作品集和 Dashboard 布局使用 Tailwind CSS 构建。
 
-页面针对桌面端和较小屏幕进行了响应式设计，同时在不同页面和组件之间复用统一的布局与样式模式。
+界面针对桌面设备和较小屏幕进行了适配，同时在页面和组件之间复用统一的样式模式。
 
 ## 架构
 
-项目将公开页面渲染与本地内容管理明确分离。
+该项目将公开网站渲染与本地内容管理分离。
 
 ### 公开网站
 
@@ -234,12 +220,12 @@ Markdown / JSON
       ↓
     Astro
       ↓
-   静态 HTML
+ Static HTML
       ↓
    Vercel
 ```
 
-部署后的作品集在构建阶段读取内容，并生成静态网站。
+部署后的作品集在构建过程中读取内容，并生成完全静态的网站。
 
 ### 本地内容管理
 
@@ -257,31 +243,31 @@ Markdown / JSON
     Vercel
 ```
 
-Dashboard 相当于同一套内容源文件之上的可视化编辑层。
+Dashboard 作为公开网站所使用的相同源文件之上的可视化编辑层。
 
-项目不需要额外的生产内容数据库。
+项目没有独立的生产内容数据库。
 
-## 关键设计决策
+## 关键决策
 
 ### 将内容保留在 Git 中
 
-Markdown 和 JSON 始终作为作品集内容的唯一事实来源。
+Markdown 和 JSON 继续作为作品集内容的唯一事实来源。
 
-这样可以让内容和应用代码保存在同一个仓库中，并让内容修改遵循与项目其他代码相同的 Git 工作流。
+这样可以让内容与应用代码保存在同一个仓库中，并让内容变更遵循与项目其他部分相同的 Git 工作流。
 
 同时，Astro 可以在每次构建时直接根据仓库中的内容生成完整网站。
 
 ### 使用本地后端
 
-ASP.NET Core 后端只在需要修改本地源文件时使用。
+ASP.NET Core 后端只在需要编辑本地源文件时使用。
 
-它不需要作为生产作品集的一部分长期运行。
+它不需要作为部署后作品集的一部分运行。
 
-这种设计让生产架构保持简单，同时又让本地 Dashboard 能够提供基于文件的内容管理能力。
+这样可以保持生产架构简单，同时仍然允许 Dashboard 在开发过程中提供基于文件的内容管理能力。
 
-### 分离 Trial 与 Dashboard 模式
+### 分离 Trial 和本地 Dashboard 模式
 
-项目针对不同用途提供了两种编辑模式。
+项目针对不同用途提供了两个版本的编辑体验。
 
 ```text
 /trial
@@ -293,15 +279,51 @@ ASP.NET Core 后端只在需要修改本地源文件时使用。
 /dashboard
 ```
 
-用于本地开发，并可以通过 ASP.NET Core 更新真实的源内容。
+则用于本地开发，并且可以通过 ASP.NET Core 更新真实的源内容。
 
-这样既可以公开展示 Dashboard 的功能，又不会暴露能够直接写入源文件的能力。
+这样既可以公开展示 Dashboard，又不需要暴露任何能够写入源文件的功能。
 
-### 针对不同内容类型使用 Markdown 和 JSON
+### 为不同内容类型使用 Markdown 和 JSON
 
-较长的 Blog 和 Project 内容使用 Markdown 存储，而 About、Skills 和 Education 等结构化资料则使用 JSON。
+项目案例使用 Markdown，而 About、Skills 和 Education 等结构化个人资料内容使用 JSON。
 
-这样可以让不同类型的内容使用更适合其编辑和渲染方式的数据格式。
+这样可以让每种内容使用更符合其编辑和渲染方式的数据格式。
+
+### 删除 Blog
+
+作品集的早期版本包含一个多语言技术 Blog。
+
+长期维护多语言文章带来了较高的内容维护成本，但对作品集最核心的目标——展示软件项目和工程能力——实际贡献有限。
+
+因此，与其继续扩展 Blog 并将其发展成一个更复杂的发布系统，我选择将其删除。
+
+如果技术写作的目的是获得职业曝光，那么 LinkedIn 等已经拥有专业网络和内容分发机制的平台更加合适。
+
+与具体项目相关的工程决策、架构变化和技术取舍则继续保留在 Project Case Studies 中，因为这些内容能够直接支持和解释所展示的项目。
+
+因此，作品集可以更加专注于它最重要的职责：
+
+```text
+About
+→ 我是谁
+
+Skills
+→ 我使用什么技术
+
+Projects
+→ 我构建过什么
+
+Project case studies
+→ 系统是如何设计和演进的
+
+GitHub
+→ 源代码和开发历史
+
+LinkedIn
+→ 专业技术写作和公开交流
+```
+
+删除 Blog 同时减少了重复内容、翻译工作和长期维护成本，而不会失去作品集中真正重要的工程能力证据。
 
 ## 开发
 
@@ -335,26 +357,26 @@ Backend: http://127.0.0.1:5080
 
 公开作品集部署在 Vercel。
 
-Astro 会将 Markdown 和 JSON 内容构建为静态网站，而 ASP.NET Core 服务只保留在本地开发工作流中。
+Astro 将 Markdown 和 JSON 内容构建为静态网站，而 ASP.NET Core 服务仍然只属于本地开发工作流。
 
-内容更新使用基于 Git 的流程：
+内容更新遵循基于 Git 的流程：
 
 ```text
-编辑内容
-   ↓
+Edit content
+     ↓
 Git commit
-   ↓
+     ↓
 Vercel rebuild
 ```
 
-这样既能让生产网站保持静态和轻量，也能让作品集内容继续通过 Git 进行版本管理。
+这样可以让部署后的网站保持完全静态，同时让所有作品集内容继续通过 Git 进行版本管理。
 
-## 后续改进
+## 未来改进
 
-- 持续扩充 Blog 文章和 Project 项目案例
-- 改进 Dashboard 的编辑流程和内容验证
-- 为内容增加筛选或搜索功能
-- 改进架构图和项目技术可视化
+- 改进 Dashboard 的编辑体验和内容验证
+- 随着项目持续演进，继续完善 Project Case Studies
+- 改进架构图和项目可视化
 - 增加更丰富的结构化 SEO 元数据
-- 持续改进无障碍体验
-- 持续优化性能
+- 持续改善无障碍访问
+- 持续改善性能
+- 在维护成本超过实际价值时，继续简化内容工作流

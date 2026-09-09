@@ -20,14 +20,6 @@ technologies:
  - "FastAPI"
  - "Ollama"
  - "Windows Task Scheduler"
- 
-highlights:
- - "使用 React、TypeScript 和 shadcn UI 构建价格监控 Dashboard"
- - "通过 ASP.NET Core 提供统一的本地 REST API"
- - "使用 Python、Playwright 和 Product JSON-LD 自动提取商品价格"
- - "通过 Windows Task Scheduler 实现自动价格检查"
- - "集成 FastAPI 和 Ollama，提供本地 AI 购物顾问"
- - "使用本地 JSON 保存运行数据、历史数据、配置和应用状态"
 
 links:
   github: "https://github.com/jiantaoshen/PriceWatch"

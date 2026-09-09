@@ -4,7 +4,6 @@ export type Locale = (typeof locales)[number];
 
 export type Namespace =
   | "about"
-  | "blog"
   | "common"
   | "home"
   | "project";

@@ -20,13 +20,6 @@ technologies:
  - "FastAPI"
  - "Ollama"
  - "Windows Task Scheduler"
-highlights:
- - "Byggde en Dashboard för prisbevakning med React, TypeScript och shadcn UI"
- - "Tillhandahåller ett enhetligt lokalt REST API genom ASP.NET Core"
- - "Extraherar produktpriser automatiskt med Python, Playwright och Product JSON-LD"
- - "Implementerar automatiska priskontroller genom Windows Task Scheduler"
- - "Integrerar FastAPI och Ollama för att erbjuda en lokal AI-shoppingrådgivare"
- - "Använder lokala JSON-filer för kördata, historik, konfiguration och applikationstillstånd"
 
 links:
     github: "https://github.com/jiantaoshen/PriceWatch"

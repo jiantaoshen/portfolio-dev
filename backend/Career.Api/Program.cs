@@ -42,40 +42,6 @@ local.MapPut("/about/{locale}", async (
     }
 });
 
-local.MapPut("/blog", async (
-    BlogPostContent post,
-    PortfolioContentService files,
-    CancellationToken cancellationToken) =>
-{
-    try
-    {
-        return Results.Ok(await files.SaveBlogAsync(post, cancellationToken));
-    }
-    catch (Exception ex) when (ex is ArgumentOutOfRangeException or InvalidOperationException)
-    {
-        return Results.BadRequest(new { error = ex.Message });
-    }
-});
-
-local.MapDelete("/blog", async (
-    string sourceId,
-    PortfolioContentService files) =>
-{
-    try
-    {
-        await files.DeleteBlogAsync(sourceId);
-        return Results.NoContent();
-    }
-    catch (FileNotFoundException ex)
-    {
-        return Results.NotFound(new { error = ex.Message });
-    }
-    catch (Exception ex) when (ex is ArgumentOutOfRangeException or InvalidOperationException)
-    {
-        return Results.BadRequest(new { error = ex.Message });
-    }
-});
-
 local.MapPut("/projects", async (
     ProjectContent project,
     PortfolioContentService files,

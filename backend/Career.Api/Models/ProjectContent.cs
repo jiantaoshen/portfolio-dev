@@ -11,7 +11,6 @@ public sealed class ProjectContent
     public string ContentMarkdown { get; set; } = "";
     public string Status { get; set; } = "";
     public List<string> Technologies { get; set; } = [];
-    public List<string> Highlights { get; set; } = [];
     public string GithubUrl { get; set; } = "";
     public string DemoUrl { get; set; } = "";
     public bool Featured { get; set; }

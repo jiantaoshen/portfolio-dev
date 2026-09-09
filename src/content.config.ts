@@ -2,27 +2,6 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
-const blog = defineCollection({
-  loader: glob({
-    base: "./src/content/blog",
-    pattern: "**/*.md",
-  }),
-
-  schema: z.object({
-    lang: z.enum(["en", "sv", "zh"]),
-
-    title: z.string(),
-    description: z.string(),
-
-    date: z.coerce.date(),
-    readingTime: z.string(),
-
-    tags: z.array(z.string()),
-
-    draft: z.boolean().default(false),
-  }),
-});
-
 const projects = defineCollection({
   loader: glob({
     base: "./src/content/projects",
@@ -46,10 +25,6 @@ const projects = defineCollection({
       .array(z.string())
       .default([]),
 
-    highlights: z
-      .array(z.string())
-      .default([]),
-
     links: z
       .object({
         github: z.httpUrl().optional(),
@@ -62,6 +37,5 @@ const projects = defineCollection({
 });
 
 export const collections = {
-  blog,
   projects,
 };

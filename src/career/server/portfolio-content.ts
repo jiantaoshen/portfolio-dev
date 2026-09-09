@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content"
-import type { BlogPost, Locale, PortfolioContent, Project } from "../lib/types"
+import type { Locale, PortfolioContent, Project } from "../lib/types"
 
 const locales = new Set<Locale>(["en", "sv", "zh"])
 
@@ -17,9 +17,8 @@ function dateOnly(value: Date | string) {
 }
 
 export async function getPortfolioContent(): Promise<PortfolioContent> {
-  const [projectEntries, blogEntries] = await Promise.all([
+  const [projectEntries] = await Promise.all([
     getCollection("projects"),
-    getCollection("blog"),
   ])
 
   const projects: Project[] = projectEntries.map(entry => {
@@ -36,7 +35,6 @@ export async function getPortfolioContent(): Promise<PortfolioContent> {
       contentMarkdown: entry.body ?? "",
       status: data.status,
       technologies: data.technologies,
-      highlights: data.highlights,
       githubUrl: data.links?.github ?? "",
       demoUrl: data.links?.live ?? "",
       featured: data.featured,
@@ -46,24 +44,5 @@ export async function getPortfolioContent(): Promise<PortfolioContent> {
     }
   })
 
-  const blogPosts: BlogPost[] = blogEntries.map(entry => {
-    const data = entry.data
-    const { clean, language, slug } = entryIdentity(entry.id, data.lang)
-
-    return {
-      id: `blog:${clean}`,
-      sourceId: entry.id,
-      language,
-      title: data.title,
-      slug,
-      excerpt: data.description,
-      contentMarkdown: entry.body ?? "",
-      date: dateOnly(data.date),
-      readingTime: data.readingTime,
-      tags: data.tags,
-      status: data.draft ? "draft" : "published",
-    }
-  })
-
-  return { projects, blogPosts }
+  return {projects}
 }
