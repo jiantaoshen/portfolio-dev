@@ -10,7 +10,7 @@
     "description": "带星号的标签表示我正在深入学习的技术。",
     "items": [
       {
-        "title": "Frontend",
+        "title": "前端",
         "items": [
           "React",
           "HTML/CSS",
@@ -20,7 +20,7 @@
         ]
       },
       {
-        "title": "Backend",
+        "title": "后端",
         "staritem": [
           "C#"
         ],
@@ -30,14 +30,14 @@
         ]
       },
       {
-        "title": "Databases",
+        "title": "数据库",
         "items": [
           "PostgreSQL",
           "Entity Framework Core"
         ]
       },
       {
-        "title": "Automation & AI",
+        "title": "人工智能",
         "staritem": [
           "Python"
         ],
@@ -46,7 +46,7 @@
         ]
       },
       {
-        "title": "Cloud & Deployment",
+        "title": "云与部署",
         "items": [
           "Azure",
           "Vercel",
@@ -54,7 +54,7 @@
         ]
       },
       {
-        "title": "Communication & Languages",
+        "title": "语言",
         "items": [
           "中文",
           "英语",
