@@ -14,8 +14,7 @@
         "items": [
           "React",
           "HTML/CSS",
-          "TypeScript",
-          "JavaScript",
+          "TypeScript/JavaScript",
           "Tailwind CSS",
           "Astro"
         ]
@@ -27,16 +26,13 @@
         ],
         "items": [
           ".NET",
-          "ASP.NET Core",
-          "REST APIs",
-          "Authentication & Authorization"
+          "ASP.NET Core"
         ]
       },
       {
         "title": "Databases",
         "items": [
           "PostgreSQL",
-          "SQL",
           "Entity Framework Core"
         ]
       },
@@ -46,10 +42,7 @@
           "Python"
         ],
         "items": [
-          "Playwright",
-          "Automation",
-          "Ollama",
-          "AI Integration"
+          "Ollama"
         ]
       },
       {
@@ -57,8 +50,7 @@
         "items": [
           "Azure",
           "Vercel",
-          "Git",
-          "GitHub"
+          "Git/GitHub"
         ]
       },
       {

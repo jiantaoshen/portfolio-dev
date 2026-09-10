@@ -1,11 +1,18 @@
 ---
 lang: sv
+
 title: "LightManager"
-description: "En personlig applikation för uppgiftshantering byggd med React, TypeScript, ASP.NET Core och PostgreSQL, med JWT-autentisering, användarspecifik uppgiftsdata, kalenderbaserad planering och separat molndistribution av frontend och backend."
+
+description: "En personlig uppgiftshanteringsapplikation byggd med React, TypeScript, ASP.NET Core och PostgreSQL, med daglig planering, kalenderbaserad schemaläggning, JWT-autentisering, ett säkert Trial-läge och oberoende molndistribution."
+
 status: "Live"
+
 order: 1
+
 featured: true
+
 featuredOrder: 1
+
 technologies:
   - "C#"
   - ".NET"
@@ -16,61 +23,59 @@ technologies:
   - "TypeScript"
   - "Tailwind CSS"
   - "shadcn/ui"
+  - "React Router"
   - "Microsoft Azure"
   - "Vercel"
   - "Neon"
+
 links:
   github: "https://github.com/jiantaoshen/LightManager"
   live: "https://lightmanager.jiantao.dev"
+
 draft: false
 ---
 
-## Uppdateringsinformation
+## Översikt
 
-LightManager har genomgått en större omdesign.
+LightManager är en personlig uppgiftshanteringsapplikation som är utformad kring ett enkelt dagligt arbetsflöde.
 
-Den första versionen byggdes som en lättviktig projektledningsapplikation för små och medelstora team. Den innehöll projekt, projektmedlemmar, rollbaserade behörigheter, uppgiftstilldelning och en drag-and-drop-baserad Kanban-tavla.
-
-Efter fortsatt utveckling och användning insåg jag att den ursprungliga produktinriktningen inte motsvarade hur jag själv faktiskt skulle använda applikationen. Eftersom jag inte själv tillhörde den ursprungliga målgruppen blev det svårt att förbättra produkten utifrån verklig daglig användning.
-
-I stället för att fortsätta lägga till funktioner för hypotetiska teamflöden valde jag därför att designa om LightManager till en **personlig uppgiftshanterare** som jag själv kan använda, utvärdera kontinuerligt och förbättra utifrån faktisk erfarenhet.
+Applikationen gör det möjligt att snabbt skapa uppgifter, välja om de ska schemaläggas med datum, ange prioritet, granska dagens arbete och planera framåt via en kalender.
 
 Den nuvarande versionen fokuserar på:
 
 - Today
-- Inbox
-- Calendar
+- Oschemalagda uppgifter
+- Kalenderbaserad planering
 - All Tasks
-- Prioriteringar
-- Förfallodatum
-- Slutförda uppgifter
-- Responsiv layout för desktop och mobil
+- Valfria förfallodatum
+- Ett enkelt prioritetssystem
+- Responsiv layout för dator och mobil
+- Ett säkert offentligt Trial-läge
 
-Applikationen är för närvarande webbaserad, men backendarkitekturen är medvetet utformad så att en framtida React Native-klient kan återanvända samma ASP.NET Core API.
+Frontend är byggd med React, TypeScript, Tailwind CSS och shadcn/ui.
 
-## Översikt
+Backend är byggd med ASP.NET Core, Entity Framework Core och ASP.NET Identity, medan PostgreSQL-databasen hostas hos Neon.
 
-LightManager är nu en personlig applikation för uppgiftshantering som fokuserar på ett enkelt dagligt arbetsflöde i stället för projektadministration för team.
+---
 
-Autentiserade användare kan skapa, schemalägga, slutföra och hantera sina egna uppgifter. Uppgifter utan förfallodatum ligger kvar i Inbox, schemalagda uppgifter kan granskas via Today och Calendar, och all uppgiftsdata lagras permanent i PostgreSQL.
+## Varför jag ändrade produktens riktning
 
-Frontend är byggd med React, TypeScript, Tailwind CSS och shadcn/ui, medan backend är byggd med ASP.NET Core, Entity Framework Core och ASP.NET Identity.
+LightManager började ursprungligen som en lättviktig projektledningsapplikation för små och medelstora team.
 
-## Varför jag ändrade produktens inriktning
-
-Den ursprungliga versionen av LightManager innehöll:
+Den första versionen innehöll:
 
 - Projects
 - Project members
-- Role-based permissions
+- Rollbaserad behörighet
 - Task assignment
-- Kanban workflows
+- Kanban-arbetsflöden
+- Drag-and-drop-hantering av uppgifter
 
-Funktionerna fungerade tekniskt, men jag märkte att jag själv hade väldigt liten anledning att faktiskt använda applikationen.
+Även om funktionerna fungerade tekniskt märkte jag att jag själv hade väldigt liten användning för större delen av det teambaserade arbetsflödet.
 
-Det skapade ett viktigt produktproblem: jag kunde fortsätta implementera nya funktioner, men jag kunde inte på ett bra sätt bedöma om de faktiskt var användbara i vardagen.
+Det skapade ett viktigt produktproblem: jag kunde fortsätta implementera funktioner, men jag kunde inte på ett meningsfullt sätt avgöra om de faktiskt var användbara i vardagen.
 
-Därför ändrade jag projektet från:
+Därför ändrade jag projektets riktning från:
 
 ```text
 Team Project Management
@@ -82,13 +87,249 @@ till:
 Personal Task Management
 ```
 
-Den nya inriktningen ger mig ett verkligt användningsfall att testa mot. I stället för att bygga funktioner enbart för demonstration kan jag nu använda applikationen själv och förbättra den utifrån faktisk friktion och verkliga användningsmönster.
+Den nuvarande applikationen bygger på ett arbetsflöde som jag själv kan använda, utvärdera kontinuerligt och förbättra utifrån verkliga problem och faktisk användning.
 
-## Omdesign av arkitekturen
+---
 
-Backendmodellen förenklades kraftigt.
+## Nuvarande arbetsflöde
 
-Den ursprungliga strukturen var:
+Det nuvarande LightManager bygger på valfri schemaläggning.
+
+```text
+Create Task
+    |
+    +-- No due date
+    |      |
+    |      v
+    |   Unscheduled
+    |
+    +-- Due today
+    |      |
+    |      v
+    |    Today
+    |
+    +-- Future date
+           |
+           v
+        Calendar
+```
+
+Today fungerar som den huvudsakliga dagliga arbetsytan:
+
+```text
+Today
+├── Today's Tasks
+└── Unscheduled
+```
+
+En uppgift behöver inte ha ett förfallodatum när den skapas.
+
+Det gör det möjligt att snabbt fånga en uppgift och bestämma tidpunkt senare.
+
+---
+
+## Prioritetssystem
+
+LightManager använder tre enkla prioriteringsnivåer som visas för användaren:
+
+```text
+Must
+Priority
+Non-priority
+```
+
+Backend behåller för närvarande de ursprungliga enum-värdena:
+
+```text
+High   -> Must
+Medium -> Priority
+Low    -> Non-priority
+```
+
+Uppgifter sorteras automatiskt i följande ordning:
+
+```text
+Must
+  ↓
+Priority
+  ↓
+Non-priority
+```
+
+Uppgifter med samma prioritet sorteras efter när de skapades, med äldre uppgifter först.
+
+Samma sorteringsregel används konsekvent i applikationens olika uppgiftsvyer.
+
+---
+
+## Today
+
+Today är den huvudsakliga arbetsytan för dagens uppgifter.
+
+Den visar:
+
+- Uppgifter schemalagda för idag
+- Oschemalagda uppgifter
+- Öppna uppgifter
+- Slutförda uppgifter
+
+Uppgifter kan skapas direkt från Today med eller utan datum.
+
+Det gör att snabb registrering av uppgifter och daglig planering kan ske på samma plats.
+
+---
+
+## Calendar
+
+Calendar används både för schemaläggning och för att snabbt få en visuell överblick över hur viktiga dagens uppgifter är.
+
+Varje datum med oavslutade uppgifter visar en färgad indikator baserad på den **högst prioriterade oavslutade uppgiften för dagen**.
+
+```text
+Green  -> Non-priority
+Yellow -> Priority
+Red    -> Must
+```
+
+Exempel:
+
+```text
+Only Non-priority tasks
+        ↓
+      Green
+
+Includes Priority
+        ↓
+      Yellow
+
+Includes Must
+        ↓
+       Red
+```
+
+Slutförda uppgifter påverkar inte kalenderindikatorn.
+
+Om alla uppgifter för ett datum är slutförda försvinner indikatorn.
+
+Calendar innehåller också ett **Unscheduled**-kort så att uppgifter utan datum fortfarande är synliga när framtida arbete planeras.
+
+---
+
+## Navigation
+
+Huvudnavigationen hålls avsiktligt enkel.
+
+### Desktop
+
+```text
+LightManager
+
+Today
+Calendar
+
+[Account]
+```
+
+### Mobil
+
+Den nedre navigationen innehåller endast:
+
+```text
+Today     Calendar
+```
+
+Ytterligare funktioner nås via avatarmenyn.
+
+### Account Menu
+
+När användaren klickar eller trycker på avataren öppnas:
+
+```text
+Account
+├── Settings
+├── All Tasks
+└── Sign Out
+```
+
+All Tasks har flyttats bort från huvudnavigationen för att hålla Today och Calendar som de två viktigaste arbetsvyerna.
+
+Samma konto-meny finns på mobil och gör det även enkelt att logga ut därifrån.
+
+Trial-användare ser:
+
+```text
+Trial mode
+├── All Tasks
+└── Exit Trial
+```
+
+---
+
+## Trial-läge
+
+LightManager innehåller ett offentligt Trial-läge som gör det möjligt för besökare att prova applikationen utan att registrera sig.
+
+Backend exponerar en skrivskyddad endpoint som läser uppgifter från ett särskilt demo-konto.
+
+```text
+Visitor
+   |
+   v
+Enter Trial
+   |
+   v
+Read Demo Tasks
+   |
+   v
+Create Local Copy
+   |
+   v
+Browser Storage
+```
+
+Efter den första inläsningen arbetar Trial-användaren endast med en lokal kopia.
+
+Trial-användare kan:
+
+- Skapa uppgifter
+- Redigera uppgifter
+- Slutföra och återöppna uppgifter
+- Ta bort uppgifter
+- Ändra prioritet
+- Lägga till eller ta bort förfallodatum
+- Använda Today
+- Använda Calendar
+- Använda All Tasks
+
+Alla förändringar i Trial-läget sparas endast lokalt i webbläsaren.
+
+```text
+Trial Tasks
+    |
+    +-- Create
+    +-- Update
+    +-- Complete
+    +-- Delete
+    |
+    v
+Local Browser Storage
+
+    X
+
+PostgreSQL
+```
+
+Trial-användare får inte tillgång till demo-kontots lösenord eller JWT-token.
+
+Det förhindrar att besökare ändrar den ursprungliga demo-datan genom det autentiserade uppgifts-API:t.
+
+---
+
+## Arkitekturförändring
+
+När LightManager ändrades till personlig uppgiftshantering förenklades backend-modellen betydligt.
+
+Den ursprungliga strukturen byggde på projekt och teamsamarbete:
 
 ```text
 User
@@ -108,161 +349,135 @@ User
  └── Task
 ```
 
-Projekt, projektmedlemskap, uppgiftstilldelning och projektbaserade roller togs bort från den centrala datamodellen.
+Uppgifter ägs direkt av användare.
 
-Uppgifter ägs nu direkt av autentiserade användare.
+Projects, project memberships, task assignments och project-level roles ingår inte längre i den nuvarande kärnmodellen.
 
-Det gör systemet enklare att underhålla och bättre anpassat för personlig användning, samtidigt som det ger ett renare API för en framtida mobilklient.
+Det gör systemet enklare att underhålla och ger samtidigt ett renare API för framtida klienter.
+
+---
 
 ## Backend
 
 Backend är byggd som ett ASP.NET Core Web API.
 
-Task-API:t förenklades från projektbaserade endpoints som:
-
-```text
-/api/projects/{projectId}/tasks
-```
-
-till:
+Det huvudsakliga autentiserade uppgifts-API:t är:
 
 ```text
 /api/tasks
 ```
 
-Alla endpoints för uppgifter kräver autentisering.
+Skyddade task-endpoints använder användaridentiteten från JWT-token för att begränsa vilka uppgifter som får läsas och ändras.
 
-Den autentiserade användarens identitet hämtas från JWT-token och används för att begränsa databasfrågor så att användaren endast kan läsa eller ändra sina egna uppgifter.
-
-Den nuvarande Task-modellen innehåller:
+Task-modellen innehåller:
 
 - Title
 - Description
 - Status
 - Priority
-- Due date
+- Valfritt Due date
 - Created timestamp
 - Updated timestamp
 - Completed timestamp
 - User ownership
 
-Status och prioritet representeras med enums och lagras som läsbara strängar i PostgreSQL.
+Task status och priority representeras som enums och lagras som läsbara strängar i PostgreSQL.
 
-## Autentisering och behörighet
+Trial-läget använder en separat anonym skrivskyddad endpoint för att läsa demo-data.
+
+---
+
+## Autentisering och auktorisering
 
 Autentisering implementeras med ASP.NET Identity och JWT.
 
-Autentiseringsflödet är:
-
 ```text
 User Login
-    ↓
+    |
+    v
 ASP.NET Identity Validation
-    ↓
+    |
+    v
 PostgreSQL
-    ↓
+    |
+    v
 JWT Generated
-    ↓
+    |
+    v
 Token Stored by Client
-    ↓
+    |
+    v
 Authenticated API Requests
-    ↓
+    |
+    v
 User-Specific Task Data
 ```
 
-Även användarmodellen förbättrades.
-
-I den ursprungliga implementationen användes användarens fullständiga namn som ASP.NET Identity-användarnamn.
-
-Den nuvarande implementationen separerar inloggningsidentitet från visningsnamn:
+Identity-modellen skiljer på inloggningsidentitet och visningsnamn:
 
 ```text
 UserName = Email
 DisplayName = FullName
 ```
 
-Detta undviker konflikter när flera användare har samma namn.
+Det undviker konflikter när flera användare har samma visningsnamn.
 
-Behörighetsmodellen fokuserar nu på **isolering av användardata** i stället för teamroller. Varje läsning, uppdatering och borttagning av en uppgift verifierar att uppgiften tillhör den autentiserade användaren.
+Auktorisering fokuserar på **isolering av användardata**.
 
-## Funktioner
+Varje skyddad task query, update och delete-operation verifierar att uppgiften tillhör den autentiserade användaren.
 
-### Today
+Trial-användare får inte autentiserad skrivåtkomst.
 
-Visar uppgifter som är schemalagda för dagens datum och separerar öppna och slutförda uppgifter.
+---
 
-### Inbox
+## Frontend
 
-Lagrar uppgifter som ännu inte har fått något förfallodatum.
-
-Det ger användaren ett snabbt sätt att registrera något först och bestämma när det ska göras senare.
-
-### Calendar
-
-Uppgifter kan visas och planeras per datum genom ett kalenderbaserat arbetsflöde.
-
-### All Tasks
-
-Visar användarens kompletta uppgiftslista med stöd för sökning och filtrering.
-
-### Uppgiftshantering
-
-Användaren kan:
-
-- Skapa uppgifter
-- Redigera uppgifter
-- Slutföra uppgifter
-- Återöppna slutförda uppgifter
-- Ta bort uppgifter
-- Ange prioritet
-- Ange förfallodatum
-
-### Autentisering
-
-Användare kan registrera sig och logga in med ASP.NET Identity och JWT-autentisering.
-
-### Användarspecifik data
-
-Varje autentiserad användare kan endast komma åt sina egna uppgifter.
-
-### Responsiv design
-
-Gränssnittet har designats om med mobil användning i åtanke.
-
-Desktopversionen använder sidonavigering, medan mindre skärmar använder en förenklad mobil layout.
-
-## Omdesign av frontend
-
-Det ursprungliga gränssnittet var organiserat kring:
-
-```text
-Dashboard
-Projects
-Kanban
-Members
-```
-
-Den nya navigationen är:
-
-```text
-Today
-Inbox
-Calendar
-All Tasks
-Profile
-```
-
-Frontend använder nu:
+Frontend använder:
 
 - React
 - TypeScript
 - Vite
+- React Router
 - Tailwind CSS
 - shadcn/ui
 
-UI:t har organiserats om i återanvändbara komponenter och ett tydligare application shell.
+Gränssnittet är organiserat kring återanvändbara komponenter och gemensamma utility-moduler.
 
-Omdesignen förbereder också projektet för en framtida mobilversion genom att låta huvuddelen av affärslogiken ligga bakom API:t i stället för att vara hårt kopplad till webbgränssnittet.
+Återkommande logik för exempelvis task sorting, priority-hantering, API-anrop, datumhantering och navigation ligger i gemensamma filer i stället för att dupliceras mellan olika sidor.
+
+---
+
+## UI-tema
+
+Frontend använder semantiska temavariabler som definieras centralt i:
+
+```text
+src/index.css
+```
+
+Temat styr bland annat:
+
+- Background
+- Foreground text
+- Primary action color
+- Non-priority color
+- Priority color
+- Must color
+
+De nuvarande semantiska färgerna är:
+
+```text
+Primary actions -> Blue
+Non-priority    -> Green
+Priority        -> Yellow
+Must            -> Red
+```
+
+Komponenterna använder semantiska styles i stället för att definiera individuella färger direkt i TSX-filer.
+
+Det gör det möjligt att ändra hela applikationens visuella tema från en central plats.
+
+---
 
 ## Databas
 
@@ -270,7 +485,7 @@ PostgreSQL används för persistent applikationsdata och hostas hos Neon.
 
 Entity Framework Core hanterar databasåtkomst och migrations.
 
-Den nuvarande tabellen `Tasks` innehåller:
+Den nuvarande `Tasks`-tabellen innehåller:
 
 ```text
 Id
@@ -285,229 +500,206 @@ CompletedAt
 UserId
 ```
 
-Följande index har lagts till:
+Index inkluderar:
 
 ```text
 (UserId, DueDate)
+
 (UserId, Status)
 ```
 
-Dessa stödjer vanliga frågor som används i Today-, Calendar- och Inbox-vyerna.
+Dessa stödjer vanliga filtreringar efter datum och status.
 
-## Utmaningar och beslut
+---
 
-### Att lämna den ursprungliga domänmodellen
-
-Ett av de största arkitekturbesluten var att ta bort den ursprungliga modellen med projekt, medlemmar och roller.
-
-I stället för att behålla oanvänd komplexitet enbart för att demonstrera fler funktioner valde jag att förenkla datamodellen utifrån de faktiska produktkraven.
-
-### Isolering av användardata
-
-Efter övergången från projektbaserad behörighet blev uppgiftsägande den viktigaste behörighetsgränsen.
-
-Alla skyddade endpoints för uppgifter verifierar den autentiserade användarens identitet innan data läses eller ändras.
-
-### Web först, mobil senare
-
-Jag övervägde att direkt gå över till React Native, men valde att först färdigställa webbapplikationen.
-
-Det nuvarande målet är att stabilisera:
-
-- Produktflödet
-- API-designen
-- Autentiseringen
-- Databasstrukturen
-- Uppgifternas beteende
-
-När dessa delar är stabila kan en React Native-klient läggas till utan att backend behöver designas om samtidigt.
-
-### Separat distribution av frontend och backend
-
-Frontend och backend distribueras nu separat.
-
-Det skapar en tydligare separation mellan klient och API och gör backend återanvändbar för framtida klienter.
-
-## Distribution
+## Deployment
 
 Den nuvarande produktionsarkitekturen är:
 
 ```text
 React + TypeScript
-        ↓
+        |
+        v
       Vercel
-        ↓
+        |
+        v
 https://lightmanager.jiantao.dev
-
-        ↓ HTTPS
-
+        |
+        | HTTPS
+        v
 ASP.NET Core Web API
-        ↓
+        |
+        v
 Microsoft Azure App Service
-        ↓
+        |
+        v
 PostgreSQL / Neon
 ```
 
 ### Frontend
 
-React-frontend distribueras via Vercel.
+React-frontend är distribuerad via Vercel.
 
-Produktionsadressen är:
+Produktion:
 
 **https://lightmanager.jiantao.dev**
 
 ### Backend
 
-ASP.NET Core Web API distribueras via Microsoft Azure App Service.
+ASP.NET Core Web API är distribuerat på Microsoft Azure App Service.
 
 ### Databas
 
 PostgreSQL hostas hos Neon.
 
-Produktionskonfiguration som JWT-hemligheter, frontend origins och databasanslutningar tillhandahålls via miljövariabler i stället för att sparas i källkoden.
+Produktionskonfiguration såsom JWT secrets, tillåtna frontend origins, database connection strings och Trial-konfiguration tillhandahålls via miljövariabler och sparas inte i källkoden.
 
-## Äldre Azure Static Web Apps-distribution
+---
 
-En tidigare version av LightManager-frontend var distribuerad via Azure Static Web Apps på:
+## Utmaningar och beslut
+
+### Förenkling av Domain Model
+
+Det största arkitekturbeslutet var att ta bort den ursprungliga project-, membership- och role-modellen.
+
+I stället för att behålla onödig komplexitet enbart för att demonstrera fler funktioner designades datamodellen om utifrån de faktiska kraven för personlig uppgiftshantering.
+
+### Isolering av användardata
+
+Efter övergången till personlig uppgiftshantering blev direkt ägarskap av tasks den huvudsakliga säkerhetsgränsen.
+
+Skyddade task-endpoints verifierar den autentiserade användaren innan data läses eller ändras.
+
+### Valfri schemaläggning
+
+Uppgifter behöver inte ha ett due date.
+
+Det gör det möjligt att snabbt registrera uppgifter och bestämma schemaläggningen senare.
+
+### Säkert offentligt Trial-läge
+
+Jag ville att besökare skulle kunna prova den verkliga applikationen utan att få tillgång till ett gemensamt autentiserat konto.
+
+Trial-läget läser därför endast initial demo-data från backend och sparar därefter alla ändringar lokalt.
+
+Det ger en fullständig demo samtidigt som den ursprungliga databasen skyddas.
+
+### Web First, Mobile Later
+
+Jag valde att stabilisera webbapplikationen innan utvecklingen av en mobil klient börjar.
+
+Det nuvarande fokuset är att stabilisera:
+
+- Produktens arbetsflöde
+- API design
+- Authentication
+- Database structure
+- Task behavior
+- Responsive UI
+
+När dessa delar är stabila kan en framtida React Native-klient återanvända samma backend.
+
+### Oberoende deployment av frontend och backend
+
+Frontend och backend distribueras separat.
+
+Det håller klienten och API:t separerade och gör backend återanvändbar för framtida applikationer.
+
+---
+
+## Projektets utveckling
+
+### Version 1 — Team Project Management
+
+Den ursprungliga LightManager innehöll:
+
+- Projects
+- Project members
+- Role-based permissions
+- Task assignment
+- Kanban boards
+- Drag-and-drop task workflows
+
+### Version 2 — Personal Task Management
+
+Den nuvarande versionen fokuserar på:
+
+- Personal task ownership
+- Today
+- Unscheduled tasks
+- Calendar planning
+- Optional due dates
+- Simple priorities
+- Priority-based sorting
+- All Tasks
+- Responsive navigation
+- Trial mode
+
+Projektet har därmed utvecklats från ett demonstrationsinriktat teamhanteringssystem till en mindre applikation som jag faktiskt kan använda och förbättra utifrån verklig erfarenhet.
+
+---
+
+## Utvecklingsmål
+
+LightManager är inte avsett att konkurrera med stora plattformar för uppgiftshantering.
+
+Projektet fungerar främst som en praktisk miljö för att bygga, använda och kontinuerligt förbättra en riktig fullstack-applikation.
+
+Mina mål är att:
+
+- Designa mjukvara utifrån verklig användning i stället för hypotetiska krav
+- Hålla produkten och datamodellen enkla även när funktionaliteten växer
+- Bygga återanvändbar och underhållbar arkitektur
+- Förbättra responsiv och mobile-first produktdesign
+- Utforska säkra offentliga demo- och authentication-mönster
+- Förbereda arkitekturen för framtida plattformsoberoende utveckling
+
+Fokus ligger inte på att lägga till så många funktioner som möjligt, utan på att göra genomtänkta förbättringar baserat på faktisk användning.
+
+---
+
+## Framtida förbättringar
+
+Möjliga framtida funktioner inkluderar:
+
+- React Native mobile client
+- Persistent mobile authentication
+- Recurring tasks
+- Task notes
+- Notifications and reminders
+- Offline support
+- Local mobile storage
+- Cross-device synchronization
+- Improved task editing
+- Search and filtering
+- Optional productivity statistics
+
+---
+
+## Legacy Azure Static Web Apps Deployment — Abandoned
+
+En tidigare version av frontend hostades på Azure Static Web Apps:
 
 ```text
 https://thankful-beach-0211add0f.7.azurestaticapps.net
 ```
 
-Efter migreringen av frontend till Vercel och övergången till den nya egna domänen:
-
-```text
-https://lightmanager.jiantao.dev
-```
-
-ville jag göra en sista uppdatering av den gamla Azure Static Web App-resursen så att den gamla URL:en automatiskt skulle omdirigera användare till den nya webbplatsen.
-
-Flera olika metoder testades.
-
-### Azure Static Web Apps CLI
-
-Jag skapade en minimal redirectsida som endast innehöll `index.html` och `staticwebapp.config.json` och försökte distribuera den med SWA CLI.
-
-Azure avvisade deploymenten med fel som:
-
-```text
-No matching static site found.
-```
-
-### Återställning av Deployment Token
-
-Deployment-token återställdes via Azure Portal och testades igen med SWA CLI.
-
-Deploymenten misslyckades fortfarande.
-
-### GitHub Actions
-
-Jag skapade därefter ett GitHub Actions-workflow med:
-
-```text
-Azure/static-web-apps-deploy@v1
-```
-
-GitHub-secret kunde läsas korrekt och den genererade redirect-katalogen identifierades korrekt av deployment action.
-
-Azure avvisade ändå deploymenten med:
-
-```text
-No matching Static Web App was found or the api key was invalid.
-```
-
-### Azure Portal-konfiguration
-
-Jag försökte kontrollera och ändra deployment-konfigurationen för den äldre Static Web App-resursen, men de relevanta inställningarna var skrivskyddade i Azure Portal.
-
-### Azure CLI och Cloud Shell
-
-Jag testade även Azure CLI och Azure Cloud Shell.
-
-Ett av försöken var att koppla från den gamla source-control-integrationen och därefter återansluta Static Web App-resursen till det aktuella GitHub-repot.
-
-Även disconnect-operationen misslyckades.
-
-### Slutligt beslut
-
-Efter att ha testat:
-
-- SWA CLI
-- Återställning av deployment token
-- GitHub Actions
-- Azure Portal-konfiguration
-- Azure CLI
-- Azure Cloud Shell
-- Source-control disconnect / reconnect
-
-valde jag till slut att inte lägga mer utvecklingstid på att återställa den äldre Azure Static Web Apps-distributionen.
-
-Den gamla resursen betraktas nu som en **äldre och övergiven deployment**.
-
-Den ingår inte längre i den aktiva LightManager-arkitekturen.
-
-All dokumentation och fortsatt utveckling använder nu:
+Frontend har sedan dess flyttats till Vercel och använder nu:
 
 **https://lightmanager.jiantao.dev**
 
-Detta blev också ett viktigt tekniskt beslut: det gamla deployment-endpointet gav inte längre tillräckligt värde för att motivera mer tid på återställning, särskilt eftersom applikationen redan hade migrerats till en ny arkitektur och en ny produktionsdomän.
+Den gamla Azure Static Web Apps-resursen behövdes endast för att bevara den tidigare URL:en. Efter flera misslyckade återställningsförsök valde jag att överge den äldre deploymenten och fokusera på den nuvarande produktionsarkitekturen.
 
-## Projektets utveckling
+### Recovery Attempts
 
-### Version 1 — Projektledning för team
+| Method | Result |
+| --- | --- |
+| Azure Static Web Apps CLI | Azure returnerade `No matching static site found.` |
+| Deployment token reset | Samma deployment-problem kvarstod. |
+| GitHub Actions | Azure kunde inte matcha deploymenten med den ursprungliga Static Web App-resursen. |
+| Azure Portal configuration | Relevanta deployment-inställningar var otillgängliga eller skrivskyddade. |
+| Azure CLI | Direkt resurshantering löste inte problemet. |
+| Azure Cloud Shell | Samma resursproblem kvarstod. |
+| Source-control reconnect | Den befintliga integrationen kunde inte återställas. |
 
-Den ursprungliga LightManager-versionen innehöll:
-
-- Projects
-- Members
-- Role-based permissions
-- Task assignment
-- Kanban board
-- Drag-and-drop task workflows
-
-### Version 2 — Personlig uppgiftshantering
-
-Den nuvarande LightManager-versionen fokuserar på:
-
-```text
-Inbox
-  ↓
-Today / Scheduled Tasks
-  ↓
-Calendar
-  ↓
-Completed Tasks
-```
-
-Projektet har därför utvecklats från ett mer demonstrationsorienterat system för teamhantering till en mindre applikation som jag själv faktiskt kan använda och förbättra utifrån verklig erfarenhet.
-
-## Framtida förbättringar
-
-- Förbättrad redigering av uppgifter
-- Återkommande uppgifter
-- Anteckningar
-- Sökning och filtrering
-- Notiser och påminnelser
-- Bättre mobil interaktion
-- React Native-klient för Android
-- Persistent mobil inloggning
-- Lokal SQLite-lagring
-- Offline-stöd
-- Synkronisering mellan webb och mobil
-
-## Nuvarande mål
-
-LightManager är inte avsett att konkurrera med stora projekt- eller uppgiftshanteringsplattformar.
-
-Målet med projektet är att bygga en lättviktig applikation som jag faktiskt kan använda själv, samtidigt som jag fortsätter utveckla praktisk erfarenhet inom:
-
-- Full-stack-applikationsarkitektur
-- React och TypeScript
-- ASP.NET Core
-- REST API-design
-- Autentisering och behörighet
-- PostgreSQL och Entity Framework Core
-- Molndistribution
-- Responsiv design
-- Mobile-first produktdesign
-- Plattformsöverskridande applikationsutveckling
+Den äldre deploymenten är inte längre en del av LightManagers aktiva arkitektur.
