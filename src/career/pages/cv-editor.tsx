@@ -11,7 +11,7 @@ import type { AboutContent, AboutEducationItem, AboutSkillGroup, Locale } from "
 import { useCareerWorkspace } from "../workspace"
 
 function blankSkillGroup(): AboutSkillGroup {
-  return { title: "New category", staritem: [], items: [] }
+  return { title: "New category", items: [] }
 }
 
 function blankEducation(): AboutEducationItem {
@@ -90,7 +90,7 @@ export function CvEditorPage() {
     <Card>
       <CardHeader><CardTitle>Background / Story</CardTitle><CardDescription>Maps to <code>story.title</code> and <code>story.paragraphs</code>.</CardDescription></CardHeader>
       <CardContent className="space-y-4">
-        <Field label="Section title"><Input value={draft.story.title} onChange={e => setDraft(current => ({ ...current, story: { ...current.story, title: e.target.value } }))} /></Field>
+
         <div className="space-y-3">
           {draft.story.paragraphs.map((paragraph, index) => (
             <div key={index} className="flex gap-2">
@@ -108,14 +108,10 @@ export function CvEditorPage() {
 
     <Card>
       <CardHeader className="gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div><CardTitle>Skills</CardTitle><CardDescription>Each card maps directly to one item in <code>skills.items</code>. Focus technologies map to <code>staritem</code>.</CardDescription></div>
+        <div><CardTitle>Skills</CardTitle><CardDescription>Each card maps directly to one item in <code>skills.items</code>.</CardDescription></div>
         <Button variant="outline" size="sm" onClick={() => setDraft(current => ({ ...current, skills: { ...current.skills, items: [...current.skills.items, blankSkillGroup()] } }))}><Plus className="mr-2 h-4 w-4" />Add category</Button>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2">
-          <Field label="Section title"><Input value={draft.skills.title} onChange={e => setDraft(current => ({ ...current, skills: { ...current.skills, title: e.target.value } }))} /></Field>
-          <Field label="Section description"><Input value={draft.skills.description} onChange={e => setDraft(current => ({ ...current, skills: { ...current.skills, description: e.target.value } }))} /></Field>
-        </div>
         <div className="grid gap-4 xl:grid-cols-2">
           {draft.skills.items.map((group, index) => <SkillGroupEditor key={`${locale}-${index}`} group={group} onChange={next => updateSkillGroup(index, next)} onDelete={() => removeSkillGroup(index)} />)}
         </div>
@@ -128,10 +124,6 @@ export function CvEditorPage() {
         <Button variant="outline" size="sm" onClick={() => setDraft(current => ({ ...current, education: { ...current.education, items: [...current.education.items, blankEducation()] } }))}><Plus className="mr-2 h-4 w-4" />Add education</Button>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2">
-          <Field label="Section title"><Input value={draft.education.title} onChange={e => setDraft(current => ({ ...current, education: { ...current.education, title: e.target.value } }))} /></Field>
-          <Field label="Section description"><Input value={draft.education.description} onChange={e => setDraft(current => ({ ...current, education: { ...current.education, description: e.target.value } }))} /></Field>
-        </div>
         <div className="space-y-4">
           {draft.education.items.map((item, index) => <EducationEditor key={`${locale}-${index}`} item={item} onChange={next => updateEducation(index, next)} onDelete={() => removeEducation(index)} />)}
         </div>
@@ -146,17 +138,9 @@ export function CvEditorPage() {
 }
 
 function SkillGroupEditor({ group, onChange, onDelete }: { group: AboutSkillGroup; onChange: (next: AboutSkillGroup) => void; onDelete: () => void }) {
-  const [focusText, setFocusText] = useState((group.staritem ?? []).join(", "))
   const [itemsText, setItemsText] = useState(group.items.join(", "))
-  const [editingFocus, setEditingFocus] = useState(false)
   const [editingItems, setEditingItems] = useState(false)
-
-  const focusValue = (group.staritem ?? []).join(", ")
   const itemsValue = group.items.join(", ")
-
-  useEffect(() => {
-    if (!editingFocus) setFocusText(focusValue)
-  }, [focusValue, editingFocus])
 
   useEffect(() => {
     if (!editingItems) setItemsText(itemsValue)
@@ -167,18 +151,7 @@ function SkillGroupEditor({ group, onChange, onDelete }: { group: AboutSkillGrou
       <Input value={group.title} onChange={e => onChange({ ...group, title: e.target.value })} />
       <Button variant="ghost" size="icon" aria-label="Delete skill category" onClick={onDelete}><Trash2 className="h-4 w-4" /></Button>
     </div>
-    <Field label="Focus technologies (comma separated)">
-      <Input
-        value={focusText}
-        onFocus={() => setEditingFocus(true)}
-        onBlur={() => setEditingFocus(false)}
-        onChange={e => {
-          setFocusText(e.target.value)
-          onChange({ ...group, staritem: splitTags(e.target.value) })
-        }}
-        placeholder="C#, Python"
-      />
-    </Field>
+
     <Field label="Other technologies (comma separated)">
       <Textarea
         rows={3}
@@ -192,7 +165,7 @@ function SkillGroupEditor({ group, onChange, onDelete }: { group: AboutSkillGrou
         placeholder="ASP.NET Core, REST APIs, JWT"
       />
     </Field>
-    {(group.staritem?.length ?? 0) > 0 && <div className="flex flex-wrap gap-1">{group.staritem!.map(item => <Badge key={item} className="bg-amber-100 text-amber-800"><Star className="mr-1 h-3 w-3" />{item}</Badge>)}</div>}
+   
   </div>
 }
 

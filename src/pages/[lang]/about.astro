@@ -59,10 +59,6 @@ const common =
         {about.skills.title}
       </h2>
 
-      <p class="text-large text-slate text-center ">
-        {about.skills.description}
-      </p>
-
       <div class="grid gap-5 md:grid-cols-3">
         {about.skills.items.map((group) => (
           <article class="card p-6">
@@ -71,15 +67,6 @@ const common =
             </h3>
 
             <div class="flex flex-wrap gap-2">
-              {group.staritem?.map((item) => (
-                <span class="tag tag-star">
-                  <span aria-hidden="true">
-                    ★
-                  </span>
-                  {item}
-                </span>
-              ))}
-
               {group.items.map((item) => (
                 <span class="tag">
                   {item}
@@ -98,10 +85,6 @@ const common =
       <h2 class="text-title text-dark text-center">
         {about.education.title}
       </h2>
-
-      <p class="text-large text-slate text-center mb-5">
-        {about.education.description}
-      </p>
 
       <div class="grid gap-5 md:grid-cols-2">
         {about.education.items.map((item) => (

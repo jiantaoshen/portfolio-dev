@@ -7,14 +7,7 @@
 
   "featuredProjects": {
     "title": "精选项目",
-    "description": "展示我技能的精选作品",
     "viewAll": "查看全部项目"
-  },
-
-  "technicalNotes": {
-    "title": "个人笔记与技术文章",
-    "description": "关于网站和软件开发的个人笔记和文章",
-    "viewAll": "查看全部笔记"
   },
   "contact": {
     "title": "有项目、职位机会或其他软件开发相关的合作想法？",

@@ -4,7 +4,7 @@ import { useCareerWorkspace } from "../workspace"
 export function OverviewPage() {
   const { data, mode } = useCareerWorkspace()
   const en = data.about.en
-  const skillCount = en.skills.items.reduce((sum, group) => sum + group.items.length + (group.staritem?.length ?? 0), 0)
+  const skillCount = en.skills.items.reduce((sum, group) => sum + group.items.length, 0)
 
   const stats = [
     ["Languages", 3],

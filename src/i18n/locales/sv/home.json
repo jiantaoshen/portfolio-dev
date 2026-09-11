@@ -8,17 +8,9 @@
   },
   "featuredProjects": {
     "title": "Utvalda projekt",
-
-    "description": "Projekt som visar min kompetens",
-
     "viewAll": "Visa alla projekt"
   },
  
-  "technicalNotes": {
-    "title": "Blogg & Tekniska anteckningar",
-    "description": "Personliga noteringar och artiklar om webb- och mjukvaruutveckling.",
-    "viewAll": "Visa alla anteckningar"
-  },
   "contact": {
     "title": "Har du ett projekt, en tjänst eller en annan möjlighet inom mjukvaruutveckling?",
     "description": " Kontakta mig gärna via e-post eller LinkedIn.",

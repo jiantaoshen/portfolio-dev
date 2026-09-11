@@ -23,7 +23,6 @@ public sealed class AboutSkills
 public sealed class AboutSkillGroup
 {
     public string Title { get; set; } = "";
-    public List<string>? Staritem { get; set; }
     public List<string> Items { get; set; } = [];
 }
 

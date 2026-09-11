@@ -21,10 +21,9 @@
       },
       {
         "title": "后端",
-        "staritem": [
-          "C#"
-        ],
+
         "items": [
+          "C#",
           ".NET",
           "ASP.NET Core"
         ]
@@ -38,10 +37,8 @@
       },
       {
         "title": "人工智能",
-        "staritem": [
-          "Python"
-        ],
         "items": [
+          "Python",
           "Ollama"
         ]
       },

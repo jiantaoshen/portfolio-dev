@@ -11,17 +11,7 @@
   "featuredProjects": {
     "title": "Featured Projects",
 
-    "description": "Selected work that demonstrates my skills.",
-
     "viewAll": "View all projects"
-  },
-
-  "technicalNotes": {
-    "title": "Blogs & Technical Notes",
-
-    "description": "Personal notes and articles on website and software development.",
-
-    "viewAll": "View all notes"
   },
 
   "contact": {

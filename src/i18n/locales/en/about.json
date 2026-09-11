@@ -7,7 +7,6 @@
   },
   "skills": {
     "title": "Skills",
-    "description": "Tags with star indicate the technologies I am studying in depth.",
     "items": [
       {
         "title": "Frontend",
@@ -21,10 +20,8 @@
       },
       {
         "title": "Backend",
-        "staritem": [
-          "C#"
-        ],
         "items": [
+          "C#",
           ".NET",
           "ASP.NET Core"
         ]
@@ -38,10 +35,8 @@
       },
       {
         "title": "AI",
-        "staritem": [
-          "Python"
-        ],
         "items": [
+          "Python",
           "Ollama"
         ]
       },
@@ -65,7 +60,6 @@
   },
   "education": {
     "title": "Education & Learning",
-    "description": "My academic background, vocational training, and continued learning.",
     "items": [
       {
         "period": "March 2026 – Present",

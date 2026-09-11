@@ -8,7 +8,6 @@ export type AboutStory = {
 
 export type AboutSkillGroup = {
   title: string
-  staritem?: string[]
   items: string[]
 }
 
@@ -25,12 +24,10 @@ export type AboutContent = {
   story: AboutStory
   skills: {
     title: string
-    description: string
     items: AboutSkillGroup[]
   }
   education: {
     title: string
-    description: string
     items: AboutEducationItem[]
   }
 }
