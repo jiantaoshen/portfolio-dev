@@ -37,8 +37,6 @@ export async function getPortfolioContent(): Promise<PortfolioContent> {
       technologies: data.technologies,
       githubUrl: data.links?.github ?? "",
       demoUrl: data.links?.live ?? "",
-      featured: data.featured,
-      featuredOrder: data.featuredOrder ?? null,
       published: !data.draft,
       sortOrder: data.order,
     }

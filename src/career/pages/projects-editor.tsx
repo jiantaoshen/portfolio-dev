@@ -25,8 +25,6 @@ function emptyProject(language: Locale): Project {
     technologies: ["ASP.NET Core"],
     githubUrl: "",
     demoUrl: "",
-    featured: false,
-    featuredOrder: null,
     published: false,
     sortOrder: 99,
   }
@@ -87,7 +85,6 @@ export function ProjectsEditorPage() {
           {visibleProjects.length === 0 && <div className="rounded-lg border border-dashed border-zinc-200 p-6 text-center text-sm text-zinc-500">No {localeLabels[locale]} projects yet.</div>}
           {visibleProjects.map(project => <button key={project.id} onClick={() => setSelectedId(project.id)} className={`w-full rounded-lg border p-3 text-left ${selectedId === project.id ? "border-zinc-900 bg-zinc-50" : "border-zinc-200"}`}>
             <div className="font-medium">{project.title}</div>
-            <div className="mt-1 flex flex-wrap gap-1">{project.published && <Badge>published</Badge>}{project.featured && <Badge>featured</Badge>}<Badge>{project.slug}</Badge></div>
           </button>)}
         </CardContent>
       </Card>
@@ -169,9 +166,9 @@ function ProjectEditor({
       <Field label="GitHub URL"><Input value={draft.githubUrl} onChange={e => setDraft({ ...draft, githubUrl: e.target.value })} /></Field>
       <Field label="Live URL"><Input value={draft.demoUrl} onChange={e => setDraft({ ...draft, demoUrl: e.target.value })} /></Field>
       <Field label="Display order"><Input type="number" value={draft.sortOrder} onChange={e => setDraft({ ...draft, sortOrder: Number(e.target.value) })} /></Field>
-      <Field label="Featured order"><Input type="number" value={draft.featuredOrder ?? ""} onChange={e => setDraft({ ...draft, featuredOrder: e.target.value === "" ? null : Number(e.target.value) })} placeholder="Optional" /></Field>
+
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={draft.published} onChange={e => setDraft({ ...draft, published: e.target.checked })} />Published (`draft: false`)</label>
-      <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={draft.featured} onChange={e => setDraft({ ...draft, featured: e.target.checked })} />Featured</label>
+    
       <div className="md:col-span-2"><Field label="Content (Markdown)"><Textarea className="min-h-130 font-mono" value={draft.contentMarkdown} onChange={e => setDraft({ ...draft, contentMarkdown: e.target.value })} /></Field></div>
 
       <div className="md:col-span-2 flex flex-wrap gap-2">
@@ -184,7 +181,6 @@ function ProjectEditor({
         <div className="flex flex-wrap gap-2">
           <Badge>{draft.status}</Badge>
           {draft.published && <Badge>published</Badge>}
-          {draft.featured && <Badge>featured</Badge>}
         </div>
         <h2 className="mt-4 text-2xl font-bold tracking-tight">{draft.title}</h2>
         {draft.summary && <p className="mt-2 text-zinc-600">{draft.summary}</p>}

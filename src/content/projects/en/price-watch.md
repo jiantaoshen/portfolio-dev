@@ -4,8 +4,6 @@ title: "Price Watch"
 description: "A local-first product price monitoring and AI shopping assistance application built with React, TypeScript, ASP.NET Core, Python, Playwright, FastAPI, and Ollama, supporting multi-store price tracking, price history, package normalization, automated runs, email notifications, and local AI price analysis."
 status: "v.1.2.0"
 order: 2
-featured: true
-featuredOrder: 2
 technologies:
  - "React"
  - "TypeScript"

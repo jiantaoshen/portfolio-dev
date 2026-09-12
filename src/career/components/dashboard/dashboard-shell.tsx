@@ -1,11 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom"
-import { BriefcaseBusiness, FileUser, Gauge, Home, RotateCcw, X } from "lucide-react"
+import { BriefcaseBusiness, FileUser, Home, RotateCcw, X } from "lucide-react"
 import { Button } from "../ui/button"
 import { cn } from "../../lib/utils"
 import type { DashboardMode } from "../../lib/types"
 
 const items = [
-  { to: "overview", label: "Overview", icon: Gauge },
   { to: "cv", label: "CV / About", icon: FileUser },
   { to: "projects", label: "Projects", icon: BriefcaseBusiness },
 ]

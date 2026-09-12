@@ -18,9 +18,6 @@ const projects = defineCollection({
 
     order: z.number().int().default(999),
 
-    featured: z.boolean().default(false),
-    featuredOrder: z.number().int().optional(),
-
     technologies: z
       .array(z.string())
       .default([]),

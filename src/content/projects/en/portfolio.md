@@ -9,10 +9,6 @@ status: "Live"
 
 order: 3
 
-featured: true
-
-featuredOrder: 3
-
 technologies:
   - "Astro"
   - "React"

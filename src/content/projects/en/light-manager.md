@@ -9,10 +9,6 @@ status: "Live"
 
 order: 1
 
-featured: true
-
-featuredOrder: 1
-
 technologies:
   - "C#"
   - ".NET"

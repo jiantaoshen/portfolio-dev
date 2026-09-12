@@ -229,9 +229,6 @@ public sealed class PortfolioContentService(IWebHostEnvironment environment, ICo
         sb.Append("description: ").Append(YamlString(project.Summary)).Append('\n');
         sb.Append("status: ").Append(YamlString(project.Status)).Append('\n');
         sb.Append("order: ").Append(project.SortOrder).Append('\n');
-        sb.Append("featured: ").Append(project.Featured ? "true" : "false").Append('\n');
-        if (project.FeaturedOrder.HasValue)
-            sb.Append("featuredOrder: ").Append(project.FeaturedOrder.Value).Append('\n');
         AppendList(sb, "technologies", project.Technologies);
 
         if (!string.IsNullOrWhiteSpace(project.GithubUrl) || !string.IsNullOrWhiteSpace(project.DemoUrl))

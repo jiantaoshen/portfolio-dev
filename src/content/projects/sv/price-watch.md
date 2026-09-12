@@ -4,8 +4,6 @@ title: "Price Watch"
 description: "En lokal applikation för produktprisbevakning och AI-baserat upphandlingsanalys, med stöd för automatiserade körningar och e-postnotiser."
 status: "v.1.2.0"
 order: 2
-featured: true
-featuredOrder: 2
 technologies:
  - "React"
  - "TypeScript"

@@ -30,9 +30,6 @@ export type ProjectItem = {
 
   deployment: string;
 
-  learnings?: string[];
-  futureImprovements?: string[];
-
   links?: ProjectLinks;
 };
 

@@ -36,5 +36,5 @@ export function CareerWorkspace({
 }
 
 export function WorkspaceIndex({ mode }: { mode: DashboardMode }) {
-  return <Navigate to={mode === "trial" ? "/trial/overview" : "/dashboard/overview"} replace />
+  return <Navigate to={mode === "trial" ? "/trial/cv" : "/dashboard/cv"} replace />
 }

@@ -46,8 +46,6 @@ export type Project = {
   technologies: string[]
   githubUrl: string
   demoUrl: string
-  featured: boolean
-  featuredOrder?: number | null
   published: boolean
   sortOrder: number
 }

@@ -8,11 +8,6 @@ description: "一个使用 React、TypeScript、ASP.NET Core 和 PostgreSQL 构�
 status: "Live"
 
 order: 1
-
-featured: true
-
-featuredOrder: 1
-
 technologies:
   - "C#"
   - ".NET"

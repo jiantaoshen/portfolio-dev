@@ -25,14 +25,13 @@ const featuredProjects = (
     "projects",
     ({ data }) =>
       !data.draft &&
-      data.lang === lang &&
-      data.featured,
+      data.lang === lang
   )
 )
   .sort(
     (a, b) =>
-      (a.data.featuredOrder ?? 999) -
-      (b.data.featuredOrder ?? 999),
+      (a.data.order ?? 999) -
+      (b.data.order ?? 999),
   )
   .slice(0, 2);
 

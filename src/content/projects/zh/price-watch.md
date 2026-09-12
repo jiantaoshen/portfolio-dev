@@ -4,8 +4,6 @@ title: "Price Watch"
 description: "一个本地优先的商品价格监控与 AI 购物辅助应用，使用 React、TypeScript、ASP.NET Core、Python、Playwright、FastAPI 和 Ollama 构建，支持多店铺价格追踪、价格历史、规格归一化、自动化运行、邮件通知和本地 AI 价格分析。"
 status: "v.1.2.0"
 order: 2
-featured: true
-featuredOrder: 2
 technologies:
  - "React"
  - "TypeScript"
